@@ -56,6 +56,7 @@ import de.undercouch.citeproc.helper.json.JsonBuilderFactory;
 import org.json.*;
 import java.lang.StringBuilder;
 
+import java.lang.IllegalArgumentException;
 import org.bson.codecs.configuration.CodecConfigurationException;
 
 public class App{
@@ -94,67 +95,60 @@ public class App{
 			//System.exit(1);
 		System.out.println("Data is loaded intobibtex converter db");
 		System.out.println("starting conversion");
-		for(int retries =0;;retries++){	
-			
-			for(Map.Entry entry : CSLmap.entrySet()){
-				CSLItemData datum = (CSLItemData) entry.getValue();
+		int count =0;
+        //for(int retries =0;;retries++){	
+			for(Map.Entry entry : CSLmap.entrySet()){				
+			    System.out.println("count :" + count);
+                CSLItemData datum = (CSLItemData) entry.getValue();
 				BasicDBObject article = convertToDBObj(datum);
-				coll.insertOne(new Document(article));
-				try{
+				System.out.println("Inserting Document");
+                coll.insertOne(new Document(article));
+                System.out.println("Inserted");
+				//System.exit(1);
+                try{
 
 				int test = 0;
-				int max = 100;
+				int max = 1000; 
 				for(String style : styles){
 					if(test>= max){
 						break;
-					}
-					System.out.println("style = "+ style);
-					//System.out.println(entry.getValue());
-					String bib = CSL.makeAdhocBibliography(style, "text",
+					} 
+					//System.out.println("count == "+ test);
+                    //System.out.println("style = "+ style);
+					// TODO
+                    try{
+                        String bib = CSL.makeAdhocBibliography(style, "text",
 						(CSLItemData) entry.getValue()).makeString();
-					
-					
-					//org.jbibtex.BibTeXEntry bibEntry =(org.jbibtex.BibTeXEntry) entry.getValue();
-					//System.out.println("datum : "+ entry.getKey());
-					//System.out.println("Entry : " + entry.getValue() + "\n");
+                    					
 					BasicDBObject citation = new BasicDBObject();
 					citation.append("style", style);
 					citation.append("bib" , bib);
 					BasicDBObject citeToAdd = new BasicDBObject("citation", citation);
 					BasicDBObject updateQuery = new BasicDBObject("$push", citeToAdd);
 					coll.updateOne(article,updateQuery); 
-					//org.jbibtex.Value val = entry.getValue();
-					//System.out.println("val : " + val.toUserString());
-					//System.out.println("Style :' " + style + "'\n");
 					//JsonObject jObj = (JsonObject) entry.getValue();
 					//MapJsonBuilderFactory thingy = new MapJsonBuilderFactory();
 					//JsonBuilder myBuilder = thingy.createJsonBuilder();	
 					
-					//coll.push(datum);				
-					//Map<Key,Value> fields = bibEntry.getFields();
-					//for(Map.Entry ent : fields.entrySet()){
-					//	System.out.println("field Key : " + ent.getKey());
-					//	org.jbibtex.StringValue lit =(org.jbibtex.StringValue) ent.getValue();
-					    	
-					//	System.out.println("field value: " + lit.toUserString());
-					//}
-					//System.out.println("Citation : " + bib + "\n");
-					//System.exit(1);
-								// This is where the magic happens
 					test++;
+                    } catch(java.lang.IllegalArgumentException e){
+                        continue;
+                    }
+
 				}
 				}
 				catch(ClassCastException | CodecConfigurationException e){
-					if(retries < 20){
+					//if(retries < 20){
 						System.out.println("skipped one: ");
-						continue;
-					} else{
-						throw e;
-					}
-				} 
+						System.out.println(e);
+                    //}else{
+					//	System.out.println(e);
+					//}
+				}
+                count++;
 				//System.exit(1);
 			}
-		}
+		//}
 			
 		}catch(ParseException | IOException | CodecConfigurationException e){
 			System.out.print(e);	
@@ -173,14 +167,24 @@ public class App{
 	public static BasicDBObject convertToDBObj(CSLItemData data){
 			BasicDBObject document = new BasicDBObject();
 			StringBuilder sb = new StringBuilder();
+            StringBuilder editorSb = new StringBuilder();
 			CSLName [] authors = data.getAuthor();
-			for (CSLName n : authors) { 
-				    if (sb.length() > 0) sb.append(", ");
-					    sb.append(n.getGiven() +"." + n.getFamily());
-						System.out.println("Author =" + n.getGiven() + "----" + n.getFamily());
+			CSLName [] editors = data.getEditor();
+            //if(authors.length==1){
+                
+            //}
+            // TODO THIS SHOULD BE A FUNCTION!!!
+            for (CSLName n : authors) { 
+				    if (sb.length() > 0) sb.append(" and ");
+					sb.append(n.getFamily()+ ", " + n.getGiven() );
+					//System.out.println("Author = Given :" + n.getGiven() + "----Family :" + n.getFamily());
 			}
-			System.out.println("SB +++==" + sb.toString());
-			document.append("type", data.getType().toString());
+            for (CSLName n : authors){
+                if( editorSb.length() > 0) editorSb.append(" and ");
+                editorSb.append(n.getFamily()+ ", " + n.getGiven());
+            }
+			//System.out.println("Author --- sb -- = " + sb.toString());
+            document.append("type", data.getType().toString());
 			document.append("author", sb.toString());
 			document.append("title", data.getTitle());
 			System.out.println("title : " +data.getTitle());
@@ -191,10 +195,18 @@ public class App{
 			document.append("volume", data.getVolume());
 			document.append("year", data.getYearSuffix());
 			document.append("journal",data.getJournalAbbreviation());
-			document.append("editor", data.getEditor());
+			document.append("editor", editorSb.toString());
 			document.append("chapter", data.getChapterNumber());		
-
-			return document;
+			document.append("archiveLocation", data.getArchivePlace());
+			document.append("annote", data.getAnnote());
+			document.append("locator", data.getLocator());
+			document.append("version", data.getVersion());
+            document.append("references", data.getReferences());
+            document.append("pmid" , data.getPMID());
+            document.append("pmcid" , data.getPMCID());
+            document.append("issue", data.getIssue());
+            document.append("doi", data.getDOI());
+            return document;
 		}
 
 

@@ -114,7 +114,7 @@ public class App{
 				for(String style : styles){
 					if(test>= max){
 						break;
-					} 
+				} 
                     try{
                         String bib = CSL.makeAdhocBibliography(style, "text",
 						(CSLItemData) entry.getValue()).makeString();
@@ -186,7 +186,7 @@ public class App{
 			    }
                 document.append("author", sb.toString());
             }
-            if(editors != null){
+            if(editors == null){
                 document.append("editor", null);
             } else{
                 for (CSLName n : editors){

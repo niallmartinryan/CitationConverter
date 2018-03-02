@@ -15,6 +15,10 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.MimeMessage;
+
 import java.util.LinkedHashSet;
 import java.lang.ClassCastException;
 //*/
@@ -59,15 +63,25 @@ import java.lang.StringBuilder;
 import java.lang.IllegalArgumentException;
 import org.bson.codecs.configuration.CodecConfigurationException;
 
+import javax.mail.internet.InternetAddress;
+
+
 public class App{
 
 	public static void main(String[] args){
-		MongoClient mongoClient = new MongoClient();
+        // Email Setup
+        String recip = "ryann11@tcd.ie";
+        String from = "tiphRyan@gmail.com";
+        String host = "localhost";
+        Properties props = System.getProperties();
+        props.setProperty("mail.smtp.host", host);
+        Session session = Session.getDefaultInstance(props);        
+            
+        // Mongo Setup    
+        MongoClient mongoClient = new MongoClient();
 		MongoDatabase database = mongoClient.getDatabase("1000db");
 
 		MongoCollection<Document> coll = database.getCollection("articles");
-
-		//System.out.println(coll.find());
 
 		// grabbing the citation style names
 		ArrayList<String> styles = getStyleNames();
@@ -79,24 +93,13 @@ public class App{
 			BibTeXItemDataProvider provider = new BibTeXItemDataProvider();
 			provider.addDatabase(dbBib);
 
-			//CSL citeproc = new CSL(provider, "ieee");
-			//citeproc.setOutputFormat("text");
-
 			BibTeXConverter converter = new BibTeXConverter();
 			Map<String,CSLItemData> CSLmap = converter.toItemData(dbBib);
-			//Map<Key, BibTeXEntry> map = dbBib.getEntries(); 
-			//printMapCSL(map);
-			//coll.remove({});
-			//ArrayList<org.jbibtex.BibTeXObject> entryMap =(ArrayList<org.jbibtex.BibTeXObject>) dbBib.getObjects();
 
-			//for(org.jbibtex.BibTeXObject entry : entryMap){
 					
-		//	}
-			//System.exit(1);
-		System.out.println("Data is loaded intobibtex converter db");
-		System.out.println("starting conversion");
-		int count =0;
-        //for(int retries =0;;retries++){	
+		    System.out.println("Data is loaded intobibtex converter db");
+		    System.out.println("starting conversion");
+		    int count =0;
 			for(Map.Entry entry : CSLmap.entrySet()){				
 			    System.out.println("count :" + count);
                 CSLItemData datum = (CSLItemData) entry.getValue();
@@ -104,7 +107,6 @@ public class App{
 				System.out.println("Inserting Document");
                 coll.insertOne(new Document(article));
                 System.out.println("Inserted");
-				//System.exit(1);
                 try{
 
 				int test = 0;
@@ -113,9 +115,6 @@ public class App{
 					if(test>= max){
 						break;
 					} 
-					//System.out.println("count == "+ test);
-                    //System.out.println("style = "+ style);
-					// TODO
                     try{
                         String bib = CSL.makeAdhocBibliography(style, "text",
 						(CSLItemData) entry.getValue()).makeString();
@@ -126,9 +125,6 @@ public class App{
 					BasicDBObject citeToAdd = new BasicDBObject("citation", citation);
 					BasicDBObject updateQuery = new BasicDBObject("$push", citeToAdd);
 					coll.updateOne(article,updateQuery); 
-					//JsonObject jObj = (JsonObject) entry.getValue();
-					//MapJsonBuilderFactory thingy = new MapJsonBuilderFactory();
-					//JsonBuilder myBuilder = thingy.createJsonBuilder();	
 					
 					test++;
                     } catch(java.lang.IllegalArgumentException e){
@@ -138,17 +134,11 @@ public class App{
 				}
 				}
 				catch(ClassCastException | CodecConfigurationException e){
-					//if(retries < 20){
 						System.out.println("skipped one: ");
 						System.out.println(e);
-                    //}else{
-					//	System.out.println(e);
-					//}
 				}
                 count++;
-				//System.exit(1);
 			}
-		//}
 			
 		}catch(ParseException | IOException | CodecConfigurationException e){
 			System.out.print(e);	
@@ -163,7 +153,20 @@ public class App{
 	public static String toHex(String arg) {
 		    return String.format("%040x", new BigInteger(1, arg.getBytes(/*YOUR_CHARSET?*/)));
 	}
-	
+    public static void sendEmail(String to, String from, String subject,String text, Session session){
+        try{ 
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.setSubject(subject);
+            message.setText(text);
+            Transport.send(message);
+            System.out.println("message sent succ");
+        } catch(MessagingException e){
+            e.printStackTrace();
+        }
+       
+    }	
 	public static BasicDBObject convertToDBObj(CSLItemData data){
 			BasicDBObject document = new BasicDBObject();
 			StringBuilder sb = new StringBuilder();
@@ -174,18 +177,26 @@ public class App{
                 
             //}
             // TODO THIS SHOULD BE A FUNCTION!!!
-            for (CSLName n : authors) { 
-				    if (sb.length() > 0) sb.append(" and ");
-					sb.append(n.getFamily()+ ", " + n.getGiven() );
-					//System.out.println("Author = Given :" + n.getGiven() + "----Family :" + n.getFamily());
-			}
-            for (CSLName n : authors){
-                if( editorSb.length() > 0) editorSb.append(" and ");
-                editorSb.append(n.getFamily()+ ", " + n.getGiven());
+            if(authors == null){
+                document.append("author", null);
+            }else{
+                for (CSLName n : authors) { 
+				        if (sb.length() > 0) sb.append(" and ");
+					    sb.append(n.getFamily()+ ", " + n.getGiven() );
+			    }
+                document.append("author", sb.toString());
+            }
+            if(editors != null){
+                document.append("editor", null);
+            } else{
+                for (CSLName n : editors){
+                    if( editorSb.length() > 0) editorSb.append(" and ");
+                    editorSb.append(n.getFamily()+ ", " + n.getGiven());
+                }
+                document.append("editor", editorSb.toString());
             }
 			//System.out.println("Author --- sb -- = " + sb.toString());
             document.append("type", data.getType().toString());
-			document.append("author", sb.toString());
 			document.append("title", data.getTitle());
 			System.out.println("title : " +data.getTitle());
 			document.append("number", data.getNumber());
@@ -195,7 +206,6 @@ public class App{
 			document.append("volume", data.getVolume());
 			document.append("year", data.getYearSuffix());
 			document.append("journal",data.getJournalAbbreviation());
-			document.append("editor", editorSb.toString());
 			document.append("chapter", data.getChapterNumber());		
 			document.append("archiveLocation", data.getArchivePlace());
 			document.append("annote", data.getAnnote());

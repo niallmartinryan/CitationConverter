@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Bulletin of Marine Science</title>
+    <id>http://www.zotero.org/styles/bulletin-of-marine-science</id>
+    <link href="http://www.zotero.org/styles/bulletin-of-marine-science" rel="self"/>
+    <link href="http://www.rsmas.miami.edu/bms/PDF/INSTRUCTIONS_TO_AUTHORS.pdf" rel="documentation"/>
+    <author>
+      <name>Jorge Pinzon</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="zoology"/>
+    <category field="botany"/>
+    <issn>0007-4977</issn>
+    <eissn>1553-6955</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names suffix=". " variable="author">
+      <name delimiter=", " form="long" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names prefix="In: " suffix=", editor. " variable="editor">
+      <name and="text" delimiter=", " form="long" initialize-with="" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="year">
+    <date suffix=". " variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <text suffix=". " variable="title"/>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year"/>
+      <key sort="ascending" variable="issued"/>
+    </sort>
+    <layout delimiter=", " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <names variable="author">
+          <name and="text" delimiter=" " form="short" name-as-sort-order="all" sort-separator=", "/>
+        </names>
+        <date variable="issued">
+          <date-part form="long" name="year"/>
+        </date>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key macro="year" sort="ascending"/>
+    </sort>
+    <layout>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text macro="year" prefix=" $year$ " suffix=" $/year$ "/>
+      <choose>
+        <if type="book">
+          <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+          <text prefix=" $publisher-place$ " suffix=":  $publisher-place$ " variable="publisher-place"/>
+          <text prefix=" $publisher$ " suffix=". $publisher$ " variable="publisher"/>
+        </if>
+        <else-if type="chapter">
+          <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+          <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+          <text prefix=" $container-title$ " suffix="  $container-title$ " variable="container-title"/>
+          <text prefix=" $publisher-place$ " suffix=":  $publisher-place$ " variable="publisher-place"/>
+          <text prefix=" $publisher$ " suffix=".  $publisher$ " variable="publisher"/>
+          <text prefix=" $page$ p. " suffix=".  $page$ " variable="page"/>
+        </else-if>
+        <else-if type="thesis">
+          <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+          <text prefix=" $publisher$ " suffix=".  $publisher$ " variable="publisher"/>
+          <text prefix=" $page$ p." suffix=". $page$ " variable="page"/>
+        </else-if>
+        <else-if type="paper-conference">
+          <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+          <text prefix=" $event$  " suffix=".  $event$ " variable="event"/>
+          <text prefix=" $page$ p. " suffix=". $page$ " variable="page"/>
+        </else-if>
+        <else-if type="webpage">
+          <text prefix=" $URL$ [Internet]. Available from: " suffix=" $URL$ " variable="URL"/>
+        </else-if>
+        <else>
+          <group suffix=". ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text form="long" prefix=" $container-title$ " suffix="  $container-title$ " variable="container-title"/>
+            <text prefix=" $volume$ " suffix=":  $volume$ " variable="volume"/>
+            <text prefix=" $page$ " suffix=". $page$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

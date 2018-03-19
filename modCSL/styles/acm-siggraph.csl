@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>ACM SIGGRAPH</title>
+    <id>http://www.zotero.org/styles/acm-siggraph</id>
+    <link href="http://www.zotero.org/styles/acm-siggraph" rel="self"/>
+    <link href="http://www.zotero.org/styles/acm-sigchi-proceedings" rel="template"/>
+    <link href="http://www.siggraph.org/publications/instructions.pdf" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="engineering"/>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <group>
+      <names variable="author">
+        <name and="text" delimiter=", " form="short" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+        <substitute>
+          <names variable="editor"/>
+        </substitute>
+      </names>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" initialize-with="."/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="italic" quotes="false" variable="title"/>
+      </if>
+      <else>
+        <text quotes="false" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="journal">
+    <group delimiter=" ">
+      <text font-style="italic" variable="container-title"/>
+      <group delimiter=", ">
+        <text font-style="italic" variable="volume"/>
+        <text variable="issue"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="conference">
+    <group delimiter=", ">
+      <text font-style="italic" variable="container-title"/>
+      <group delimiter=" ">
+        <text variable="publisher"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="book-publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <citation disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <layout delimiter="; " prefix="[" suffix="]">
+      <group delimiter=":">
+        <group delimiter=" ">
+          <text macro="author-short"/>
+          <text macro="year"/>
+        </group>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="7" et-al-use-first="3" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=". " suffix=". ">
+        <text font-variant="small-caps" macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="year" prefix=" $year$ " suffix=" $/year$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      </group>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <text macro="book-publisher" prefix=" $book-publisher$ " suffix=". $/book-publisher$ "/>
+        </if>
+        <else-if type="paper-conference">
+          <group delimiter=", " suffix=".">
+            <text macro="conference" prefix=" $conference$ " suffix=" $/conference$ "/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="chapter paper-conference">
+          <text prefix=" $$ " suffix=":  $/$ " term="in" text-case="capitalize-first"/>
+          <text macro="editor" prefix=" $editor$ " suffix=",  $/editor$ "/>
+          <text font-style="italic" prefix=" $container-title$ " suffix=".  $container-title$ " variable="container-title"/>
+          <group delimiter=", " suffix=".">
+            <text macro="book-publisher" prefix=" $book-publisher$ " suffix=" $/book-publisher$ "/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if type="article-journal">
+          <group delimiter=", " suffix=".">
+            <text macro="journal" prefix=" $journal$ " suffix=" $/journal$ "/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=", " suffix=".">
+            <group delimiter=" " font-style="italic">
+              <text prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+              <text prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+            </group>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </group>
+          <text prefix=" $URL$  " suffix=" $URL$ " variable="URL"/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

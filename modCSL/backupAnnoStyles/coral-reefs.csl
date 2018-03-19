@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Coral Reefs</title>
+    <id>http://www.zotero.org/styles/coral-reefs</id>
+    <link href="http://www.zotero.org/styles/coral-reefs" rel="self"/>
+    <link href="http://www.springer.com/life+sciences/ecology/journal/338" rel="documentation"/>
+    <author>
+      <name>Jorge Pinzon</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="zoology"/>
+    <category field="botany"/>
+    <category field="biology"/>
+    <issn>0722-4028</issn>
+    <eissn>1432-0975</eissn>
+    <updated>2016-04-06T12:36:12+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names suffix=" " variable="author">
+      <name delimiter=", " form="long" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names prefix="In: " suffix=" (eds) " variable="editor">
+      <name delimiter=", " form="long" initialize-with="." name-as-sort-order="all" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="year">
+    <date prefix="(" suffix=") " variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <text suffix=". " variable="title"/>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year"/>
+      <key sort="ascending" variable="issued"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <names variable="author">
+          <name and="text" delimiter=" " form="short" name-as-sort-order="all" sort-separator=", "/>
+        </names>
+        <date variable="issued">
+          <date-part form="long" name="year"/>
+        </date>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key macro="year" sort="ascending"/>
+    </sort>
+    <layout>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text macro="year" prefix=" $year$ " suffix=" $/year$ "/>
+      <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      <choose>
+        <if type="thesis">
+          <group delimiter=", ">
+            <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+            <text prefix=" $$ p " suffix=" $/$ " variable="page"/>
+          </group>
+        </if>
+        <else-if type="book">
+          <text prefix=" $$ " suffix=",  $/$ " variable="publisher"/>
+          <text prefix=" $$ " suffix="  $/$ " variable="publisher-place"/>
+        </else-if>
+        <else-if type="paper-conference">
+          <text prefix=" $$  " strip-periods="true" suffix="  $/$ " variable="event"/>
+          <text prefix=" $$ " suffix=": $/$ " variable="volume"/>
+          <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+        </else-if>
+        <else-if type="chapter">
+          <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+          <text prefix=" $$  " suffix=".  $/$ " variable="container-title"/>
+          <text prefix=" $$ " suffix=",  $/$ " variable="publisher"/>
+          <text prefix=" $$ " suffix=",  $/$ " variable="publisher-place"/>
+          <text prefix=" $$ pp " suffix="  $/$ " variable="page"/>
+        </else-if>
+        <else-if type="webpage">
+          <text prefix=" $$ " suffix="  $/$ " variable="URL"/>
+        </else-if>
+        <else>
+          <group suffix=" ">
+            <text form="short" prefix=" $$ " strip-periods="true" suffix="  $/$ " variable="container-title"/>
+            <text prefix=" $$ " suffix=": $/$ " variable="volume"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Global Change Biology</title>
+    <id>http://www.zotero.org/styles/global-change-biology</id>
+    <link href="http://www.zotero.org/styles/global-change-biology" rel="self"/>
+    <link href="http://www.zotero.org/styles/american-medical-association" rel="template"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/%28ISSN%291365-2486/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Bangyou Zheng</name>
+      <email>zheng.bangyou@gmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>1354-1013</issn>
+    <eissn>1365-2486</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor-translator">
+    <names prefix="(" suffix=")" variable="editor translator">
+      <label form="short" strip-periods="true" suffix=" "/>
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="always" et-al-min="8" et-al-use-first="3" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" delimiter=", " form="short" initialize-with=""/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case motion_picture report song">
+            <text font-style="italic" form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-count">
+    <names variable="author">
+      <name form="count"/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case motion_picture report song thesis">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="book-details">
+    <number form="ordinal" prefix=", " suffix=" edn" variable="edition"/>
+    <group delimiter=" " prefix=", ">
+      <label form="short" text-case="capitalize-first" variable="volume"/>
+      <number variable="volume"/>
+    </group>
+    <text macro="editor-translator" prefix=" "/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="issued"/>
+      <key variable="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+        <group delimiter=" ">
+          <label form="short" variable="locator"/>
+          <text variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" hanging-indent="true" line-spacing="1">
+    <sort>
+      <key macro="author-short" names-min="1" names-use-first="1"/>
+      <key macro="author-count" names-min="3" names-use-first="3"/>
+      <key macro="author-short" names-min="3" names-use-first="1"/>
+      <key macro="issued"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="issued" prefix=" $issued$ (" suffix=") $/issued$ "/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case motion_picture report song thesis">
+            <group suffix=".">
+              <text font-style="italic" macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+              <text macro="book-details" prefix=" $book-details$ " suffix=" $/book-details$ "/>
+            </group>
+            <group delimiter=", " suffix=".">
+              <choose>
+                <if match="any" type="thesis">
+                  <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+                </if>
+              </choose>
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+              <group delimiter=" ">
+                <text prefix=" $$ " suffix=" $/$ " variable="number-of-pages"/>
+                <label form="short" variable="number-of-pages"/>
+              </group>
+            </group>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <group delimiter=". ">
+              <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+              <group>
+                <text font-style="italic" prefix=" $$  In: " suffix=" $/$ " variable="container-title"/>
+                <text macro="book-details" prefix=" $book-details$ " suffix=" $/book-details$ "/>
+                <group delimiter=" " prefix=", ">
+                  <label form="short" variable="page"/>
+                  <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+                </group>
+              </group>
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            </group>
+          </else-if>
+          <else>
+            <group delimiter=". ">
+              <group delimiter=" ">
+                <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+                <text macro="editor-translator" prefix=" $editor-translator$ " suffix=" $/editor-translator$ "/>
+              </group>
+              <group delimiter=", ">
+                <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                <text font-weight="bold" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+                <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+              </group>
+            </group>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

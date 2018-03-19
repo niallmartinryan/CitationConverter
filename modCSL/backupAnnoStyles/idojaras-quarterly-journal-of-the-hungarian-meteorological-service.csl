@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" and="text" class="in-text" default-locale="en-GB" demote-non-dropping-particle="never" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Időjárás - Quarterly Journal of the Hungarian Meteorological Service</title>
+    <title-short>Időjárás</title-short>
+    <id>http://www.zotero.org/styles/idojaras-quarterly-journal-of-the-hungarian-meteorological-service</id>
+    <link href="http://www.zotero.org/styles/idojaras-quarterly-journal-of-the-hungarian-meteorological-service" rel="self"/>
+    <link href="http://www.zotero.org/styles/elsevier-harvard" rel="template"/>
+    <link href="http://www.met.hu/downloads.php?fn=/metadmin/newspaper/2016/03/b849ea3fc271ed1ff1bb69ca01063a9a-borito-3.pdf" rel="documentation"/>
+    <author>
+      <name>Adam Leelossy</name>
+      <email>leeladam@elte.hu</email>
+    </author>
+    <author>
+      <name>Eszter L. Toth</name>
+      <email>toth.eszter@itk.ppke.hu</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="science"/>
+    <issn>0324-6329</issn>
+    <summary>unofficial style for the Quarterly Journal of the Hungarian Meteorological Service</summary>
+    <published>2016-05-31T00:00:00+00:00</published>
+    <updated>2017-03-19T10:36:22+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="container">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text prefix=", " suffix=": " term="in" text-case="capitalize-first"/>
+        <group delimiter=", ">
+          <text text-case="title" variable="container-title"/>
+          <text text-case="title" variable="collection-title"/>
+        </group>
+        <names delimiter=", " prefix=" (" suffix=")" variable="editor translator">
+          <label form="short" suffix=" " text-case="lowercase"/>
+          <name delimiter=", " delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+        </names>
+      </if>
+      <else-if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <group delimiter=", " prefix=", ">
+          <text variable="container-title"/>
+          <text variable="collection-title"/>
+        </group>
+      </else-if>
+      <else>
+        <group delimiter=", " prefix=". ">
+          <text font-style="italic" suffix="," variable="container-title"/>
+          <text font-style="italic" variable="collection-title"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with=". "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+            <text font-style="italic" form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="DOI">
+        <text prefix="doi:" variable="DOI"/>
+      </if>
+      <else-if type="webpage">
+        <group delimiter=" ">
+          <text value="URL"/>
+          <text variable="URL"/>
+          <group prefix="(" suffix=").">
+            <text suffix=" " term="accessed"/>
+            <date variable="accessed">
+              <date-part form="numeric" name="month" suffix="."/>
+              <date-part name="day" suffix="."/>
+              <date-part form="short" name="year"/>
+            </date>
+          </group>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="report thesis">
+        <text suffix="." variable="title"/>
+        <group prefix=" ">
+          <text variable="genre"/>
+          <text prefix="No. " variable="number"/>
+        </group>
+      </if>
+      <else-if match="any" type="bill book graphic legal_case legislation motion_picture report song speech">
+        <text font-style="italic" variable="title"/>
+        <text macro="edition" prefix=", "/>
+      </else-if>
+      <else-if type="webpage">
+        <text variable="title"/>
+        <text prefix=" [" suffix="]" value=""/>
+      </else-if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="event">
+    <choose>
+      <if variable="event">
+        <text variable="event"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <date date-parts="year" form="text" variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <group delimiter=" ">
+      <choose>
+        <if is-numeric="edition">
+          <number form="ordinal" variable="edition"/>
+        </if>
+        <else>
+          <text suffix="." variable="edition"/>
+        </else>
+      </choose>
+      <text value="ed"/>
+    </group>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if match="any" type="article-journal article-magazine article-newspaper">
+        <group delimiter=", " prefix=" ">
+          <text font-style="italic" variable="volume"/>
+          <text variable="page"/>
+        </group>
+        <choose>
+          <if match="all" type="article-newspaper" variable="URL">
+            <group prefix=" ">
+              <text suffix=", " variable="URL"/>
+              <text prefix=" " suffix=": " term="accessed"/>
+              <date form="numeric" variable="accessed"/>
+            </group>
+          </if>
+        </choose>
+      </if>
+      <else-if match="any" type="bill book graphic legal_case legislation motion_picture report song thesis">
+        <group delimiter="," prefix=". ">
+          <text macro="event"/>
+          <text macro="publisher"/>
+          <text prefix=" " suffix=" p." variable="number-of-pages"/>
+        </group>
+      </else-if>
+      <else-if match="any" type="chapter paper-conference">
+        <group delimiter=", " prefix=". ">
+          <text macro="event"/>
+          <text macro="publisher"/>
+          <text variable="page"/>
+        </group>
+      </else-if>
+      <else-if type="patent">
+        <text prefix=". " variable="number"/>
+      </else-if>
+    </choose>
+  </macro>
+  <citation cite-group-delimiter=", " collapse="year" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="issued" sort="ascending"/>
+    </sort>
+    <layout delimiter="; " font-style="normal" prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text font-style="italic" macro="author-short"/>
+        <text macro="issued"/>
+        <group delimiter=" ">
+          <label form="short" variable="locator"/>
+          <text variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" hanging-indent="true" line-spacing="1">
+    <sort>
+      <key macro="author" names-min="1" names-use-first="1"/>
+      <key macro="issued"/>
+    </sort>
+    <layout font-style="normal">
+      <group suffix=".">
+        <text font-style="italic" macro="author" prefix=" $author$ " suffix=", $/author$ "/>
+        <text macro="issued" prefix=" $issued$  " suffix=": $/issued$ "/>
+        <group prefix=" ">
+          <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+          <text macro="container" prefix=" $container$ " suffix=" $/container$ "/>
+          <text macro="locators" prefix=" $locators$ " suffix=" $/locators$ "/>
+        </group>
+      </group>
+      <text macro="access" prefix=" $access$ . " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

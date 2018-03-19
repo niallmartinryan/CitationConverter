@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="never" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>The Biological Bulletin</title>
+    <title-short>Biol.Bull.</title-short>
+    <id>http://www.zotero.org/styles/the-biological-bulletin</id>
+    <link href="http://www.zotero.org/styles/the-biological-bulletin" rel="self"/>
+    <link href="http://www.zotero.org/styles/journal-of-evolutionary-biology" rel="template"/>
+    <link href="http://www.biolbull.org/site/misc/ifora.xhtml#references" rel="documentation"/>
+    <author>
+      <name>Nicole Webster</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>0006-3185</issn>
+    <eissn>1939-8697</eissn>
+    <updated>2015-08-26T23:04:55+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor-translator">
+    <names delimiter=", " prefix="(" suffix=")" variable="editor translator">
+      <name and="text" delimiter=", " initialize-with=". "/>
+      <label form="short" prefix=", " strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names font-weight="bold" variable="author">
+      <name and="text" delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="first"/>
+      <et-al font-style="italic"/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with=". "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <group delimiter=" ">
+          <group delimiter=", ">
+            <text font-style="italic" variable="title"/>
+            <text macro="edition"/>
+          </group>
+          <text macro="editor-translator"/>
+        </group>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+        <text variable="year-suffix"/>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="journal-location">
+    <choose>
+      <if match="any" type="article-journal article-magazine">
+        <group delimiter=" ">
+          <text font-style="italic" form="short" variable="container-title"/>
+          <group delimiter=": ">
+            <text font-weight="bold" variable="volume"/>
+            <text form="short" variable="page"/>
+          </group>
+        </group>
+        <choose>
+          <if match="none" variable="page volume">
+            <text prefix=", doi: " variable="DOI"/>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="chapter-info">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <group delimiter=", ">
+          <group delimiter=" ">
+            <text suffix=":" term="in" text-case="capitalize-first"/>
+            <text font-style="italic" variable="container-title"/>
+            <text macro="editor-translator"/>
+          </group>
+          <group delimiter=" ">
+            <label form="short" variable="page"/>
+            <text variable="page"/>
+          </group>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text strip-periods="false" variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <citation collapse="year-suffix" disambiguate-add-givenname="true" disambiguate-add-names="true" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year-date"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+        <group>
+          <label form="short" variable="locator"/>
+          <text prefix=" " variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="10" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key macro="year-date"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=". ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text font-weight="bold" macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+        <text macro="journal-location" prefix=" $journal-location$ " suffix=" $/journal-location$ "/>
+        <text macro="chapter-info" prefix=" $chapter-info$ " suffix=" $/chapter-info$ "/>
+        <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

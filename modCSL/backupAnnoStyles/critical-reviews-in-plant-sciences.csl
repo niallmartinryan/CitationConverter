@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0">
+  <info>
+    <title>Critical Reviews in Plant Sciences</title>
+    <id>http://www.zotero.org/styles/critical-reviews-in-plant-sciences</id>
+    <link href="http://www.zotero.org/styles/critical-reviews-in-plant-sciences" rel="self"/>
+    <link href="http://www.zotero.org/styles/chemical-senses" rel="template"/>
+    <link href="http://www.tandfonline.com/action/authorSubmission?show=instructions&amp;journalCode=bpts20" rel="documentation"/>
+    <author>
+      <name>Patrick O'Brien</name>
+      <email>obrienpat86@gmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="botany"/>
+    <issn>0735-2689</issn>
+    <eissn>1549-7836</eissn>
+    <updated>2017-03-29T14:51:36+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" form="short"/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all"/>
+      <substitute>
+        <text macro="editor"/>
+        <text suffix="." variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" delimiter-precedes-last="always" initialize-with="." name-as-sort-order="first"/>
+      <label form="short" prefix=", " suffix="," text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="issued"/>
+      <key macro="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="10">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="issued" prefix=" $issued$ " suffix=". $/issued$ "/>
+        <choose>
+          <if match="any" type="article article-magazine article-newspaper article-journal review">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text font-style="italic" form="short" prefix=" $$ " suffix=" $/$ " text-case="title" variable="container-title"/>
+            <group delimiter=": ">
+              <text font-weight="bold" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text prefix=" $$ " suffix=": $/$ " term="in" text-case="capitalize-first"/>
+            <group delimiter=" ">
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+              <text prefix=" $$ " suffix=". $/$ " text-case="title" variable="container-title"/>
+              <text macro="publisher" prefix=" $publisher$ " suffix=", $/publisher$ "/>
+              <label form="short" variable="page"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </else-if>
+          <else-if type="thesis">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="genre"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+          </else-if>
+          <else-if match="any" type="webpage post-weblog">
+            <text font-style="italic" prefix=" $$ " suffix=". $/$ " variable="container-title"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="URL"/>
+            <group delimiter=" " prefix="(" suffix=")">
+              <text prefix=" $$ " suffix=" $/$ " term="accessed" text-case="capitalize-first"/>
+              <date form="text" variable="accessed"/>
+            </group>
+          </else-if>
+          <else>
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

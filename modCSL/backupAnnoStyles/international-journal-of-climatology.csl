@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="never" version="1.0">
+  <info>
+    <title>International Journal of Climatology</title>
+    <id>http://www.zotero.org/styles/international-journal-of-climatology</id>
+    <link href="http://www.zotero.org/styles/international-journal-of-climatology" rel="self"/>
+    <link href="http://www.zotero.org/styles/the-holocene" rel="template"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0088/homepage/ForAuthors.html#reference_style" rel="documentation"/>
+    <author>
+      <name>Michael Matiu</name>
+      <email>matiu@wzw.tum.de</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="geography"/>
+    <category field="science"/>
+    <issn>0899-8418</issn>
+    <eissn>1097-0088</eissn>
+    <summary>The International Journal of Climatology citation style.</summary>
+    <updated>2014-08-01T09:53:26</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="never" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with=". "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text font-style="italic" variable="container-title"/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+            <text font-style="italic" form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="container-contributors">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text suffix=": " term="in" text-case="capitalize-first"/>
+        <names delimiter=", " suffix=" " variable="editor translator">
+          <name and="text" delimiter=", " delimiter-precedes-last="never" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+          <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song webpage">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <choose>
+      <if type="thesis">
+        <group delimiter=", ">
+          <text variable="genre"/>
+          <text variable="publisher-place"/>
+          <text variable="publisher"/>
+        </group>
+      </if>
+      <else>
+        <text suffix=". " variable="genre"/>
+        <group delimiter=": ">
+          <text variable="publisher"/>
+          <text variable="publisher-place"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="event">
+    <choose>
+      <if variable="event">
+        <text prefix="paper " suffix=" " term="presented at"/>
+        <text variable="event"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <group>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <text form="short" prefix=" (" suffix=")" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if match="any" type="article-journal article-magazine">
+        <group delimiter=": " prefix=" ">
+          <group>
+            <text font-weight="bold" variable="volume"/>
+            <text prefix="(" suffix=")" variable="issue"/>
+          </group>
+          <text variable="page"/>
+        </group>
+      </if>
+      <else-if type="article-newspaper">
+        <group delimiter=", " prefix=", ">
+          <date variable="issued">
+            <date-part name="day"/>
+            <date-part form="long" name="month" prefix=" "/>
+          </date>
+          <group delimiter=" ">
+            <label variable="page"/>
+            <text variable="page"/>
+          </group>
+        </group>
+      </else-if>
+      <else>
+        <text prefix=", " variable="page"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="year-date"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+      </group>
+      <text prefix=": " variable="locator"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="1" hanging-indent="false" line-spacing="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="year-date"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=". " suffix=". ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      </group>
+      <text macro="container-contributors" prefix=" $container-contributors$ " suffix=" $/container-contributors$ "/>
+      <group delimiter=". ">
+        <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+        <text macro="event" prefix=" $event$ " suffix=" $/event$ "/>
+        <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+      </group>
+      <text macro="locators" prefix=" $locators$ " suffix=" $/locators$ "/>
+      <text prefix=" $$ . DOI: " suffix=" $/$ " variable="DOI"/>
+    </layout>
+  </bibliography>
+</style>

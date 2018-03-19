@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>American Journal of Respiratory and Critical Care Medicine</title>
+    <id>http://www.zotero.org/styles/american-journal-of-respiratory-and-critical-care-medicine</id>
+    <link href="http://www.zotero.org/styles/american-journal-of-respiratory-and-critical-care-medicine" rel="self"/>
+    <link href="http://www.zotero.org/styles/nature" rel="template"/>
+    <link href="http://www.atsjournals.org/page/AJRCCM/instructions_for_contributors" rel="documentation"/>
+    <author>
+      <name>Charles Parnot</name>
+      <uri>http://twitter.com/cparnot</uri>
+      <email>charles.parnot@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>1073-449X</issn>
+    <eissn>1535-4970</eissn>
+    <updated>2014-06-03T22:14:43+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <group delimiter=", ">
+          <text font-style="italic" variable="title"/>
+          <text macro="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label prefix=", "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <group delimiter=" ">
+      <text suffix=": " term="in" text-case="capitalize-first"/>
+      <names variable="editor translator">
+        <name delimiter=", " initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+        <label prefix=", "/>
+      </names>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="volume"/>
+      <else-if variable="DOI">
+        <text prefix="doi:" variable="DOI"/>
+      </else-if>
+      <else-if variable="URL">
+        <text term="at"/>
+        <text prefix=" &lt;" suffix="&gt;" variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="issuance">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song chapter paper-conference">
+        <group prefix=" " suffix=". ">
+          <text suffix=": " variable="publisher-place"/>
+          <text suffix="; " variable="publisher"/>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <date prefix=" " suffix=";" variable="issued">
+          <date-part name="year"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <group delimiter=" ">
+          <label form="short" plural="never" variable="page"/>
+          <text variable="page"/>
+        </group>
+      </if>
+      <else-if type="article-journal">
+        <text suffix=":" variable="volume"/>
+        <text variable="page"/>
+      </else-if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter=", " prefix="(" suffix=")">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="30" et-al-use-first="29" line-spacing="2" second-field-align="flush">
+    <layout>
+      <text prefix=" $$ " suffix=". $/$ " variable="citation-number"/>
+      <group delimiter=". " suffix=". ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+        <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+      </group>
+      <group delimiter=", " suffix=" ">
+        <text font-style="italic" form="short" prefix=" $$ " strip-periods="true" suffix=" $/$ " variable="container-title"/>
+        <choose>
+          <if match="none" type="bill book graphic legal_case legislation motion_picture report song">
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+          </if>
+        </choose>
+      </group>
+      <text macro="issuance" prefix=" $issuance$ " suffix=" $/issuance$ "/>
+      <text macro="pages" prefix=" $pages$ " suffix=". $/pages$ "/>
+      <text macro="access" prefix=" $access$ " suffix=". $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

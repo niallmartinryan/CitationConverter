@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" and="symbol" class="in-text" default-locale="en-US" page-range-format="expanded" sort-separator=" " version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Preslia - The Journal of the Czech Botanical Society</title>
+    <title-short>Preslia</title-short>
+    <id>http://www.zotero.org/styles/preslia</id>
+    <link href="http://www.zotero.org/styles/preslia" rel="self"/>
+    <link href="http://www.preslia.cz/guide.html" rel="documentation"/>
+    <author>
+      <name>Vojtěch Zeisek</name>
+      <uri>http://trapa.cz/</uri>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="botany"/>
+    <issn>0032-7786</issn>
+    <summary>Preslia is a peer-reviewed scientific journal publishing original research papers on plant systematics, morphology, phytogeography, ecology and vegetation science, with a geographical focus on central Europe. The journal was founded in 1914 and named in honour of brothers Jan Svatopluk Presl (1791–1849) and Karel Bořivoj Presl (1794–1852), outstanding Bohemian botanists. It is published quarterly by the Czech Botanical Society.</summary>
+    <updated>2013-11-25T16:12:28+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor-translator">
+    <names delimiter=", " prefix="(" suffix=")" variable="editor translator">
+      <name and="symbol" delimiter=", " initialize-with=". "/>
+      <label form="short" prefix=", " text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="issued-year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-et-al="always" initialize-with=". " name-as-sort-order="all"/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")" text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" form="short" initialize-with=". "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+            <text font-style="normal" form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="false" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="normal" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text prefix="– " variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <citation collapse="year" disambiguate-add-names="true" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key variable="issued"/>
+      <key variable="author"/>
+    </sort>
+    <layout delimiter=", " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="author-short"/>
+        <date date-parts="year" form="numeric" variable="issued">
+          <date-part name="year"/>
+        </date>
+        <group>
+          <label form="short" variable="locator"/>
+          <text prefix=" " variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author-short"/>
+      <key macro="issued-year"/>
+      <key macro="title"/>
+    </sort>
+    <layout>
+      <text macro="author" prefix=" $author$ " suffix=". $/author$ "/>
+      <date prefix=" (" suffix="):" variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+            <text macro="editor-translator" prefix=" $editor-translator$ " suffix=" $/editor-translator$ "/>
+          </group>
+          <text macro="publisher" prefix=" $publisher$  " suffix=". $/publisher$ "/>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+          <group prefix=". ">
+            <text prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+            <names delimiter=", " prefix=" " suffix="," variable="editor translator">
+              <name and="symbol" initialize-with="." name-as-sort-order="all"/>
+              <label form="short" prefix=" (" suffix=")"/>
+            </names>
+            <text font-style="normal" prefix=" $$  " suffix=", $/$ " variable="container-title"/>
+            <group prefix=" " suffix=".">
+              <label form="short" suffix=" " variable="page"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+            <text prefix=" $$  " suffix=". $/$ " variable="collection-title"/>
+            <group suffix=".">
+              <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="article-journal">
+          <group delimiter=" " prefix=" " suffix=". ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text macro="editor-translator" prefix=" $editor-translator$ " suffix=" $/editor-translator$ "/>
+          </group>
+          <choose>
+            <if variable="issue">
+              <group delimiter=" " suffix=".">
+                <text font-style="normal" form="short" prefix=" $$ – " strip-periods="false" suffix=" $/$ " variable="container-title"/>
+                <text font-style="normal" prefix=" $$ " suffix=": $/$ " variable="volume"/>
+                <text prefix=" $$ " strip-periods="false" suffix=" $/$ " variable="page"/>
+              </group>
+            </if>
+            <else>
+              <text font-style="normal" form="short" prefix=" $$ – " suffix=". $/$ " variable="container-title"/>
+            </else>
+          </choose>
+        </else-if>
+        <else>
+          <group delimiter=" " prefix=" " suffix=". ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text macro="editor-translator" prefix=" $editor-translator$ " suffix=" $/editor-translator$ "/>
+          </group>
+          <group delimiter=" " suffix=".">
+            <text font-style="italic" prefix=" $$ " suffix=". $/$ " variable="container-title"/>
+            <text font-style="normal" prefix=" $$ " suffix=": $/$ " variable="volume"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Xenotransplantation</title>
+    <id>http://www.zotero.org/styles/xenotransplantation</id>
+    <link href="http://www.zotero.org/styles/xenotransplantation" rel="self"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/%28ISSN%291399-3089/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>0908-665X</issn>
+    <eissn>1399-3089</eissn>
+    <updated>2013-01-30T04:41:27+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <group suffix=".">
+      <names variable="author">
+        <name delimiter-precedes-et-al="never" delimiter-precedes-last="always" font-variant="small-caps" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+        <label form="short" prefix=", "/>
+        <et-al font-variant="normal"/>
+        <substitute>
+          <names variable="editor"/>
+        </substitute>
+      </names>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", " suffix="."/>
+    </names>
+  </macro>
+  <macro name="title">
+    <text quotes="false" variable="title"/>
+  </macro>
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="journal">
+    <group delimiter=" ">
+      <text form="short" strip-periods="true" variable="container-title"/>
+      <text macro="year" suffix=";"/>
+      <text variable="volume"/>
+    </group>
+  </macro>
+  <macro name="conference">
+    <group delimiter=", ">
+      <text variable="container-title"/>
+      <group delimiter=" ">
+        <text variable="publisher"/>
+        <text macro="year"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="book-publisher">
+    <group delimiter=", ">
+      <group delimiter=": ">
+        <text variable="publisher-place"/>
+        <text variable="publisher"/>
+      </group>
+      <text macro="year"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation>
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]">
+      <group delimiter=":">
+        <text variable="citation-number"/>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="6" et-al-use-first="3" second-field-align="flush">
+    <layout suffix=".">
+      <text prefix=" $citation-number$ " suffix=". $citation-number$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=".  $/author$ "/>
+      <text macro="title" prefix=" $title$ " suffix=".  $/title$ "/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <text macro="edition" prefix=" $edition$ " suffix="  $/edition$ "/>
+          <text macro="book-publisher" prefix=" $book-publisher$ " suffix=". $/book-publisher$ "/>
+        </if>
+        <else-if type="paper-conference">
+          <group delimiter=", " suffix=".">
+            <text macro="conference" prefix=" $conference$ " suffix=" $/conference$ "/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="chapter paper-conference">
+          <text prefix=" $$ " suffix=":  $/$ " term="in" text-case="capitalize-first"/>
+          <text macro="editor" prefix=" $editor$ " suffix="  $/editor$ "/>
+          <text prefix=" $container-title$ " suffix=".  $container-title$ " variable="container-title"/>
+          <text macro="edition" prefix=" $edition$ " suffix="  $/edition$ "/>
+          <group suffix=".">
+            <text macro="book-publisher" prefix=" $book-publisher$ " suffix=" $/book-publisher$ "/>
+            <text prefix=" $page$ : " suffix=" $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if type="article-journal">
+          <group suffix=".">
+            <text macro="journal" prefix=" $journal$ " suffix=" $/journal$ "/>
+            <text prefix=" $page$ : " suffix=" $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=" " suffix=".">
+            <group delimiter=" ">
+              <text prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+              <text prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+            </group>
+            <text macro="year" prefix=" $year$ " suffix=" $/year$ "/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </group>
+          <text prefix=" $URL$  " suffix=" $URL$ " variable="URL"/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

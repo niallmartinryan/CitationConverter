@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>The EMBO Journal</title>
+    <id>http://www.zotero.org/styles/the-embo-journal</id>
+    <link href="http://www.zotero.org/styles/the-embo-journal" rel="self"/>
+    <link href="http://www.nature.com/emboj/about/authors.html#a3.3.5" rel="documentation"/>
+    <author>
+      <name>Julian Onions</name>
+      <email>julian.onions@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>0261-4189</issn>
+    <eissn>1460-2075</eissn>
+    <summary>Style for EMBO Journal</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="et-al">et al</term>
+    </terms>
+  </locale>
+  <macro name="editor">
+    <names delimiter=", " variable="editor">
+      <name and="symbol" delimiter=" " initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" "/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" delimiter=", " form="short" initialize-with=""/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <text suffix=" " value="Available at:"/>
+        <text variable="URL"/>
+        <group prefix=" [" suffix="]">
+          <text suffix=" " term="accessed" text-case="capitalize-first"/>
+          <date variable="accessed">
+            <date-part name="month" suffix=" "/>
+            <date-part name="day" suffix=", "/>
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="21" et-al-use-first="20" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <date prefix=" (" suffix=")" variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group delimiter=" " prefix=" ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group delimiter=" " prefix=" ">
+            <text macro="title" prefix=" $title$ " suffix=". $/title$ "/>
+            <text prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+            <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+          </group>
+          <text macro="editor" prefix=" $editor$ , " suffix=" $/editor$ "/>
+          <group prefix=" " suffix=".">
+            <label form="short" strip-periods="true" suffix=" " variable="page"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+          <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+        </else-if>
+        <else>
+          <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <group prefix=" ">
+            <group delimiter=" ">
+              <text font-style="italic" form="short" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+              <text font-weight="bold" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+            </group>
+            <choose>
+              <if match="any" variable="page volume">
+                <text font-weight="bold" prefix=" $$ " suffix=" $/$ " value=":"/>
+              </if>
+            </choose>
+            <text prefix=" $$  " suffix=" $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+      <text macro="access" prefix=" $access$  " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

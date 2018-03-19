@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0">
+  <info>
+    <title>Journal of the American Association of Laboratory Animal Science</title>
+    <title-short>JAALAS</title-short>
+    <id>http://www.zotero.org/styles/journal-of-the-american-association-of-laboratory-animal-science</id>
+    <link href="http://www.zotero.org/styles/journal-of-the-american-association-of-laboratory-animal-science" rel="self"/>
+    <link href="http://www.zotero.org/styles/council-of-science-editors" rel="template"/>
+    <link href="http://www.aalas.org/publications/cm_jaalas_info_for_au.aspx" rel="documentation"/>
+    <author>
+      <name>Charles Parnot</name>
+      <email>charles.parnot@gmail.com</email>
+      <uri>http://twitter.com/cparnot</uri>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>1559-6109</issn>
+    <updated>2012-10-09T12:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", " suffix="."/>
+    </names>
+  </macro>
+  <macro name="anon">
+    <text form="short" strip-periods="true" term="anonymous" text-case="capitalize-first"/>
+  </macro>
+  <macro name="author">
+    <group font-weight="bold" suffix=".">
+      <names variable="author">
+        <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+        <label form="short" prefix=" " strip-periods="true"/>
+        <substitute>
+          <names variable="editor"/>
+          <text macro="anon"/>
+        </substitute>
+      </names>
+    </group>
+  </macro>
+  <macro name="access">
+    <group>
+      <text suffix=" " value="Available from:"/>
+      <text variable="URL"/>
+    </group>
+  </macro>
+  <macro name="title">
+    <group delimiter=" ">
+      <text variable="title"/>
+      <choose>
+        <if match="any" type="thesis">
+          <text form="long" prefix="[" suffix="]" variable="genre"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="issued-short">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="issued">
+    <date delimiter=" " variable="issued">
+      <date-part name="year"/>
+      <date-part name="month" prefix=" "/>
+      <date-part name="day" prefix=" "/>
+    </date>
+    <group delimiter=" " prefix=" [" suffix="]">
+      <text term="cited"/>
+      <date variable="accessed">
+        <date-part name="year"/>
+        <date-part name="month" prefix=" "/>
+        <date-part name="day" prefix=" "/>
+      </date>
+    </group>
+  </macro>
+  <macro name="pages">
+    <label form="short" suffix=" " variable="page"/>
+    <text variable="page"/>
+  </macro>
+  <macro name="journal">
+    <text variable="container-title"/>
+    <choose>
+      <if variable="URL">
+        <text prefix=" [" suffix="]" term="internet" text-case="capitalize-first"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="10" second-field-align="flush">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued-short"/>
+    </sort>
+    <layout>
+      <text prefix=" $$ " suffix=".  $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song thesis">
+          <group delimiter=" " prefix=" " suffix=".">
+            <text macro="title" prefix=" $title$ " suffix=". $/title$ "/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="editor" prefix=" $editor$ (" suffix=") $/editor$ "/>
+          </group>
+          <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+          <group delimiter=" " prefix="; " suffix=".">
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+            <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <group delimiter=" " prefix=" ">
+            <text prefix=" $$ " suffix=": $/$ " term="in" text-case="capitalize-first"/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text prefix=" $$ " suffix=". $/$ " variable="container-title"/>
+            <text prefix=" $$ Vol. " suffix=". $/$ " variable="volume"/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text prefix=" $$ " suffix=". $/$ " variable="collection-title"/>
+            <group suffix=".">
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+              <group delimiter=". " prefix="; " suffix=".">
+                <date variable="issued">
+                  <date-part name="year"/>
+                </date>
+                <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+              </group>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+            <text macro="editor" prefix=" $editor$  " suffix=" $/editor$ "/>
+          </group>
+          <group prefix=" " suffix=".">
+            <text macro="journal" prefix=" $journal$ " suffix=". $/journal$ "/>
+            <group delimiter=";" prefix=" ">
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <choose>
+                <if variable="page">
+                  <text font-weight="bold" prefix=" $$ " suffix=": $/$ " variable="volume"/>
+                </if>
+                <else>
+                  <text font-weight="bold" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+                </else>
+              </choose>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+      <text macro="access" prefix=" $access$  " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="minimal" version="1.0">
+  <info>
+    <title>Journal of Combinatorics</title>
+    <id>http://www.zotero.org/styles/journal-of-combinatorics</id>
+    <link href="http://www.zotero.org/styles/journal-of-combinatorics" rel="self"/>
+    <link href="http://www.e-publications.org/intlpress/support/" rel="documentation"/>
+    <author>
+      <name>Alafate Julaiti</name>
+      <email>arapat@arap.at</email>
+      <uri>http://arap.at</uri>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="math"/>
+    <issn>2156-3527</issn>
+    <eissn>2150-959X</eissn>
+    <summary>style for Journal of Combinatorics (JOC)</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" initialize-with=" " name-as-sort-order="all" sort-separator=", "/>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="journal-title">
+    <text font-style="italic" form="short" variable="container-title"/>
+  </macro>
+  <macro name="date-year">
+    <date prefix="(" suffix=")" variable="issued">
+      <date-part name="year" suffix=" "/>
+    </date>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song thesis">
+        <text font-style="italic" form="long" text-case="title" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" strip-periods="true" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography second-field-align="flush">
+    <layout>
+      <text prefix=" $$ [" suffix="] $/$ " variable="citation-number"/>
+      <group delimiter=" " prefix=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="date-year" prefix=" $date-year$ " suffix=". $/date-year$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      </group>
+      <choose>
+        <if type="book">
+          <text macro="edition" prefix=" $edition$ , " suffix=" $/edition$ "/>
+          <text macro="publisher" prefix=" $publisher$ . " suffix=" $/publisher$ "/>
+        </if>
+        <else-if match="any" type="bill graphic legal_case legislation motion_picture report song">
+          <group delimiter=". " prefix=". ">
+            <text font-weight="bold" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <group delimiter=". " prefix=". ">
+            <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=". " prefix=". ">
+            <text macro="journal-title" prefix=" $journal-title$ " suffix=" $/journal-title$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+          <group delimiter=" " prefix=". ">
+            <text font-weight="bold" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+      <text prefix=" $$ . " suffix=" $/$ " variable="URL"/>
+    </layout>
+  </bibliography>
+</style>

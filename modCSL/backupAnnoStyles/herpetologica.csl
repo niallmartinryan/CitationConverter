@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Herpetologica</title>
+    <id>http://www.zotero.org/styles/herpetologica</id>
+    <link href="http://www.zotero.org/styles/herpetologica" rel="self"/>
+    <link href="http://www.zotero.org/styles/the-rockefeller-university-press" rel="template"/>
+    <link href="http://herpetologistsleague.org/author-guidelines/" rel="documentation"/>
+    <author>
+      <name>Pablo Melchor</name>
+      <uri>https://pablomelchor.com/hello/</uri>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>0018-0831</issn>
+    <eissn>1938-5099</eissn>
+    <summary>Citation style for Herpetologica</summary>
+    <updated>2016-11-14T12:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names delimiter=", " prefix="(" suffix=")" variable="editor">
+      <name and="text" delimiter=", " initialize-with="."/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with="." name-as-sort-order="first" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with="."/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", " suffix=".">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation cite-group-delimiter="," collapse="year-suffix" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+      </group>
+      <text prefix=":" variable="locator"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="10" et-al-use-first="3" et-al-use-last="true" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout>
+      <text macro="author" prefix=" $author$ " suffix=". $/author$ "/>
+      <date prefix=" " suffix="." variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song thesis">
+          <group delimiter=". " prefix=" " suffix=".">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text prefix=" $$ " suffix=" pp $/$ " variable="number-of-pages"/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group delimiter=". " prefix=" " suffix=".">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <group delimiter=" ">
+              <group delimiter=" ">
+                <text form="short" plural="true" prefix=" $$ " suffix=" $/$ " term="page" text-case="capitalize-first"/>
+                <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+              </group>
+              <text prefix=" $$ " suffix=" $/$ " term="in"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            </group>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </else-if>
+        <else-if type="webpage">
+          <group delimiter=". " prefix=" " suffix=".">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <group delimiter=" ">
+              <text prefix=" $$ " suffix=" $/$ " term="available at" text-case="capitalize-first"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="URL"/>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=" " prefix=" ">
+            <text macro="title" prefix=" $title$ " suffix=". $/title$ "/>
+            <text form="short" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <group delimiter=":" suffix=".">
+              <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+            <text prefix=" $$ DOI: https://doi.org/" suffix=" $/$ " variable="DOI"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

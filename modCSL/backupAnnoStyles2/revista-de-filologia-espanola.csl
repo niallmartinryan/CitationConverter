@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="es-ES" demote-non-dropping-particle="sort-only" initialize="false" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Revista de Filología Española (Spanish)</title>
+    <title-short>RFE parentético</title-short>
+    <id>http://www.zotero.org/styles/revista-de-filologia-espanola</id>
+    <link href="http://www.zotero.org/styles/revista-de-filologia-espanola" rel="self"/>
+    <link href="http://www.zotero.org/styles/the-open-university-harvard" rel="template"/>
+    <link href="http://revistadefilologiaespañola.revistas.csic.es/index.php/rfe/about/submissions#authorGuidelines" rel="documentation"/>
+    <author>
+      <name>JMFR</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="linguistics"/>
+    <issn>0210-9174</issn>
+    <eissn>1988-8538</eissn>
+    <summary>RFE citation style</summary>
+    <updated>2015-01-04T18:39:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names delimiter=", " variable="editor">
+      <name and="text" initialize="false" initialize-with=". "/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="anon">
+    <text form="short" strip-periods="true" term="anonymous" text-case="capitalize-first"/>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter-precedes-last="never" font-variant="normal" initialize-with=". " name-as-sort-order="first"/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <text macro="anon"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="never" form="short" initialize="false" initialize-with=". "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="anon"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <text suffix=": " term="online"/>
+        <text value=" "/>
+        <text prefix="&lt;" suffix="&gt;" variable="URL"/>
+        <group delimiter=" " prefix=" [" suffix="]">
+          <text suffix=":" term="accessed" text-case="lowercase"/>
+          <date form="numeric" variable="accessed">
+            <date-part name="day" range-delimiter="-"/>
+            <date-part name="month"/>
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text quotes="true" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="locator">
+    <choose>
+      <if type="article-journal">
+        <text variable="volume"/>
+        <text prefix="/" variable="issue"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="published-date">
+    <choose>
+      <if type="article-newspaper">
+        <date variable="issued">
+          <date-part form="ordinal" name="day" suffix=" "/>
+          <date-part form="long" name="month"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <choose>
+      <if match="any" type="chapter paper-conference article-journal">
+        <label form="short" suffix=" " variable="page"/>
+        <text variable="page"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-prefix">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text term="in" text-case="capitalize-first"/>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-givenname="true" disambiguate-add-names="true" disambiguate-add-year-suffix="true" et-al-min="10" et-al-use-first="3">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <group delimiter=", ">
+          <text macro="author-short"/>
+          <text macro="year-date"/>
+        </group>
+        <group>
+          <text form="short" suffix=" " term="page"/>
+          <text variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="year-date" prefix=" $year-date$ (" suffix="): $/year-date$ "/>
+        <text macro="title" prefix=" $title$ " suffix=",  $/title$ "/>
+        <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+        <text macro="container-prefix" prefix=" $container-prefix$ " suffix=" $/container-prefix$ "/>
+        <group delimiter=", ">
+          <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+          <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+          <text prefix=" $collection-title$ " suffix=" $collection-title$ " variable="collection-title"/>
+          <text prefix=" $genre$ " suffix=" $genre$ " variable="genre"/>
+          <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          <text macro="locator" prefix=" $locator$ " suffix=" $/locator$ "/>
+          <text macro="published-date" prefix=" $published-date$ " suffix=" $/published-date$ "/>
+          <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+          <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+        </group>
+      </group>
+    </layout>
+  </bibliography>
+</style>

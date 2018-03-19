@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="expanded" version="1.0">
+  <info>
+    <title>The FASEB Journal</title>
+    <title-short>FASEB</title-short>
+    <id>http://www.zotero.org/styles/the-faseb-journal</id>
+    <link href="http://www.zotero.org/styles/the-faseb-journal" rel="self"/>
+    <link href="http://www.zotero.org/styles/journal-of-analytical-toxicology" rel="template"/>
+    <link href="http://www.fasebj.org/site/misc/rc.xhtml" rel="documentation"/>
+    <author>
+      <name>Daniel Kraus</name>
+      <email>daniel.kraus@uni-wuerzburg.de</email>
+      <uri>http://github.com/bovender</uri>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>0892-6638</issn>
+    <eissn>1530-6860</eissn>
+    <summary>The Journal of the Federation of American Societies for Experimental Biology</summary>
+    <updated>2015-03-06T21:47:38+01:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" initialize-with=". " name-as-sort-order="all"/>
+      <label form="short" prefix=", " strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" initialize-with=". " name-as-sort-order="all"/>
+      <substitute>
+        <text macro="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="container">
+    <choose>
+      <if match="any" type="chapter book thesis manuscript">
+        <group delimiter=" " suffix=" ">
+          <group delimiter=" ">
+            <text term="in" text-case="capitalize-first"/>
+            <text font-style="italic" variable="container-title"/>
+          </group>
+          <text macro="editor" prefix="(" suffix=")"/>
+          <group delimiter=" " suffix=",">
+            <label form="short" variable="volume"/>
+            <text variable="volume"/>
+          </group>
+          <group delimiter=" " suffix=",">
+            <label form="short" variable="page"/>
+            <text variable="page"/>
+          </group>
+        </group>
+        <text macro="publisher"/>
+      </if>
+      <else-if type="paper-conference">
+        <group delimiter=" ">
+          <text term="presented at"/>
+          <group delimiter=", ">
+            <text variable="event"/>
+            <text variable="event-place"/>
+          </group>
+        </group>
+      </else-if>
+      <else-if type="article-newspaper">
+        <group delimiter=", ">
+          <text font-style="italic" variable="container-title"/>
+          <date form="text" variable="issued"/>
+          <group delimiter=" ">
+            <label form="short" variable="page"/>
+            <text variable="page"/>
+          </group>
+        </group>
+      </else-if>
+      <else>
+        <text font-style="italic" form="short" strip-periods="false" suffix=" " variable="container-title"/>
+        <group delimiter=", ">
+          <text font-weight="bold" variable="volume"/>
+          <text variable="page"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter=", " prefix=" (" suffix=")">
+      <text variable="citation-number" vertical-align="baseline"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" second-field-align="flush">
+    <layout>
+      <text prefix=" $$ " suffix=".  $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=".  $/author$ "/>
+      <date date-parts="year" form="text" prefix="(" suffix=") " variable="issued"/>
+      <text macro="title" prefix=" $title$ " suffix=".  $/title$ "/>
+      <text macro="container" prefix=" $container$ " suffix=" $/container$ "/>
+    </layout>
+  </bibliography>
+</style>

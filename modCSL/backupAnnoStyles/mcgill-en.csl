@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="note" default-locale="en-US" version="1.0">
+  <info>
+    <title>Canadian Guide to Uniform Legal Citation 7th edition (McGill Guide)</title>
+    <id>http://www.zotero.org/styles/mcgill-en</id>
+    <link href="http://www.zotero.org/styles/mcgill-en" rel="self"/>
+    <link href="http://www.lawjournal.mcgill.ca/en/text/22" rel="documentation"/>
+    <author>
+      <name>Liam McHugh-Russell</name>
+      <email>liam.mchugh.russell@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Frank Bennett</name>
+    </contributor>
+    <contributor>
+      <name>Florian Martin-Bariteau</name>
+      <email>f.martin-bariteau@umontreal.ca</email>
+      <uri>http://f-mb.github.io/cslegal/</uri>
+    </contributor>
+    <category citation-format="note"/>
+    <category field="law"/>
+    <updated>2014-06-28T19:23:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <style-options punctuation-in-quote="false"/>
+    <terms>
+      <term name="et-al">et al</term>
+      <term name="ordinal">th</term>
+      <term name="ordinal-01">st</term>
+      <term name="ordinal-02">d</term>
+      <term name="ordinal-03">d</term>
+      <term name="ordinal-11">th</term>
+      <term name="ordinal-12">th</term>
+      <term name="ordinal-13">th</term>
+      <term form="short" name="paragraph">
+        <single>para</single>
+        <multiple>paras</multiple>
+      </term>
+      <!-- the usual workaround for inserting "Art" or "Arts" (article) pinpointers is to type the term directly into the pinpoint box, and to use sub verbo for a blank pinpointer. However, for clarity and compliance, this functionality needs to be activated by the user by taking the element below out of documentation
+      <term name="sub verbo" form="short">
+        <single/>
+        <multiple/>
+      </term>
+      -->
+      <term form="short" name="section">
+        <single>s</single>
+        <multiple>ss</multiple>
+      </term>
+      <term form="short" name="chapter">
+        <single>ch</single>
+        <multiple>chs</multiple>
+      </term>
+    </terms>
+  </locale>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="symbol" delimiter-precedes-last="never"/>
+      <et-al term="et-al"/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="translator">
+    <names variable="translator">
+      <label form="verb" suffix=" "/>
+      <name and="symbol"/>
+    </names>
+  </macro>
+  <macro name="container-title">
+    <text form="short" strip-periods="true" variable="container-title"/>
+  </macro>
+  <macro name="author-note">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="never"/>
+      <et-al term="et-al"/>
+      <substitute>
+        <text macro="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-bib">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="never" name-as-sort-order="first" sort-separator=", "/>
+      <et-al term="et-al"/>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="internet-location">
+    <choose>
+      <if variable="URL">
+        <text prefix=", " suffix=": &lt;" term="online"/>
+        <text suffix="&gt;" variable="URL"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="genre">
+    <text variable="genre"/>
+  </macro>
+  <macro name="issued-long">
+    <date delimiter=" " variable="issued">
+      <date-part name="day"/>
+      <date-part form="long" name="month"/>
+      <date-part form="long" name="year"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <number form="ordinal" suffix=" " text-case="lowercase" variable="edition"/>
+    <text form="short" strip-periods="true" term="edition"/>
+  </macro>
+  <macro name="references">
+    <text variable="references"/>
+  </macro>
+  <macro name="series-info">
+    <group delimiter=" ">
+      <text strip-periods="true" variable="collection-title"/>
+      <text variable="collection-number"/>
+    </group>
+  </macro>
+  <macro name="sort-by-type">
+    <choose>
+      <if match="any" type="bill legislation">
+        <text value="1"/>
+      </if>
+      <else-if type="legal_case">
+        <text value="2"/>
+      </else-if>
+      <else-if match="any" type="book thesis">
+        <text value="3"/>
+      </else-if>
+      <else-if match="any" type="article-journal chapter article-newspaper article-magazine">
+        <text value="4"/>
+      </else-if>
+      <else>
+        <text value="5"/>
+      </else>
+    </choose>
+  </macro>
+  <!-- the 'rendering' macros mostly check if called from w/i bibliography so that author gets printed
+    right. Only actually need to check for 'first' because w/i cite,
+all the other tests should have been done... -->
+  <macro name="render-chapter">
+    <group delimiter=" ">
+      <text quotes="true" variable="title"/>
+      <text form="short" term="in"/>
+      <text macro="editor" strip-periods="true" suffix=","/>
+      <text font-style="italic" macro="container-title"/>
+    </group>
+    <text macro="series-info" prefix=", "/>
+    <text macro="edition" prefix=", "/>
+    <text macro="publisher-place-year"/>
+    <text prefix=" " variable="page-first"/>
+  </macro>
+  <macro name="render-article-journal">
+    <group delimiter=" ">
+      <text quotes="true" variable="title"/>
+      <date date-parts="year" form="text" prefix="(" suffix=")" variable="issued"/>
+      <group delimiter=":">
+        <text variable="volume"/>
+        <text variable="issue"/>
+      </group>
+      <text macro="container-title"/>
+      <text variable="page-first"/>
+    </group>
+    <text macro="internet-location"/>
+  </macro>
+  <macro name="render-book">
+    <group delimiter=", ">
+      <text font-style="italic" variable="title"/>
+      <text macro="edition"/>
+      <text macro="translator"/>
+      <text macro="editor"/>
+      <text macro="series-info"/>
+    </group>
+    <text macro="publisher-place-year"/>
+  </macro>
+  <macro name="render-report">
+    <group delimiter=", ">
+      <text font-style="italic" variable="title"/>
+      <group delimiter=" ">
+        <text strip-periods="true" variable="collection-title"/>
+        <text macro="genre"/>
+        <text variable="number"/>
+      </group>
+    </group>
+    <text macro="publisher-place-year"/>
+  </macro>
+  <macro name="render-thesis">
+    <group delimiter=" ">
+      <text font-style="italic" variable="title"/>
+      <text macro="genre" prefix="(" suffix=","/>
+      <text suffix="," variable="publisher"/>
+      <date date-parts="year" form="text" suffix=") [unpublished]" variable="issued"/>
+    </group>
+  </macro>
+  <macro name="render-article-newspaper">
+    <group delimiter=" ">
+      <text quotes="true" suffix="," variable="title"/>
+      <text font-style="italic" macro="container-title"/>
+      <text macro="issued-long" prefix="(" suffix=")"/>
+      <text variable="page-first"/>
+    </group>
+    <text macro="internet-location"/>
+  </macro>
+  <macro name="render-article-magazine">
+    <group delimiter=" ">
+      <text quotes="true" suffix="," variable="title"/>
+      <text font-style="italic" macro="container-title"/>
+      <text macro="issued-long" prefix="(" suffix=")"/>
+      <text variable="page-first"/>
+    </group>
+    <text macro="internet-location"/>
+  </macro>
+  <macro name="render-webpage">
+    <group delimiter=" ">
+      <text quotes="true" suffix="," variable="title"/>
+      <text macro="issued-long" prefix="(" suffix=")"/>
+    </group>
+    <group delimiter=" ">
+      <text prefix=", " suffix=":" term="online"/>
+      <text font-style="italic" macro="container-title"/>
+      <text prefix="&lt;" suffix="&gt;" variable="URL"/>
+    </group>
+  </macro>
+  <!-- cases and bill legislations render the same for biblio and (first) cite -->
+  <macro name="render-bill">
+    <group delimiter=" ">
+      <group delimiter=", ">
+        <text font-style="italic" variable="title"/>
+        <text macro="author-note" strip-periods="true"/>
+        <text macro="issued-long"/>
+        <text macro="container-title"/>
+      </group>
+      <text macro="references" prefix="(" suffix=")"/>
+      <text font-style="italic" form="short" prefix="[" suffix="]" variable="title"/>
+    </group>
+  </macro>
+  <macro name="render-case">
+    <choose>
+      <if variable="author">
+        <group delimiter=", ">
+          <text strip-periods="true" variable="authority"/>
+          <date form="numeric" variable="issued"/>
+          <text variable="number"/>
+          <group delimiter=" ">
+            <text font-style="italic" strip-periods="true" variable="title"/>
+            <text prefix="(" suffix=")" variable="references"/>
+          </group>
+          <text font-style="italic" strip-periods="true" variable="container-title"/>
+          <text variable="volume"/>
+          <text variable="page"/>
+          <text variable="note"/>
+        </group>
+      </if>
+      <else-if match="none" variable="title">
+        <group delimiter=", ">
+          <text strip-periods="true" variable="authority"/>
+          <date form="numeric" variable="issued"/>
+          <text variable="number"/>
+          <group delimiter=" ">
+            <text font-style="italic" form="short" strip-periods="true" variable="title"/>
+            <text prefix="(" suffix=")" variable="references"/>
+          </group>
+          <text font-style="italic" strip-periods="true" variable="container-title"/>
+          <text variable="volume"/>
+          <text variable="page"/>
+          <text variable="note"/>
+        </group>
+      </else-if>
+      <else>
+        <text font-style="italic" strip-periods="true" suffix=", " variable="title"/>
+        <choose>
+          <if match="none" variable="container-title">
+            <group delimiter=" ">
+              <date date-parts="year" form="text" variable="issued"/>
+              <text strip-periods="true" variable="authority"/>
+              <text variable="page"/>
+            </group>
+          </if>
+          <else>
+            <date date-parts="year" form="text" prefix="[" suffix="] " variable="issued"/>
+            <text suffix=" " variable="volume"/>
+            <text strip-periods="true" suffix=" " variable="container-title"/>
+            <text variable="page"/>
+            <text prefix=" (" strip-periods="true" suffix=")" variable="authority"/>
+          </else>
+        </choose>
+        <text prefix=", " variable="note"/>
+        <text prefix=" (" suffix=")" variable="references"/>
+      </else>
+    </choose>
+    <text prefix=" (available on " suffix=")" variable="URL"/>
+  </macro>
+  <macro name="pinpoint">
+    <group delimiter=" ">
+      <choose>
+        <if locator="page">
+          <choose>
+            <if variable="locator">
+              <text prefix=" " term="at"/>
+            </if>
+          </choose>
+        </if>
+        <else>
+          <label form="short" plural="contextual" prefix=", " strip-periods="true" variable="locator"/>
+        </else>
+      </choose>
+      <text variable="locator"/>
+    </group>
+  </macro>
+  <macro name="short-form">
+    <!-- Hump to overcome: cannot check against existence of short title.
+Not implemented: "cited to" for cases, construct short casenames, adding ref to article -->
+    <choose>
+      <if match="none" type="bill legal_case legislation">
+        <names variable="author">
+          <name and="symbol" delimiter-precedes-last="never" form="short"/>
+          <substitute>
+            <names variable="editor">
+              <name and="symbol" form="short"/>
+            </names>
+          </substitute>
+        </names>
+      </if>
+      <else>
+        <choose>
+          <if type="legal_case">
+            <choose>
+              <if variable="author">
+                <text suffix=", " variable="authority"/>
+                <date form="numeric" suffix=", " variable="issued"/>
+              </if>
+              <else-if match="none" variable="title">
+                <text suffix=", " variable="authority"/>
+                <date form="numeric" suffix=", " variable="issued"/>
+              </else-if>
+            </choose>
+          </if>
+        </choose>
+        <text font-style="italic" form="short" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher-place-year">
+    <group delimiter=", " prefix=" (" suffix=")">
+      <group delimiter=": ">
+        <text variable="publisher-place"/>
+        <text variable="publisher"/>
+      </group>
+      <date date-parts="year" form="text" variable="issued"/>
+    </group>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="1">
+    <!-- translator needs to be added for chapter, book, film etc. chapter? -->
+    <layout delimiter="; " suffix=".">
+      <choose>
+        <!-- Not implemented: ibid only needs capitalize-first if it's the first word in a footnote -->
+        <if position="ibid-with-locator">
+          <group>
+            <text font-style="italic" strip-periods="true" term="ibid"/>
+            <text macro="pinpoint"/>
+          </group>
+        </if>
+        <else-if position="ibid">
+          <text font-style="italic" strip-periods="true" term="ibid"/>
+        </else-if>
+        <!-- For future versions? Cannot test for whether short form exists (Supra should be capitalized if no short form) -->
+        <else-if position="subsequent">
+          <group delimiter=" ">
+            <group delimiter=", ">
+              <text macro="short-form"/>
+              <text font-style="italic" value="supra"/>
+            </group>
+            <text value="note"/>
+            <text variable="first-reference-note-number"/>
+          </group>
+          <text macro="pinpoint"/>
+        </else-if>
+        <else>
+          <group>
+            <group delimiter=", ">
+              <choose>
+                <if match="any" type="bill legislation">
+                  <text macro="render-bill"/>
+                </if>
+                <else-if type="legal_case">
+                  <text macro="render-case"/>
+                </else-if>
+                <else>
+                  <text macro="author-note" strip-periods="true"/>
+                  <choose>
+                    <if type="article-journal">
+                      <text macro="render-article-journal"/>
+                    </if>
+                    <else-if type="chapter">
+                      <text macro="render-chapter"/>
+                    </else-if>
+                    <else-if type="thesis">
+                      <text macro="render-thesis"/>
+                    </else-if>
+                    <else-if match="any" type="article-newspaper">
+                      <text macro="render-article-newspaper"/>
+                    </else-if>
+                    <else-if type="article-magazine">
+                      <text macro="render-article-magazine"/>
+                    </else-if>
+                    <else-if match="any" type="webpage post-weblog">
+                      <text macro="render-webpage"/>
+                    </else-if>
+                    <else-if type="book">
+                      <text macro="render-book"/>
+                    </else-if>
+                    <else-if type="report">
+                      <text macro="render-report"/>
+                    </else-if>
+                    <else>
+                      <group delimiter=" ">
+                        <group delimiter=", ">
+                          <text font-style="italic" variable="title"/>
+                          <text macro="translator"/>
+                          <text macro="edition"/>
+                        </group>
+                        <text macro="publisher-place-year"/>
+                      </group>
+                    </else>
+                  </choose>
+                </else>
+              </choose>
+            </group>
+            <text macro="pinpoint"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="1" subsequent-author-substitute="———">
+    <sort>
+      <key macro="sort-by-type"/>
+      <key macro="author-bib"/>
+      <key variable="issued"/>
+    </sort>
+    <layout suffix=".">
+      <choose>
+        <if match="any" type="bill legal_case legislation">
+          <choose>
+            <if match="any" type="bill legislation">
+              <text macro="render-bill" prefix=" $render-bill$ " suffix=" $/render-bill$ "/>
+            </if>
+            <else-if type="legal_case">
+              <text macro="render-case" prefix=" $render-case$ " suffix=" $/render-case$ "/>
+            </else-if>
+          </choose>
+        </if>
+        <else>
+          <group delimiter=". ">
+            <text macro="author-bib" prefix=" $author-bib$ " strip-periods="true" suffix=" $/author-bib$ "/>
+            <choose>
+              <if type="article-journal">
+                <text macro="render-article-journal" prefix=" $render-article-journal$ " suffix=" $/render-article-journal$ "/>
+              </if>
+              <else-if type="chapter">
+                <text macro="render-chapter" prefix=" $render-chapter$ " suffix=" $/render-chapter$ "/>
+              </else-if>
+              <else-if type="thesis">
+                <text macro="render-thesis" prefix=" $render-thesis$ " suffix=" $/render-thesis$ "/>
+              </else-if>
+              <else-if type="article-newspaper">
+                <text macro="render-article-newspaper" prefix=" $render-article-newspaper$ " suffix=" $/render-article-newspaper$ "/>
+              </else-if>
+              <else-if type="article-magazine">
+                <text macro="render-article-magazine" prefix=" $render-article-magazine$ " suffix=" $/render-article-magazine$ "/>
+              </else-if>
+              <else-if type="book">
+                <text macro="render-book" prefix=" $render-book$ " suffix=" $/render-book$ "/>
+              </else-if>
+              <else-if match="any" type="webpage post-weblog">
+                <text macro="render-webpage" prefix=" $render-webpage$ " suffix=" $/render-webpage$ "/>
+              </else-if>
+              <else-if type="report">
+                <text macro="render-report" prefix=" $render-report$ " suffix=" $/render-report$ "/>
+              </else-if>
+              <else>
+                <group>
+                  <group delimiter=", ">
+                    <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="title"/>
+                    <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+                    <text macro="translator" prefix=" $translator$ " suffix=" $/translator$ "/>
+                    <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+                  </group>
+                  <text macro="publisher-place-year" prefix=" $publisher-place-year$ " suffix=" $/publisher-place-year$ "/>
+                </group>
+              </else>
+            </choose>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

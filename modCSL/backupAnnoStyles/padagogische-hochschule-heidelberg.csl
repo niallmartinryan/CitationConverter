@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="de-DE" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Pädagogische Hochschule Heidelberg (German)</title>
+    <title-short>PH Heidelberg</title-short>
+    <id>http://www.zotero.org/styles/padagogische-hochschule-heidelberg</id>
+    <link href="http://www.zotero.org/styles/padagogische-hochschule-heidelberg" rel="self"/>
+    <link href="http://www.ph-heidelberg.de/" rel="documentation"/>
+    <!--  useful things: non breaking space: &#160;   -->
+    <author>
+      <name>Beate Baldauf</name>
+      <email>baldaufb@ph-heidelberg.de</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="generic-base"/>
+    <summary>Citation style of the PH Heidelberg, based on a Harvard author-date style variant, mostly German</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names delimiter="; " variable="author">
+      <name delimiter="; " delimiter-precedes-last="always" form="long" name-as-sort-order="all" sort-separator=", " suffix=" "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <text macro="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+    <text macro="anon"/>
+  </macro>
+  <macro name="author-short">
+    <names delimiter="; " variable="author">
+      <name delimiter="; " delimiter-precedes-last="always" form="short" initialize-with=". " sort-separator="," suffix=" "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+    <text macro="anon"/>
+  </macro>
+  <macro name="editor">
+    <names delimiter="; " variable="editor">
+      <name delimiter="; " delimiter-precedes-last="always" form="long" name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix="). "/>
+    </names>
+  </macro>
+  <macro name="anon">
+    <choose>
+      <if match="none" variable="author editor translator">
+        <text form="short" strip-periods="true" suffix=" " term="anonymous"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="normal" suffix=". " variable="title"/>
+      </if>
+      <else-if match="any" type="chapter paper-conference">
+        <text font-style="normal" suffix=". " variable="title"/>
+      </else-if>
+      <else-if type="webpage">
+        <text font-style="normal" suffix=". " variable="title"/>
+      </else-if>
+      <else-if match="any" type="article-journal article-newspaper article-magazine">
+        <text font-style="normal" suffix=". " variable="title"/>
+      </else-if>
+      <else>
+        <text font-style="normal" prefix=" " suffix=" " variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="collection-title">
+    <choose>
+      <if type="article-journal">
+        <text prefix=" (= " suffix="), " variable="collection-title"/>
+      </if>
+      <else-if match="any" type="article-newspaper bill book chapter graphic legal_case legislation motion_picture paper-conference report song webpage">
+        <text prefix=" (= " suffix=")" variable="collection-title"/>
+      </else-if>
+      <else>
+        <text value="o. J."/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if type="webpage">
+        <choose>
+          <if variable="URL">
+            <text value="Online im Internet: "/>
+            <text variable="URL"/>
+            <group delimiter=" " prefix=" (" suffix=")">
+              <text value="Zugriff am:"/>
+              <date variable="accessed">
+                <date-part form="numeric-leading-zeros" name="day" suffix="."/>
+                <date-part form="numeric-leading-zeros" name="month" suffix="."/>
+                <date-part form="long" name="year"/>
+              </date>
+            </group>
+          </if>
+        </choose>
+      </if>
+      <else-if match="any" type="article-journal article-newspaper bill book chapter graphic legal_case legislation motion_picture paper-conference report song">
+        <choose>
+          <if variable="URL">
+            <text value=". Online im Internet: "/>
+            <text variable="URL"/>
+            <group delimiter=" " prefix=" (" suffix=")">
+              <text value="Zugriff am:"/>
+              <date variable="accessed">
+                <date-part form="numeric-leading-zeros" name="day" suffix="."/>
+                <date-part form="numeric-leading-zeros" name="month" suffix="."/>
+                <date-part form="long" name="year"/>
+              </date>
+            </group>
+          </if>
+        </choose>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="published-date">
+    <choose>
+      <if type="article-newspaper">
+        <date variable="issued">
+          <date-part form="numeric" name="day" suffix=". "/>
+          <date-part form="long" name="month" suffix=" "/>
+          <date-part form="long" name="year"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text value="o. J."/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="locator">
+    <choose>
+      <if type="article-journal">
+        <text suffix=" " variable="volume"/>
+        <date variable="issued">
+          <date-part name="year" prefix="(" suffix=")"/>
+        </date>
+        <text prefix=", " variable="issue"/>
+      </if>
+      <else-if type="article-newspaper">
+        <text prefix=", " suffix=" " variable="volume"/>
+        <!-- <date variable="issued">
+	     <date-part name="year" prefix="(" suffix=")"/>
+	     </date> -->
+        <text prefix=", " variable="issue"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <choose>
+      <if match="any" type="chapter paper-conference article-journal article-newspaper">
+        <label form="short" prefix=", " strip-periods="true" suffix=". " variable="page"/>
+        <text variable="page"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="numeric" suffix=". Aufl. " variable="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix=". " variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-prefix">
+    <choose>
+      <if match="any" type="chapter paper-conference article-journal article-magazine article-newspaper">
+        <text suffix=": " term="in" text-case="capitalize-first"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text font-style="normal" suffix=". " variable="container-title"/>
+      </if>
+      <else-if match="any" type="article-journal article-newspaper article-magazine">
+        <text font-style="normal" suffix=", " variable="container-title"/>
+      </else-if>
+      <else-if type="webpage">
+        <text font-style="normal" suffix=". " variable="container-title"/>
+      </else-if>
+      <else>
+        <text font-style="normal" suffix=" " variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <!-- Hier beginnt die Formatierung für das Kurzzitat im Text - this is where the citation starts -->
+  <citation collapse="year" disambiguate-add-givenname="true" disambiguate-add-names="true" disambiguate-add-year-suffix="true" et-al-min="4" et-al-use-first="1">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <text macro="author-short"/>
+      <text macro="year-date"/>
+      <text prefix=", S. " variable="locator"/>
+    </layout>
+  </citation>
+  <!-- Hier beginnt die Formatierung für das Literaturverzeichnis -  this is where the bibliography starts -->
+  <bibliography et-al-min="4" et-al-use-first="1" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text macro="year-date" prefix=" $year-date$ (" suffix=").  $/year-date$ "/>
+      <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      <text macro="container-prefix" prefix=" $container-prefix$ " suffix=" $/container-prefix$ "/>
+      <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+      <text macro="container-title" prefix=" $container-title$ " suffix=" $/container-title$ "/>
+      <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+      <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+      <text macro="collection-title" prefix=" $collection-title$ " suffix=" $/collection-title$ "/>
+      <text macro="locator" prefix=" $locator$ " suffix=" $/locator$ "/>
+      <text macro="published-date" prefix=" $published-date$ " suffix=" $/published-date$ "/>
+      <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

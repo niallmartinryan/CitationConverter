@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0">
+  <info>
+    <title>Society of Automotive Engineers Technical Papers (numeric)</title>
+    <title-short>SAE Technical Papers</title-short>
+    <id>http://www.zotero.org/styles/society-of-automotive-engineers-technical-papers-numeric</id>
+    <link href="http://www.zotero.org/styles/society-of-automotive-engineers-technical-papers-numeric" rel="self"/>
+    <link href="http://www.zotero.org/styles/free-radical-research" rel="template"/>
+    <link href="http://volunteers.sae.org/authors/FormattingCitations.pdf" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="engineering"/>
+    <summary>Numeric style for SAE technical papers</summary>
+    <updated>2013-07-10T08:25:25+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else-if match="any" type="webpage" variable="accessed">
+        <date delimiter=" " variable="accessed">
+          <date-part form="short" name="month"/>
+          <date-part name="year"/>
+        </date>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="article-journal article-magazine article-newspaper book chapter paper-conference patent speech report thesis webpage">
+        <text quotes="true" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <group delimiter=": ">
+        <group delimiter=", ">
+          <text variable="publisher"/>
+          <text variable="publisher-place"/>
+          <text prefix="ISBN " variable="ISBN"/>
+        </group>
+        <text variable="page"/>
+      </group>
+      <choose>
+        <if type="webpage">
+          <text variable="URL"/>
+        </if>
+      </choose>
+      <text macro="date"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" suffix="." term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key sort="ascending" variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="30" et-al-use-first="29" second-field-align="flush">
+    <layout suffix=".">
+      <text prefix=" $$ " suffix=". $/$ " variable="citation-number"/>
+      <group delimiter=", ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+        <choose>
+          <if type="book">
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <group>
+              <text prefix=" $$ " suffix=":  $/$ " term="in"/>
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            </group>
+            <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </else-if>
+          <else-if type="thesis">
+            <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </else-if>
+          <else-if match="any" type="patent report webpage">
+            <group delimiter=" ">
+              <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="number"/>
+            </group>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </else-if>
+          <else>
+            <group delimiter=", ">
+              <group delimiter=" ">
+                <text font-style="italic" form="short" prefix=" $$  " suffix=" $/$ " text-case="title" variable="container-title"/>
+                <group delimiter=":">
+                  <group>
+                    <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+                    <text prefix=" $$ (" suffix=") $/$ " variable="issue"/>
+                  </group>
+                  <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+                </group>
+              </group>
+              <text macro="date" prefix=" $date$ " suffix=" $/date$ "/>
+            </group>
+          </else>
+        </choose>
+        <text prefix=" $$ doi:" suffix=" $/$ " variable="DOI"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

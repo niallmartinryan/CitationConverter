@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="de-DE" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Universität Mainz - Geographisches Institut (German)</title>
+    <id>http://www.zotero.org/styles/universitat-mainz-geographisches-institut</id>
+    <link href="http://www.zotero.org/styles/universitat-mainz-geographisches-institut" rel="self"/>
+    <link href="http://www.zotero.org/styles/european-retail-research" rel="template"/>
+    <link href="http://www.scribd.com/doc/143090340/00000-Wissenschaftlich-Arbeiten-2013" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="geography"/>
+    <summary>Based on "Wissenschaftlich arbeiten. Leitfaden für Studierende der Geographie"</summary>
+    <updated>2014-11-23T00:28:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="et-al">et al.</term>
+      <term form="short" name="anonymous">o. A.</term>
+    </terms>
+  </locale>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" form="short">
+        <name-part font-variant="small-caps" name="family"/>
+      </name>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="publisher"/>
+        <text macro="no-author"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="first" sort-separator=", ">
+        <name-part font-variant="small-caps" name="family"/>
+      </name>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="publisher"/>
+        <text macro="no-author"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="first" sort-separator=", ">
+        <name-part font-variant="small-caps" name="family"/>
+      </name>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" vertical-align="sup"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="no-author">
+    <text form="short" term="anonymous"/>
+  </macro>
+  <macro name="year">
+    <choose>
+      <if variable="issued">
+        <date date-parts="year" form="text" variable="issued"/>
+        <text variable="year-suffix"/>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+        <text prefix=" " variable="year-suffix"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="year-parenth">
+    <group prefix="(" suffix=")">
+      <text macro="edition"/>
+      <text macro="year"/>
+    </group>
+  </macro>
+  <macro name="citation-date">
+    <choose>
+      <if match="any" type="post post-weblog speech">
+        <choose>
+          <if variable="issued">
+            <date form="numeric" variable="issued"/>
+          </if>
+          <else>
+            <text form="short" term="no date"/>
+            <text prefix=" " variable="year-suffix"/>
+          </else>
+        </choose>
+      </if>
+      <else>
+        <text macro="year"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="internet">
+    <choose>
+      <if variable="URL">
+        <group delimiter=" ">
+          <text suffix=":" term="internet"/>
+          <text variable="URL"/>
+          <date form="numeric" prefix="(" suffix=")" variable="accessed"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="volume-series">
+    <group delimiter=", ">
+      <text variable="collection-title"/>
+      <group delimiter=" ">
+        <text term="volume"/>
+        <text variable="volume"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="locator">
+    <group delimiter=" ">
+      <text variable="locator"/>
+    </group>
+  </macro>
+  <citation disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="author"/>
+      <key sort="descending" variable="issued"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="author-short"/>
+        <text macro="citation-date"/>
+      </group>
+      <text macro="locator" prefix=": "/>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key sort="ascending" variable="author"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="year-parenth" prefix=" $year-parenth$ " suffix=":  $/year-parenth$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      </group>
+      <choose>
+        <if match="any" type="chapter paper-conference">
+          <group delimiter=": " prefix=". ">
+            <text prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+            <group delimiter=" ">
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+              <text macro="year-parenth" prefix=" $year-parenth$ " suffix=" $/year-parenth$ "/>
+            </group>
+          </group>
+          <group delimiter=", " prefix=": ">
+            <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <text macro="volume-series" prefix=" $volume-series$ " suffix=" $/volume-series$ "/>
+          </group>
+          <group delimiter=": " prefix=". ">
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher-place"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </if>
+        <else-if type="article-newspaper">
+          <group delimiter=" " prefix=". ">
+            <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <group>
+              <text form="short" prefix=" $$ " suffix=" $/$ " term="issue"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="issue"/>
+            </group>
+            <date form="numeric" prefix="(" suffix=")" variable="issued"/>
+          </group>
+          <text prefix=" $$ : " suffix=" $/$ " variable="page"/>
+        </else-if>
+        <else-if type="article-journal">
+          <group delimiter=" " prefix=". ">
+            <group delimiter=": ">
+              <text prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            </group>
+            <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+            <text prefix=" $$ (" suffix=") $/$ " variable="issue"/>
+          </group>
+          <text prefix=" $$ : " suffix=" $/$ " variable="page"/>
+        </else-if>
+        <else>
+          <group delimiter=". " prefix=". ">
+            <text macro="volume-series" prefix=" $volume-series$ " suffix=" $/volume-series$ "/>
+            <text prefix=" $$ " suffix=" $/$ " variable="scale"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher-place"/>
+          </group>
+        </else>
+      </choose>
+      <text macro="internet" prefix=" $internet$ . " suffix=" $/internet$ "/>
+    </layout>
+  </bibliography>
+</style>

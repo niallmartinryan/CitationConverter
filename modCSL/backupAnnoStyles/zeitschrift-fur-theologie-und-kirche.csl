@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="note" default-locale="de-DE" demote-non-dropping-particle="never" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Zeitschrift für Theologie und Kirche (German)</title>
+    <title-short>ZThK</title-short>
+    <id>http://www.zotero.org/styles/zeitschrift-fur-theologie-und-kirche</id>
+    <link href="http://www.zotero.org/styles/zeitschrift-fur-theologie-und-kirche" rel="self"/>
+    <link href="http://www.zotero.org/styles/finanzarchiv" rel="template"/>
+    <link href="http://www.mohr.de/fileadmin/user_upload/Hinweise_Autoren_PDF/ZThK/2014/Richtlinien_ZThK_2014.pdf" rel="documentation"/>
+    <link href="http://www.mohr.de/en/nc/journals/theology/zeitschrift-fuer-theologie-und-kirche-zthk/manuscripts.html" rel="documentation"/>
+    <author>
+      <name>Philipp Zumstein</name>
+      <uri>https://github.com/zuphilip</uri>
+    </author>
+    <category citation-format="note"/>
+    <category field="theology"/>
+    <issn>0044-3549</issn>
+    <eissn>1868-7377</eissn>
+    <summary>The style does not need any bibliography, but for completeness (preview) it shows here the appearance of the footnotes.</summary>
+    <updated>2014-09-19T22:28:52+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="de">
+    <terms>
+      <term form="short" name="editor">Hg.</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=" / " delimiter-precedes-last="always" font-variant="small-caps" initialize-with="."/>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name delimiter=" / " font-variant="small-caps" form="short" initialize-with=". "/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="date-and-edition">
+    <group>
+      <date form="text" suffix=" " variable="original-date">
+        <date-part name="year"/>
+      </date>
+      <number variable="edition" vertical-align="sup"/>
+      <text macro="issued"/>
+    </group>
+  </macro>
+  <macro name="collection-info">
+    <group delimiter=" ">
+      <text form="short" variable="collection-title"/>
+      <text variable="collection-number"/>
+    </group>
+  </macro>
+  <citation cite-group-delimiter=", " collapse="year" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true" et-al-min="4" et-al-use-first="1">
+    <layout delimiter="; ">
+      <choose>
+        <if match="any" position="first">
+          <group delimiter=", ">
+            <text macro="author"/>
+            <choose>
+              <if match="any" type="article-journal article-magazine article-newspaper">
+                <group delimiter=" ">
+                  <text variable="title"/>
+                  <group delimiter=", " prefix="(" suffix=")">
+                    <text variable="container-title"/>
+                    <text variable="volume"/>
+                    <text macro="issued"/>
+                    <text variable="page"/>
+                  </group>
+                </group>
+              </if>
+              <else-if match="any" type="chapter paper-conference">
+                <group delimiter=" ">
+                  <text variable="title"/>
+                  <group delimiter=", " prefix="(" suffix=")">
+                    <group>
+                      <date form="text" suffix="; " variable="original-date">
+                        <date-part name="year"/>
+                      </date>
+                      <text suffix=": " term="in"/>
+                      <group delimiter=", ">
+                        <names delimiter=", " font-variant="normal" variable="container-author">
+                          <name delimiter=" / " delimiter-precedes-last="always" font-variant="small-caps" initialize-with="."/>
+                          <label form="short" prefix=" [" suffix="]" text-case="capitalize-first"/>
+                        </names>
+                        <group delimiter=" ">
+                          <group delimiter=", ">
+                            <text text-case="title" variable="container-title"/>
+                            <names variable="editor">
+                              <label form="verb-short" suffix=" "/>
+                              <name delimiter=" / " font-variant="small-caps" initialize-with="."/>
+                            </names>
+                          </group>
+                          <text macro="collection-info" prefix="[" suffix="]"/>
+                        </group>
+                      </group>
+                    </group>
+                    <group>
+                      <number variable="edition" vertical-align="sup"/>
+                      <text macro="issued"/>
+                    </group>
+                  </group>
+                </group>
+              </else-if>
+              <else-if match="any" type="entry-encyclopedia">
+                <text form="short" prefix="Art. " variable="title"/>
+                <group delimiter=", " prefix="(" suffix=")">
+                  <group delimiter=" ">
+                    <group>
+                      <text form="short" variable="container-title"/>
+                      <number variable="edition" vertical-align="sup"/>
+                    </group>
+                    <text variable="volume"/>
+                  </group>
+                  <date date-parts="year" form="text" variable="issued">
+                    <date-part name="year"/>
+                  </date>
+                  <text variable="page"/>
+                </group>
+              </else-if>
+              <else>
+                <text variable="title"/>
+                <text macro="collection-info" prefix="(" suffix=")"/>
+                <names delimiter=", " variable="editor translator">
+                  <label form="verb-short" suffix=" "/>
+                  <name delimiter=" / " font-variant="small-caps" initialize-with="."/>
+                </names>
+                <text macro="date-and-edition"/>
+              </else>
+            </choose>
+            <text variable="locator"/>
+          </group>
+        </if>
+        <else-if match="any" position="ibid-with-locator">
+          <group delimiter=" ">
+            <text value="AaO"/>
+            <text variable="locator"/>
+          </group>
+        </else-if>
+        <else-if match="any" position="ibid">
+          <text term="ibid"/>
+        </else-if>
+        <else>
+          <group delimiter=", ">
+            <group delimiter=" ">
+              <text macro="author-short"/>
+              <group delimiter=" " prefix="(" suffix=")">
+                <text value="s. Anm."/>
+                <text variable="first-reference-note-number"/>
+              </group>
+            </group>
+            <text variable="locator"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued" sort="ascending"/>
+    </sort>
+    <layout>
+      <group delimiter=", ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <choose>
+          <if match="any" type="article-journal article-magazine article-newspaper">
+            <group delimiter=" ">
+              <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+              <group delimiter=", " prefix="(" suffix=")">
+                <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+                <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+                <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+              </group>
+            </group>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <group delimiter=" ">
+              <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+              <group delimiter=", " prefix="(" suffix=")">
+                <group>
+                  <date form="text" suffix="; " variable="original-date">
+                    <date-part name="year"/>
+                  </date>
+                  <text prefix=" $$ " suffix=":  $/$ " term="in"/>
+                  <group delimiter=", ">
+                    <names delimiter=", " font-variant="normal" variable="container-author">
+                      <name delimiter=" / " delimiter-precedes-last="always" font-variant="small-caps" initialize-with="."/>
+                      <label form="short" prefix=" [" suffix="]" text-case="capitalize-first"/>
+                    </names>
+                    <group delimiter=" ">
+                      <group delimiter=", ">
+                        <text prefix=" $$ " suffix=" $/$ " text-case="title" variable="container-title"/>
+                        <names variable="editor">
+                          <label form="verb-short" suffix=" "/>
+                          <name delimiter=" / " font-variant="small-caps" initialize-with="."/>
+                        </names>
+                      </group>
+                      <text macro="collection-info" prefix=" $collection-info$ [" suffix="] $/collection-info$ "/>
+                    </group>
+                  </group>
+                </group>
+                <group>
+                  <number variable="edition" vertical-align="sup"/>
+                  <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+                </group>
+              </group>
+            </group>
+          </else-if>
+          <else-if match="any" type="entry-encyclopedia">
+            <text form="short" prefix=" $$ Art. " suffix=" $/$ " variable="title"/>
+            <group delimiter=", " prefix="(" suffix=")">
+              <group delimiter=" ">
+                <group>
+                  <text form="short" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                  <number variable="edition" vertical-align="sup"/>
+                </group>
+                <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+              </group>
+              <date date-parts="year" form="text" variable="issued">
+                <date-part name="year"/>
+              </date>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </else-if>
+          <else>
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text macro="collection-info" prefix=" $collection-info$ (" suffix=") $/collection-info$ "/>
+            <names delimiter=", " variable="editor translator">
+              <label form="verb-short" suffix=" "/>
+              <name delimiter=" / " font-variant="small-caps" initialize-with="."/>
+            </names>
+            <text macro="date-and-edition" prefix=" $date-and-edition$ " suffix=" $/date-and-edition$ "/>
+          </else>
+        </choose>
+        <text prefix=" $$ " suffix=" $/$ " variable="locator"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

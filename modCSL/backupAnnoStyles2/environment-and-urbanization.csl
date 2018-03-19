@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="note" default-locale="en-GB" demote-non-dropping-particle="sort-only" page-range-format="expanded" version="1.0">
+  <info>
+    <title>Environment and Urbanization</title>
+    <id>http://www.zotero.org/styles/environment-and-urbanization</id>
+    <link href="http://www.zotero.org/styles/environment-and-urbanization" rel="self"/>
+    <link href="http://www.zotero.org/styles/journal-of-applied-philosophy" rel="template"/>
+    <link href="https://us.sagepub.com/en-us/nam/journal/environment-and-urbanization#ReferenceStyle" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="note"/>
+    <category field="geography"/>
+    <issn>0956-2478</issn>
+    <eissn>1746-0301</eissn>
+    <summary>Style calls for endnote symbols in parentheses, which CSL can't do</summary>
+    <updated>2012-10-25T21:15:26+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term form="verb-short" name="editor">ed.</term>
+      <term form="verb-short" name="translator">trans.</term>
+      <term name="open-quote">“</term>
+      <term name="close-quote">”</term>
+      <term name="open-inner-quote">‘</term>
+      <term name="close-inner-quote">’</term>
+    </terms>
+  </locale>
+  <macro name="contributors-note">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" initialize="false" initialize-with=" " name-as-sort-order="first" sort-separator=", "/>
+      <label prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title-note"/>
+      </substitute>
+    </names>
+    <text macro="recipient-note"/>
+  </macro>
+  <macro name="recipient-note">
+    <names delimiter=", " variable="recipient">
+      <label form="verb" prefix=" " suffix=" "/>
+      <name and="text" delimiter=", "/>
+    </names>
+  </macro>
+  <macro name="recipient-short">
+    <names variable="recipient">
+      <label form="verb" prefix=" " suffix=" "/>
+      <name and="text" delimiter=", " form="short"/>
+    </names>
+  </macro>
+  <macro name="contributors-short">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" form="short" initialize-with=" " sort-separator=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title-sort-substitute"/>
+      </substitute>
+    </names>
+    <text macro="recipient-short"/>
+  </macro>
+  <macro name="title-note">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="italic" text-case="title" variable="title"/>
+      </if>
+      <else>
+        <text form="long" quotes="true" text-case="title" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title-short">
+    <choose>
+      <if disambiguate="true">
+        <choose>
+          <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+            <text font-style="italic" form="short" text-case="title" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" text-case="title" variable="title"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title-sort-substitute">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="italic" form="short" text-case="title" variable="title"/>
+      </if>
+      <else>
+        <text form="short" quotes="true" text-case="title" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="editor-translator">
+    <group delimiter=" ">
+      <text suffix=" " term="in"/>
+      <names delimiter=", " variable="editor">
+        <name and="text" delimiter=", " delimiter-precedes-last="never" initialize="false" initialize-with=" "/>
+        <label prefix=" (" suffix=")"/>
+      </names>
+      <choose>
+        <if match="any" variable="author editor">
+          <names delimiter=", " variable="translator">
+            <label form="verb-short" suffix=" "/>
+            <name and="text" delimiter=", " delimiter-precedes-last="never"/>
+          </names>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if type="article-journal">
+        <group delimiter=", ">
+          <group delimiter=" ">
+            <text form="short" strip-periods="true" term="volume" text-case="capitalize-first"/>
+            <text variable="volume"/>
+          </group>
+          <group delimiter=" ">
+            <text form="short" strip-periods="true" term="issue" text-case="capitalize-first"/>
+            <text variable="issue"/>
+          </group>
+        </group>
+      </if>
+      <else-if match="any" type="article-magazine article-newspaper">
+        <date variable="issued">
+          <date-part name="day" suffix=" "/>
+          <date-part name="month"/>
+        </date>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="pub-info">
+    <choose>
+      <if match="none" type="article-journal article-magazine article-newspaper">
+        <group delimiter=", ">
+          <text macro="type"/>
+          <text macro="event"/>
+          <text macro="edition-note"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="type">
+    <choose>
+      <if match="any" type="article report speech thesis">
+        <text variable="genre"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="container-title-note">
+    <text font-style="italic" form="long" text-case="title" variable="container-title"/>
+  </macro>
+  <macro name="edition-note">
+    <choose>
+      <if match="any" type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song">
+        <choose>
+          <if is-numeric="edition">
+            <group delimiter=" ">
+              <number form="ordinal" variable="edition"/>
+              <text form="short" term="edition"/>
+            </group>
+          </if>
+          <else>
+            <text variable="edition"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="event">
+    <group>
+      <text suffix=" " term="presented at"/>
+      <text variable="event"/>
+    </group>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="pages">
+    <choose>
+      <if variable="page">
+        <group delimiter=" ">
+          <label variable="page"/>
+          <text variable="page"/>
+        </group>
+      </if>
+      <else>
+        <group delimiter=" ">
+          <text variable="number-of-pages"/>
+          <label plural="always" variable="page"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="access-note">
+    <choose>
+      <if variable="URL">
+        <choose>
+          <if variable="accessed">
+            <group delimiter=" ">
+              <text term="accessed"/>
+              <date form="text" variable="accessed"/>
+              <text term="at"/>
+              <text variable="URL"/>
+            </group>
+          </if>
+          <else>
+            <group delimiter=" ">
+              <text term="available at"/>
+              <text variable="URL"/>
+            </group>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <citation disambiguate-add-givenname="true" disambiguate-add-names="true" et-al-min="7" et-al-use-first="1">
+    <layout delimiter="; " suffix=".">
+      <choose>
+        <if position="subsequent">
+          <group delimiter=", ">
+            <text prefix="See reference " variable="first-reference-note-number"/>
+            <choose>
+              <if disambiguate="true">
+                <group delimiter=" ">
+                  <text macro="contributors-short"/>
+                  <text macro="issued" prefix="(" suffix=")"/>
+                </group>
+              </if>
+            </choose>
+            <text macro="title-short"/>
+          </group>
+        </if>
+        <else>
+          <text macro="contributors-note"/>
+          <group delimiter=", " prefix=" ">
+            <text macro="issued" prefix="(" suffix=")"/>
+            <text macro="title-note"/>
+            <text macro="editor-translator"/>
+            <group delimiter=" ">
+              <text macro="container-title-note"/>
+              <text macro="locators"/>
+            </group>
+            <text macro="pub-info"/>
+            <text macro="publisher"/>
+            <text macro="pages"/>
+            <text macro="access-note"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" hanging-indent="true">
+    <layout suffix=".">
+      <text macro="contributors-note" prefix=" $contributors-note$ " suffix=" $/contributors-note$ "/>
+      <group delimiter=", " prefix=" ">
+        <text macro="issued" prefix=" $issued$ (" suffix=") $/issued$ "/>
+        <text macro="title-note" prefix=" $title-note$ " suffix=" $/title-note$ "/>
+        <text macro="editor-translator" prefix=" $editor-translator$ " suffix=" $/editor-translator$ "/>
+        <group delimiter=" ">
+          <text macro="container-title-note" prefix=" $container-title-note$ " suffix=" $/container-title-note$ "/>
+          <text macro="locators" prefix=" $locators$ " suffix=" $/locators$ "/>
+        </group>
+        <text macro="pub-info" prefix=" $pub-info$ " suffix=" $/pub-info$ "/>
+        <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+        <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+        <text macro="access-note" prefix=" $access-note$ " suffix=" $/access-note$ "/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

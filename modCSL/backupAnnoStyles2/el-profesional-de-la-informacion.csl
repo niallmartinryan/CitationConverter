@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="es-ES" demote-non-dropping-particle="never" version="1.0">
+  <info>
+    <title>El profesional de la información (Spanish)</title>
+    <id>http://www.zotero.org/styles/el-profesional-de-la-informacion</id>
+    <link href="http://www.zotero.org/styles/el-profesional-de-la-informacion" rel="self"/>
+    <link href="http://www.elprofesionaldelainformacion.com/autores.html#435" rel="documentation"/>
+    <author>
+      <name>Josep-Manuel Rodriguez-Gairin</name>
+      <email>rodriguez.gairin@ub.edu</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="social_science"/>
+    <issn>1386-6710</issn>
+    <eissn>1699-2407</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <style-options punctuation-in-quote="false"/>
+  </locale>
+  <macro name="author-short">
+    <names font-weight="bold" variable="author">
+      <name delimiter="; " form="short"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter="; " name-as-sort-order="all">
+        <name-part font-weight="bold" name="given"/>
+        <name-part font-weight="bold" name="family"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="book">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text quotes="true" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <citation>
+    <sort>
+      <key macro="issued"/>
+      <key macro="author-short"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <text macro="author-short"/>
+      <text macro="issued" prefix=", "/>
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+    </sort>
+    <layout>
+      <group display="block" suffix=".">
+        <group delimiter=". " suffix=", ">
+          <group delimiter=" ">
+            <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+            <text macro="issued" prefix=" $issued$ (" suffix=") $/issued$ "/>
+          </group>
+          <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+          <choose>
+            <if match="any" type="paper-conference">
+              <text font-style="italic" prefix=" $container-title$ En: " suffix=" $container-title$ " variable="container-title"/>
+            </if>
+            <else>
+              <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            </else>
+          </choose>
+        </group>
+        <choose>
+          <if match="any" type="book">
+            <group delimiter=", ">
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+              <choose>
+                <if variable="ISBN">
+                  <text prefix=" $ISBN$ ISBN " suffix=" $ISBN$ " variable="ISBN"/>
+                </if>
+              </choose>
+            </group>
+          </if>
+          <else>
+            <group delimiter=", ">
+              <text prefix=" $volume$ v. " suffix=" $volume$ " variable="volume"/>
+              <text prefix=" $issue$ n. " suffix=" $issue$ " variable="issue"/>
+              <group delimiter=" ">
+                <label form="short" variable="page"/>
+                <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+              </group>
+            </group>
+          </else>
+        </choose>
+      </group>
+      <group display="block" font-style="italic">
+        <choose>
+          <if variable="DOI">
+            <text prefix=" $DOI$ https://doi.org/" suffix=" $DOI$ " variable="DOI"/>
+          </if>
+          <else>
+            <text prefix=" $URL$ " suffix=" $URL$ " variable="URL"/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

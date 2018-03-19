@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Elsevier (numeric, with titles)</title>
+    <id>http://www.zotero.org/styles/elsevier-with-titles</id>
+    <link href="http://www.zotero.org/styles/elsevier-with-titles" rel="self"/>
+    <link href="http://www.zotero.org/styles/elsevier-without-titles" rel="template"/>
+    <link href="http://www.elsevier.com/journals/journal-of-hazardous-materials/0304-3894/guide-for-authors#68001" rel="documentation"/>
+    <author>
+      <name>Richard Karnesky</name>
+      <email>karnesky+zotero@gmail.com</email>
+      <uri>http://arc.nucapt.northwestern.edu/Richard_Karnesky</uri>
+    </author>
+    <contributor>
+      <name>Rintze Zelle</name>
+      <uri>http://twitter.com/rintzezelle</uri>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="generic-base"/>
+    <summary>A style for many of Elsevier's journals that includes article titles in the reference list</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="."/>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="."/>
+      <label form="short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <text suffix=", " variable="publisher"/>
+    <text suffix=", " variable="publisher-place"/>
+    <text macro="year-date"/>
+  </macro>
+  <macro name="edition">
+    <!--TODO: CSL should have low numeric be text (e.g. '3'->'third')-->
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <text variable="URL"/>
+        <group delimiter=" " prefix=" (" suffix=")">
+          <text term="accessed"/>
+          <date form="text" variable="accessed"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" second-field-align="flush">
+    <layout suffix=".">
+      <text prefix=" $$ [" suffix="] $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group delimiter=", ">
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <text prefix=" $$ " suffix=",  $/$ " variable="title"/>
+          <text prefix=" $$ " suffix=":  $/$ " term="in"/>
+          <text macro="editor" prefix=" $editor$ " suffix=",  $/editor$ "/>
+          <text form="short" prefix=" $$ " suffix=",  $/$ " text-case="title" variable="container-title"/>
+          <text macro="edition" prefix=" $edition$ " suffix=",  $/edition$ "/>
+          <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          <group delimiter=" ">
+            <label form="short" prefix=": " variable="page"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if type="patent">
+          <group delimiter=", ">
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="number"/>
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <group delimiter=", ">
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=" ">
+            <text prefix=" $$ " suffix=", $/$ " variable="title"/>
+            <text form="short" prefix=" $$ " suffix=". $/$ " text-case="title" variable="container-title"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+            <text macro="year-date" prefix=" $year-date$ (" suffix=") $/year-date$ "/>
+            <text form="short" prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+      <choose>
+        <if variable="DOI">
+          <text prefix=" $$ . doi:" suffix=" $/$ " variable="DOI"/>
+        </if>
+        <else>
+          <text macro="access" prefix=" $access$ . " suffix=" $/access$ "/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>The FEBS Journal</title>
+    <id>http://www.zotero.org/styles/the-febs-journal</id>
+    <link href="http://www.zotero.org/styles/the-febs-journal" rel="self"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1742-4658/homepage/ForAuthors.html#manuscript" rel="documentation"/>
+    <author>
+      <name>Rintze Zelle</name>
+      <uri>http://twitter.com/rintzezelle</uri>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>1742-464X</issn>
+    <eissn>1742-4658</eissn>
+    <summary>Style for FEBS Journal</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names delimiter=", " prefix="(" suffix=")" variable="editor">
+      <name and="text" delimiter=", " initialize-with=". "/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" hanging-indent="true">
+    <layout>
+      <text prefix=" $citation-number$ " suffix="  $citation-number$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix="  $/author$ "/>
+      <date prefix="(" suffix=")" variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+            <text macro="edition" prefix=" $edition$ , " suffix=" $/edition$ "/>
+            <text macro="editor" prefix=" $editor$  " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <group prefix=" " suffix=".">
+            <text prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+            <text font-style="italic" prefix=" $container-title$  " suffix=" $container-title$ " variable="container-title"/>
+            <names delimiter=", " prefix=" (" suffix=")," variable="editor">
+              <name and="symbol" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+              <label form="short" prefix=", " strip-periods="true"/>
+            </names>
+            <group delimiter=", " prefix=" " suffix=".">
+              <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+              <group>
+                <label form="short" suffix=" " variable="page"/>
+                <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+              </group>
+            </group>
+            <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+          </group>
+        </else-if>
+        <else>
+          <group prefix=" " suffix=".">
+            <text macro="title" prefix=" $title$ " suffix=".  $/title$ "/>
+            <text font-style="italic" form="short" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <group prefix=" ">
+              <text font-weight="bold" prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+            </group>
+            <group prefix=", ">
+              <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

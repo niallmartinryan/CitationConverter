@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" and="symbol" class="in-text" default-locale="en-US" demote-non-dropping-particle="never" page-range-format="expanded" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Hydrobiologia</title>
+    <id>http://www.zotero.org/styles/hydrobiologia</id>
+    <link href="http://www.zotero.org/styles/hydrobiologia" rel="self"/>
+    <link href="http://www.zotero.org/styles/elsevier-harvard" rel="template"/>
+    <link href="http://www.springer.com/life+sciences/ecology/journal/10750" rel="documentation"/>
+    <author>
+      <name>Ronald Petie</name>
+      <email>ronald.petie@gmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>0018-8158</issn>
+    <eissn>1573-5117</eissn>
+    <summary>Hydrobiologia citation style.</summary>
+    <updated>2013-01-29T14:01:40+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" form="short" initialize-with=". "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text font-style="normal" variable="container-title"/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+            <text font-style="normal" form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="container-contributors">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text suffix=" " term="in" text-case="capitalize-first"/>
+        <names suffix=", " variable="editor translator">
+          <name and="symbol" delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+          <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <group>
+          <text variable="URL"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="chapter">
+        <text font-style="normal" suffix=" " variable="title"/>
+      </if>
+      <else>
+        <text font-style="normal" suffix=". " variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <choose>
+      <if type="thesis">
+        <group delimiter=", ">
+          <text variable="genre"/>
+          <text variable="publisher"/>
+        </group>
+      </if>
+      <else>
+        <group delimiter=", ">
+          <text variable="publisher"/>
+          <text variable="publisher-place"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <group>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <text form="short" prefix=" (" suffix=")" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="thecontainer">
+    <choose>
+      <if match="any" type="article-journal article-magazine">
+        <text font-style="normal" suffix=" " variable="container-title"/>
+      </if>
+      <else>
+        <text font-style="normal" suffix=". " variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if match="any" type="article-journal article-magazine">
+        <group delimiter=" " prefix=" ">
+          <group>
+            <text suffix=":" variable="volume"/>
+          </group>
+          <text variable="page"/>
+        </group>
+      </if>
+      <else-if type="article-newspaper">
+        <group delimiter=", " prefix=", ">
+          <date variable="issued">
+            <date-part name="day"/>
+            <date-part form="long" name="month" prefix=" "/>
+          </date>
+          <group delimiter=" ">
+            <label variable="page"/>
+            <text variable="page"/>
+          </group>
+        </group>
+      </else-if>
+      <else-if match="any" type="book thesis">
+        <text prefix=", " suffix=" pp" variable="page"/>
+      </else-if>
+      <else-if match="any" type="chapter paper-conference report">
+        <text prefix=": " variable="page"/>
+      </else-if>
+      <else>
+        <text prefix=", " variable="page"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year-date"/>
+      <key macro="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+      </group>
+      <text prefix=": " variable="locator"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="1" hanging-indent="false" line-spacing="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="year-date"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=", $/author$ "/>
+        <text macro="year-date" prefix=" $year-date$ " suffix=". $/year-date$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      </group>
+      <text macro="container-contributors" prefix=" $container-contributors$ " suffix=" $/container-contributors$ "/>
+      <text macro="thecontainer" prefix=" $thecontainer$ " suffix=" $/thecontainer$ "/>
+      <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+      <text macro="locators" prefix=" $locators$ " suffix=" $/locators$ "/>
+      <text macro="access" prefix=" $access$ , " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

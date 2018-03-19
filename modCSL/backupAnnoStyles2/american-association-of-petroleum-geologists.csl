@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>American Association of Petroleum Geologists</title>
+    <id>http://www.zotero.org/styles/american-association-of-petroleum-geologists</id>
+    <link href="http://www.zotero.org/styles/american-association-of-petroleum-geologists" rel="self"/>
+    <link href="http://deg.aapg.org/Portals/0/documents/DEG_ALL.pdf" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <contributor>
+      <name>Aditi Bhaskar</name>
+    </contributor>
+    <contributor>
+      <name>Rintze Zelle</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="geology"/>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with="."/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+            <text font-style="italic" form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <choose>
+      <if match="any" type="article-journal article-magazine">
+        <group delimiter=", ">
+          <text variable="container-title"/>
+          <text prefix="v. " variable="volume"/>
+          <text prefix="no. " variable="issue"/>
+        </group>
+      </if>
+      <else>
+        <group delimiter=", ">
+          <choose>
+            <if match="none" type="paper-conference">
+              <text variable="publisher-place"/>
+            </if>
+          </choose>
+          <text variable="publisher"/>
+          <group delimiter=" ">
+            <text variable="collection-title"/>
+            <text variable="collection-number"/>
+          </group>
+          <text suffix=" p." variable="number-of-pages"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="book-edited">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text font-style="italic" suffix=" " term="in"/>
+        <group delimiter=", ">
+          <group>
+            <names delimiter=", " prefix=" " variable="editor translator">
+              <name and="text" delimiter-precedes-last="always" initialize-with=". " sort-separator=", "/>
+              <label form="short" prefix=", "/>
+            </names>
+          </group>
+          <text variable="container-title"/>
+          <choose>
+            <if type="paper-conference">
+              <text variable="event-place"/>
+            </if>
+          </choose>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="mapinfo">
+    <choose>
+      <if type="map">
+        <text variable="note"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="accessed">
+    <choose>
+      <if type="webpage">
+        <choose>
+          <if variable="URL">
+            <text prefix="&lt;" suffix="&gt;" variable="URL"/>
+            <group delimiter=" " prefix=" (" suffix=")">
+              <text term="accessed"/>
+              <date variable="accessed">
+                <date-part name="month"/>
+                <date-part name="day" prefix=" "/>
+                <date-part name="year" prefix=", "/>
+              </date>
+            </group>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="page">
+    <choose>
+      <if match="any" type="article article-magazine article-newspaper article-journal bill book broadcast chapter entry entry-dictionary entry-encyclopedia figure graphic interview legislation legal_case manuscript map motion_picture musical_score pamphlet paper-conference patent post post-weblog personal_communication review review-book song speech thesis treaty webpage">
+        <text prefix="p. " variable="page"/>
+      </if>
+      <else>
+        <text suffix=" p." variable="page"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-givenname="true" disambiguate-add-names="true" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year-date"/>
+      <key macro="author-short"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+        <group>
+          <label form="short" variable="locator"/>
+          <text prefix=" " variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="1" hanging-indent="true">
+    <sort>
+      <key macro="author-short"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=", ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+        <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+        <group delimiter=" ">
+          <text prefix=" $genre$ " suffix=" $genre$ " variable="genre"/>
+          <text prefix=" $number$ " suffix=" $number$ " variable="number"/>
+        </group>
+        <text macro="book-edited" prefix=" $book-edited$ " suffix=" $/book-edited$ "/>
+      </group>
+      <group delimiter=", " prefix=": ">
+        <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+        <text macro="mapinfo" prefix=" $mapinfo$ " suffix=" $/mapinfo$ "/>
+        <text macro="page" prefix=" $page$ " suffix=" $/page$ "/>
+        <text prefix=" $DOI$ doi:" suffix=" $DOI$ " variable="DOI"/>
+      </group>
+      <text macro="accessed" prefix=" $accessed$ : " suffix=" $/accessed$ "/>
+    </layout>
+  </bibliography>
+</style>

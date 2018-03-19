@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="display-and-sort" version="1.0">
+  <info>
+    <title>Journal of Neurochemistry</title>
+    <title-short>JoN</title-short>
+    <id>http://www.zotero.org/styles/journal-of-neurochemistry</id>
+    <link href="http://www.zotero.org/styles/journal-of-neurochemistry" rel="self"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1471-4159" rel="documentation"/>
+    <author>
+      <name>Adrian Drabik</name>
+      <email>adriandrabik@gmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>0022-3042</issn>
+    <eissn>1471-4159</eissn>
+    <summary>Bibliographic style for Journal of Neurochemistry</summary>
+    <updated>2014-10-03T20:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term form="short" name="page">
+        <single>p.</single>
+        <multiple>pp.</multiple>
+      </term>
+      <term name="and others">et al.</term>
+      <term form="short" name="anonymous">anon.</term>
+      <term form="short" name="circa">ca</term>
+      <term form="short" name="edition">ed.</term>
+      <term name="et-al">et al.</term>
+      <term name="in">in</term>
+      <term form="short" name="no date">n.d.</term>
+      <term name="online">online</term>
+      <term form="short" name="volume">vol.</term>
+      <term form="short" name="chapter">chapt.</term>
+      <term form="short" name="column">col.</term>
+      <term form="short" name="figure">fig.</term>
+      <term form="short" name="folio">fol.</term>
+      <term form="short" name="issue">iss</term>
+      <term form="short" name="opus">op.</term>
+      <term form="short" name="editor">
+        <single>ed</single>
+        <multiple>eds</multiple>
+      </term>
+      <term form="short" name="editorial-director">
+        <single>ed</single>
+        <multiple>eds</multiple>
+      </term>
+      <term form="short" name="translator">
+        <single>trans.</single>
+        <multiple>trans.</multiple>
+      </term>
+      <!--DATE-->
+      <term name="month-01">january</term>
+      <term name="month-02">february</term>
+      <term name="month-03">march</term>
+      <term name="month-04">april</term>
+      <term name="month-05">may</term>
+      <term name="month-06">june</term>
+      <term name="month-07">july</term>
+      <term name="month-08">august</term>
+      <term name="month-09">september</term>
+      <term name="month-10">october</term>
+      <term name="month-11">november</term>
+      <term name="month-12">december</term>
+      <term form="short" name="month-01">jan.</term>
+      <term form="short" name="month-02">feb.</term>
+      <term form="short" name="month-03">mar.</term>
+      <term form="short" name="month-04">apr.</term>
+      <term form="short" name="month-05">may</term>
+      <term form="short" name="month-06">june</term>
+      <term form="short" name="month-07">july</term>
+      <term form="short" name="month-08">aug.</term>
+      <term form="short" name="month-09">sep.</term>
+      <term form="short" name="month-10">oct.</term>
+      <term form="short" name="month-11">nov.</term>
+      <term form="short" name="month-12">dec.</term>
+    </terms>
+  </locale>
+  <!--MACROS-->
+  <!--Contributors-->
+  <macro name="authors-short">
+    <names variable="author">
+      <name and="text" delimiter=" and " delimiter-precedes-last="never" form="short" initialize-with=". "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text value="anon."/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="authors1">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
+      <substitute>
+        <text macro="editors1"/>
+        <text macro="translators1"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editors1">
+    <names variable="editor">
+      <name delimiter=", " delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", " strip-periods="true" text-case="lowercase"/>
+    </names>
+  </macro>
+  <macro name="translators1">
+    <names variable="translator">
+      <name delimiter=", " delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" " strip-periods="true" suffix="." text-case="lowercase"/>
+    </names>
+  </macro>
+  <!--Titles-->
+  <macro name="title1">
+    <text variable="title"/>
+  </macro>
+  <macro name="title2">
+    <text font-style="italic" variable="title"/>
+  </macro>
+  <macro name="container-title0">
+    <group delimiter=" ">
+      <text font-style="italic" form="short" quotes="false" variable="container-title"/>
+      <text font-weight="bold" variable="volume"/>
+      <choose>
+        <if match="none" variable="volume">
+          <text variable="issue"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="container-title1">
+    <text font-style="italic" form="short" prefix="in " quotes="false" variable="container-title"/>
+  </macro>
+  <macro name="container-title2">
+    <choose>
+      <if variable="collection-title">
+        <text macro="volume" suffix=": "/>
+        <text quotes="false" text-case="title" variable="collection-title"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="volume">
+    <choose>
+      <if match="none" variable="volume">
+        <text font-style="italic" prefix="Vol. " variable="collection-number"/>
+      </if>
+    </choose>
+    <text prefix="Vol. " variable="volume"/>
+  </macro>
+  <!--Pages-->
+  <macro name="page">
+    <choose>
+      <if variable="locator">
+        <text variable="locator"/>
+      </if>
+      <else>
+        <text variable="page"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="page1">
+    <label form="short" suffix=" " variable="page"/>
+    <text variable="page"/>
+  </macro>
+  <!--other-->
+  <macro name="issued1">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <!--Citation-->
+  <citation disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="authors-short"/>
+        <text macro="issued1"/>
+      </group>
+    </layout>
+  </citation>
+  <!--Bibliography-->
+  <bibliography entry-spacing="0" et-al-min="11" et-al-use-first="7" hanging-indent="true">
+    <sort>
+      <key macro="authors1"/>
+      <key variable="issued"/>
+    </sort>
+    <layout suffix=".">
+      <choose>
+        <if match="any" type="article-journal article-newspaper article-magazine">
+          <group delimiter=". ">
+            <group delimiter=" ">
+              <text macro="authors1" prefix=" $authors1$ " suffix=" $/authors1$ "/>
+              <text macro="issued1" prefix=" $issued1$ (" suffix=") $/issued1$ "/>
+              <text macro="title1" prefix=" $title1$ " suffix=" $/title1$ "/>
+            </group>
+            <group delimiter=", ">
+              <text macro="container-title0" prefix=" $container-title0$ " suffix=" $/container-title0$ "/>
+              <text macro="page" prefix=" $page$ " suffix=" $/page$ "/>
+            </group>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group delimiter=". ">
+            <group delimiter=", ">
+              <group delimiter=" ">
+                <text macro="authors1" prefix=" $authors1$ " suffix=" $/authors1$ "/>
+                <text macro="issued1" prefix=" $issued1$ (" suffix=") $/issued1$ "/>
+                <text macro="title1" prefix=" $title1$ " suffix=" $/title1$ "/>
+              </group>
+              <text macro="container-title1" prefix=" $container-title1$ " suffix=" $/container-title1$ "/>
+              <text macro="editors1" prefix=" $editors1$ (" suffix=") $/editors1$ "/>
+              <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+              <text macro="page1" prefix=" $page1$ " suffix=" $/page1$ "/>
+            </group>
+            <group delimiter=", ">
+              <text prefix=" $publisher$ " suffix=" $publisher$ " variable="publisher"/>
+              <text prefix=" $publisher-place$ " suffix=" $publisher-place$ " variable="publisher-place"/>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=". ">
+            <group delimiter=", ">
+              <group delimiter=" ">
+                <text macro="authors1" prefix=" $authors1$ " suffix=" $/authors1$ "/>
+                <text macro="issued1" prefix=" $issued1$ (" suffix=") $/issued1$ "/>
+                <text macro="title2" prefix=" $title2$ " suffix=" $/title2$ "/>
+              </group>
+              <text macro="container-title2" prefix=" $container-title2$ " suffix=" $/container-title2$ "/>
+              <text macro="editors1" prefix=" $editors1$ (" suffix=") $/editors1$ "/>
+            </group>
+            <group delimiter=", ">
+              <text prefix=" $publisher$ " suffix=" $publisher$ " variable="publisher"/>
+              <text prefix=" $publisher-place$ " suffix=" $publisher-place$ " variable="publisher-place"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

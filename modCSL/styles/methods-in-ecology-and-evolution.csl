@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Methods in Ecology and Evolution</title>
+    <id>http://www.zotero.org/styles/methods-in-ecology-and-evolution</id>
+    <link href="http://www.zotero.org/styles/methods-in-ecology-and-evolution" rel="self"/>
+    <link href="http://www.zotero.org/styles/journal-of-evolutionary-biology" rel="template"/>
+    <link href="http://www.zotero.org/styles/bioinformatics" rel="template"/>
+    <link href="http://www.methodsinecologyandevolution.org/view/0/authorGuidelines.html" rel="documentation"/>
+    <author>
+      <name>Xiaodong Dang</name>
+      <email>dangxdong@gmail.com</email>
+      <uri>http://www.researchgate.net/profile/Xiao-Dong_Dang</uri>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="generic-base"/>
+    <eissn>2041-210X</eissn>
+    <summary>A style for Methods in Ecology and Evolution</summary>
+    <updated>2015-05-13T17:33:44+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor-translator">
+    <names delimiter=", " prefix="(" suffix=")" variable="editor translator">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with="."/>
+      <label form="short" prefix=", " text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" form="short" initialize-with=". "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case motion_picture report song">
+            <text font-style="italic" form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" strip-periods="true" suffix="n." term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="n." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="access">
+    <group delimiter=" ">
+      <text suffix=" " text-case="capitalize-first" value="URL"/>
+      <text variable="URL"/>
+      <group prefix="[" suffix="]">
+        <text suffix=" " term="accessed"/>
+        <date variable="accessed">
+          <date-part name="day" suffix=" "/>
+          <date-part name="month" suffix=" "/>
+          <date-part name="year"/>
+        </date>
+      </group>
+    </group>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book thesis graphic legal_case motion_picture report song">
+        <text font-style="italic" variable="title"/>
+        <text macro="edition" prefix=", "/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <citation collapse="year-suffix" disambiguate-add-year-suffix="true" et-al-min="4" et-al-use-first="1" year-suffix-delimiter=",">
+    <sort>
+      <key variable="issued"/>
+      <key variable="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="author-short"/>
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+        <group>
+          <label form="short" variable="locator"/>
+          <text prefix=" " variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author-short"/>
+      <key macro="title"/>
+    </sort>
+    <layout>
+      <text macro="author" prefix=" $author$ " suffix=". $/author$ "/>
+      <date prefix=" (" suffix=")." variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case motion_picture report song">
+          <group suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+            <text macro="editor-translator" prefix=" $editor-translator$  " suffix=" $/editor-translator$ "/>
+          </group>
+          <text macro="publisher" prefix=" $publisher$  " suffix=". $/publisher$ "/>
+        </if>
+        <else-if type="thesis">
+          <group suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+            <text prefix=" $genre$  " suffix=" thesis, $genre$ " variable="genre"/>
+            <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+          </group>
+        </else-if>
+        <else-if match="any" type="chapter paper-conference">
+          <group delimiter=". " suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+            <group delimiter=", ">
+              <group delimiter=" ">
+                <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+                <names delimiter=", " prefix="(" suffix=")" variable="editor translator">
+                  <label form="short" strip-periods="true" suffix=" "/>
+                  <name and="symbol" delimiter-precedes-last="never" initialize-with="." sort-separator=" "/>
+                </names>
+              </group>
+              <group delimiter=" ">
+                <label form="short" variable="page"/>
+                <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+              </group>
+            </group>
+            <text prefix=" $collection-title$ " suffix=" $collection-title$ " variable="collection-title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=" " prefix=" " suffix=". ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text macro="editor-translator" prefix=" $editor-translator$ " suffix=" $/editor-translator$ "/>
+          </group>
+          <group delimiter=", " suffix=".">
+            <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <text font-weight="bold" prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+      <choose>
+        <if match="all" type="webpage" variable="URL">
+          <text macro="access" prefix=" $access$  " suffix=" $/access$ "/>
+        </if>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

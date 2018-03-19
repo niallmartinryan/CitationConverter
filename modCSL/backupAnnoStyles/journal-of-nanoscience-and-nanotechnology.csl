@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Journal of Nanoscience and Nanotechnology</title>
+    <id>http://www.zotero.org/styles/journal-of-nanoscience-and-nanotechnology</id>
+    <link href="http://www.zotero.org/styles/journal-of-nanoscience-and-nanotechnology" rel="self"/>
+    <link href="http://www.zotero.org/styles/journal-of-neuroscience-and-neuroengineering" rel="template"/>
+    <link href="http://www.aspbs.com/jnn/inst-auth_jnn.htm" rel="documentation"/>
+    <author>
+      <name>Fernando Molina</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="science"/>
+    <category field="engineering"/>
+    <issn>1533-4880</issn>
+    <eissn>1533-4899</eissn>
+    <updated>2015-06-09T00:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="title">
+    <choose>
+      <if match="any" type="book thesis report">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else-if type="article-journal">
+      </else-if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " initialize-with=". " sort-separator=", "/>
+      <label prefix=", " text-case="capitalize-first"/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="volume"/>
+      <else-if match="all" type="patent" variable="number"/>
+      <else-if variable="DOI">
+        <text prefix="doi:" variable="DOI"/>
+      </else-if>
+      <else-if variable="URL">
+        <text term="at"/>
+        <text prefix=" &lt;" suffix="&gt;" variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="issuance">
+    <choose>
+      <if match="any" type="bill book chapter graphic legal_case legislation motion_picture report song">
+        <group delimiter=", ">
+          <text variable="publisher-place"/>
+          <text variable="publisher"/>
+        </group>
+        <date prefix=" (" suffix=")" variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <date prefix=" (" suffix=")" variable="issued">
+          <date-part name="year"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="volume-info">
+    <choose>
+      <if type="chapter">
+        <group delimiter=", ">
+          <group delimiter=" ">
+            <text term="in"/>
+            <text font-style="italic" variable="container-title"/>
+          </group>
+          <names variable="editor">
+            <label form="verb" suffix=" " text-case="capitalize-first"/>
+            <name and="text" delimiter=", " initialize-with=". " sort-separator=", "/>
+          </names>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="journal-info">
+    <choose>
+      <if type="article-journal">
+        <text font-style="italic" form="short" suffix=" " variable="container-title"/>
+        <group delimiter=", ">
+          <text variable="volume"/>
+          <text variable="page-first"/>
+        </group>
+      </if>
+      <else-if type="patent">
+        <text variable="number"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="pages-books">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <group delimiter=" ">
+          <label form="short" variable="page"/>
+          <text variable="page"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter=", " prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="99" et-al-use-first="98" second-field-align="flush">
+    <layout>
+      <text prefix=" $$ " suffix=". $/$ " variable="citation-number"/>
+      <group delimiter=", ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+        <text macro="volume-info" prefix=" $volume-info$ " suffix=" $/volume-info$ "/>
+        <group suffix=".">
+          <text macro="journal-info" prefix=" $journal-info$ " suffix=" $/journal-info$ "/>
+          <group delimiter=", ">
+            <text macro="issuance" prefix=" $issuance$ " suffix=" $/issuance$ "/>
+            <text macro="pages-books" prefix=" $pages-books$ " suffix=" $/pages-books$ "/>
+          </group>
+        </group>
+      </group>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

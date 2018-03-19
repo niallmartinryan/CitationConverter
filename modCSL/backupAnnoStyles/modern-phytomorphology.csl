@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Modern Phytomorphology</title>
+    <title-short>ModPhytomorphol</title-short>
+    <id>http://www.zotero.org/styles/modern-phytomorphology</id>
+    <link href="http://www.zotero.org/styles/modern-phytomorphology" rel="self"/>
+    <link href="http://www.zotero.org/styles/annals-of-botany" rel="template"/>
+    <link href="https://phytomorphology.org/journal/author-guidelines/" rel="documentation"/>
+    <author>
+      <name>Andrew Novikoff</name>
+      <email>novikoffav@gmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>2226-3063</issn>
+    <eissn>2227-9555</eissn>
+    <updated>2016-10-01T04:26:55+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor-translator">
+    <names delimiter="; " prefix="(" suffix=")" variable="editor translator">
+      <name font-variant="small-caps" initialize-with="." name-as-sort-order="all" sort-separator=" "/>
+      <et-al font-style="italic" font-variant="normal"/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names font-variant="small-caps" variable="author">
+      <name delimiter-precedes-et-al="never" delimiter-precedes-last="never" font-weight="bold" initialize-with="." name-as-sort-order="all" sort-separator=" "/>
+      <et-al font-style="italic" font-variant="normal"/>
+      <label font-style="normal" font-variant="normal" form="symbol" prefix=" (" suffix=")"/>
+      <substitute>
+        <names font-variant="small-caps" variable="editor"/>
+        <names font-variant="small-caps" variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names font-variant="small-caps" variable="author">
+      <name and="symbol" font-variant="small-caps" form="short" initialize-with="."/>
+      <et-al font-style="italic" font-variant="normal"/>
+      <substitute>
+        <names font-variant="normal" variable="editor"/>
+        <names font-variant="normal" variable="translator"/>
+        <text font-variant="small-caps" form="short" quotes="false" variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <text font-variant="normal" suffix="." text-case="title" variable="title"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", " prefix=" ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if match="none" variable="page">
+        <choose>
+          <if variable="DOI">
+            <text prefix="https://doi.org/" variable="DOI"/>
+          </if>
+          <else-if variable="URL">
+            <text variable="URL"/>
+            <choose>
+              <if match="none" variable="issued">
+                <date prefix=". Accessed: " suffix="." variable="accessed">
+                  <date-part name="month" suffix=" "/>
+                  <date-part name="day" suffix=", "/>
+                  <date-part name="year"/>
+                </date>
+              </if>
+            </choose>
+          </else-if>
+          <else-if match="any" variable="issued">
+            <text text-case="capitalize-first" variable="status"/>
+          </else-if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="year-suffix" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1" year-suffix-delimiter=",">
+    <sort>
+      <key variable="issued"/>
+      <key variable="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" " font-variant="small-caps">
+        <text font-variant="normal" macro="author-short"/>
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+        <text prefix=": " variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key macro="author-short"/>
+      <key variable="issued"/>
+    </sort>
+    <layout>
+      <text font-weight="bold" macro="author" prefix=" $author$ " suffix=". $/author$ "/>
+      <date font-weight="bold" prefix=" " suffix="." variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+          <text macro="editor-translator" prefix=" $editor-translator$  " suffix=" $/editor-translator$ "/>
+          <text macro="publisher" prefix=" $publisher$  " suffix=". $/publisher$ "/>
+          <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+        </if>
+        <else-if match="any" type="chapter">
+          <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <group prefix=" In: ">
+            <names variable="editor translator">
+              <name delimiter-precedes-last="always" font-variant="small-caps" initialize-with="." name-as-sort-order="all" sort-separator=" "/>
+              <label form="short" prefix=" (" suffix="),"/>
+            </names>
+            <text prefix=" $$ " suffix=" $/$ " variable="collection-title"/>
+            <text prefix=" $$  " suffix=":  $/$ " variable="container-title"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+          <text macro="publisher" prefix=" $publisher$ " suffix=". $/publisher$ "/>
+          <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+        </else-if>
+        <else-if match="any" type="paper-conference">
+          <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+          <group prefix=". " suffix=".">
+            <text prefix=" $$ " suffix=". $/$ " variable="collection-title"/>
+            <text font-style="italic" prefix=" $$  " suffix=":  $/$ " variable="container-title"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="page"/>
+          </group>
+          <text macro="publisher" prefix=" $publisher$ " suffix=",  $/publisher$ "/>
+          <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+        </else-if>
+        <else-if match="any" type="webpage">
+          <text font-variant="normal" macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+          <group prefix=" " suffix=". ">
+            <text prefix=" $$  " suffix=". $/$ " variable="collection-title"/>
+            <text prefix=" $$  " suffix=" $/$ " variable="container-title"/>
+          </group>
+          <text macro="publisher" prefix=" $publisher$ " suffix=". $/publisher$ "/>
+          <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+        </else-if>
+        <else>
+          <group suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+            <text macro="editor-translator" prefix=" $editor-translator$  " suffix=" $/editor-translator$ "/>
+          </group>
+          <group prefix=" " suffix=".">
+            <text font-style="italic" form="short" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <text font-weight="bold" prefix=" $$  " suffix=" $/$ " variable="volume"/>
+            <text prefix=" $$ : " suffix=" $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

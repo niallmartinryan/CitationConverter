@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Chemistry Education Research and Practice</title>
+    <title-short>CERP</title-short>
+    <id>http://www.zotero.org/styles/chemistry-education-research-and-practice</id>
+    <link href="http://www.zotero.org/styles/chemistry-education-research-and-practice" rel="self"/>
+    <link href="http://www.zotero.org/styles/environmental-microbiology" rel="template"/>
+    <link href="http://www.rsc.org/journals-books-databases/about-journals/chemistry-education-research-practice/#journal-specific-guidelines" rel="documentation"/>
+    <author>
+      <name>Patrick O'Brien</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="chemistry"/>
+    <issn>1756-1108</issn>
+    <eissn>1109-4028</eissn>
+    <updated>2017-07-24T22:37:55+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names delimiter="," variable="editor">
+      <name and="text" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" strip-periods="false" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" "/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with=". "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-givenname="true" disambiguate-add-names="true" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year-date"/>
+      <key macro="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="8" et-al-use-first="6" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <text prefix=" $citation-number$ " suffix=".  $citation-number$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=", $/author$ "/>
+      <date prefix=" (" suffix=")," variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group delimiter=" " prefix=" ">
+            <text macro="title" prefix=" $title$ " suffix=", $/title$ "/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <group delimiter=" " prefix=" " suffix=".">
+            <text prefix=" $$ " suffix=" $/$ " term="in"/>
+            <text macro="editor" prefix=" $editor$ " suffix=", $/editor$ "/>
+            <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <text prefix=" $collection-title$  " suffix=". $collection-title$ " variable="collection-title"/>
+          </group>
+          <group suffix=".">
+            <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+            <group prefix=", ">
+              <label form="short" suffix=" " variable="page"/>
+              <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <group delimiter=", " prefix=" " suffix=".">
+            <text font-style="italic" form="short" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <group>
+              <text font-weight="bold" prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+              <text prefix=" $issue$ (" suffix=") $issue$ " variable="issue"/>
+            </group>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

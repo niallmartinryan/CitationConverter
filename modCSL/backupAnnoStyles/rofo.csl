@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" demote-non-dropping-particle="sort-only" version="1.0">
+  <!-- Polyglot; journal publishes in English and German -->
+  <!-- This style was created with the Visual CSL Editor (http://test.steveridout.com/csl/visualEditor/) -->
+  <info>
+    <title>RöFo: Fortschritte auf dem Gebiet der Röntgenstrahlen und bildgebenden Verfahren</title>
+    <title-short>RöFo</title-short>
+    <id>http://www.zotero.org/styles/rofo</id>
+    <link href="http://www.zotero.org/styles/rofo" rel="self"/>
+    <link href="http://roefo.thieme.de/c/document_library/get_file?uuid=45dabb23-098a-4981-8a4a-0f1d74a7f2c7&amp;groupId=10157" rel="documentation"/>
+    <author>
+      <name>Philipp Weisser, M.D.</name>
+      <uri>http://www.zotero.org/phweisser</uri>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>1438-9029</issn>
+    <eissn>1438-9010</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" font-style="italic" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <group delimiter=": ">
+        <text form="long" variable="publisher-place"/>
+        <text form="long" variable="publisher"/>
+      </group>
+      <text macro="year-date"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter=", " prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="4" et-al-use-first="3" second-field-align="margin">
+    <layout>
+      <text prefix=" $$ " suffix="  $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=".  $/author$ "/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case motion_picture report song">
+          <group delimiter=", ">
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <text form="long" prefix=" $$ " suffix=".  $/$ " variable="title"/>
+          <text form="long" plural="false" prefix=" $$ " suffix=":  $/$ " term="in" text-case="capitalize-first"/>
+          <text macro="editor" prefix=" $editor$ " suffix=".  $/editor$ "/>
+          <text form="short" prefix=" $$ " suffix=".  $/$ " text-case="title" variable="container-title"/>
+          <text macro="edition" prefix=" $edition$ " suffix=",  $/edition$ "/>
+          <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          <group delimiter=" " prefix=": ">
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if type="patent">
+          <group delimiter=", ">
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="number"/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <group delimiter=", ">
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+          </group>
+        </else-if>
+        <else>
+          <group>
+            <text prefix=" $$ " suffix=".  $/$ " variable="title"/>
+            <text form="short" prefix=" $$ " suffix="  $/$ " text-case="title" variable="container-title"/>
+            <text macro="year-date" prefix=" $year-date$ " suffix=";  $/year-date$ "/>
+            <text prefix=" $$ " suffix=": $/$ " variable="volume"/>
+            <text form="short" prefix=" $$  " suffix=" $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

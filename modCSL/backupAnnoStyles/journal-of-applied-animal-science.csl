@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" demote-non-dropping-particle="sort-only" page-range-format="minimal" version="1.0">
+  <!-- Polyglot; journal publishes in English and Thai
+       https://github.com/citation-style-language/styles/commit/58bf05953a62688ded19599330a6e08c15603b3d#commitcomment-1546725 -->
+  <info>
+    <title>Journal of Applied Animal Science</title>
+    <id>http://www.zotero.org/styles/journal-of-applied-animal-science</id>
+    <link href="http://www.zotero.org/styles/journal-of-applied-animal-science" rel="self"/>
+    <link href="http://www.vs.mahidol.ac.th/jaas" rel="documentation"/>
+    <author>
+      <name>Dusit Laohasinnarong</name>
+      <email>vsdlh@mahidol.ac.th</email>
+      <uri>http://www.vs.mahidol.ac.th/dusit</uri>
+    </author>
+    <contributor>
+      <name>Michael Berkowitz</name>
+      <email>mberkowi@gmu.edu</email>
+    </contributor>
+    <contributor>
+      <name>Sean Takats</name>
+      <email>stakats@gmu.edu</email>
+    </contributor>
+    <contributor>
+      <name>Rintze Zelle</name>
+      <uri>http://twitter.com/rintzezelle</uri>
+    </contributor>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="medicine"/>
+    <category field="science"/>
+    <category field="zoology"/>
+    <issn>1906-2257</issn>
+    <summary>This Style Requirements for Manuscript Submitted to Journal of Applied Animal Science</summary>
+    <published>2011-11-11T11:11:11+00:00</published>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <!--Citation for Thai article-->
+  <locale xml:lang="th">
+    <terms>
+      <term name="and"> และ</term>
+      <term name="cited">อ้างถึง</term>
+      <term name="edition">
+      </term>
+      <term name="et-al"> และคณะ</term>
+      <term name="from"> จาก</term>
+      <term name="in"> ใน </term>
+      <term name="internet">อินเตอร์เน็ต</term>
+      <term name="retrieved"> เข้าถึง </term>
+      <term name="section">
+      </term>
+    </terms>
+  </locale>
+  <locale xml:lang="en">
+    <terms>
+      <term name="retrieved">available</term>
+      <term form="short" name="section">sect.</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <group delimiter=": ">
+      <choose>
+        <if match="any" type="chapter paper-conference">
+          <text term="in" text-case="capitalize-first"/>
+        </if>
+      </choose>
+      <names suffix="." variable="editor">
+        <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+        <label form="long" prefix=", "/>
+      </names>
+    </group>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter-precedes-last="never" form="short"/>
+      <substitute>
+        <names variable="editor"/>
+        <!--names variable="translator"/-->
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <group delimiter=": ">
+          <group delimiter=" ">
+            <text term="retrieved" text-case="capitalize-first"/>
+            <text term="from"/>
+          </group>
+          <text suffix="." variable="URL"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="accessed-date">
+    <choose>
+      <if variable="URL">
+        <group delimiter=" " prefix="[" suffix="]">
+          <text term="cited" text-case="lowercase"/>
+          <date variable="accessed">
+            <date-part name="year"/>
+            <date-part form="short" name="month" prefix=" " strip-periods="true"/>
+            <date-part name="day" prefix=" "/>
+          </date>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if match="any" type="article-journal article-magazine chapter paper-conference article-newspaper">
+        <group delimiter=" " suffix=".">
+          <text form="short" strip-periods="true" variable="container-title"/>
+          <choose>
+            <if variable="URL">
+              <text prefix="[" suffix="]" term="internet" text-case="capitalize-first"/>
+            </if>
+          </choose>
+        </group>
+        <text macro="edition" prefix=" "/>
+      </if>
+      <!--add event-name and event-place once they become available-->
+      <else-if match="any" type="bill legislation">
+        <group delimiter=", ">
+          <group delimiter=". ">
+            <text form="short" variable="container-title"/>
+            <group delimiter=" ">
+              <text form="short" term="section" text-case="capitalize-first"/>
+              <text variable="section"/>
+            </group>
+          </group>
+          <text variable="number"/>
+        </group>
+      </else-if>
+      <else>
+        <text form="short" suffix="." variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+    <choose>
+      <if match="none" type="article-journal article-magazine chapter paper-conference article-newspaper">
+        <choose>
+          <if variable="URL">
+            <text prefix=" [" suffix="]" term="internet" text-case="capitalize-first"/>
+          </if>
+        </choose>
+        <text macro="edition" prefix=". "/>
+      </if>
+    </choose>
+    <choose>
+      <if type="thesis">
+        <text prefix=" [" suffix="]" variable="genre"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": " suffix=";">
+      <choose>
+        <if type="thesis">
+          <text prefix="[" suffix="]" variable="publisher-place"/>
+        </if>
+        <else>
+          <text variable="publisher-place"/>
+        </else>
+      </choose>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <date variable="accessed">
+          <date-part name="year"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="date">
+    <choose>
+      <if type="article-journal">
+        <group delimiter=" " suffix=";">
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+          <text macro="accessed-date"/>
+        </group>
+      </if>
+      <else-if match="any" type="article-magazine article-newspaper">
+        <group delimiter=" " suffix=";">
+          <date delimiter=" " variable="issued">
+            <date-part name="year"/>
+            <date-part form="short" name="month" strip-periods="true"/>
+            <date-part name="day"/>
+          </date>
+          <text macro="accessed-date"/>
+        </group>
+      </else-if>
+      <else-if match="any" type="bill legislation">
+        <group delimiter=", ">
+          <date delimiter=" " variable="issued">
+            <date-part form="short" name="month" strip-periods="true"/>
+            <date-part name="day"/>
+          </date>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </else-if>
+      <else-if type="report">
+        <date delimiter=" " variable="issued">
+          <date-part name="year"/>
+          <date-part form="short" name="month" strip-periods="true"/>
+        </date>
+      </else-if>
+      <else>
+        <group suffix=".">
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+          <text macro="accessed-date" prefix=" "/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <choose>
+      <if match="any" type="article-journal article-magazine article-newspaper">
+        <text prefix=":" variable="page"/>
+      </if>
+      <else>
+        <text prefix=" p. " variable="page"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="journal-location">
+    <choose>
+      <if match="any" type="article-journal article-magazine">
+        <text variable="volume"/>
+        <text prefix="(" suffix=")" variable="issue"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="report-details">
+    <choose>
+      <if type="report">
+        <text prefix="Report No.: " variable="number"/>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year-date"/>
+      <key macro="author-short"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+      </group>
+      <group>
+        <label form="short" variable="locator"/>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="7" et-al-use-first="6" hanging-indent="true" line-spacing="2">
+    <sort>
+      <key macro="author"/>
+      <key macro="date"/>
+      <key macro="title"/>
+    </sort>
+    <layout>
+      <text macro="author" prefix=" $author$ " suffix=".  $/author$ "/>
+      <text macro="title" prefix=" $title$ " suffix=".  $/title$ "/>
+      <group delimiter=" " suffix=". ">
+        <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+        <text macro="container-title" prefix=" $container-title$ " suffix=" $/container-title$ "/>
+        <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+        <group>
+          <text macro="date" prefix=" $date$ " suffix=" $/date$ "/>
+          <text macro="journal-location" prefix=" $journal-location$ " suffix=" $/journal-location$ "/>
+          <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+        </group>
+      </group>
+      <text macro="report-details" prefix=" $report-details$ " suffix=".  $/report-details$ "/>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

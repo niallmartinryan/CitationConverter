@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0">
+  <info>
+    <title>Neuropsychopharmacology</title>
+    <id>http://www.zotero.org/styles/neuropsychopharmacology</id>
+    <link href="http://www.zotero.org/styles/neuropsychopharmacology" rel="self"/>
+    <link href="http://www.nature.com/npp/author_instructions.html" rel="documentation"/>
+    <author>
+      <name>Peter Hedlund</name>
+      <email>peter.hedlund@me.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="medicine"/>
+    <issn>0893-133X</issn>
+    <eissn>1470-634X</eissn>
+    <updated>2012-09-09T21:58:08+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="et-al">et al</term>
+    </terms>
+  </locale>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with=""/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <if type="book">
+            <text font-style="italic" form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="volume"/>
+      <else-if variable="DOI">
+        <text prefix="doi:" variable="DOI"/>
+      </else-if>
+      <else-if variable="URL">
+        <text term="at"/>
+        <text prefix=" &lt;" suffix="&gt;" variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="issuance">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <group prefix=" (" suffix=").">
+          <text suffix=": " variable="publisher"/>
+          <text suffix=", " variable="publisher-place"/>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <date prefix=" (" suffix=")." variable="issued">
+          <date-part name="year"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="issued-year">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="author-short"/>
+      <key macro="issued-year"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued-year"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="7" et-al-use-first="6" hanging-indent="true" line-spacing="2">
+    <sort>
+      <key macro="author"/>
+      <key macro="issuance"/>
+    </sort>
+    <layout suffix=".">
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text macro="issuance" prefix=" $issuance$ " suffix=" $/issuance$ "/>
+      <text macro="title" prefix=" $title$  " suffix=".  $/title$ "/>
+      <text font-style="italic" form="short" prefix=" $$ " strip-periods="true" suffix="  $/$ " variable="container-title"/>
+      <text font-weight="bold" prefix=" $$ " suffix=":  $/$ " variable="volume"/>
+      <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

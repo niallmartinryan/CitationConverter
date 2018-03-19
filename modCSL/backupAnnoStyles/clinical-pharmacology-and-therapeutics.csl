@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" version="1.0">
+  <info>
+    <title>Clinical Pharmacology &amp; Therapeutics</title>
+    <id>http://www.zotero.org/styles/clinical-pharmacology-and-therapeutics</id>
+    <link href="http://www.zotero.org/styles/clinical-pharmacology-and-therapeutics" rel="self"/>
+    <link href="http://www.zotero.org/styles/nature" rel="template"/>
+    <link href="http://www.nature.com/clpt/clptguidetoauthors.pdf" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <category field="medicine"/>
+    <issn>0009-9236</issn>
+    <eissn>1532-6535</eissn>
+    <updated>2014-06-03T22:14:43+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=", "/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="volume"/>
+      <else-if variable="DOI">
+        <text prefix="doi:" variable="DOI"/>
+      </else-if>
+      <else-if variable="URL">
+        <text term="at"/>
+        <text prefix=" &lt;" suffix="&gt;" variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="issuance">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song chapter paper-conference">
+        <group delimiter=", " prefix=" (" suffix=").">
+          <text variable="publisher"/>
+          <text variable="publisher-place"/>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <date prefix=" (" suffix=")." variable="issued">
+          <date-part name="year"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="editor">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <names prefix="(" suffix=") " variable="editor">
+          <name and="symbol" delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="all"/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="6" et-al-use-first="1" line-spacing="2" second-field-align="flush">
+    <layout>
+      <text prefix=" $$ " suffix=". $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text macro="title" prefix=" $title$  " suffix=".  $/title$ "/>
+      <group delimiter=" ">
+        <choose>
+          <if match="any" type="chapter paper-conference">
+            <text prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+          </if>
+        </choose>
+        <text font-style="italic" form="short" prefix=" $$ " suffix="  $/$ " variable="container-title"/>
+      </group>
+      <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+      <text font-weight="bold" prefix=" $$ " suffix=",  $/$ " variable="volume"/>
+      <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+      <text macro="issuance" prefix=" $issuance$ " suffix=" $/issuance$ "/>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

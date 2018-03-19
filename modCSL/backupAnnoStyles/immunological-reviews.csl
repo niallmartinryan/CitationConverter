@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0">
+  <info>
+    <title>Immunological Reviews</title>
+    <id>http://www.zotero.org/styles/immunological-reviews</id>
+    <link href="http://www.zotero.org/styles/immunological-reviews" rel="self"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1600-065X/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Lior Mayo</name>
+      <email>lior.mayo@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Charles Parnot</name>
+      <uri>http://twitter.com/cparnot</uri>
+      <email>charles.parnot@gmail.com</email>
+    </contributor>
+    <category citation-format="numeric"/>
+    <issn>0105-2896</issn>
+    <eissn>1600-065X</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter=", " prefix="(" suffix=")">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography>
+    <layout>
+      <choose>
+        <if type="book">
+          <names suffix=". " variable="author">
+            <name delimiter=", " et-al-min="7" et-al-use-first="1" form="long" initialize-with="" name-as-sort-order="all" sort-separator=", "/>
+          </names>
+          <text prefix=" $$ " suffix=".  $/$ " variable="title"/>
+          <text prefix=" $$ " suffix="ed.  $/$ " variable="edition"/>
+          <text prefix=" $$ " suffix=":  $/$ " variable="event-place"/>
+          <text prefix=" $$ " suffix=",  $/$ " variable="publisher"/>
+          <date suffix=". " variable="issued">
+            <date-part form="long" name="year"/>
+          </date>
+        </if>
+        <else-if type="article-journal">
+          <text prefix=" $$ " suffix=".           $/$ " variable="citation-number"/>
+          <names suffix=". " variable="author">
+            <name delimiter=", " et-al-min="7" et-al-use-first="3" form="long" initialize-with="" name-as-sort-order="all" sort-separator=", "/>
+          </names>
+          <text prefix=" $$ " suffix=".  $/$ " variable="title"/>
+          <text form="short" prefix=" $$ " suffix="  $/$ " variable="container-title"/>
+          <date suffix="; " variable="issued">
+            <date-part form="long" name="year"/>
+          </date>
+          <text font-weight="bold" prefix=" $$ " suffix=":  $/$ " variable="volume"/>
+          <text prefix=" $$ " suffix=".  $/$ " variable="page"/>
+        </else-if>
+        <else>
+          <names suffix=" " variable="author">
+            <name and="symbol" delimiter=", " form="long" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+          </names>
+          <date prefix="(" suffix="). " variable="issued">
+            <date-part form="long" name="year"/>
+          </date>
+          <text prefix=" $$ " suffix=".  $/$ " variable="title"/>
+          <group delimiter=", " suffix=". ">
+            <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <group>
+              <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+              <text prefix=" $$ (" suffix=")  $/$ " variable="issue"/>
+            </group>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

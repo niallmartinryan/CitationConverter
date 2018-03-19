@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" demote-non-dropping-particle="sort-only" version="1.0">
+  <!-- Psychological Medicine 2013 (Harvard-based author-date system)
+       NOTES
+
+- This style is based on the May 2011 version of the style guide.
+- This style has been tested with Zotero 2.1.7
+- Resource type is assumed to be electronic if both URL and Accessed date are filled out. Moreover, for journal articles there is an inbuilt override checkbox on 'Styles' tab in Preferences that only exports URL and accessed date if no page number. See http://forums.zotero.org/discussion/6268/electronic-journal-articles-and-item-type/
+
+KNOWN CHALLENGES
+
+- This file specifically has been formatted for journal articles and books - may not be accurate for other types of citations
+
+  -->
+  <info>
+    <title>Psychological Medicine</title>
+    <id>http://www.zotero.org/styles/psychological-medicine</id>
+    <link href="http://www.zotero.org/styles/psychological-medicine" rel="self"/>
+    <link href="http://www.zotero.org/styles/university-of-south-australia-harvard-2011" rel="template"/>
+    <link href="http://assets.cambridge.org/PSM/PSM_ifc.pdf" rel="documentation"/>
+    <author>
+      <name>Crystal Edler Schiller</name>
+      <email>crystal_schiller@med.unc.edu</email>
+    </author>
+    <author>
+      <name>Drew Schiller</name>
+      <email>drew@drewschiller.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="medicine"/>
+    <issn>0033-2917</issn>
+    <eissn>1469-8978</eissn>
+    <summary>Psychological Medicine - based on the May 2011 version of the style guide titled The Harvard Author–Date Referencing System</summary>
+    <updated>2015-06-17T19:37:40+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term form="short" name="editor">
+        <single>ed.</single>
+        <multiple>eds</multiple>
+      </term>
+      <term form="short" name="translator">
+        <single>trans.</single>
+        <multiple>trans</multiple>
+      </term>
+      <term form="short" name="edition">edn</term>
+      <term form="short" name="volume">vol.</term>
+    </terms>
+    <style-options punctuation-in-quote="false"/>
+  </locale>
+  <macro name="editor">
+    <names delimiter=", " variable="editor">
+      <label form="short" suffix=" " text-case="capitalize-first"/>
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with=""/>
+    </names>
+  </macro>
+  <macro name="translator">
+    <names delimiter=", " variable="translator">
+      <label form="short" suffix=" "/>
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with=""/>
+    </names>
+  </macro>
+  <macro name="noauthor_title">
+    <!-- This macro is only called when author is empty and the trick with substitute automatically suppresses repeating elements -->
+    <choose>
+      <if type="article-newspaper">
+        <names variable="author">
+          <name/>
+          <substitute>
+            <text font-style="italic" variable="container-title"/>
+          </substitute>
+        </names>
+      </if>
+      <else>
+        <names variable="author">
+          <name/>
+          <substitute>
+            <text macro="title"/>
+          </substitute>
+        </names>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <text macro="noauthor_title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <label form="short" suffix=" "/>
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" form="short" initialize-with="" name-as-sort-order="all" sort-separator=", "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <text macro="noauthor_title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="none" type="chapter paper-conference article-journal article-magazine article-newspaper broadcast interview manuscript map personal_communication speech thesis map song">
+        <!-- book, webpage, document -->
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text quotes="false" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": " prefix=". ">
+      <text variable="publisher"/>
+      <!-- The special treatment of event is due to the "place" field being shared (e.g. in a "conference paper") for both "event-place" and "publisher-place" in Zotero -->
+      <choose>
+        <if variable="container-title">
+          <text variable="publisher-place"/>
+        </if>
+        <else-if match="none" variable="event">
+          <text variable="publisher-place"/>
+        </else-if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="day-month-date">
+    <choose>
+      <!-- "post" and "post-weblog" are currently not mapped by Zotero 2.1, "podcast" could be worked around as a report -->
+      <if match="any" type="article-newspaper report post post-weblog">
+        <date variable="issued">
+          <date-part form="numeric" name="day" suffix=" "/>
+          <date-part form="long" name="month"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <label form="short" prefix=", " strip-periods="true" variable="page"/>
+    <text variable="page"/>
+  </macro>
+  <macro name="journal-pages">
+    <text variable="page"/>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" strip-periods="true" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="volume">
+    <group delimiter=" ">
+      <text form="short" strip-periods="true" term="volume"/>
+      <text variable="volume"/>
+    </group>
+  </macro>
+  <macro name="genre">
+    <choose>
+      <if type="thesis">
+        <text suffix=" thesis" text-case="capitalize-first" variable="genre"/>
+      </if>
+      <else>
+        <text variable="genre"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <choose>
+          <if variable="container-title">
+            <text term="in" text-case="capitalize-first"/>
+            <text font-style="italic" prefix=" " variable="container-title"/>
+          </if>
+          <else-if variable="event">
+            <text value="paper presented at "/>
+            <text variable="event"/>
+            <text prefix=", " variable="event-place"/>
+          </else-if>
+        </choose>
+      </if>
+      <else-if type="webpage">
+        <text variable="container-title"/>
+      </else-if>
+      <else>
+        <text font-style="italic" variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year-date"/>
+      <key macro="author-short"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <group delimiter=" ">
+          <text macro="author-short"/>
+          <text macro="year-date"/>
+        </group>
+        <group>
+          <label form="short" suffix=" " variable="locator"/>
+          <text variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="1" et-al-min="99" et-al-use-first="98" hanging-indent="false" line-spacing="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="year-date" sort="ascending"/>
+      <key macro="title"/>
+    </sort>
+    <layout>
+      <choose>
+        <if match="none" type="personal_communication">
+          <text font-weight="bold" macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+          <text macro="year-date" prefix=" $year-date$  (" suffix="). $/year-date$ "/>
+          <group delimiter=". " prefix=" ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <choose>
+              <if match="any" type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song">
+                <group delimiter=" ">
+                  <text macro="container" prefix=" $container$ " suffix=" $/container$ "/>
+                  <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+                  <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+                  <text macro="translator" prefix=" $translator$ " suffix=" $/translator$ "/>
+                  <text macro="genre" prefix=" $genre$ " suffix=" $/genre$ "/>
+                  <text macro="day-month-date" prefix=" $day-month-date$ " suffix=" $/day-month-date$ "/>
+                  <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+                  <text prefix=" $number$ no. " suffix=" $number$ " variable="number"/>
+                  <text prefix=" $collection-title$ " suffix=" $collection-title$ " variable="collection-title"/>
+                </group>
+              </if>
+              <else>
+                <group delimiter=" ">
+                  <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+                  <text macro="translator" prefix=" $translator$ " suffix=" $/translator$ "/>
+                  <text macro="genre" prefix=" $genre$ " suffix=" $/genre$ "/>
+                  <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+                  <text macro="container" prefix=" $container$ " suffix=" $/container$ "/>
+                  <text macro="day-month-date" prefix=" $day-month-date$ " suffix=" $/day-month-date$ "/>
+                  <text prefix=" $number$ " suffix=" $number$ " variable="number"/>
+                  <text font-weight="bold" prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+                </group>
+              </else>
+            </choose>
+          </group>
+          <group suffix=".">
+            <choose>
+              <if match="any" type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song">
+                <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+                <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+              </if>
+              <else>
+                <text macro="journal-pages" prefix=" $journal-pages$ , " suffix=" $/journal-pages$ "/>
+              </else>
+            </choose>
+          </group>
+        </if>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

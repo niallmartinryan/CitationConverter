@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>The Rockefeller University Press</title>
+    <id>http://www.zotero.org/styles/the-rockefeller-university-press</id>
+    <link href="http://www.zotero.org/styles/the-rockefeller-university-press" rel="self"/>
+    <link href="http://jgp.rupress.org/site/misc/ifora.xhtml" rel="documentation"/>
+    <author>
+      <name>Charlie Kim</name>
+      <email>cckim47@gmail.com</email>
+      <!-- Original credit to Rishi Parikh (rishi.parikh@med.einstein.yu.edu) for development of this style -->
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="medicine"/>
+    <summary>The Rockefeller University Press style</summary>
+    <updated>2012-10-16T12:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names delimiter=", " variable="editor">
+      <name and="text" delimiter=", " initialize-with="."/>
+      <label form="long" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with="." name-as-sort-order="first" sort-separator=", "/>
+      <label form="short" prefix=" " suffix=" "/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with="."/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", " suffix=".">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year-suffix" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="99" et-al-use-first="98" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout suffix=".">
+      <text macro="author" prefix=" $author$ " suffix=". $/author$ "/>
+      <date prefix=" " suffix="." variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song thesis">
+          <group delimiter=". " prefix=" ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <!-- based on the instructions for the Journal of Daire Science, the volume should also be included if present, see http://www.journalofdairyscience.org/webfiles/images/journals/jods/JDS_Instruct_for_Contributors_2012.pdf -->
+            <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text prefix=" $$ " suffix=" pp $/$ " variable="number-of-pages"/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group delimiter=". " prefix=" ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <group delimiter=" ">
+              <text font-style="italic" prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            </group>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=". " prefix=" ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text font-style="italic" form="short" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <group delimiter=":">
+              <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+            <text prefix=" $$ doi:" suffix=" $/$ " variable="DOI"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

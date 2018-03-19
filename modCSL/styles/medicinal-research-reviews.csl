@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Medicinal Research Reviews</title>
+    <id>http://www.zotero.org/styles/medicinal-research-reviews</id>
+    <link href="http://www.zotero.org/styles/medicinal-research-reviews" rel="self"/>
+    <link href="http://www.zotero.org/styles/sage-vancouver" rel="template"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1098-1128/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Patrick O'Brien, PhD</name>
+      <email>obrienpat86@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>0198-6325</issn>
+    <eissn>1098-1128</eissn>
+    <summary>Vancouver superscript style for SAGE modified to fit Medicinal Research Reviews guidelines.</summary>
+    <updated>2017-07-20T20:10:33+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names suffix=". " variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", " strip-periods="false" text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", " strip-periods="false" suffix="." text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="date">
+    <choose>
+      <if match="any" type="article-newspaper report">
+        <date form="text" variable="issued"/>
+      </if>
+      <else>
+        <date date-parts="year" form="text" variable="issued"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group>
+      <group delimiter=" ">
+        <text text-case="title" variable="genre"/>
+        <text variable="number"/>
+      </group>
+      <group delimiter=": ">
+        <choose>
+          <if match="none" type="thesis">
+            <text variable="publisher-place"/>
+          </if>
+        </choose>
+        <text suffix=";" variable="publisher"/>
+      </group>
+      <choose>
+        <if match="none" variable="URL">
+          <text macro="date" prefix=" " suffix="."/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if match="any" type="article-journal">
+        <choose>
+          <if match="none" variable="page volume">
+            <text prefix=" [" suffix="]" text-case="capitalize-first" value="epub ahead of print"/>
+          </if>
+        </choose>
+      </if>
+      <else-if match="any" type="webpage post-weblog">
+        <group delimiter=" " prefix=". ">
+          <text variable="URL"/>
+          <text macro="accessed-date"/>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="accessed-date">
+    <choose>
+      <if variable="URL">
+        <group delimiter=", " prefix="(" suffix=")">
+          <text macro="date"/>
+          <group delimiter=" ">
+            <text term="accessed"/>
+            <date form="text" variable="accessed"/>
+          </group>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if match="any" type="article-journal">
+        <text form="short" strip-periods="true" variable="container-title"/>
+      </if>
+      <else>
+        <text font-style="italic" variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography second-field-align="flush">
+    <layout suffix=".">
+      <text prefix=" $citation-number$ " suffix=".  $citation-number$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture patent report song thesis">
+          <group delimiter=". " prefix=". ">
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <group>
+              <text prefix=" $number-of-pages$ " suffix=" $number-of-pages$ " variable="number-of-pages"/>
+              <label form="short" prefix=" " variable="page"/>
+            </group>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group prefix=". ">
+            <group delimiter=". ">
+              <group delimiter=" ">
+                <text prefix=" $$ " suffix=": $/$ " term="in" text-case="capitalize-first"/>
+                <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+                <text font-style="normal" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+              </group>
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            </group>
+            <group delimiter=" " prefix=" ">
+              <label form="short" plural="never" strip-periods="true" variable="page"/>
+              <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+            </group>
+          </group>
+        </else-if>
+        <else-if match="any" type="article-newspaper article-magazine">
+          <group delimiter=", " prefix=". ">
+            <text macro="container-title" prefix=" $container-title$ " suffix=" $/container-title$ "/>
+            <text macro="date" prefix=" $date$ " suffix=" $/date$ "/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=";" prefix=". ">
+            <group delimiter=" ">
+              <text macro="container-title" prefix=" $container-title$ " suffix=" $/container-title$ "/>
+              <choose>
+                <if match="any" variable="page">
+                  <text macro="date" prefix=" $date$ " suffix=" $/date$ "/>
+                </if>
+              </choose>
+            </group>
+            <group>
+              <text prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+              <text prefix=" $issue$ (" suffix="): $issue$ " variable="issue"/>
+              <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

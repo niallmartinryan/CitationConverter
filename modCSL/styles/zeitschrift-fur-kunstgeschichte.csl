@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="note" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Zeitschrift für Kunstgeschichte</title>
+    <title-short>ZfK</title-short>
+    <id>http://www.zotero.org/styles/zeitschrift-fur-kunstgeschichte</id>
+    <link href="http://www.zotero.org/styles/zeitschrift-fur-kunstgeschichte" rel="self"/>
+    <link href="http://www.zotero.org/styles/kritische-ausgabe" rel="template"/>
+    <link href="http://www.uni-bielefeld.de/geschichte/abteilung/arbeitsbereiche/bildwissenschaft/zfk/documents/Sylesheet-(ger)-Zeitschrift-fur-Kunstgeschichte.pdf" rel="documentation"/>
+    <link href="https://github.com/citation-style-language/styles/pull/1861" rel="documentation"/>
+    <author>
+      <name>Philipp Zumstein</name>
+      <uri>https://github.com/zuphilip/</uri>
+    </author>
+    <contributor>
+      <name>Anna Simon</name>
+      <email>simonanna@gmx.net</email>
+    </contributor>
+    <category citation-format="note"/>
+    <category field="humanities"/>
+    <category field="history"/>
+    <issn>0044-2992</issn>
+    <summary>From the editors: "Die Herausgeber werden im Falle von Editionen, Lexika und Ausstellungskatalogen dem Titel nachgestellt [use encyclopedia articles with or without container-title for that]. Bei gewöhnlichen Sammelbänden werden die Herausgeber dem Titel vorangestellt [use book for that]." Multilingual style; the information for exhibition catalogues should be entered in the field collection-title; locators may use the word "here" or "hier" in front of the page refering to which must be entered individually (the style outputs the locator as it is entered w/o any label or additional text).</summary>
+    <updated>2016-02-03T17:41:02+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="de">
+    <terms>
+      <term name="note">wie Anm.</term>
+      <term name="et-al">et al.</term>
+      <term form="short" name="editor">Hg.</term>
+      <term form="verb-short" name="editortranslator">hg. und übers. von</term>
+      <term name="accessed">letzter Zugriff am</term>
+    </terms>
+  </locale>
+  <locale xml:lang="en">
+    <terms>
+      <term name="note">as note</term>
+      <term form="verb-short" name="editortranslator">ed. and trans. by</term>
+    </terms>
+  </locale>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter="/" delimiter-precedes-et-al="never" form="short"/>
+      <substitute>
+        <choose>
+          <if match="none" type="entry-encyclopedia">
+            <names variable="editor"/>
+          </if>
+        </choose>
+        <text form="short" variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author">
+    <names delimiter=", " variable="author">
+      <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <choose>
+          <if match="none" type="entry-encyclopedia">
+            <names variable="editor"/>
+          </if>
+        </choose>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-bibliography">
+    <names delimiter=", " variable="author">
+      <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never" name-as-sort-order="first"/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <choose>
+          <if match="none" type="entry-encyclopedia">
+            <names variable="editor"/>
+          </if>
+        </choose>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names delimiter=", " variable="editor translator">
+      <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="editor-encyclopedia">
+    <names delimiter=", " variable="editor translator">
+      <label form="verb-short" suffix=" "/>
+      <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+    </names>
+  </macro>
+  <macro name="volume">
+    <choose>
+      <if type="article-journal">
+        <text prefix=" " variable="volume"/>
+        <text prefix="/" variable="issue"/>
+      </if>
+      <else>
+        <choose>
+          <if variable="volume">
+            <group delimiter=" ">
+              <number form="long-ordinal" text-case="capitalize-first" variable="volume"/>
+              <text form="short" term="volume" text-case="capitalize-first"/>
+            </group>
+          </if>
+          <else>
+            <group>
+              <number form="numeric" variable="number-of-volumes"/>
+              <text form="short" plural="true" prefix=" " term="volume"/>
+            </group>
+          </else>
+        </choose>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-date">
+    <date date-parts="year" form="numeric" variable="issued"/>
+  </macro>
+  <macro name="collection-with-number">
+    <group delimiter=", " prefix="(" suffix=")">
+      <text variable="collection-title"/>
+      <text variable="collection-number"/>
+    </group>
+  </macro>
+  <macro name="translator">
+    <names delimiter=", " variable="editor translator">
+      <label form="verb-short"/>
+      <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never" prefix=" "/>
+    </names>
+  </macro>
+  <citation disambiguate-add-names="true" et-al-min="3" et-al-use-first="1">
+    <layout delimiter="; " suffix=".">
+      <choose>
+        <if position="ibid-with-locator">
+          <group delimiter=", ">
+            <text term="ibid"/>
+            <text prefix=" " variable="locator"/>
+          </group>
+        </if>
+        <else-if position="ibid">
+          <text term="ibid"/>
+        </else-if>
+        <else-if position="subsequent">
+          <group delimiter=", ">
+            <group delimiter=" ">
+              <text macro="author-short"/>
+              <text macro="year-date"/>
+              <group delimiter=" " prefix="(" suffix=")">
+                <text term="note"/>
+                <text variable="first-reference-note-number"/>
+              </group>
+            </group>
+            <text variable="locator"/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=", ">
+            <text macro="author"/>
+            <choose>
+              <if match="any" variable="container-title">
+                <text variable="title"/>
+                <group delimiter=" ">
+                  <text suffix=": " term="in"/>
+                  <choose>
+                    <if match="any" type="entry-encyclopedia">
+                      <group delimiter=", ">
+                        <group delimiter=" ">
+                          <text font-style="italic" variable="container-title"/>
+                          <text macro="collection-with-number"/>
+                          <text macro="volume"/>
+                        </group>
+                        <text macro="editor-encyclopedia"/>
+                      </group>
+                    </if>
+                    <else>
+                      <text macro="editor" suffix=","/>
+                      <text font-style="italic" variable="container-title"/>
+                      <text macro="collection-with-number"/>
+                      <text macro="volume"/>
+                    </else>
+                  </choose>
+                </group>
+              </if>
+              <else>
+                <choose>
+                  <if match="any" type="entry-encyclopedia">
+                    <group delimiter=" ">
+                      <text font-style="italic" variable="title"/>
+                      <text macro="collection-with-number"/>
+                    </group>
+                    <text macro="editor-encyclopedia"/>
+                  </if>
+                  <else-if match="any" variable="translator">
+                    <choose>
+                      <if match="none" variable="author">
+                        <names variable="editor">
+                          <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+                          <label form="short" prefix=" (" suffix=")"/>
+                        </names>
+                      </if>
+                    </choose>
+                    <group delimiter=" ">
+                      <text font-style="italic" suffix="," variable="title"/>
+                      <text macro="collection-with-number"/>
+                    </group>
+                  </else-if>
+                  <else>
+                    <choose>
+                      <if match="none" variable="author">
+                        <names variable="editor">
+                          <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+                          <label form="short" prefix=" (" suffix=")"/>
+                        </names>
+                      </if>
+                    </choose>
+                    <group delimiter=" ">
+                      <group delimiter=", ">
+                        <text font-style="italic" variable="title"/>
+                        <text macro="translator"/>
+                      </group>
+                      <text macro="collection-with-number"/>
+                    </group>
+                  </else>
+                </choose>
+              </else>
+            </choose>
+            <choose>
+              <if type="thesis">
+                <text prefix="Diss., " variable="publisher"/>
+              </if>
+            </choose>
+            <group delimiter=" ">
+              <text variable="publisher-place"/>
+              <group>
+                <text variable="edition" vertical-align="sup"/>
+                <text macro="year-date"/>
+              </group>
+            </group>
+            <text prefix=" " variable="page"/>
+            <text prefix=" " variable="locator"/>
+          </group>
+        </else>
+      </choose>
+      <choose>
+        <if match="any" variable="URL">
+          <group>
+            <text prefix=", " variable="URL"/>
+            <text prefix=" (" term="accessed"/>
+            <date delimiter="." prefix=" " suffix=")" variable="accessed">
+              <date-part name="day"/>
+              <date-part form="numeric" name="month"/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </if>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="3" et-al-use-first="1" hanging-indent="true" subsequent-author-substitute="———">
+    <sort>
+      <key macro="author-bibliography"/>
+      <key macro="year-date"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=", ">
+        <text macro="author-bibliography" prefix=" $author-bibliography$ " suffix=" $/author-bibliography$ "/>
+        <choose>
+          <if match="any" variable="container-title">
+            <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+            <group delimiter=" ">
+              <text prefix=" $$ " suffix=":  $/$ " term="in"/>
+              <choose>
+                <if match="any" type="entry-encyclopedia">
+                  <group delimiter=", ">
+                    <group delimiter=" ">
+                      <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+                      <text macro="collection-with-number" prefix=" $collection-with-number$ " suffix=" $/collection-with-number$ "/>
+                      <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+                    </group>
+                    <text macro="editor-encyclopedia" prefix=" $editor-encyclopedia$ " suffix=" $/editor-encyclopedia$ "/>
+                  </group>
+                </if>
+                <else>
+                  <text macro="editor" prefix=" $editor$ " suffix=", $/editor$ "/>
+                  <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+                  <text macro="collection-with-number" prefix=" $collection-with-number$ " suffix=" $/collection-with-number$ "/>
+                  <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+                </else>
+              </choose>
+            </group>
+          </if>
+          <else>
+            <choose>
+              <if match="any" type="entry-encyclopedia">
+                <group delimiter=" ">
+                  <text font-style="italic" prefix=" $title$ " suffix=" $title$ " variable="title"/>
+                  <text macro="collection-with-number" prefix=" $collection-with-number$ " suffix=" $/collection-with-number$ "/>
+                </group>
+                <text macro="editor-encyclopedia" prefix=" $editor-encyclopedia$ " suffix=" $/editor-encyclopedia$ "/>
+              </if>
+              <else>
+                <group delimiter=" ">
+                  <group delimiter=", ">
+                    <text font-style="italic" prefix=" $title$ " suffix=" $title$ " variable="title"/>
+                    <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+                  </group>
+                  <text macro="collection-with-number" prefix=" $collection-with-number$ " suffix=" $/collection-with-number$ "/>
+                </group>
+              </else>
+            </choose>
+          </else>
+        </choose>
+        <choose>
+          <if type="thesis">
+            <text prefix=" $publisher$ Diss., " suffix=" $publisher$ " variable="publisher"/>
+          </if>
+        </choose>
+        <group delimiter=" ">
+          <text prefix=" $publisher-place$ " suffix=" $publisher-place$ " variable="publisher-place"/>
+          <group>
+            <text prefix=" $edition$ " suffix=" $edition$ " variable="edition" vertical-align="sup"/>
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+          </group>
+        </group>
+        <text prefix=" $page$  " suffix=" $page$ " variable="page"/>
+      </group>
+      <choose>
+        <if match="any" variable="URL">
+          <group>
+            <text prefix=" $URL$ , " suffix=" $URL$ " variable="URL"/>
+            <text prefix=" $$  (" suffix=" $/$ " term="accessed"/>
+            <date delimiter="." prefix=" " suffix=")" variable="accessed">
+              <date-part name="day"/>
+              <date-part form="numeric" name="month"/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </if>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

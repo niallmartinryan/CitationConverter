@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" demote-non-dropping-particle="sort-only" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Quaderni degli Avogadro Colloquia</title>
+    <id>http://www.zotero.org/styles/quaderni-degli-avogadro-colloquia</id>
+    <link href="http://www.zotero.org/styles/quaderni-degli-avogadro-colloquia" rel="self"/>
+    <link href="http://www.soc.chim.it/it/avogadro_colloquia" rel="documentation"/>
+    <author>
+      <name>Daniel Simon</name>
+      <email>daniel.simon@liu.se</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="science"/>
+    <category field="chemistry"/>
+    <summary>Proceedings of the Italian Chemical Society's Avogadro Colloquia</summary>
+    <updated>2013-01-18T11:40:11+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term form="short" name="editor">
+        <single>ed.</single>
+        <multiple>eds</multiple>
+      </term>
+    </terms>
+  </locale>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="normal" variable="title"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="1" initialize-with="."/>
+      <label form="short" prefix=", "/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="issuance">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song chapter paper-conference">
+        <group delimiter=", ">
+          <text form="long" variable="publisher"/>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="editor">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <names prefix="(" suffix=")" variable="editor">
+          <name and="symbol" delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="all"/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]" vertical-align="baseline">
+      <text variable="citation-number" vertical-align="baseline"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="6" et-al-use-first="1" second-field-align="flush">
+    <layout>
+      <text prefix=" $citation-number$ [" suffix="] $citation-number$ " variable="citation-number"/>
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=", $/author$ "/>
+        <text macro="title" prefix=" $title$ " suffix=". $/title$ "/>
+        <choose>
+          <if match="any" type="chapter paper-conference">
+            <text form="long" plural="false" prefix=" $$ " suffix=" $/$ " term="in"/>
+          </if>
+        </choose>
+        <text font-style="italic" prefix=" $container-title$ " suffix=", $container-title$ " variable="container-title"/>
+        <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+        <group delimiter="," font-weight="normal" suffix=".">
+          <text macro="issuance" prefix=" $issuance$ " suffix=" $/issuance$ "/>
+          <text font-weight="bold" prefix=" $volume$  " suffix=" $volume$ " variable="volume"/>
+          <text prefix=" $page-first$  " suffix=". $page-first$ " variable="page-first"/>
+        </group>
+      </group>
+    </layout>
+  </bibliography>
+</style>

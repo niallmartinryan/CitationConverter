@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>International Pig Veterinary Society Congress Proceedings</title>
+    <title-short>IPVS</title-short>
+    <id>http://www.zotero.org/styles/international-pig-veterinary-society-congress-proceedings</id>
+    <link href="http://www.zotero.org/styles/international-pig-veterinary-society-congress-proceedings" rel="self"/>
+    <link href="http://vw.theipvs.com/" rel="documentation"/>
+    <author>
+      <name>Vincent Auvigne</name>
+      <email>vincent.auvigne@ekipaj.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <summary>International Pig Veterinary Society Proceeding Style</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+    </names>
+  </macro>
+  <macro name="issuance">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <group prefix=" " suffix=".">
+          <text suffix=", " variable="publisher"/>
+          <text suffix=", " variable="publisher-place"/>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+          <text prefix=", " suffix=" p." variable="number-of-pages"/>
+        </group>
+      </if>
+      <else>
+        <date prefix=" (" suffix=")." variable="issued">
+          <date-part name="year"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="(" suffix=")" vertical-align="baseline">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="2" et-al-use-first="1" second-field-align="flush">
+    <layout>
+      <text prefix=" $citation-number$ " suffix=". $citation-number$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text macro="issuance" prefix=" $issuance$ " suffix=" $/issuance$ "/>
+      <text font-style="normal" form="short" prefix=" $container-title$  " suffix=",  $container-title$ " variable="container-title"/>
+      <text font-weight="normal" prefix=" $volume$ " suffix=",  $volume$ " variable="volume"/>
+      <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+    </layout>
+  </bibliography>
+</style>

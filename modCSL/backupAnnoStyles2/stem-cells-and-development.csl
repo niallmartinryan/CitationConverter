@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="expanded" version="1.0">
+  <info>
+    <title>Stem Cells and Development</title>
+    <id>http://www.zotero.org/styles/stem-cells-and-development</id>
+    <link href="http://www.zotero.org/styles/stem-cells-and-development" rel="self"/>
+    <link href="http://www.zotero.org/styles/cell" rel="template"/>
+    <link href="http://www.zotero.org/styles/nature" rel="template"/>
+    <link href="http://www.liebertpub.com/manuscript/scd" rel="documentation"/>
+    <author>
+      <name>Charles Parnot</name>
+      <uri>http://twitter.com/cparnot</uri>
+      <email>charles.parnot@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>1547-3287</issn>
+    <eissn>1557-8534</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter-precedes-last="never" initialize-with="" name-as-sort-order="first" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": " prefix="(" suffix=")">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" delimiter-precedes-last="never" initialize-with="" name-as-sort-order="first"/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="51" et-al-use-first="50" line-spacing="2">
+    <layout suffix=".">
+      <text prefix=" $citation-number$ " suffix=".  $citation-number$ " variable="citation-number"/>
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="issued" prefix=" $issued$ (" suffix="). $/issued$ "/>
+        <choose>
+          <if match="any" type="article article-magazine article-newspaper article-journal review">
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text form="short" prefix=" $container-title$ " strip-periods="true" suffix=" $container-title$ " text-case="title" variable="container-title"/>
+            <text prefix=" $volume$ " suffix=": $volume$ " variable="volume"/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text prefix=" $container-title$ In " suffix=", $container-title$ " text-case="title" variable="container-title"/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=", $/publisher$ "/>
+            <label form="short" variable="page"/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </else-if>
+          <else-if type="thesis">
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text prefix=" $genre$ " suffix=". $genre$ " variable="genre"/>
+            <text prefix=" $publisher$ " suffix=" $publisher$ " variable="publisher"/>
+          </else-if>
+          <else>
+            <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

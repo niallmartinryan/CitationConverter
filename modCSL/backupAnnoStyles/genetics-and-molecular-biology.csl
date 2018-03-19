@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="never" version="1.0">
+  <info>
+    <title>Genetics and Molecular Biology</title>
+    <id>http://www.zotero.org/styles/genetics-and-molecular-biology</id>
+    <link href="http://www.zotero.org/styles/genetics-and-molecular-biology" rel="self"/>
+    <link href="http://www.zotero.org/styles/springer-basic-author-date" rel="template"/>
+    <link href="http://www.scielo.br/revistas/gmb/iinstruc.htm" rel="documentation"/>
+    <author>
+      <name>Mario José</name>
+      <email>gnumario [at-mark] gmail [dot-mark] com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>1415-4757</issn>
+    <eissn>1678-4685</eissn>
+    <summary>Genetics and Molecular Biology (formerly named Revista Brasileira de Genética/Brazilian Journal of Genetics - ISSN 0100-8455) is published by the Sociedade Brasileira de Genética (Brazilian Society of Genetics).</summary>
+    <updated>2014-08-20T12:10:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" form="short"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <text suffix=": " term="in" text-case="capitalize-first"/>
+    <names variable="editor">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" strip-periods="true" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="book">
+        <group delimiter=", " suffix=". ">
+          <text variable="title"/>
+          <text macro="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix=". " variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-parenth">
+    <date prefix="(" suffix=")" variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <citation disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key variable="issued"/>
+      <key macro="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="author-short"/>
+        <text macro="year"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="10">
+    <sort>
+      <key macro="author"/>
+      <key sort="ascending" variable="author"/>
+    </sort>
+    <layout>
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="year-parenth" prefix=" $year-parenth$ " suffix=" $/year-parenth$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      </group>
+      <choose>
+        <if variable="page">
+          <choose>
+            <!-- Book chapter -->
+            <if match="any" type="chapter paper-conference">
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+              <group delimiter=", " prefix=" " suffix=". ">
+                <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+              </group>
+              <text prefix=" $$ " suffix=",  $/$ " variable="publisher"/>
+              <text prefix=" $$ " suffix=",  $/$ " variable="publisher-place"/>
+              <group delimiter=" ">
+                <label form="short" strip-periods="true" variable="page"/>
+                <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+              </group>
+            </if>
+            <else>
+              <!-- Journal article -->
+              <group>
+                <text form="short" prefix=" $$ " strip-periods="true" suffix="  $/$ " variable="container-title"/>
+                <text prefix=" $$ " suffix=": $/$ " variable="volume"/>
+                <text prefix=" $$ " suffix=". $/$ " variable="page"/>
+                <text prefix=" $$  doi: " suffix=" $/$ " variable="DOI"/>
+              </group>
+            </else>
+          </choose>
+        </if>
+        <else-if variable="DOI">
+          <!-- Article by DOI -->
+          <group delimiter=". ">
+            <text form="short" prefix=" $$ " strip-periods="true" suffix=" $/$ " variable="container-title"/>
+            <text prefix=" $$ doi: " suffix=" $/$ " variable="DOI"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <!-- Book -->
+          <group delimiter=", ">
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher-place"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="webpage post-weblog">
+          <!-- Online document -->
+          <group>
+            <text form="short" prefix=" $$ In: " suffix=".  $/$ " variable="container-title"/>
+            <text prefix=" $$ " suffix=".  $/$ " variable="URL"/>
+            <date variable="accessed">
+              <date-part name="day" prefix="Accessed " suffix=" "/>
+              <date-part form="short" name="month" strip-periods="true" suffix=" "/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <!-- Dissertation -->
+          <group delimiter=", ">
+            <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+          </group>
+        </else-if>
+        <else>
+          <!-- None of the provided formats need to add manually (some data provided) -->
+          <group>
+            <text form="short" prefix=" $$ " suffix="  $/$ " variable="container-title"/>
+            <text prefix=" $$ " suffix=": $/$ " variable="volume"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

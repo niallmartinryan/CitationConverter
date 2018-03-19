@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="eu" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Chicago Manual of Style 16th edition (author-date, Basque)</title>
+    <id>http://www.zotero.org/styles/chicago-author-date-basque</id>
+    <link href="http://www.zotero.org/styles/chicago-author-date-basque" rel="self"/>
+    <link href="http://www.zotero.org/styles/chicago-author-date" rel="template"/>
+    <link href="https://forums.zotero.org/discussion/21077/modificated-style-kukutza-for-basque/" rel="documentation"/>
+    <author>
+      <name>amaraun</name>
+      <email>amaraun@gmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="generic-base"/>
+    <summary>Modification for Basque language of the Chicago Manual</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <style-options punctuation-in-quote="false"/>
+    <date form="text">
+      <date-part name="year" suffix="(e)ko "/>
+      <date-part name="month" suffix="aren "/>
+      <date-part name="day" suffix="a"/>
+    </date>
+    <date form="numeric">
+      <date-part name="year" suffix="/"/>
+      <date-part form="numeric-leading-zeros" name="month" suffix="/"/>
+      <date-part form="numeric-leading-zeros" name="day"/>
+    </date>
+    <terms>
+      <term name="accessed">eskuratua</term>
+      <term name="and">eta</term>
+      <term name="and others">eta beste</term>
+      <term name="anonymous">ezezaguna</term>
+      <term form="short" name="anonymous">ezez.</term>
+      <term name="at">-(e)n</term>
+      <term name="by">-(e)k egina</term>
+      <term name="circa">inguru</term>
+      <term form="short" name="circa">ing.</term>
+      <term name="cited">aipatua</term>
+      <term name="edition">
+        <single>argitalpena</single>
+        <multiple>argitalpenak</multiple>
+      </term>
+      <term form="short" name="edition">arg.</term>
+      <term name="et-al">et al.</term>
+      <term name="forthcoming">bidean</term>
+      <term name="from">-(e)tik</term>
+      <term name="ibid">ibíd.</term>
+      <term name="in">in</term>
+      <term name="in press">moldiztegian</term>
+      <term name="internet">internet</term>
+      <term name="interview">elkarrizketa</term>
+      <term name="letter">gutuna</term>
+      <term name="no date">datarik gabe</term>
+      <term form="short" name="no date">d. g.</term>
+      <term name="online">sarean</term>
+      <term name="presented at">-(e)n aurkeztua</term>
+      <term name="reference">
+        <single>aipamena</single>
+        <multiple>aipamenak</multiple>
+      </term>
+      <term form="short" name="reference">
+        <single>aip.</single>
+        <multiple>aip.</multiple>
+      </term>
+      <term name="retrieved">berreskuratua</term>
+      <!-- ANNO DOMINI; BEFORE CHRIST -->
+      <term name="ad">K.a.</term>
+      <term name="bc">K.o.</term>
+      <!-- QUOTES -->
+      <!-- Source: http://en.wikipedia.org/wiki/Non-English_usage_of_quotation_marks -->
+      <term name="open-quote">«</term>
+      <term name="close-quote">»</term>
+      <term name="open-inner-quote">“</term>
+      <term name="close-inner-quote">”</term>
+      <!-- ORDINALS -->
+      <term name="ordinal-01">.</term>
+      <term name="ordinal-02">.</term>
+      <term name="ordinal-03">.</term>
+      <term name="ordinal-04">.</term>
+      <!-- LONG ORDINALS -->
+      <term name="long-ordinal-01">lehengo</term>
+      <term name="long-ordinal-02">bigarren</term>
+      <term name="long-ordinal-03">hirugarren</term>
+      <term name="long-ordinal-04">laugarren</term>
+      <term name="long-ordinal-05">bosgarren</term>
+      <term name="long-ordinal-06">seigarren</term>
+      <term name="long-ordinal-07">zazpigarren</term>
+      <term name="long-ordinal-08">zortzigarren</term>
+      <term name="long-ordinal-09">bederatzigarren</term>
+      <term name="long-ordinal-10">hamargarren</term>
+      <!-- CATEGORIES -->
+      <term name="anthropology">antropologia</term>
+      <term name="astronomy">astronomia</term>
+      <term name="biology">biologia</term>
+      <term name="botany">botanika</term>
+      <term name="chemistry">kimika</term>
+      <term name="engineering">ingenieritza</term>
+      <term name="generic-base">oinarri orokorra</term>
+      <term name="geography">geografia</term>
+      <term name="geology">geologia</term>
+      <term name="history">historia</term>
+      <term name="humanities">giza-gaiak</term>
+      <term name="linguistics">hizkuntzalaritza</term>
+      <term name="literature">literatura</term>
+      <term name="math">matematika</term>
+      <term name="medicine">medikuntza</term>
+      <term name="philosophy">filosofia</term>
+      <term name="physics">fiska</term>
+      <term name="psychology">psicologia</term>
+      <term name="sociology">soziologia</term>
+      <term name="science">zientziak</term>
+      <term name="political_science">politika zientziak</term>
+      <term name="social_science">gizarte zientziak</term>
+      <term name="theology">teologia</term>
+      <term name="zoology">zoologia</term>
+      <!-- LONG LOCATOR FORMS -->
+      <term name="book">
+        <single>liburua</single>
+        <multiple>liburuak</multiple>
+      </term>
+      <term name="chapter">
+        <single>kapitulua</single>
+        <multiple>kapituluak</multiple>
+      </term>
+      <term name="column">
+        <single>zutabea</single>
+        <multiple>zutabeak</multiple>
+      </term>
+      <term name="figure">
+        <single>irudia</single>
+        <multiple>irudiak</multiple>
+      </term>
+      <term name="folio">
+        <single>orria</single>
+        <multiple>orriak</multiple>
+      </term>
+      <term name="issue">
+        <single>zenbakia</single>
+        <multiple>zenbakiak</multiple>
+      </term>
+      <term name="line">
+        <single>lerroa</single>
+        <multiple>lerroak</multiple>
+      </term>
+      <term name="note">
+        <single>oharra</single>
+        <multiple>oharrak</multiple>
+      </term>
+      <term name="opus">
+        <single>obra</single>
+        <multiple>obrak</multiple>
+      </term>
+      <term name="page">
+        <single>orrialdea</single>
+        <multiple>orrialdeak</multiple>
+      </term>
+      <term name="paragraph">
+        <single>paragrafoa</single>
+        <multiple>paragrafoak</multiple>
+      </term>
+      <term name="part">
+        <single>zatia</single>
+        <multiple>zatiak</multiple>
+      </term>
+      <term name="section">
+        <single>atala</single>
+        <multiple>atalak</multiple>
+      </term>
+      <term name="sub verbo">
+        <single>sub voce</single>
+        <multiple>sub vocem</multiple>
+      </term>
+      <term name="verse">
+        <single>bertsoa</single>
+        <multiple>bertsoak</multiple>
+      </term>
+      <term name="volume">
+        <single>luburikia</single>
+        <multiple>luburukiak</multiple>
+      </term>
+      <!-- SHORT LOCATOR FORMS -->
+      <term form="short" name="book">lib.</term>
+      <term form="short" name="chapter">kap.</term>
+      <term form="short" name="column">zut.</term>
+      <term form="short" name="figure">iru.</term>
+      <term form="short" name="folio">or.</term>
+      <term form="short" name="issue">zenb.</term>
+      <term form="short" name="opus">op.</term>
+      <term form="short" name="page">
+        <single>or.</single>
+        <multiple>or.</multiple>
+      </term>
+      <term form="short" name="paragraph">par.</term>
+      <term form="short" name="part">zt.</term>
+      <term form="short" name="section">atal.</term>
+      <term form="short" name="sub verbo">
+        <single>s.v.</single>
+        <multiple>s.v.</multiple>
+      </term>
+      <term form="short" name="verse">
+        <single>b.</single>
+        <multiple>bb.</multiple>
+      </term>
+      <term form="short" name="volume">
+        <single>libk.</single>
+        <multiple>libk.</multiple>
+      </term>
+      <!-- SYMBOL LOCATOR FORMS -->
+      <term form="symbol" name="paragraph">
+        <single>¶</single>
+        <multiple>¶¶</multiple>
+      </term>
+      <term form="symbol" name="section">
+        <single>§</single>
+        <multiple>§</multiple>
+      </term>
+      <!-- LONG ROLE FORMS -->
+      <term name="author">
+        <single/>
+        <multiple/>
+      </term>
+      <term name="editor">
+        <single>argitaratzailea</single>
+        <multiple>argitaratzaileak</multiple>
+      </term>
+      <term name="editorial-director">
+        <single>argitaratzailea</single>
+        <multiple>argitaratzaileak</multiple>
+      </term>
+      <term name="translator">
+        <single>itzultzailea</single>
+        <multiple>itzultzaileak</multiple>
+      </term>
+      <term name="editortranslator">
+        <single>argitaratzaile eta itzultzailea</single>
+        <multiple>argitaratzaile eta itzultzaileak</multiple>
+      </term>
+      <!-- SHORT ROLE FORMS -->
+      <term form="short" name="author">
+        <single/>
+        <multiple/>
+      </term>
+      <term form="short" name="editor">
+        <single>arg.</single>
+        <multiple>arg.</multiple>
+      </term>
+      <term form="short" name="editorial-director">
+        <single>arg.</single>
+        <multiple>arg.</multiple>
+      </term>
+      <term form="short" name="translator">
+        <single>itzul.</single>
+        <multiple>itzul.</multiple>
+      </term>
+      <term form="short" name="editortranslator">
+        <single>arg. eta itzul.</single>
+        <multiple>arg. eta itzul.</multiple>
+      </term>
+      <!-- VERB ROLE FORMS -->
+      <term form="verb" name="editor">-(e)k argitaratua</term>
+      <term form="verb" name="editorial-director">-(e)k argitaratua</term>
+      <term form="verb" name="translator">-(e)k itzulia</term>
+      <term form="verb" name="editortranslator">-(e)k argitaratu eta itzulia</term>
+      <term form="verb" name="recipient">-(r)entzat</term>
+      <term form="verb" name="interviewer">-(e)k elkarrizketatua</term>
+      <!-- SHORT VERB ROLE FORMS -->
+      <term form="verb-short" name="container-author"/>
+      <term form="verb-short" name="editor">arg.</term>
+      <term form="verb-short" name="editorial-director">arg.</term>
+      <term form="verb-short" name="translator">itzul.</term>
+      <term form="verb-short" name="editortranslator">-(e)k arg. eta itzul.</term>
+      <!-- LONG MONTH FORMS -->
+      <term name="month-01">urtarrilak</term>
+      <term name="month-02">otsailak</term>
+      <term name="month-03">martxoak</term>
+      <term name="month-04">apirilak</term>
+      <term name="month-05">maiatzak</term>
+      <term name="month-06">ekainak</term>
+      <term name="month-07">uztailak</term>
+      <term name="month-08">abuztuak</term>
+      <term name="month-09">irailak</term>
+      <term name="month-10">urriak</term>
+      <term name="month-11">azaroak</term>
+      <term name="month-12">abenduak</term>
+      <!-- SHORT MONTH FORMS -->
+      <term form="short" name="month-01">urt.</term>
+      <term form="short" name="month-02">ots.</term>
+      <term form="short" name="month-03">martx.</term>
+      <term form="short" name="month-04">apr.</term>
+      <term form="short" name="month-05">mai.</term>
+      <term form="short" name="month-06">eka.</term>
+      <term form="short" name="month-07">uzt.</term>
+      <term form="short" name="month-08">abz.</term>
+      <term form="short" name="month-09">ira.</term>
+      <term form="short" name="month-10">urr.</term>
+      <term form="short" name="month-11">aza.</term>
+      <term form="short" name="month-12">abe.</term>
+      <!-- SEASONS -->
+      <term name="season-01">udaberria</term>
+      <term name="season-02">uda</term>
+      <term name="season-03">udazkena</term>
+      <term name="season-04">negua</term>
+    </terms>
+  </locale>
+  <macro name="secondary-contributors">
+    <choose>
+      <if match="none" type="chapter paper-conference">
+        <group delimiter=". ">
+          <choose>
+            <if variable="author">
+              <names variable="editor">
+                <name and="symbol" delimiter="; " name-as-sort-order="all"/>
+                <label form="verb-short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+              </names>
+            </if>
+          </choose>
+          <choose>
+            <if match="any" variable="author editor">
+              <names variable="translator">
+                <name and="symbol" delimiter="; " name-as-sort-order="all"/>
+                <label form="verb-short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+              </names>
+            </if>
+          </choose>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="container-prefix">
+    <text term="in"/>
+  </macro>
+  <macro name="container-contributors">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text macro="container-prefix" prefix=" " suffix=" "/>
+      </if>
+    </choose>
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <group delimiter="; ">
+          <choose>
+            <if variable="author">
+              <choose>
+                <if variable="container-author">
+                  <group>
+                    <names variable="container-author">
+                      <name delimiter="; " delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" name-as-sort-order="all"/>
+                    </names>
+                  </group>
+                </if>
+              </choose>
+              <names variable="editor">
+                <name and="symbol" delimiter="; " delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" name-as-sort-order="all"/>
+                <label form="verb-short" prefix=" (" suffix=")" text-case="lowercase"/>
+              </names>
+            </if>
+          </choose>
+          <choose>
+            <if match="any" variable="author editor">
+              <names variable="translator">
+                <name and="symbol" delimiter="; " delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" name-as-sort-order="all"/>
+                <label form="verb-short" prefix=" (" suffix=")" text-case="lowercase"/>
+              </names>
+            </if>
+          </choose>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="anon">
+    <text form="short" term="anonymous" text-case="capitalize-first"/>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="symbol" delimiter="; " delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="translator">
+    <names variable="translator">
+      <name and="symbol" delimiter="; " delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" name-as-sort-order="all" sort-separator=", "/>
+      <label form="verb-short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="recipient">
+    <choose>
+      <if type="personal_communication">
+        <choose>
+          <if variable="genre">
+            <text text-case="capitalize-first" variable="genre"/>
+          </if>
+          <else>
+            <text term="letter" text-case="capitalize-first"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+    <names delimiter=", " variable="recipient">
+      <label form="verb" prefix=" " suffix=" " text-case="lowercase"/>
+      <name and="symbol" delimiter="; "/>
+    </names>
+  </macro>
+  <macro name="contributors">
+    <names variable="author">
+      <name and="symbol" delimiter="; " delimiter-precedes-last="never" name-as-sort-order="all" sort-separator=", "/>
+      <label form="verb-short" prefix=", " text-case="lowercase"/>
+      <substitute>
+        <text macro="editor"/>
+        <text macro="translator"/>
+        <text macro="anon"/>
+      </substitute>
+    </names>
+    <text macro="recipient"/>
+  </macro>
+  <macro name="contributors-short">
+    <names variable="author">
+      <name and="symbol" delimiter="; " form="short" initialize-with=". "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="anon"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="interviewer">
+    <names delimiter=", " variable="interviewer">
+      <label form="verb" prefix=" " suffix=" " text-case="capitalize-first"/>
+      <name and="symbol" delimiter="; "/>
+    </names>
+  </macro>
+  <macro name="archive">
+    <group delimiter=". ">
+      <text text-case="capitalize-first" variable="archive_location"/>
+      <text variable="archive"/>
+      <text variable="archive-place"/>
+    </group>
+  </macro>
+  <macro name="access">
+    <group delimiter=". ">
+      <choose>
+        <if match="any" type="graphic report">
+          <text macro="archive"/>
+        </if>
+        <else-if match="none" type="article-magazine article-newspaper bill book chapter graphic legal_case legislation motion_picture paper-conference report song thesis">
+          <text macro="archive"/>
+        </else-if>
+      </choose>
+      <text prefix="doi:" variable="DOI"/>
+      <choose>
+        <if match="none" type="legal_case">
+          <text variable="URL"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="none" variable="title">
+        <choose>
+          <if match="none" type="personal_communication">
+            <text text-case="capitalize-first" variable="genre"/>
+          </if>
+        </choose>
+      </if>
+      <else-if match="any" type="bill book graphic legal_case legislation motion_picture song">
+        <text font-style="italic" variable="title"/>
+      </else-if>
+      <else>
+        <text quotes="true" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if match="any" type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song">
+        <choose>
+          <if is-numeric="edition">
+            <group delimiter=" ">
+              <number form="ordinal" variable="edition"/>
+              <text form="short" term="edition"/>
+            </group>
+          </if>
+          <else>
+            <text suffix="." variable="edition"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if type="article-journal">
+        <text prefix=" " variable="volume"/>
+        <text prefix=" (" suffix=")" variable="issue"/>
+      </if>
+      <else-if type="legal_case">
+        <text prefix=", " variable="volume"/>
+        <text prefix=" " variable="container-title"/>
+        <text prefix=" " variable="page"/>
+      </else-if>
+      <else-if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <group delimiter=". " prefix=". ">
+          <group>
+            <text form="short" suffix=" " term="volume" text-case="capitalize-first"/>
+            <number form="numeric" variable="volume"/>
+          </group>
+          <group>
+            <number form="numeric" variable="number-of-volumes"/>
+            <text form="short" plural="true" prefix=" " term="volume"/>
+          </group>
+        </group>
+      </else-if>
+      <else-if match="any" type="chapter paper-conference">
+        <choose>
+          <if match="none" variable="page">
+            <group prefix=". ">
+              <text form="short" suffix=" " term="volume" text-case="capitalize-first"/>
+              <number form="numeric" variable="volume"/>
+            </group>
+          </if>
+        </choose>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="locators-chapter">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <choose>
+          <if variable="page">
+            <group prefix=", ">
+              <text suffix=":" variable="volume"/>
+              <text variable="page"/>
+            </group>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="locators-article">
+    <choose>
+      <if type="article-newspaper">
+        <group delimiter=", " prefix=", ">
+          <group delimiter=" ">
+            <text variable="edition"/>
+            <text term="edition"/>
+          </group>
+          <group>
+            <text form="short" suffix=" " term="section"/>
+            <text variable="section"/>
+          </group>
+        </group>
+      </if>
+      <else-if type="article-journal">
+        <text prefix=": " variable="page"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="point-locators">
+    <choose>
+      <if variable="locator">
+        <choose>
+          <if locator="page" match="none">
+            <choose>
+              <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+                <choose>
+                  <if variable="volume">
+                    <group>
+                      <text form="short" suffix=" " term="volume" text-case="lowercase"/>
+                      <number form="numeric" variable="volume"/>
+                      <label form="short" prefix=", " suffix=" " variable="locator"/>
+                    </group>
+                  </if>
+                  <else>
+                    <label form="short" suffix=" " variable="locator"/>
+                  </else>
+                </choose>
+              </if>
+            </choose>
+          </if>
+          <else-if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+            <number form="numeric" suffix=":" variable="volume"/>
+          </else-if>
+        </choose>
+        <text variable="locator"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if match="none" type="legal_case">
+        <text font-style="italic" variable="container-title"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="date">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="day-month">
+    <date variable="issued">
+      <date-part name="month"/>
+      <date-part name="day" prefix=" "/>
+    </date>
+  </macro>
+  <macro name="collection-title">
+    <text variable="collection-title"/>
+    <text prefix=" " variable="collection-number"/>
+  </macro>
+  <macro name="event">
+    <group>
+      <text suffix=" " term="presented at"/>
+      <text variable="event"/>
+    </group>
+  </macro>
+  <macro name="description">
+    <choose>
+      <if type="interview">
+        <group delimiter=". ">
+          <text macro="interviewer"/>
+          <text text-case="capitalize-first" variable="medium"/>
+        </group>
+      </if>
+      <else>
+        <text prefix=". " text-case="capitalize-first" variable="medium"/>
+      </else>
+    </choose>
+    <choose>
+      <if match="none" variable="title"/>
+      <else-if type="thesis"/>
+      <else>
+        <text prefix=". " text-case="capitalize-first" variable="genre"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="issue">
+    <choose>
+      <if type="article-journal">
+        <text macro="day-month" prefix=" (" suffix=")"/>
+      </if>
+      <else-if type="legal_case">
+        <text prefix=". " variable="authority"/>
+      </else-if>
+      <else-if type="speech">
+        <group delimiter=", " prefix=" ">
+          <text macro="event"/>
+          <text macro="day-month"/>
+          <text variable="event-place"/>
+        </group>
+      </else-if>
+      <else-if match="any" type="article-newspaper article-magazine">
+        <text macro="day-month" prefix=", "/>
+      </else-if>
+      <else>
+        <group delimiter=", " prefix=". ">
+          <choose>
+            <if type="thesis">
+              <text text-case="capitalize-first" variable="genre"/>
+            </if>
+          </choose>
+          <text macro="publisher"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <citation disambiguate-add-givenname="true" disambiguate-add-names="true" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1" givenname-disambiguation-rule="primary-name">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <group delimiter=" ">
+          <text macro="contributors-short"/>
+          <text macro="date"/>
+        </group>
+        <text macro="point-locators"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="4" et-al-use-first="1" hanging-indent="true" subsequent-author-substitute="———">
+    <sort>
+      <key macro="contributors"/>
+      <key variable="issued"/>
+    </sort>
+    <layout suffix=".">
+      <text macro="contributors" prefix=" $contributors$ " suffix=".  $/contributors$ "/>
+      <text macro="date" prefix=" $date$ " suffix=".  $/date$ "/>
+      <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      <text macro="description" prefix=" $description$ " suffix=" $/description$ "/>
+      <text macro="secondary-contributors" prefix=" $secondary-contributors$ . " suffix=" $/secondary-contributors$ "/>
+      <text macro="container-contributors" prefix=" $container-contributors$ " suffix=" $/container-contributors$ "/>
+      <text macro="container-title" prefix=" $container-title$ . " suffix=" $/container-title$ "/>
+      <text macro="locators-chapter" prefix=" $locators-chapter$ " suffix=" $/locators-chapter$ "/>
+      <text macro="edition" prefix=" $edition$ . " suffix=" $/edition$ "/>
+      <text macro="locators" prefix=" $locators$ " suffix=" $/locators$ "/>
+      <text macro="collection-title" prefix=" $collection-title$ . " suffix=" $/collection-title$ "/>
+      <text macro="issue" prefix=" $issue$ " suffix=" $/issue$ "/>
+      <text macro="locators-article" prefix=" $locators-article$ " suffix=" $/locators-article$ "/>
+      <text macro="access" prefix=" $access$ . " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

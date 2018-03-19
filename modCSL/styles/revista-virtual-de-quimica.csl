@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="pt-BR" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Revista Virtual de Química (Portuguese - Brazil)</title>
+    <title-short>RVq</title-short>
+    <id>http://www.zotero.org/styles/revista-virtual-de-quimica</id>
+    <link href="http://www.zotero.org/styles/revista-virtual-de-quimica" rel="self"/>
+    <link href="http://www.zotero.org/styles/american-institute-of-physics" rel="template"/>
+    <link href="http://www.uff.br/RVQ/instrucaoaosautores.pdf" rel="documentation"/>
+    <author>
+      <name>Cleber Barreto</name>
+      <email>cleber.barreto@yahoo.com.br</email>
+      <uri>http://www.mendeley.com/profiles/cleber-barreto/</uri>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="chemistry"/>
+    <issn>1984-6835</issn>
+    <summary>Reference style for Revista Virtual de Quimica</summary>
+    <updated>2014-03-01T14:02:47+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter="; " initialize-with=". " name-as-sort-order="all"/>
+      <label form="long" prefix=", " suffix=" "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter="; " initialize-with=". " name-as-sort-order="all" suffix=","/>
+      <label form="short" prefix=" " suffix=";"/>
+    </names>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="day-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="day" suffix=" "/>
+          <date-part form="long" name="month" suffix=" "/>
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <group delimiter=": ">
+        <text strip-periods="false" variable="publisher"/>
+        <text variable="publisher-place"/>
+      </group>
+      <text macro="year-date"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number suffix="a." variable="edition"/>
+          <text form="short" suffix="," term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0">
+    <layout suffix=".">
+      <text prefix=" $citation-number$ " suffix=" $citation-number$ " variable="citation-number" vertical-align="sup"/>
+      <text macro="author" prefix=" $author$  " suffix="  $/author$ "/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group delimiter=" ">
+            <group delimiter=", ">
+              <text font-style="italic" prefix=" $title$ " suffix=" $title$ " text-case="title" variable="title"/>
+              <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            </group>
+            <group delimiter=", ">
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            </group>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group delimiter=" ">
+            <text prefix=" $$ " suffix=" $/$ " value="Em"/>
+            <group delimiter="; ">
+              <text font-style="italic" prefix=" $container-title$ " strip-periods="false" suffix=" $container-title$ " text-case="title" variable="container-title"/>
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+              <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            </group>
+            <group delimiter=", ">
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+              <group delimiter=" ">
+                <text form="short" prefix=" $chapter-number$ cap. " suffix=" $chapter-number$ " variable="chapter-number"/>
+              </group>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="patent">
+          <group delimiter=" ">
+            <text prefix=" $number$  " suffix=" $number$ " variable="number"/>
+            <text macro="day-date" prefix=" $day-date$ (" suffix=") $/day-date$ "/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <group delimiter=", ">
+            <text prefix=" $status$ " suffix=" $status$ " variable="status"/>
+            <text prefix=" $title$ " suffix=" $title$ " text-case="title" variable="title"/>
+            <text prefix=" $genre$ " suffix=" $genre$ " variable="genre"/>
+            <text prefix=" $publisher$ " suffix=" $publisher$ " variable="publisher"/>
+            <text prefix=" $locator$ " suffix=" $locator$ " variable="locator"/>
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=" ">
+            <text prefix=" $title$ " suffix=".  $title$ " variable="title"/>
+            <text font-style="italic" form="short" prefix=" $container-title$ " suffix=" $container-title$ " text-case="title" variable="container-title"/>
+            <group delimiter=", ">
+              <text font-weight="bold" macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+              <group delimiter=" ">
+                <text font-style="italic" form="long" prefix=" $volume$ " suffix=", $volume$ " variable="volume"/>
+                <text prefix=" $page-first$ " suffix=". $page-first$ " variable="page-first"/>
+                <text prefix=" $DOI$ https://doi.org/" suffix=" $DOI$ " variable="DOI"/>
+                <text prefix=" $PMID$ http://www.ncbi.nlm.nih.gov/pubmed/" suffix=" $PMID$ " variable="PMID"/>
+                <choose>
+                  <if match="none" variable="DOI PMID">
+                    <text prefix=" $URL$ " suffix=" $URL$ " variable="URL"/>
+                  </if>
+                </choose>
+              </group>
+            </group>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

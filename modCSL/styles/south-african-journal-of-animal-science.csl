@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>South African Journal of Animal Science</title>
+    <title-short>South African Journal of Animal Science</title-short>
+    <id>http://www.zotero.org/styles/south-african-journal-of-animal-science</id>
+    <link href="http://www.zotero.org/styles/south-african-journal-of-animal-science" rel="self"/>
+    <link href="http://www.zotero.org/styles/poultry-science" rel="template"/>
+    <link href="http://www.ajol.info/index.php/sajas/about/submissions#authorGuidelines" rel="documentation"/>
+    <contributor>
+      <name>Yusuf Ras</name>
+      <email>yr@sun.ac.za</email>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>0375-1589</issn>
+    <eissn>2221-4062</eissn>
+    <updated>2012-09-14T21:22:32+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor-translator">
+    <names delimiter=", " prefix="(" suffix=")" variable="editor translator">
+      <name and="symbol" delimiter=", " initialize-with=""/>
+      <label form="short" prefix=", " text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="all"/>
+      <et-al font-style="italic"/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")" text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" delimiter=", " form="short" initialize-with=""/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+            <text form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <citation collapse="year-suffix" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key variable="issued"/>
+      <key variable="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="author-short" suffix=","/>
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </group>
+      <group prefix=", ">
+        <label form="short" variable="locator"/>
+        <text prefix=" " variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author-short"/>
+      <key variable="issued"/>
+    </sort>
+    <layout>
+      <text macro="author" prefix=" $author$ " suffix=". $/author$ "/>
+      <date prefix=" " suffix="." variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+            <text macro="editor-translator" prefix=" $editor-translator$  " suffix=" $/editor-translator$ "/>
+          </group>
+          <text macro="edition" prefix=" $edition$  " suffix=" $/edition$ "/>
+          <text macro="publisher" prefix=" $publisher$  " suffix=". $/publisher$ "/>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <group>
+            <label text-case="capitalize-first" variable="page"/>
+            <text form="long" prefix=" $page$  " suffix="  $page$ " variable="page"/>
+          </group>
+          <group>
+            <text font-style="normal" form="long" plural="false" prefix=" $$ " suffix=" $/$ " term="in"/>
+            <text prefix=" $container-title$  " suffix=". $container-title$ " variable="container-title"/>
+            <names prefix=" " variable="editor translator">
+              <name delimiter=", " delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+              <label form="short" prefix=", " strip-periods="false" suffix="."/>
+            </names>
+            <text macro="edition" prefix=" $edition$  " suffix=" $/edition$ "/>
+            <text prefix=" $collection-title$  " suffix=". $collection-title$ " variable="collection-title"/>
+            <text macro="publisher" prefix=" $publisher$  " suffix=". $/publisher$ "/>
+          </group>
+        </else-if>
+        <else>
+          <group suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+            <text macro="editor-translator" prefix=" $editor-translator$  " suffix=" $/editor-translator$ "/>
+          </group>
+          <group prefix=" " suffix=".">
+            <text form="short" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <text prefix=" $volume$  " suffix=" $volume$ " variable="volume"/>
+            <text form="long" prefix=" $page$ , " suffix=" $page$ " variable="page"/>
+            <text prefix=" $DOI$  https://doi.org/" suffix=" $DOI$ " variable="DOI"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

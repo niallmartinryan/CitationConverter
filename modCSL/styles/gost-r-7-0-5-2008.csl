@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="ru-RU" version="1.0">
+  <info>
+    <title>Russian GOST R 7.0.5-2008 (Russian)</title>
+    <id>http://www.zotero.org/styles/gost-r-7-0-5-2008</id>
+    <link href="http://www.zotero.org/styles/gost-r-7-0-5-2008" rel="self"/>
+    <link href="http://chetvericov.ru/stil-oformleniya-dlya-mendeley-i-zotero-csl-po-gost-r-705-2008/" rel="documentation"/>
+    <link href="http://protect.gost.ru/document.aspx?control=7&amp;id=173511" rel="documentation"/>
+    <author>
+      <name>Andrey Chetverikov</name>
+      <email>andrey@chetvericov.ru</email>
+      <uri>http://chetvericov.ru</uri>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="generic-base"/>
+    <summary>Russian GOST-2008 style.</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names delimiter=", " prefix="/ под ред. " suffix="." variable="editor">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="." sort-separator=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" " text-case="lowercase"/>
+    </names>
+  </macro>
+  <macro name="author_short">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" form="short" name-as-sort-order="all" sort-separator=" "/>
+      <substitute>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <text value="[Электронный ресурс]. "/>
+        <text prefix="URL: " variable="URL"/>
+        <group prefix=" (" suffix=")">
+          <text suffix=": " term="accessed"/>
+          <date variable="accessed">
+            <date-part form="numeric-leading-zeros" name="day" suffix="."/>
+            <date-part form="numeric-leading-zeros" name="month" suffix="."/>
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="publisher">
+    <group>
+      <text variable="publisher-place"/>
+      <text value=": "/>
+      <text variable="publisher"/>
+    </group>
+    <text macro="year-date" prefix=", " suffix="."/>
+    <text prefix=" Вып. " variable="edition"/>
+  </macro>
+  <macro name="year-date">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="language-sort">
+    <text variable="note"/>
+    <text value="Z999"/>
+  </macro>
+  <macro name="citation-number">
+    <text suffix=". " variable="citation-number"/>
+  </macro>
+  <citation disambiguate-add-year-suffix="true" et-al-min="4" et-al-use-first="1">
+    <sort>
+      <key macro="language-sort"/>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout delimiter="; " prefix="[" suffix="]">
+      <text macro="author_short" suffix=", "/>
+      <text macro="year-date"/>
+      <text prefix=", с. " variable="locator"/>
+    </layout>
+  </citation>
+  <locale xml:lang="en">
+    <terms>
+      <term name="et-al">и др.</term>
+      <term form="verb" name="editor">под ред.</term>
+      <term name="accessed">дата обращения</term>
+    </terms>
+  </locale>
+  <locale xml:lang="ru">
+    <terms>
+      <term name="et-al">и др.</term>
+      <term form="verb" name="editor">под ред.</term>
+      <term name="accessed">дата обращения</term>
+    </terms>
+  </locale>
+  <bibliography et-al-min="4" et-al-use-first="1">
+    <sort>
+      <key macro="language-sort"/>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout suffix=".">
+      <text macro="citation-number" prefix=" $citation-number$ " suffix=" $/citation-number$ "/>
+      <text macro="author" prefix=" $author$ " suffix=".  $/author$ "/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group delimiter=". ">
+            <group delimiter=" ">
+              <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            </group>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text prefix=" $number-of-pages$ " suffix=" с. $number-of-pages$ " variable="number-of-pages"/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group delimiter=". " prefix=" ">
+            <group delimiter=" ">
+              <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+              <text prefix=" $container-title$ // " suffix=" $container-title$ " variable="container-title"/>
+              <text prefix=" $collection-title$  " suffix=". $collection-title$ " variable="collection-title"/>
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            </group>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text prefix=" $page$ С. " suffix=" $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if type="webpage">
+          <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+          <text macro="access" prefix=" $access$  " suffix=" $/access$ "/>
+        </else-if>
+        <else-if match="any" type="article-journal article-magazine article-newspaper broadcast interview manuscript map patent personal_communication song speech thesis webpage">
+          <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+          <group delimiter=". " prefix=" " suffix=".">
+            <group delimiter=". " prefix="// ">
+              <text form="short" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+              <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+              <text prefix=" $volume$ Т. " suffix=" $volume$ " variable="volume"/>
+              <text prefix=" $issue$ № " suffix=" $issue$ " variable="issue"/>
+            </group>
+            <text prefix=" $page$ С. " suffix=" $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else>
+          <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+          <group delimiter=". " prefix=" " suffix=".">
+            <group delimiter=". " prefix="// ">
+              <text form="short" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+              <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+              <text prefix=" $volume$ Т. " suffix=" $volume$ " variable="volume"/>
+              <text prefix=" $issue$ № " suffix=" $issue$ " variable="issue"/>
+            </group>
+            <text prefix=" $page$ С. " suffix=" $page$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

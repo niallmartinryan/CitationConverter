@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" demote-non-dropping-particle="never" page-range-format="minimal-two" version="1.0">
+  <info>
+    <title>Modern Language Association 8th edition</title>
+    <title-short>MLA</title-short>
+    <id>http://www.zotero.org/styles/modern-language-association</id>
+    <link href="http://www.zotero.org/styles/modern-language-association" rel="self"/>
+    <link href="http://style.mla.org" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="author"/>
+    <category field="generic-base"/>
+    <summary>This style adheres to the MLA 8th edition handbook. Follows the structure of references as outlined in the MLA Manual closely</summary>
+    <updated>2014-07-06T20:05:10+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <date form="text">
+      <date-part name="day" suffix=" "/>
+      <date-part form="short" name="month" suffix=" "/>
+      <date-part name="year"/>
+    </date>
+    <terms>
+      <term form="short" name="month-01">Jan.</term>
+      <term form="short" name="month-02">Feb.</term>
+      <term form="short" name="month-03">Mar.</term>
+      <term form="short" name="month-04">Apr.</term>
+      <term form="short" name="month-05">May</term>
+      <term form="short" name="month-06">June</term>
+      <term form="short" name="month-07">July</term>
+      <term form="short" name="month-08">Aug.</term>
+      <term form="short" name="month-09">Sept.</term>
+      <term form="short" name="month-10">Oct.</term>
+      <term form="short" name="month-11">Nov.</term>
+      <term form="short" name="month-12">Dec.</term>
+      <term form="short" name="translator">trans.</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter-precedes-et-al="always" delimiter-precedes-last="always" initialize="false" initialize-with=". " name-as-sort-order="first"/>
+      <label form="long" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title-short"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <group delimiter=", ">
+      <names variable="author">
+        <name and="text" form="short" initialize-with=". "/>
+        <substitute>
+          <names variable="editor"/>
+          <names variable="translator"/>
+          <text macro="title-short"/>
+        </substitute>
+      </names>
+      <choose>
+        <if disambiguate="true">
+          <text macro="title-short"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" variable="container-title">
+        <text quotes="true" text-case="title" variable="title"/>
+      </if>
+      <else>
+        <text font-style="italic" text-case="title" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title-short">
+    <choose>
+      <if match="any" variable="container-title">
+        <text form="short" quotes="true" text-case="title" variable="title"/>
+      </if>
+      <else>
+        <text font-style="italic" form="short" text-case="title" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <text font-style="italic" text-case="title" variable="container-title"/>
+  </macro>
+  <macro name="other-contributors">
+    <choose>
+      <if match="any" variable="container-title">
+        <names delimiter=", " variable="editor translator">
+          <label form="verb" suffix=" "/>
+          <name and="text"/>
+        </names>
+      </if>
+      <else>
+        <names delimiter=", " variable="editor translator">
+          <label form="verb" suffix=" " text-case="capitalize-first"/>
+          <name and="text"/>
+        </names>
+      </else>
+    </choose>
+  </macro>
+  <macro name="version">
+    <group delimiter=", ">
+      <choose>
+        <if is-numeric="edition">
+          <group delimiter=" ">
+            <number form="ordinal" variable="edition"/>
+            <text form="short" term="edition"/>
+          </group>
+        </if>
+        <else>
+          <text text-case="capitalize-first" variable="edition"/>
+        </else>
+      </choose>
+      <text variable="version"/>
+    </group>
+  </macro>
+  <macro name="number">
+    <group delimiter=", ">
+      <group>
+        <choose>
+          <!--lowercase if we have a preceding element-->
+          <if match="any" variable="edition container-title">
+            <group delimiter=" ">
+              <text form="short" term="volume"/>
+              <text variable="volume"/>
+            </group>
+          </if>
+          <!--other contributors preceding the volume-->
+          <else-if match="all" variable="author editor">
+            <group delimiter=" ">
+              <text form="short" term="volume"/>
+              <text variable="volume"/>
+            </group>
+          </else-if>
+          <else>
+            <group delimiter=" ">
+              <text form="short" term="volume" text-case="capitalize-first"/>
+              <text variable="volume"/>
+            </group>
+          </else>
+        </choose>
+      </group>
+      <group delimiter=" ">
+        <text form="short" term="issue"/>
+        <text variable="issue"/>
+      </group>
+      <choose>
+        <if type="report">
+          <text variable="genre"/>
+        </if>
+      </choose>
+      <text variable="number"/>
+    </group>
+  </macro>
+  <macro name="publisher">
+    <text variable="publisher"/>
+  </macro>
+  <macro name="publication-date">
+    <choose>
+      <if match="any" type="book chapter paper-conference motion_picture">
+        <date date-parts="year" form="numeric" variable="issued"/>
+      </if>
+      <else-if match="any" type="article-journal article-magazine">
+        <date date-parts="year-month" form="text" variable="issued"/>
+      </else-if>
+      <else-if match="none" type="speech">
+        <date form="text" variable="issued"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="location">
+    <group delimiter=", ">
+      <group delimiter=" ">
+        <label form="short" variable="page"/>
+        <text variable="page"/>
+      </group>
+      <choose>
+        <if match="none" variable="source">
+          <text macro="URI"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="container2-title">
+    <group delimiter=", ">
+      <choose>
+        <if type="speech">
+          <text variable="event"/>
+          <date form="text" variable="event-date"/>
+          <text variable="event-place"/>
+        </if>
+      </choose>
+      <text variable="archive"/>
+      <text variable="archive-place"/>
+      <text variable="archive_location"/>
+    </group>
+  </macro>
+  <macro name="container2-location">
+    <choose>
+      <if variable="source">
+        <choose>
+          <if match="any" variable="DOI URL">
+            <group delimiter=", ">
+              <text font-style="italic" variable="source"/>
+              <text macro="URI"/>
+            </group>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="URI">
+    <choose>
+      <if variable="DOI">
+        <text prefix="doi:" variable="DOI"/>
+      </if>
+      <else>
+        <text variable="URL"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="accessed">
+    <!--using accessed where we don't have an issued date; follows recommendation on p. 53 -->
+    <choose>
+      <if match="none" variable="issued">
+        <group delimiter=" ">
+          <text term="accessed" text-case="capitalize-first"/>
+          <date form="text" variable="accessed"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <citation disambiguate-add-givenname="true" disambiguate-add-names="true" et-al-min="3" et-al-use-first="1">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <choose>
+        <if locator="page">
+          <group delimiter=" ">
+            <text macro="author-short"/>
+            <text variable="locator"/>
+          </group>
+        </if>
+        <else>
+          <group delimiter=", ">
+            <text macro="author-short"/>
+            <group>
+              <label form="short" variable="locator"/>
+              <text variable="locator"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="3" et-al-use-first="1" hanging-indent="true" line-spacing="2" subsequent-author-substitute="---">
+    <sort>
+      <key macro="author"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=". ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+        <date date-parts="year" form="numeric" variable="original-date"/>
+        <group delimiter=", ">
+          <!---This group corresponds to MLA's "Container 1"-->
+          <text macro="container-title" prefix=" $container-title$ " suffix=" $/container-title$ "/>
+          <text macro="other-contributors" prefix=" $other-contributors$ " suffix=" $/other-contributors$ "/>
+          <text macro="version" prefix=" $version$ " suffix=" $/version$ "/>
+          <text macro="number" prefix=" $number$ " suffix=" $/number$ "/>
+          <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          <text macro="publication-date" prefix=" $publication-date$ " suffix=" $/publication-date$ "/>
+          <text macro="location" prefix=" $location$ " suffix=" $/location$ "/>
+        </group>
+        <group delimiter=", ">
+          <!---This group corresponds to MLA's "Container 2"-->
+          <!--currently just using this one for archival info-->
+          <text macro="container2-title" prefix=" $container2-title$ " suffix=" $/container2-title$ "/>
+          <text macro="container2-location" prefix=" $container2-location$ " suffix=" $/container2-location$ "/>
+        </group>
+        <text macro="accessed" prefix=" $accessed$ " suffix=" $/accessed$ "/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

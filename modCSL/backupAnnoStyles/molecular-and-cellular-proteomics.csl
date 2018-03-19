@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Molecular &amp; Cellular Proteomics</title>
+    <id>http://www.zotero.org/styles/molecular-and-cellular-proteomics</id>
+    <link href="http://www.zotero.org/styles/molecular-and-cellular-proteomics" rel="self"/>
+    <link href="http://www.mcponline.org/site/misc/ifora.xhtml#references" rel="documentation"/>
+    <author>
+      <name>Vital Vialas</name>
+      <email>vvialasf@ucm.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="science"/>
+    <issn>1535-9476</issn>
+    <eissn>1535-9484</eissn>
+    <summary>Molecular and Cellular Proteomics Journal Style</summary>
+    <updated>2013-03-19T15:30:21+01:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names delimiter=", " prefix=" " variable="editor">
+      <label form="short" strip-periods="true" suffix=" "/>
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" " strip-periods="false" suffix="."/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", " prefix=" (" suffix=")">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix=". ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition" text-case="capitalize-first"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter=", " prefix="(" suffix=")">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography second-field-align="flush">
+    <layout>
+      <text prefix=" $$ " suffix=".  $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <date prefix=" (" suffix=")" variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group prefix=" ">
+            <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group delimiter=" " prefix=" ">
+            <text prefix=" $$ " suffix=" $/$ " term="in"/>
+            <group delimiter=", ">
+              <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+              <text prefix=" $$  " suffix=". $/$ " variable="collection-title"/>
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            </group>
+          </group>
+          <group suffix=".">
+            <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+            <group prefix=", ">
+              <label form="short" strip-periods="true" suffix=" " variable="page"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </group>
+          <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+        </else-if>
+        <else>
+          <text prefix=" $$  " suffix=". $/$ " variable="title"/>
+          <group prefix=" ">
+            <group delimiter=" " suffix=", ">
+              <text font-style="italic" form="short" prefix=" $$ " strip-periods="false" suffix=" $/$ " variable="container-title"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="volume"/>
+            </group>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

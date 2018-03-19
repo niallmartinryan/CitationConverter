@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" demote-non-dropping-particle="sort-only" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Food and Agriculture Organization of the United Nations</title>
+    <title-short>FAO</title-short>
+    <id>http://www.zotero.org/styles/food-and-agriculture-organization-of-the-united-nations</id>
+    <link href="http://www.zotero.org/styles/food-and-agriculture-organization-of-the-united-nations" rel="self"/>
+    <link href="http://www.fao.org/3/a-ac339e.pdf" rel="documentation"/>
+    <author>
+      <name>Bin Liu</name>
+      <email>lieubean@gmail.com</email>
+      <uri>https://www.linkedin.com/in/lieubean/</uri>
+    </author>
+    <contributor>
+      <name>Julian Plummer</name>
+      <email>Julian.Plummer@fao.org</email>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="science"/>
+    <category field="social_science"/>
+    <summary>This style is created to meet the citation and bibliographical requirements of FAOSTYLE, and has been tested with Zotero and Mendeley. Last update: March 2017.</summary>
+    <updated>2017-03-10T01:12:03+01:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <!-- Locale settings for English. Settings for other languages could be added later to this section. -->
+  <locale xml:lang="en">
+    <style-options punctuation-in-quote="false"/>
+    <terms>
+      <term name="no date">undated</term>
+      <term name="available at">also available at</term>
+      <term name="presented at">Paper presented at</term>
+    </terms>
+    <date delimiter=" " form="text">
+      <date-part name="day"/>
+      <date-part name="month"/>
+      <date-part name="year"/>
+    </date>
+  </locale>
+  <!-- Macros -->
+  <macro name="anonymous">
+    <text term="anonymous" text-case="capitalize-first"/>
+  </macro>
+  <macro name="editor">
+    <!-- XX ed. / XX & XX eds. -->
+    <names variable="editor">
+      <name and="symbol" delimiter-precedes-last="never" initialize-with="."/>
+      <label form="short" prefix=", " strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all"/>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="anonymous"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="1" form="short" initialize-with="."/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <!-- Author in in-line citation for materials w/o author / editor / translator: If the type is not case, use Anonymous; use italic title for case. -->
+          <if match="none" type="legal_case">
+            <text macro="anonymous"/>
+          </if>
+          <else>
+            <text font-style="italic" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="date">
+    <!-- date format: year / undated / put "forthcoming" or else in "Date" field when needed.-->
+    <choose>
+      <if match="none" variable="issued">
+        <text term="no date"/>
+      </if>
+      <else>
+        <date date-parts="year" form="text" variable="issued"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher-and-place">
+    <!-- place, publisher -->
+    <group delimiter=", ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <!-- Second edition -->
+    <number form="long-ordinal" text-case="capitalize-first" variable="edition"/>
+    <text prefix=" " term="edition"/>
+  </macro>
+  <macro name="Cite-and-URL">
+    <!-- [Cited day month year]. URL -->
+    <group delimiter=" " prefix="[" suffix="]. ">
+      <text term="cited" text-case="capitalize-first"/>
+      <date form="text" variable="accessed"/>
+    </group>
+    <text variable="URL"/>
+  </macro>
+  <macro name="Available-at">
+    <!-- (also available at URL). -->
+    <group delimiter=" " prefix="(" suffix=").">
+      <text term="available at"/>
+      <text variable="URL"/>
+    </group>
+  </macro>
+  <macro name="number_of_pages-label">
+    <!-- 1 p. / x pp. -->
+    <group delimiter=" ">
+      <text variable="number-of-pages"/>
+      <label form="short" variable="number-of-pages"/>
+    </group>
+  </macro>
+  <!-- in-line citation: (author, date) -->
+  <citation collapse="year" disambiguate-add-year-suffix="true">
+    <sort>
+      <key variable="author"/>
+      <key variable="issued"/>
+      <key variable="accessed"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <text macro="author-short" suffix=", "/>
+      <text macro="date"/>
+    </layout>
+  </citation>
+  <!-- bibliography -->
+  <bibliography entry-spacing="0">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+      <key variable="accessed"/>
+    </sort>
+    <layout>
+      <choose>
+        <if match="none" type="legal_case">
+          <!-- Every item type except legal case uses "Anonymous" as author if there's no author. So legal case is singled out here. -->
+          <group delimiter=". ">
+            <text font-weight="bold" macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+            <text macro="date" prefix=" $date$ " suffix=" $/date$ "/>
+            <choose>
+              <if type="book">
+                <!-- book and computer program in Zotero; book in Mendeley.  -->
+                <group>
+                  <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="title"/>
+                  <text prefix=" $$  [" suffix="] $/$ " variable="medium"/>
+                  <!-- For computer program in Zotero. Can put "CD&#8211;ROM / DVD&#8211;ROM" in "System" field. -->
+                  <text prefix=" $$  [" suffix="] $/$ " variable="genre"/>
+                  <!-- For eBook in Mendeley, put "Kindle edition" in "Genre" field. For eBook in Zotero, put "genre:Kindle edition" in "Extra" field. -->
+                  <text macro="edition" prefix=" $edition$ . " suffix=" $/edition$ "/>
+                </group>
+                <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+                <group>
+                  <text prefix=" $$ " suffix=" $/$ " variable="collection-title"/>
+                  <text prefix=" $$  No. " suffix=" $/$ " variable="collection-number"/>
+                  <!-- Mendeley doesn't offer a "Series Number / Report Number" field. "No. xxx" must be put in "Series" field. -->
+                </group>
+                <text macro="publisher-and-place" prefix=" $publisher-and-place$ " suffix=". $/publisher-and-place$ "/>
+                <text macro="number_of_pages-label" prefix=" $number_of_pages-label$ " suffix=" $/number_of_pages-label$ "/>
+                <text macro="Available-at" prefix=" $Available-at$ " suffix=" $/Available-at$ "/>
+              </if>
+              <else-if match="any" type="chapter report">
+                <!-- book section and report -->
+                <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+                <group delimiter=" ">
+                  <text font-style="italic" prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+                  <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+                </group>
+                <group>
+                  <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                  <text macro="edition" prefix=" $edition$ . " suffix=" $/edition$ "/>
+                  <label form="short" prefix=", " variable="page"/>
+                  <!-- pp. xx&#8211;xx -->
+                  <text prefix=" $$  " suffix=" $/$ " variable="page"/>
+                </group>
+                <group>
+                  <text prefix=" $$ " suffix=" $/$ " variable="collection-title"/>
+                  <text prefix=" $$  No. " suffix=" $/$ " variable="collection-number"/>
+                  <!-- "Series Number" field for book section in Zotero. -->
+                  <text prefix=" $$  No. " suffix=" $/$ " variable="number"/>
+                  <!-- "Report Number" field for report in Zotero. -->
+                  <!-- Mendeley doesn't offer a "Series Number / Report Number" field. "No. xxx" must be put in "Series" field. -->
+                </group>
+                <group suffix=".">
+                  <text macro="publisher-and-place" prefix=" $publisher-and-place$ " suffix=" $/publisher-and-place$ "/>
+                  <text macro="number_of_pages-label" prefix=" $number_of_pages-label$ " suffix=" $/number_of_pages-label$ "/>
+                </group>
+                <text macro="Available-at" prefix=" $Available-at$ " suffix=" $/Available-at$ "/>
+              </else-if>
+              <else-if type="article-journal">
+                <!-- paper journal article -->
+                <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+                <group suffix=".">
+                  <text font-style="italic" form="long" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                  <text prefix=" $$ , " suffix=" $/$ " variable="volume"/>
+                  <text prefix=" $$ (" suffix=") $/$ " variable="issue"/>
+                  <text prefix=" $$ : " suffix=" $/$ " variable="page"/>
+                </group>
+                <choose>
+                  <!-- If DOI exists, then DOI is shown as: https://doi.org/DOI . If DOI doesn't exist, then "also available at URL" is shown. -->
+                  <if variable="DOI">
+                    <text prefix=" $$ https://doi.org/" suffix=" $/$ " variable="DOI"/>
+                  </if>
+                  <else>
+                    <text macro="Available-at" prefix=" $Available-at$ " suffix=" $/Available-at$ "/>
+                  </else>
+                </choose>
+              </else-if>
+              <else-if type="article-magazine">
+                <!-- magazine and online-only journal article -->
+                <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+                <group suffix=".">
+                  <text font-style="italic" form="long" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                  <text prefix=" $$ , " suffix=" $/$ " variable="volume"/>
+                  <text prefix=" $$ (" suffix=") $/$ " variable="issue"/>
+                  <text prefix=" $$ : " suffix=" $/$ " variable="page"/>
+                  <choose>
+                    <if variable="URL">
+                      <!-- If URL exists, use "[online]" and Cite-and-URL macro.  -->
+                      <text prefix=" $$  [" suffix="] $/$ " term="online"/>
+                    </if>
+                  </choose>
+                </group>
+                <text macro="Cite-and-URL" prefix=" $Cite-and-URL$ " suffix=" $/Cite-and-URL$ "/>
+              </else-if>
+              <else-if type="article-newspaper">
+                <!-- newspaper article -->
+                <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+                <group>
+                  <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                  <date form="text" prefix=", " variable="issued"/>
+                </group>
+                <text macro="Available-at" prefix=" $Available-at$ " suffix=" $/Available-at$ "/>
+              </else-if>
+              <else-if match="any" type="webpage post-weblog">
+                <!-- web page, online monographs, and blog post -->
+                <choose>
+                  <if variable="container-title">
+                    <group>
+                      <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+                      <text prefix=" $$ . " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+                      <text font-style="italic" prefix=" $$ : " suffix=" $/$ " variable="container-title"/>
+                      <text prefix=" $$  [" suffix="] $/$ " term="online"/>
+                    </group>
+                  </if>
+                  <else>
+                    <group>
+                      <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="title"/>
+                      <text prefix=" $$  [" suffix="] $/$ " term="online"/>
+                    </group>
+                  </else>
+                </choose>
+                <text prefix=" $$ " suffix=" $/$ " variable="note"/>
+                <!-- Put place and other information in "Extra" field in Zotero and in Notes in Mendeley. -->
+                <text macro="Cite-and-URL" prefix=" $Cite-and-URL$ " suffix=" $/Cite-and-URL$ "/>
+              </else-if>
+              <else-if type="thesis">
+                <!-- thesis -->
+                <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="title"/>
+                <text macro="publisher-and-place" prefix=" $publisher-and-place$ " suffix=" $/publisher-and-place$ "/>
+                <text prefix=" $$  (" suffix=") $/$ " variable="genre"/>
+                <text macro="Available-at" prefix=" $Available-at$ " suffix=" $/Available-at$ "/>
+              </else-if>
+              <else-if match="any" type="song motion_picture article">
+                <!-- audio recording, film, and video recording in Zotero; film and computer program in Mendeley -->
+                <choose>
+                  <if match="any" variable="medium genre">
+                    <group>
+                      <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="title"/>
+                      <text prefix=" $$  [" suffix="] $/$ " variable="medium"/>
+                      <!-- Can put "audio / video" in "Format" field in Zotero. -->
+                      <text prefix=" $$  [" suffix="] $/$ " variable="genre"/>
+                      <!-- Can put "audio / video / CD&#8211;ROM" in "Genre" field in Mendeley. -->
+                    </group>
+                  </if>
+                  <else>
+                    <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+                  </else>
+                </choose>
+                <text macro="publisher-and-place" prefix=" $publisher-and-place$ " suffix=". $/publisher-and-place$ "/>
+                <text macro="Cite-and-URL" prefix=" $Cite-and-URL$ " suffix=" $/Cite-and-URL$ "/>
+              </else-if>
+              <else-if type="manuscript">
+                <!-- manuscript -->
+                <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+                <text prefix=" $$ " suffix=". $/$ " variable="genre"/>
+                <text prefix=" $$ " suffix=". $/$ " variable="publisher-place"/>
+                <text macro="number_of_pages-label" prefix=" $number_of_pages-label$ " suffix=" $/number_of_pages-label$ "/>
+                <text macro="Available-at" prefix=" $Available-at$ " suffix=" $/Available-at$ "/>
+              </else-if>
+              <else-if match="any" type="speech">
+                <!-- presentation -->
+                <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+                <group suffix=".">
+                  <text prefix=" $$ " suffix=" $/$ " term="presented at"/>
+                  <text prefix=" $$  " suffix=" $/$ " variable="event"/>
+                  <date form="text" prefix=", " variable="issued"/>
+                  <text prefix=" $$ , " suffix=" $/$ " variable="publisher-place"/>
+                </group>
+                <text macro="Cite-and-URL" prefix=" $Cite-and-URL$ " suffix=" $/Cite-and-URL$ "/>
+              </else-if>
+              <else-if type="paper-conference">
+                <!-- conference paper -->
+                <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+                <group>
+                  <text font-style="italic" prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+                  <text macro="editor" prefix=" $editor$  " suffix=" $/editor$ "/>
+                </group>
+                <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                <group suffix=".">
+                  <label form="short" suffix=" " variable="page"/>
+                  <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+                </group>
+                <text prefix=" $$ " suffix=" $/$ " variable="collection-title"/>
+                <group suffix=".">
+                  <text prefix=" $$ " suffix=" $/$ " term="presented at"/>
+                  <text prefix=" $$  " suffix=" $/$ " variable="event"/>
+                  <date form="text" prefix=", " variable="issued"/>
+                  <text prefix=" $$ , " suffix=" $/$ " variable="publisher-place"/>
+                </group>
+                <text macro="Available-at" prefix=" $Available-at$ " suffix=" $/Available-at$ "/>
+              </else-if>
+              <else>
+                <!-- other item types -->
+                <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+                <text macro="publisher-and-place" prefix=" $publisher-and-place$ " suffix=". $/publisher-and-place$ "/>
+                <text macro="Cite-and-URL" prefix=" $Cite-and-URL$ " suffix=" $/Cite-and-URL$ "/>
+              </else>
+            </choose>
+          </group>
+        </if>
+        <else>
+          <!-- case -->
+          <group delimiter=" ">
+            <group>
+              <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+              <text prefix=" $$ , " suffix=" $/$ " variable="volume"/>
+            </group>
+            <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            <group delimiter=" " prefix="(" suffix=")">
+              <text prefix=" $$ " suffix=" $/$ " variable="authority"/>
+              <!-- "Court" field in Zotero -->
+              <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+              <!-- "Publisher" field in Mendeley -->
+              <text macro="date" prefix=" $date$ " suffix=" $/date$ "/>
+            </group>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

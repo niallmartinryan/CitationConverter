@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" demote-non-dropping-particle="sort-only" page-range-format="expanded" version="1.0">
+  <info>
+    <title>British Journal of Cancer</title>
+    <title-short>BJC</title-short>
+    <id>http://www.zotero.org/styles/british-journal-of-cancer</id>
+    <link href="http://www.zotero.org/styles/british-journal-of-cancer" rel="self"/>
+    <link href="http://www.nature.com/bjc/authors/submit.html#how-to-submit" rel="documentation"/>
+    <author>
+      <name>Iain Gallagher</name>
+      <email>iaingallagher@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Julie Courraud</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="medicine"/>
+    <issn>0007-0920</issn>
+    <eissn>1532-1827</eissn>
+    <summary>Style for the British Journal of Cancer</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en-US">
+    <terms>
+      <term name="et-al">et al</term>
+    </terms>
+  </locale>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" form="short" initialize-with=" "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter-precedes-et-al="never" delimiter-precedes-last="never" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": " prefix="(" suffix=")">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" delimiter-precedes-last="always" initialize-with="."/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="DOI">
+    <group prefix="doi:">
+      <text variable="DOI"/>
+    </group>
+  </macro>
+  <macro name="accessed">
+    <choose>
+      <if type="webpage">
+        <text variable="URL"/>
+        <group delimiter=": " prefix=" (" suffix=")">
+          <text term="accessed"/>
+          <date form="numeric" variable="accessed"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="issued"/>
+      <key macro="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="issued" prefix=" $issued$ (" suffix=") $/issued$ "/>
+        <choose>
+          <if match="any" type="article article-magazine article-newspaper article-journal review">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text font-style="italic" form="short" prefix=" $$ " strip-periods="true" suffix=" $/$ " variable="container-title"/>
+            <text font-style="normal" font-weight="bold" prefix=" $$ " suffix=": $/$ " variable="volume"/>
+            <group delimiter=", ">
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+              <text macro="DOI" prefix=" $DOI$ " suffix=" $/DOI$ "/>
+            </group>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text prefix=" $$ In " suffix=", $/$ " text-case="title" variable="container-title"/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=", $/publisher$ "/>
+            <label form="short" variable="page"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </else-if>
+          <else-if type="thesis">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="genre"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+          </else-if>
+          <else>
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text macro="accessed" prefix=" $accessed$ " suffix=" $/accessed$ "/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

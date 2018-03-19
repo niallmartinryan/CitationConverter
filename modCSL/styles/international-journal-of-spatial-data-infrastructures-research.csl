@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" version="1.0">
+  <info>
+    <title>International Journal of Spatial Data Infrastructures Research</title>
+    <title-short>IJSDIR</title-short>
+    <id>http://www.zotero.org/styles/international-journal-of-spatial-data-infrastructures-research</id>
+    <link href="http://www.zotero.org/styles/international-journal-of-spatial-data-infrastructures-research" rel="self"/>
+    <link href="http://ijsdir.jrc.ec.europa.eu/index.php/ijsdir/pages/view/authors" rel="documentation"/>
+    <author>
+      <name>Lorenzino Vaccari</name>
+      <email>lorenzino.vaccari@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Elena Roglia</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="science"/>
+    <issn>1725-0463</issn>
+    <summary>The International Journal of Spatial Data Infrastructures Research style.</summary>
+    <updated>2016-06-22T00:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="contributors-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <choose>
+      <if type="webpage">
+        <choose>
+          <if variable="author">
+            <names variable="author">
+              <name and="text" delimiter-precedes-last="never" name-as-sort-order="first"/>
+            </names>
+          </if>
+          <else>
+            <text variable="publisher"/>
+          </else>
+        </choose>
+      </if>
+      <else>
+        <names variable="author">
+          <name and="text" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="first"/>
+        </names>
+      </else>
+    </choose>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="article-journal">
+        <text macro="issued" prefix="(" suffix="). "/>
+        <text variable="title"/>
+        <text font-style="italic" prefix=", " variable="container-title"/>
+        <group prefix=", ">
+          <text variable="volume"/>
+          <text prefix="(" suffix=")" variable="issue"/>
+          <choose>
+            <if variable="URL">
+              <text prefix=", at " variable="URL"/>
+              <text macro="accessed"/>
+            </if>
+            <else>
+              <text prefix=": " variable="page"/>
+            </else>
+          </choose>
+        </group>
+      </if>
+      <else-if type="book">
+        <text macro="issued" prefix="(" suffix="). "/>
+        <text font-style="italic" variable="title"/>
+        <text macro="publisher" prefix=", "/>
+      </else-if>
+      <else-if type="chapter">
+        <text macro="issued" prefix="(" suffix="). "/>
+        <text prefix="&quot;" suffix="&quot;" variable="title"/>
+        <text macro="editor"/>
+        <text font-style="italic" variable="container-title"/>
+        <text macro="publisher" prefix=", "/>
+        <text macro="page" prefix=", "/>
+      </else-if>
+      <else-if type="paper-conference">
+        <text macro="issued" prefix="(" suffix="). "/>
+        <text prefix="&quot;" suffix="&quot;" variable="title"/>
+        <text font-style="italic" prefix=", " variable="container-title"/>
+        <choose>
+          <if variable="URL">
+            <text prefix=", at " variable="URL"/>
+            <text macro="accessed"/>
+          </if>
+          <else>
+            <text macro="page" prefix=", "/>
+            <text macro="publisher" prefix=", "/>
+          </else>
+        </choose>
+      </else-if>
+      <else-if type="report">
+        <text macro="issued" prefix="(" suffix="). "/>
+        <text font-style="italic" suffix=", " variable="title"/>
+        <text variable="number"/>
+        <text macro="publisher" prefix=", "/>
+      </else-if>
+      <else-if type="thesis">
+        <text macro="issued" prefix="(" suffix="). "/>
+        <text font-style="italic" variable="title"/>
+        <text prefix=", " variable="genre"/>
+        <choose>
+          <if variable="URL">
+            <text prefix=", at " variable="URL"/>
+            <text macro="accessed"/>
+          </if>
+        </choose>
+        <text macro="publisher" prefix=", "/>
+      </else-if>
+      <else-if type="webpage">
+        <text macro="issued" prefix="(" suffix="). "/>
+        <text font-style="italic" variable="title"/>
+        <text prefix=", at " variable="URL"/>
+        <text macro="accessed"/>
+      </else-if>
+      <else>
+        <text macro="issued" prefix="(" suffix="). "/>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="accessed">
+    <choose>
+      <if variable="accessed">
+        <date prefix=", [accessed " suffix="]" variable="accessed">
+          <date-part name="day" range-delimiter="-" suffix=" "/>
+          <date-part name="month" suffix=" "/>
+          <date-part name="year"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <macro name="page">
+    <label form="short" variable="page"/>
+    <text prefix=". " variable="page"/>
+  </macro>
+  <macro name="publisher">
+    <text suffix=": " variable="publisher-place"/>
+    <text variable="publisher"/>
+  </macro>
+  <macro name="editor">
+    <names delimiter=", " prefix=", in " suffix=". " variable="editor">
+      <name and="text" initialize-with=". " name-as-sort-order="first"/>
+      <label form="short" prefix=" (" suffix=")" text-case="title"/>
+    </names>
+  </macro>
+  <citation disambiguate-add-givenname="true" disambiguate-add-names="true" et-al-min="3" et-al-use-first="1" givenname-disambiguation-rule="primary-name">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <text macro="contributors-short"/>
+      <text macro="issued" prefix=", "/>
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Global Ecology and Biogeography</title>
+    <id>http://www.zotero.org/styles/global-ecology-and-biogeography</id>
+    <link href="http://www.zotero.org/styles/global-ecology-and-biogeography" rel="self"/>
+    <link href="http://www.zotero.org/styles/bioinformatics" rel="template"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/%28ISSN%291466-8238/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Bernhard Hoiß</name>
+      <email>bernhard.hoiss@uni-wuerzburg.de</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>1466-822X</issn>
+    <eissn>1466-8238</eissn>
+    <summary>The Global Ecology and Biogeography style</summary>
+    <updated>2012-10-25T21:15:26+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term form="short" name="edition">edn.</term>
+      <term form="verb-short" name="editor">ed. by</term>
+      <term form="verb-short" name="translator">trans.</term>
+    </terms>
+  </locale>
+  <macro name="editor">
+    <names delimiter="," variable="editor">
+      <label form="verb-short" prefix=" (" suffix=" "/>
+      <name and="text" delimiter=", " initialize-with="." sort-separator=", " suffix=")"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" "/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" delimiter=", " form="short" initialize-with=". "/>
+      <et-al font-style="italic" term="et-al"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year-suffix" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1" year-suffix-delimiter=",">
+    <sort>
+      <key macro="year-date"/>
+      <key macro="author-short"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <date prefix=" (" suffix=")" variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group delimiter=" " prefix=" ">
+            <text font-style="italic" macro="title" prefix=" $title$ " suffix=", $/title$ "/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <text font-style="italic" macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <group prefix=" " suffix=",">
+            <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <text prefix=" $$  " suffix=". $/$ " variable="collection-title"/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+          </group>
+          <group suffix=".">
+            <group prefix=" " suffix=".">
+              <label form="short" suffix=" " variable="page"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+            <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+          </group>
+        </else-if>
+        <else>
+          <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <group delimiter=", " prefix=" " suffix=".">
+            <text font-style="italic" form="long" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <text font-weight="bold" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

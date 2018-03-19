@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" initialize-with-hyphen="false" version="1.0">
+  <info>
+    <title>Protein Engineering Design and Selection</title>
+    <title-short>PEDS</title-short>
+    <id>http://www.zotero.org/styles/protein-engineering-design-and-selection</id>
+    <link href="http://www.zotero.org/styles/protein-engineering-design-and-selection" rel="self"/>
+    <link href="http://www.zotero.org/styles/international-union-of-crystallography" rel="template"/>
+    <link href="http://www.oxfordjournals.org/our_journals/proeng/for_authors/manuscript.html" rel="documentation"/>
+    <author>
+      <name>James W. Gillespie</name>
+      <email>gillejw@auburn.edu</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="chemistry"/>
+    <issn>1741-0126</issn>
+    <eissn>1741-0134</eissn>
+    <published>2014-09-06T21:00:00-06:00</published>
+    <updated>2016-09-21T20:45:00-04:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" form="short"/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all" sort-separator=","/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all" sort-separator=","/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+    </names>
+  </macro>
+  <citation and="text" collapse="year-suffix" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="issued"/>
+      <key macro="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="10" et-al-use-first="3">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="issued" prefix=" $issued$ (" suffix=") $/issued$ "/>
+        <choose>
+          <if match="any" type="article article-magazine article-newspaper article-journal review">
+            <group delimiter=", ">
+              <text font-style="italic" form="short" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+              <text font-weight="bold" prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+              <text prefix=" $page$ " suffix=". $page$ " variable="page"/>
+            </group>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <text prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+            <text macro="editor" prefix=" $editor$ " suffix=", $/editor$ "/>
+            <text font-style="italic" prefix=" $container-title$ " suffix=". $container-title$ " text-case="title" variable="container-title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=", $/publisher$ "/>
+            <label form="short" variable="page"/>
+            <text prefix=" $page$ " suffix=". $page$ " variable="page"/>
+          </else-if>
+          <else-if type="thesis">
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text prefix=" $genre$ " suffix=". $genre$ " variable="genre"/>
+            <text prefix=" $publisher$ " suffix=". $publisher$ " variable="publisher"/>
+          </else-if>
+          <else>
+            <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=". $/publisher$ "/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Nature Neuroscience (brief communications)</title>
+    <id>http://www.zotero.org/styles/nature-neuroscience-brief-communications</id>
+    <link href="http://www.zotero.org/styles/nature-neuroscience-brief-communications" rel="self"/>
+    <link href="http://www.nature.com/neuro/authors/submit/index.html#manuscript" rel="documentation"/>
+    <author>
+      <name>Martin Novak</name>
+      <email>m.novak@dkfz-heidelberg.de</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>1097-6256</issn>
+    <eissn>1546-1726</eissn>
+    <updated>2014-06-03T22:14:43+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter=", " delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="volume"/>
+      <else-if variable="DOI">
+        <text prefix="doi:" variable="DOI"/>
+      </else-if>
+      <else-if variable="URL">
+        <text term="at"/>
+        <text prefix=" &lt;" suffix="&gt;" variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="issuance">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <group prefix=" (" suffix=").">
+          <text suffix=": " variable="publisher"/>
+          <text suffix=", " variable="publisher-place"/>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <date prefix=" (" suffix=")." variable="issued">
+          <date-part name="year"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="6" et-al-use-first="1" second-field-align="flush">
+    <layout>
+      <text prefix=" $citation-number$ " suffix=". $citation-number$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text font-style="italic" form="short" prefix=" $container-title$  " suffix="  $container-title$ " variable="container-title"/>
+      <text font-weight="bold" prefix=" $volume$ " suffix=",  $volume$ " variable="volume"/>
+      <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+      <text macro="issuance" prefix=" $issuance$ " suffix=" $/issuance$ "/>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

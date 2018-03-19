@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="expanded" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Genes to Cells</title>
+    <title-short>Genes Cells</title-short>
+    <id>http://www.zotero.org/styles/genes-to-cells</id>
+    <link href="http://www.zotero.org/styles/genes-to-cells" rel="self"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1365-2443/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Makoto Hiroi</name>
+      <email>hiroi@iam.u-tokyo.ac.jp</email>
+    </author>
+    <contributor>
+      <name>Tetsuya Tabata</name>
+      <email>ttabata@iam.u-tokyo.ac.jp</email>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <eissn>1365-2443</eissn>
+    <issnl>1356-9597</issnl>
+    <summary>The journal style for Genes to Cells. Original by Makoto Hiroi.</summary>
+    <updated>2013-08-15T04:05:07+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" form="short"/>
+    </names>
+  </macro>
+  <macro name="author-count">
+    <names variable="author">
+      <name form="count"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all"/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": " prefix="(" suffix=")">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="symbol" delimiter-precedes-last="always" initialize-with="."/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <citation and="symbol" collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="author-short" names-min="1" names-use-first="1"/>
+      <key macro="author-count" names-min="3" names-use-first="3"/>
+      <key macro="author" names-min="3" names-use-first="1"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="15" et-al-use-first="3">
+    <sort>
+      <key macro="author-short" names-min="1" names-use-first="1"/>
+      <key macro="author-count" names-min="3" names-use-first="3"/>
+      <key macro="author" names-min="3" names-use-first="1"/>
+      <key macro="issued"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="issued" prefix=" $issued$ (" suffix="). $/issued$ "/>
+        <choose>
+          <if match="any" type="article article-magazine article-newspaper article-journal review">
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text font-style="italic" form="short" prefix=" $container-title$ " suffix=" $container-title$ " text-case="title" variable="container-title"/>
+            <group delimiter=", ">
+              <choose>
+                <if match="any" variable="volume">
+                  <text font-style="normal" font-weight="bold" prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+                  <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+                </if>
+                <else>
+                  <text prefix=" $DOI$ , doi: " suffix=" $DOI$ " variable="DOI"/>
+                </else>
+              </choose>
+            </group>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text prefix=" $container-title$ In " suffix=", $container-title$ " text-case="title" variable="container-title"/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=", $/publisher$ "/>
+            <label form="short" variable="page"/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </else-if>
+          <else-if type="thesis">
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text prefix=" $genre$ " suffix=". $genre$ " variable="genre"/>
+            <text prefix=" $publisher$ " suffix=" $publisher$ " variable="publisher"/>
+          </else-if>
+          <else>
+            <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

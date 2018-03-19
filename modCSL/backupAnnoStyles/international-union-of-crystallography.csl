@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="expanded" version="1.0">
+  <!-- INFO -->
+  <info>
+    <title>International Union of Crystallography journals</title>
+    <title-short>IUCr</title-short>
+    <id>http://www.zotero.org/styles/international-union-of-crystallography</id>
+    <link href="http://www.zotero.org/styles/international-union-of-crystallography" rel="self"/>
+    <link href="http://journals.iucr.org/d/services/notesforauthors.html" rel="documentation"/>
+    <author>
+      <name>James Stroud</name>
+      <email>jstroud@mbi.ucla.edu</email>
+    </author>
+    <contributor>
+      <name>Wouter Touw</name>
+      <email>Wouter.Touw@radboudumc.nl</email>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="chemistry"/>
+    <updated>2016-02-09T09:43:09+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <!-- MACROS -->
+  <macro name="author-short">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-et-al="never" form="short"/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="all"/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+    <text font-style="italic" variable="year-suffix"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <label form="verb" suffix=" "/>
+      <name and="symbol" delimiter-precedes-last="never" initialize-with="."/>
+    </names>
+  </macro>
+  <!-- CITATION -->
+  <citation collapse="year-suffix" disambiguate-add-names="true" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1" year-suffix-delimiter=",">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <!-- BIBLIOGRAPHY -->
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="issued" prefix=" $issued$ (" suffix="). $/issued$ "/>
+        <choose>
+          <if match="any" type="article article-magazine article-newspaper article-journal review">
+            <text font-style="italic" form="short" prefix=" $$ " suffix=". $/$ " text-case="title" variable="container-title"/>
+            <text font-weight="bold" prefix=" $$ " suffix=", $/$ " variable="volume"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="page"/>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <text font-style="italic" prefix=" $$ " suffix=",  $/$ " text-case="title" variable="container-title"/>
+            <label form="short" text-case="capitalize-first" variable="volume"/>
+            <text font-style="italic" prefix=" $$ " suffix=",  $/$ " variable="volume"/>
+            <text macro="editor" prefix=" $editor$ " suffix=",  $/editor$ "/>
+            <label form="short" variable="page"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="page"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=". $/publisher$ "/>
+          </else-if>
+          <else-if type="thesis">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="genre"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="publisher"/>
+          </else-if>
+          <else>
+            <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=". $/publisher$ "/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" initialize-with-hyphen="true" version="1.0">
+  <info>
+    <title>CHIMIA</title>
+    <id>http://www.zotero.org/styles/chimia</id>
+    <link href="http://www.zotero.org/styles/chimia" rel="self"/>
+    <link href="https://chimia.ch/index.php?option=com_content&amp;view=category&amp;layout=blog&amp;id=109&amp;Itemid=489&amp;lang=en" rel="documentation"/>
+    <author>
+      <name>Martin Brändle</name>
+      <email>mpbraendle@gmail.com</email>
+      <uri>http://www.id.uzh.ch/cl/iframe/org/visitenk/index.php?id=mb</uri>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="chemistry"/>
+    <issn>0009-4293</issn>
+    <summary>A style for CHIMIA, the International Journal for Chemistry and Official Membership Journal of the Swiss Chemical Society (SCS) and its Divisions.
+    This style has been tested with Mendeley and Zotero and has been validated using the CSL Schema 1.0.1. Papers for Mac does not correctly format webpages and patents due to unknown reasons.</summary>
+    <updated>2015-10-10T16:30:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <!-- MACROS, sorted alphabetically -->
+  <!-- author -->
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with=". "/>
+      <label form="short" prefix=", " suffix=" " text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <!-- computer program -->
+  <macro name="computerprogram">
+    <group delimiter=", ">
+      <group delimiter=" ">
+        <text text-case="title" variable="title"/>
+        <text macro="program-version"/>
+      </group>
+      <text macro="author"/>
+      <text macro="publisher"/>
+      <text macro="year-date"/>
+    </group>
+    <text macro="doi" prefix=", "/>
+  </macro>
+  <!-- DOI -->
+  <macro name="doi">
+    <choose>
+      <if variable="DOI">
+        <text prefix="DOI: " variable="DOI"/>
+      </if>
+    </choose>
+  </macro>
+  <!-- edition -->
+  <macro name="edition">
+    <group delimiter=" ">
+      <text variable="edition"/>
+      <text form="short" term="edition"/>
+    </group>
+  </macro>
+  <!-- editor -->
+  <macro name="editor">
+    <group delimiter=" ">
+      <names variable="editor">
+        <label form="short" suffix=" " text-case="capitalize-first"/>
+        <name delimiter=", " delimiter-precedes-last="always" initialize-with=". "/>
+      </names>
+    </group>
+  </macro>
+  <!-- full-accessed -->
+  <macro name="full-accessed">
+    <date delimiter=" " prefix="accessed " variable="accessed">
+      <date-part form="long" name="month"/>
+      <date-part name="day" suffix=", "/>
+      <date-part font-weight="bold" name="year"/>
+    </date>
+  </macro>
+  <!-- publisher -->
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text text-case="capitalize-all" variable="publisher"/>
+      <text text-case="title" variable="publisher-place"/>
+    </group>
+  </macro>
+  <!-- pages -->
+  <macro name="pages">
+    <choose>
+      <if type="chapter paper-conference">
+        <label form="short" suffix=" " variable="page"/>
+        <text variable="page-first"/>
+      </if>
+      <else>
+        <text variable="page-first"/>
+      </else>
+    </choose>
+  </macro>
+  <!-- program-version -->
+  <macro name="program-version">
+    <choose>
+      <if variable="version">
+        <text variable="version"/>
+      </if>
+      <else-if variable="edition">
+        <text variable="edition"/>
+      </else-if>
+      <else>
+        <text variable="number"/>
+      </else>
+    </choose>
+  </macro>
+  <!-- thesis-number -->
+  <macro name="thesis-number">
+    <choose>
+      <if variable="volume">
+        <choose>
+          <if is-numeric="volume">
+            <text value="No. "/>
+          </if>
+        </choose>
+        <number form="numeric" variable="volume"/>
+      </if>
+      <else-if variable="number">
+        <choose>
+          <if is-numeric="number">
+            <text value="No. "/>
+          </if>
+        </choose>
+        <number form="numeric" variable="number"/>
+      </else-if>
+    </choose>
+  </macro>
+  <!-- thesis-type -->
+  <macro name="thesis-type">
+    <choose>
+      <if variable="genre">
+        <text variable="genre"/>
+      </if>
+      <else>
+        <text value="Ph.D. Thesis"/>
+      </else>
+    </choose>
+  </macro>
+  <!-- volume -->
+  <macro name="volume">
+    <group delimiter=" ">
+      <choose>
+        <if type="chapter paper-conference">
+          <text form="short" term="volume" text-case="capitalize-first"/>
+        </if>
+      </choose>
+      <text variable="volume"/>
+    </group>
+  </macro>
+  <!-- year-date -->
+  <macro name="year-date">
+    <group font-weight="bold">
+      <choose>
+        <if variable="issued">
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <!-- END MACROS -->
+  <!-- CITATION -->
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]" vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <!-- BIBLIOGRAPHY -->
+  <bibliography entry-spacing="0" second-field-align="flush">
+    <layout suffix=".">
+      <text prefix=" $citation-number$ [" suffix="]  $citation-number$ " variable="citation-number"/>
+      <choose>
+        <!-- journal/review article -->
+        <if match="any" type="article-journal review">
+          <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+          <group delimiter=" ">
+            <text font-style="italic" form="short" prefix=" $container-title$ " strip-periods="false" suffix=" $container-title$ " variable="container-title"/>
+            <group delimiter=", ">
+              <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+              <group>
+                <text font-style="italic" prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+              </group>
+              <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+            </group>
+          </group>
+          <text macro="doi" prefix=" $doi$ , " suffix=" $/doi$ "/>
+        </if>
+        <!-- book and report -->
+        <else-if match="any" type="book report bill graphic legal_case legislation motion_picture song">
+          <choose>
+            <!-- Zotero maps computer program to book, so check on version variable (may fail) -->
+            <if variable="version">
+              <text macro="computerprogram" prefix=" $computerprogram$ " suffix=" $/computerprogram$ "/>
+            </if>
+            <else>
+              <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+              <group delimiter=", ">
+                <text prefix=" $title$ ‘" suffix="’ $title$ " variable="title"/>
+                <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+                <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+              </group>
+              <text macro="doi" prefix=" $doi$ , " suffix=" $/doi$ "/>
+            </else>
+          </choose>
+        </else-if>
+        <!-- book chapter or conference proceedings -->
+        <else-if match="any" type="chapter paper-conference entry-encyclopedia">
+          <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+          <group delimiter=", ">
+            <group delimiter=" ">
+              <text prefix=" $$ " suffix=" $/$ " term="in"/>
+              <text prefix=" $container-title$ ‘" suffix="’ $container-title$ " text-case="title" variable="container-title"/>
+            </group>
+            <text font-style="italic" macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+            <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+          </group>
+          <text macro="doi" prefix=" $doi$ , " suffix=" $/doi$ "/>
+        </else-if>
+        <!-- thesis -->
+        <else-if type="thesis">
+          <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+          <group delimiter=", ">
+            <group delimiter=" ">
+              <text macro="thesis-type" prefix=" $thesis-type$ " suffix=" $/thesis-type$ "/>
+              <text prefix=" $publisher$ " suffix=" $publisher$ " variable="publisher"/>
+              <text macro="thesis-number" prefix=" $thesis-number$ " suffix=" $/thesis-number$ "/>
+            </group>
+            <text prefix=" $publisher-place$ " suffix=" $publisher-place$ " variable="publisher-place"/>
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+          </group>
+          <text macro="doi" prefix=" $doi$ , " suffix=" $/doi$ "/>
+        </else-if>
+        <!-- computer program (is mapped to type "article" in Mendeley) -->
+        <else-if type="article">
+          <text macro="computerprogram" prefix=" $computerprogram$ " suffix=" $/computerprogram$ "/>
+        </else-if>
+        <!-- patent -->
+        <else-if type="patent">
+          <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+          <group delimiter=", ">
+            <text prefix=" $number$ " suffix=" $number$ " variable="number"/>
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+          </group>
+        </else-if>
+        <!-- webpage -->
+        <else-if type="webpage">
+          <group delimiter=", ">
+            <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+            <text font-style="italic" prefix=" $URL$ " suffix=" $URL$ " variable="URL"/>
+            <text macro="full-accessed" prefix=" $full-accessed$ " suffix=" $/full-accessed$ "/>
+          </group>
+        </else-if>
+        <!-- weblog -->
+        <else-if type="post-weblog">
+          <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+          <group delimiter=", ">
+            <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+            <text font-style="italic" prefix=" $URL$ " suffix=" $URL$ " variable="URL"/>
+            <text macro="full-accessed" prefix=" $full-accessed$ " suffix=" $/full-accessed$ "/>
+          </group>
+        </else-if>
+        <!-- manuscript (not in Mendeley) -->
+        <else-if match="any" type="manuscript">
+          <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+          <group delimiter=", ">
+            <text prefix=" $title$ ‘" suffix="’ $title$ " variable="title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+          </group>
+        </else-if>
+        <!-- anything else: 
+          article-magazine
+          article-newspaper
+          broadcast
+          dataset
+          entry
+          entry-dictionary
+          figure
+          interview
+          map
+          musical_score
+          pamphlet
+          post          
+        -->
+        <else>
+          <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+          <group delimiter=" ">
+            <text font-style="italic" form="short" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <group delimiter=", ">
+              <text macro="year-date" prefix=" $year-date$ " suffix=" $/year-date$ "/>
+              <group>
+                <text font-style="italic" prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+              </group>
+              <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+            </group>
+          </group>
+          <text macro="doi" prefix=" $doi$ , " suffix=" $/doi$ "/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

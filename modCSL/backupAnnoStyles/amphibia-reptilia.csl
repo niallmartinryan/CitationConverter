@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-GB" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Amphibia-Reptilia</title>
+    <title-short>AMRE</title-short>
+    <id>http://www.zotero.org/styles/amphibia-reptilia</id>
+    <link href="http://www.zotero.org/styles/amphibia-reptilia" rel="self"/>
+    <link href="http://www.zotero.org/styles/british-journal-of-pharmacology" rel="template"/>
+    <link href="http://www.brill.com/amphibia-reptilia" rel="documentation"/>
+    <author>
+      <name>Renate Wesselingh</name>
+      <email>renate.wesselingh@uclouvain.be</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>0173-5373</issn>
+    <eissn>1568-5381</eissn>
+    <updated>2016-12-02T11:22:03+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" form="short"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter-precedes-et-al="never" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all"/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all"/>
+      <label form="short" prefix=", " text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="4" et-al-use-first="1">
+    <sort>
+      <key macro="issued"/>
+      <key macro="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="issued" prefix=" $issued$ (" suffix="): $/issued$ "/>
+        <choose>
+          <if match="any" type="article article-magazine article-newspaper article-journal review">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text form="short" prefix=" $$ " suffix=" $/$ " text-case="title" variable="container-title"/>
+            <text font-style="normal" font-weight="bold" prefix=" $$ " suffix=": $/$ " variable="volume"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text prefix=" $$ In: " suffix=", $/$ " text-case="title" variable="container-title"/>
+            <label form="short" plural="never" strip-periods="false" variable="page"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="page"/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=", $/publisher$ "/>
+          </else-if>
+          <else-if type="thesis">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text prefix=" $$ " suffix=" thesis, $/$ " variable="genre"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+          </else-if>
+          <else>
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

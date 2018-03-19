@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0">
+  <info>
+    <title>Developmental Neurobiology</title>
+    <id>http://www.zotero.org/styles/developmental-neurobiology</id>
+    <link href="http://www.zotero.org/styles/developmental-neurobiology" rel="self"/>
+    <link href="http://www.zotero.org/styles/human-mutation" rel="template"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1002/%28ISSN%291932-846X/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Patrick O'Brien</name>
+      <email>obrienpat86@gmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="medicine"/>
+    <issn>1932-8451</issn>
+    <eissn>1932-846X</eissn>
+    <updated>2017-04-12T13:58:06+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" form="short"/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label prefix=", "/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="issued"/>
+      <key macro="author-short"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="13" et-al-use-first="12">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=". $/author$ "/>
+        <text macro="issued" prefix=" $issued$ " suffix=". $/issued$ "/>
+        <choose>
+          <if type="book">
+            <text prefix=" $$ " suffix=". $/$ " text-case="title" variable="title"/>
+            <text prefix=" $$ " suffix=": $/$ " variable="publisher-place"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="publisher"/>
+            <text prefix=" $$ " suffix=" p $/$ " variable="number-of-pages"/>
+          </if>
+          <else-if type="chapter">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text macro="editor" prefix=" $editor$ In: " suffix=". $/editor$ "/>
+            <text prefix=" $$ " suffix=", $/$ " text-case="title" variable="container-title"/>
+            <text prefix=" $$ " suffix="e. $/$ " variable="edition"/>
+            <text prefix=" $$ " suffix=": $/$ " variable="publisher-place"/>
+            <text prefix=" $$ " suffix=", $/$ " variable="publisher"/>
+            <text prefix=" $$ p " suffix=" $/$ " variable="page"/>
+          </else-if>
+          <else-if type="paper-conference">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text prefix=" $$ In: " suffix=", $/$ " variable="event"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="event-place"/>
+          </else-if>
+          <else-if type="article-journal">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <text form="short" prefix=" $$ " strip-periods="true" suffix=" $/$ " variable="container-title"/>
+            <group>
+              <text prefix=" $$ " suffix=": $/$ " variable="volume"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </else-if>
+          <else-if match="any" type="webpage post-weblog">
+            <text prefix=" $$ " suffix=". $/$ " variable="container-title"/>
+            <text prefix=" $$ " suffix=". $/$ " variable="URL"/>
+            <text prefix=" $$ " suffix=" $/$ " term="accessed" text-case="capitalize-first"/>
+            <date form="text" variable="accessed"/>
+          </else-if>
+          <else>
+            <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

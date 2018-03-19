@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Obafemi Awolowo University - Faculty of Technology</title>
+    <title-short>OAU Tech</title-short>
+    <id>http://www.zotero.org/styles/obafemi-awolowo-university-faculty-of-technology</id>
+    <link href="http://www.zotero.org/styles/obafemi-awolowo-university-faculty-of-technology" rel="self"/>
+    <link href="http://www.zotero.org/styles/american-society-of-civil-engineers" rel="template"/>
+    <link href="http://oautekconf.org/oau_style_guide.pdf" rel="documentation"/>
+    <author>
+      <name>Kayode Ayodele</name>
+      <uri>http://www.oauife.edu.ng</uri>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="engineering"/>
+    <summary>A style for the Faculty of Technology, Obafemi Awolowo University, Ile-Ife, Nigeria</summary>
+    <updated>2017-03-07T10:45:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="container-contributors">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <names delimiter=", " variable="editor translator">
+          <name and="text" delimiter=", " initialize-with=". "/>
+          <label form="short" prefix=", "/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <macro name="secondary-contributors">
+    <choose>
+      <if match="none" type="chapter paper-conference">
+        <names delimiter=", " prefix=" (" suffix=")" variable="editor translator">
+          <name and="text" delimiter=", " initialize-with=". "/>
+          <label form="short" prefix=", "/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with=". "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+            <text font-style="italic" form="short" variable="title"/>
+          </if>
+          <else>
+            <text form="short" quotes="true" variable="title"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text quotes="true" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="genre"/>
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <group prefix=" (" suffix="):">
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <text form="short" prefix=" (" suffix=")." term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="issued-year">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if match="any" type="article-journal article-magazine article-newspaper">
+        <group delimiter=", ">
+          <group>
+            <text prefix="Vol. " suffix=", " variable="volume"/>
+            <text prefix="No. " suffix=", " variable="issue"/>
+          </group>
+          <text prefix="pp. " variable="page"/>
+        </group>
+      </if>
+      <else-if match="any" type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song">
+        <text prefix="pp. " variable="page"/>
+      </else-if>
+      <else-if type="webpage">
+        <text prefix="[ONLINE] Available: " suffix="," variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="citation-locator">
+    <group>
+      <label form="short" variable="locator"/>
+      <text prefix=" " variable="locator"/>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if type="webpage">
+        <date prefix=" (Last accessed: " suffix=")" variable="accessed">
+          <date-part form="short" name="month" suffix=" "/>
+          <date-part name="day" suffix=", "/>
+          <date-part name="year"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="year-suffix" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="author-short" suffix=","/>
+        <text macro="issued-year"/>
+        <text macro="citation-locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout suffix=".">
+      <text macro="author" prefix=" $author$ " suffix=". $/author$ "/>
+      <text macro="issued" prefix=" $issued$ " suffix="  $/issued$ "/>
+      <group delimiter=".">
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+        <group delimiter=", ">
+          <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+          <text prefix=" $collection-title$ " suffix=" $collection-title$ " variable="collection-title"/>
+          <text macro="container-contributors" prefix=" $container-contributors$ " suffix=" $/container-contributors$ "/>
+          <text macro="secondary-contributors" prefix=" $secondary-contributors$ " suffix=" $/secondary-contributors$ "/>
+          <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          <text macro="locators" prefix=" $locators$ " suffix=" $/locators$ "/>
+        </group>
+      </group>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

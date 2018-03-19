@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="expanded" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Frontiers in Optics</title>
+    <id>http://www.zotero.org/styles/frontiers-in-optics</id>
+    <link href="http://www.zotero.org/styles/frontiers-in-optics" rel="self"/>
+    <link href="http://www.zotero.org/styles/spie-journals" rel="template"/>
+    <link href="http://www.frontiersinoptics.com/getmedia/eb19a31a-673f-4304-b339-0702821cf594/FiOLS-Style-Guide.aspx" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="engineering"/>
+    <summary>Style for the "Frontiers in Optics Conference</summary>
+    <published>2009-10-24T23:00:00+06:00</published>
+    <updated>2013-07-27T23:20:21+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="presented at">presented at</term>
+    </terms>
+  </locale>
+  <macro name="type-number">
+    <group delimiter=" ">
+      <choose>
+        <if match="none" type="patent">
+          <text variable="genre"/>
+        </if>
+      </choose>
+      <text variable="number"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix=", ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text prefix=", " variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" delimiter=", " initialize-with=". "/>
+      <label form="short" prefix=", " text-case="title"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " initialize-with=". "/>
+      <label form="short" prefix=", " text-case="title"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="report">
+        <text quotes="true" variable="title"/>
+      </if>
+      <else-if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text font-style="italic" variable="title"/>
+        <text macro="edition"/>
+      </else-if>
+      <else>
+        <text quotes="true" variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <choose>
+      <if type="thesis">
+        <text variable="publisher"/>
+      </if>
+      <else>
+        <group delimiter=", ">
+          <text variable="publisher"/>
+          <text variable="publisher-place"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if type="webpage">
+        <text prefix="&lt;" suffix="&gt;" variable="URL"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="day" suffix=" "/>
+      <date-part form="long" name="month" suffix=" "/>
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="issued-year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="accessed">
+    <date prefix=" (" suffix=")" variable="accessed">
+      <date-part name="day" suffix=" "/>
+      <date-part form="long" name="month" suffix=" "/>
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="page">
+    <choose>
+      <if type="article-journal">
+        <text variable="page"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="container-prefix">
+    <choose>
+      <if match="none" type="webpage article-journal">
+        <text suffix=" " term="in"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="locators">
+    <text font-weight="bold" prefix=" " variable="volume"/>
+  </macro>
+  <macro name="container">
+    <choose>
+      <if variable="container-title">
+        <text macro="container-prefix"/>
+        <text font-style="italic" form="short" variable="container-title"/>
+        <text macro="locators"/>
+        <text macro="edition"/>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]">
+      <text variable="citation-number"/>
+      <group delimiter=" " prefix=", ">
+        <label form="short" variable="locator"/>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="10" et-al-use-first="9" second-field-align="flush">
+    <layout suffix=".">
+      <text prefix=" $citation-number$ [" suffix="]  $citation-number$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=",  $/author$ "/>
+      <choose>
+        <if type="webpage">
+          <group delimiter=", ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text macro="container" prefix=" $container$ " suffix=" $/container$ "/>
+            <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+            <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+          </group>
+          <text macro="accessed" prefix=" $accessed$ " suffix=" $/accessed$ "/>
+        </if>
+        <else-if type="report">
+          <group delimiter=", ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text macro="type-number" prefix=" $type-number$ " suffix=" $/type-number$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text macro="issued-year" prefix=" $issued-year$ " suffix=" $/issued-year$ "/>
+          </group>
+        </else-if>
+        <else-if type="paper-conference">
+          <choose>
+            <if variable="container-title">
+              <group delimiter=", ">
+                <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+                <text macro="container" prefix=" $container$ " suffix=" $/container$ "/>
+                <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+                <group delimiter=", " prefix="(" suffix=")">
+                  <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+                  <text macro="issued-year" prefix=" $issued-year$ " suffix=" $/issued-year$ "/>
+                </group>
+                <text macro="page" prefix=" $page$ " suffix=" $/page$ "/>
+              </group>
+            </if>
+            <else>
+              <group delimiter=", ">
+                <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+                <text macro="container" prefix=" $container$ " suffix=" $/container$ "/>
+                <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+                <text prefix=" $event-place$ " suffix=" $event-place$ " variable="event-place"/>
+                <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+                <text prefix=" $publisher$ " suffix=" $publisher$ " variable="publisher"/>
+              </group>
+            </else>
+          </choose>
+          <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+        </else-if>
+        <else-if type="interview">
+          <group delimiter=", ">
+            <text prefix=" $note$ " suffix=" $note$ " variable="note"/>
+            <text prefix=" $medium$ " suffix=" $medium$ " variable="medium"/>
+          </group>
+          <text macro="issued-year" prefix=" $issued-year$ " suffix=" $/issued-year$ "/>
+        </else-if>
+        <else>
+          <group delimiter=", ">
+            <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+            <text macro="type-number" prefix=" $type-number$ " suffix=" $/type-number$ "/>
+            <text macro="container" prefix=" $container$ " suffix=" $/container$ "/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="page" prefix=" $page$ " suffix=" $/page$ "/>
+          </group>
+          <group delimiter=", " prefix=" (" suffix=")">
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text macro="issued-year" prefix=" $issued-year$ " suffix=" $/issued-year$ "/>
+          </group>
+          <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

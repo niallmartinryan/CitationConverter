@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="never" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>FinanzArchiv - Public Finance Analysis</title>
+    <title-short>FA</title-short>
+    <id>http://www.zotero.org/styles/finanzarchiv</id>
+    <link href="http://www.zotero.org/styles/finanzarchiv" rel="self"/>
+    <link href="http://www.zotero.org/styles/elsevier-harvard" rel="template"/>
+    <link href="http://www.mohr.de/fileadmin/user_upload/Hinweise_Autoren_PDF/FA_2014/Style_guide_4_Feb_2014_.pdf" rel="documentation"/>
+    <link href="http://www.mohr.de/en/nc/journals/economics/finanzarchiv-fa/manuscripts.html" rel="documentation"/>
+    <author>
+      <name>Philipp Zumstein</name>
+      <uri>https://github.com/zuphilip</uri>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="social_science"/>
+    <category field="communications"/>
+    <issn>0015-2218</issn>
+    <eissn>1614-0974</eissn>
+    <summary>This English style is for the journal FinanzArchiv, which is published by Mohr Siebeck. Note that the articles in the beginning of journal names (e.g. The American Economic Review) are NOT automatically delete as the style requests.</summary>
+    <updated>2014-09-15T12:59:16+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="accessed">Access Date</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all"/>
+      <label form="short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with=". "/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <group delimiter=" ">
+      <text variable="URL"/>
+      <group delimiter=": " prefix="(" suffix=")">
+        <text term="accessed"/>
+        <date variable="accessed">
+          <date-part name="year"/>
+          <date-part form="numeric" name="month" prefix="-"/>
+          <date-part name="day" prefix="-"/>
+        </date>
+      </group>
+    </group>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publication-details">
+    <group delimiter=", ">
+      <text macro="edition"/>
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <citation cite-group-delimiter=", " collapse="year" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+        <group delimiter=" ">
+          <label form="short" variable="locator"/>
+          <text variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" hanging-indent="true" line-spacing="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued" sort="ascending"/>
+    </sort>
+    <layout>
+      <group delimiter=", " suffix=".">
+        <group delimiter=" ">
+          <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+          <text macro="issued" prefix=" $issued$ (" suffix=") $/issued$ "/>
+        </group>
+        <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+        <choose>
+          <if match="any" type="article-journal article-magazine article-newspaper">
+            <text prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <text prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </if>
+          <else-if match="any" type="report">
+            <group delimiter=" ">
+              <text prefix=" $collection-title$ " suffix=" $collection-title$ " variable="collection-title"/>
+              <text prefix=" $genre$ " suffix=" $genre$ " variable="genre"/>
+              <text prefix=" $number$ No. " suffix=" $number$ " variable="number"/>
+            </group>
+          </else-if>
+          <else-if match="any" type="manuscript">
+            <text prefix=" $genre$ " suffix=" $genre$ " variable="genre"/>
+            <text prefix=" $publisher-place$ " suffix=" $publisher-place$ " variable="publisher-place"/>
+            <text prefix=" $$ " suffix=" $/$ " value="mimeo"/>
+          </else-if>
+          <else-if match="any" type="webpage">
+            <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+          </else-if>
+          <else-if match="any" type="chapter paper-conference">
+            <group delimiter=": ">
+              <text prefix=" $$ " suffix=" $/$ " term="in"/>
+              <group delimiter=", ">
+                <names delimiter=", " variable="editor translator">
+                  <name delimiter=", " delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+                  <label form="short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+                </names>
+                <text prefix=" $container-title$ " suffix=" $container-title$ " text-case="title" variable="container-title"/>
+              </group>
+            </group>
+            <text macro="publication-details" prefix=" $publication-details$ " suffix=" $/publication-details$ "/>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </else-if>
+          <else-if match="any" type="thesis">
+            <text prefix=" $genre$ " suffix=" $genre$ " variable="genre"/>
+            <text macro="publication-details" prefix=" $publication-details$ " suffix=" $/publication-details$ "/>
+          </else-if>
+          <else>
+            <text macro="publication-details" prefix=" $publication-details$ " suffix=" $/publication-details$ "/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

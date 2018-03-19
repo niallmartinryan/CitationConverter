@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Current Opinion journals</title>
+    <id>http://www.zotero.org/styles/current-opinion</id>
+    <link href="http://www.zotero.org/styles/current-opinion" rel="self"/>
+    <link href="http://www.elsevier.com/journals/current-opinion-in-biotechnology/0958-1669/guide-for-authors" rel="documentation"/>
+    <author>
+      <name>David M. Kaplan</name>
+      <email>david.kaplan@ird.fr</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="generic-base"/>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term form="long" name="no date">date unknown</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")" text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <label form="verb" suffix=" " text-case="capitalize-first"/>
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group delimiter="; ">
+      <text variable="publisher"/>
+      <text macro="date"/>
+    </group>
+  </macro>
+  <macro name="date">
+    <choose>
+      <if variable="issued">
+        <choose>
+          <if type="article-journal">
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </if>
+          <else>
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </else>
+        </choose>
+      </if>
+      <else>
+        <text prefix="[" suffix="]" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="volume-page">
+    <choose>
+      <if variable="volume">
+        <text font-weight="bold" variable="volume"/>
+        <text prefix=":" variable="page"/>
+      </if>
+      <else-if variable="DOI">
+        <text prefix="doi:" variable="DOI"/>
+      </else-if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="10" second-field-align="flush">
+    <layout>
+      <text prefix=" $$ " suffix=".  $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=":  $/author$ "/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <text font-style="italic" macro="title" prefix=" $title$ " suffix=".  $/title$ "/>
+          <text macro="publisher" prefix=" $publisher$ " suffix=". $/publisher$ "/>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <text font-weight="bold" macro="title" prefix=" $title$ " suffix=".  $/title$ "/>
+          <group suffix=". ">
+            <text prefix=" $$ " suffix="  $/$ " term="in" text-case="capitalize-first"/>
+            <text font-style="italic" prefix=" $$ " suffix=".  $/$ " variable="container-title"/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+          </group>
+          <group suffix=".">
+            <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+            <text prefix=" $$ :" suffix=" $/$ " variable="page"/>
+          </group>
+        </else-if>
+        <else>
+          <text font-weight="bold" macro="title" prefix=" $title$ " suffix=".  $/title$ "/>
+          <text font-style="italic" form="short" prefix=" $$ " strip-periods="true" suffix="  $/$ " variable="container-title"/>
+          <text macro="date" prefix=" $date$ " suffix=",  $/date$ "/>
+          <text macro="volume-page" prefix=" $volume-page$ " suffix=". $/volume-page$ "/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0">
+  <info>
+    <title>National Science Foundation (grant proposals)</title>
+    <title-short>NSF</title-short>
+    <id>http://www.zotero.org/styles/national-science-foundation-grant-proposals</id>
+    <link href="http://www.zotero.org/styles/national-science-foundation-grant-proposals" rel="self"/>
+    <link href="http://www.nsf.gov/pubs/policydocs/pappguide/nsf11001/gpg_2.jsp#IIC2e" rel="documentation"/>
+    <author>
+      <name>kaushik panda</name>
+      <email>panda.10@osu.edu</email>
+    </author>
+    <contributor>
+      <name>David M. Kaplan</name>
+      <email>dmkaplan2000@gmail.com</email>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <updated>2015-04-09T14:33:59+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter=", " prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography>
+    <layout>
+      <text prefix=" $$ " suffix=".  $/$ " variable="citation-number"/>
+      <names suffix=". " variable="author">
+        <name and="text" delimiter=", " form="long" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      </names>
+      <text font-weight="bold" prefix=" $$ " quotes="true" suffix="  $/$ " text-case="title" variable="title"/>
+      <text font-style="italic" prefix=" $$ " suffix="  $/$ " variable="container-title"/>
+      <text prefix=" $$ " suffix=",  $/$ " variable="volume"/>
+      <text prefix=" $$ no. " suffix="  $/$ " variable="issue"/>
+      <date prefix="(" suffix="): " variable="issued">
+        <date-part form="long" name="year"/>
+      </date>
+      <text prefix=" $$ " suffix=".  $/$ " variable="page"/>
+      <group delimiter=", ">
+        <text prefix=" $$ doi:" suffix=" $/$ " variable="DOI"/>
+        <text prefix=" $$ Available at " suffix="  $/$ " variable="URL"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

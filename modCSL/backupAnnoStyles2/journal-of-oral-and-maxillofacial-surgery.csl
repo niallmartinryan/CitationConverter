@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0">
+  <info>
+    <title>Journal of Oral and Maxillofacial Surgery</title>
+    <id>http://www.zotero.org/styles/journal-of-oral-and-maxillofacial-surgery</id>
+    <link href="http://www.zotero.org/styles/journal-of-oral-and-maxillofacial-surgery" rel="self"/>
+    <link href="http://www.zotero.org/styles/american-medical-association" rel="template"/>
+    <link href="http://www.joms.org/authorinfo" rel="documentation"/>
+    <author>
+      <name>Charles Parnot</name>
+      <uri>http://twitter.com/cparnot</uri>
+      <email>charles.parnot@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>0278-2391</issn>
+    <eissn>1531-5053</eissn>
+    <updated>2012-09-09T21:58:08+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <group>
+      <names variable="author">
+        <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+        <label form="short" prefix=" " strip-periods="true"/>
+        <substitute>
+          <names variable="editor"/>
+          <text macro="title"/>
+        </substitute>
+      </names>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if match="any" type="webpage post-weblog">
+        <choose>
+          <if variable="URL">
+            <text suffix=" " value="Available at:"/>
+            <group delimiter=". ">
+              <text variable="URL"/>
+              <group>
+                <text suffix=" " term="accessed" text-case="capitalize-first"/>
+                <date variable="accessed">
+                  <date-part name="month" suffix=" "/>
+                  <date-part name="day" suffix=", "/>
+                  <date-part name="year"/>
+                </date>
+              </group>
+            </group>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," vertical-align="sup">
+      <text variable="citation-number"/>
+      <group prefix="(" suffix=")">
+        <label form="short" strip-periods="true" variable="locator"/>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="51" et-al-use-first="50" second-field-align="flush">
+    <layout suffix=".">
+      <text prefix=" $citation-number$ " suffix=". $citation-number$ " variable="citation-number"/>
+      <group delimiter=": " suffix=".">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      </group>
+      <choose>
+        <if match="any" type="bill book graphic legislation motion_picture report song">
+          <group delimiter=" " prefix=" " suffix=".">
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="editor" prefix=" $editor$ (" suffix=") $/editor$ "/>
+          </group>
+          <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+          <group prefix=", " suffix=".">
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+            <text prefix=" $page$ :" suffix=" $page$ " variable="page"/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group prefix=" ">
+            <text prefix=" $$ " suffix=":  $/$ " term="in" text-case="capitalize-first"/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text prefix=" $container-title$  " suffix=". $container-title$ " variable="container-title"/>
+            <text prefix=" $volume$ Vol " suffix=". $volume$ " variable="volume"/>
+            <text macro="edition" prefix=" $edition$  " suffix=" $/edition$ "/>
+            <group suffix=".">
+              <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+              <group prefix=",  " suffix=".">
+                <date variable="issued">
+                  <date-part name="year"/>
+                </date>
+                <text prefix=" $page$ :" suffix=" $page$ " variable="page"/>
+              </group>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="article-newspaper">
+          <text font-style="italic" prefix=" $container-title$  " suffix=".  $container-title$ " variable="container-title"/>
+          <choose>
+            <if variable="URL">
+              <group delimiter=". " suffix=".">
+                <text prefix=" $URL$ " suffix=" $URL$ " variable="URL"/>
+                <group prefix="Published ">
+                  <date variable="issued">
+                    <date-part name="month" suffix=" "/>
+                    <date-part name="day" suffix=", "/>
+                    <date-part name="year"/>
+                  </date>
+                </group>
+                <group>
+                  <text prefix=" $$ " suffix="  $/$ " term="accessed" text-case="capitalize-first"/>
+                  <date variable="accessed">
+                    <date-part name="month" suffix=" "/>
+                    <date-part name="day" suffix=", "/>
+                    <date-part name="year"/>
+                  </date>
+                </group>
+              </group>
+            </if>
+            <else>
+              <group delimiter=":" suffix=".">
+                <group>
+                  <date variable="issued">
+                    <date-part name="month" suffix=" "/>
+                    <date-part name="day" suffix=", "/>
+                    <date-part name="year"/>
+                  </date>
+                </group>
+                <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+              </group>
+            </else>
+          </choose>
+        </else-if>
+        <else-if type="legal_case">
+          <group delimiter=" " prefix=" " suffix=",">
+            <text macro="editor" prefix=" $editor$ (" suffix=") $/editor$ "/>
+          </group>
+          <group delimiter=" " prefix=" " suffix=" ">
+            <text prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <text prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+          </group>
+          <text prefix=" $page$ , " suffix="  $page$ " variable="page"/>
+          <group delimiter=" " prefix="(" suffix=").">
+            <text prefix=" $authority$ " suffix=" $authority$ " variable="authority"/>
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </group>
+        </else-if>
+        <else>
+          <text macro="editor" prefix=" $editor$  " suffix=". $/editor$ "/>
+          <group delimiter=" " prefix=" ">
+            <text form="short" prefix=" $container-title$ " strip-periods="true" suffix=" $container-title$ " variable="container-title"/>
+            <text prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+          </group>
+          <text prefix=" $page-first$ : " suffix=" $page-first$ " variable="page-first"/>
+          <date prefix=", " variable="issued">
+            <date-part name="year"/>
+          </date>
+        </else>
+      </choose>
+      <text macro="access" prefix=" $access$ . " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

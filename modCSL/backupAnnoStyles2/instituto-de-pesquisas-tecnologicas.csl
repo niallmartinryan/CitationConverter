@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="pt-BR" demote-non-dropping-particle="never" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Instituto de Pesquisas Tecnológicas (Portuguese - Brazil)</title>
+    <title-short>IPT</title-short>
+    <id>http://www.zotero.org/styles/instituto-de-pesquisas-tecnologicas</id>
+    <link href="http://www.zotero.org/styles/instituto-de-pesquisas-tecnologicas" rel="self"/>
+    <link href="http://www.ipt.br/en" rel="documentation"/>
+    <author>
+      <name>Samuel Barsanelli Costa</name>
+      <email>sbcosta@ipt.br</email>
+    </author>
+    <category citation-format="author-date"/>
+    <summary>Standard for citations and references used by the Institute for Technological Research of the State of Sao Paulo - IPT, Brazil, in accordance with the Brazilian Association of Technical Standards ABNT NBR 6023:2000</summary>
+    <updated>2016-03-21T12:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <citation et-al-min="4" et-al-use-first="1">
+    <sort>
+      <key variable="issued"/>
+      <key variable="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <names variable="author">
+          <name delimiter="; " form="short">
+            <name-part name="family" text-case="uppercase"/>
+          </name>
+        </names>
+        <date date-parts="year" form="text" variable="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="1">
+    <sort>
+      <key variable="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout>
+      <choose>
+        <if match="any" type="article-journal">
+          <group delimiter=" ">
+            <names suffix="." variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text font-weight="bold" prefix=" $container-title$ " suffix=", $container-title$ " variable="container-title"/>
+            <text prefix=" $publisher-place$ " suffix=", $publisher-place$ " variable="publisher-place"/>
+            <text prefix=" $volume$ v. " suffix=", $volume$ " variable="volume"/>
+            <text prefix=" $issue$ n. " suffix=", $issue$ " variable="issue"/>
+            <text prefix=" $page$ p. " suffix=", $page$ " variable="page"/>
+            <date date-parts="year-month" form="text" suffix="." variable="issued">
+              <date-part form="short" name="month"/>
+            </date>
+          </group>
+        </if>
+        <else-if match="any" type="article-newspaper">
+          <group delimiter=" ">
+            <names suffix="." variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text font-weight="bold" prefix=" $container-title$ " suffix=", $container-title$ " variable="container-title"/>
+            <text prefix=" $publisher-place$ " suffix=", $publisher-place$ " variable="publisher-place"/>
+            <date suffix="." variable="issued">
+              <date-part name="day" suffix=" "/>
+              <date-part form="short" name="month" suffix=" "/>
+              <date-part name="year"/>
+            </date>
+            <text prefix=" $page$ p. " suffix=". $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="bill">
+          <group delimiter=" ">
+            <names suffix="." variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text font-weight="bold" prefix=" $container-title$ " suffix=", $container-title$ " variable="container-title"/>
+            <text prefix=" $publisher-place$ " suffix=", $publisher-place$ " variable="publisher-place"/>
+            <date suffix="." variable="issued">
+              <date-part name="day" suffix=" "/>
+              <date-part form="short" name="month" suffix=" "/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </else-if>
+        <else-if match="any" type="book">
+          <group delimiter=" ">
+            <names suffix="." variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text prefix=" $genre$ (" suffix=") $genre$ " variable="genre"/>
+            <text font-weight="bold" prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text prefix=" $edition$ " suffix=".ed. $edition$ " variable="edition"/>
+            <text prefix=" $publisher-place$ " suffix=": $publisher-place$ " variable="publisher-place"/>
+            <text prefix=" $publisher$ " suffix=", $publisher$ " variable="publisher"/>
+            <date date-parts="year" form="text" suffix="." variable="issued">
+              <date-part form="short" name="month"/>
+            </date>
+            <text prefix=" $number-of-pages$ " suffix="p. $number-of-pages$ " variable="number-of-pages"/>
+            <text prefix=" $container-title$ (" suffix="). $container-title$ " variable="container-title"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="chapter">
+          <group delimiter=" ">
+            <names suffix="." variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text font-weight="normal" prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <names prefix="In: " suffix="." variable="editor">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text prefix=" $genre$ (" suffix="). $genre$ " variable="genre"/>
+            <text font-weight="bold" prefix=" $container-title$ " suffix=". $container-title$ " variable="container-title"/>
+            <text prefix=" $edition$ " suffix=".ed. $edition$ " variable="edition"/>
+            <text prefix=" $publisher-place$ " suffix=": $publisher-place$ " variable="publisher-place"/>
+            <text prefix=" $publisher$ " suffix=", $publisher$ " variable="publisher"/>
+            <date date-parts="year" form="text" suffix="." variable="issued">
+              <date-part form="short" name="month"/>
+            </date>
+            <text prefix=" $chapter-number$ cap. " suffix=". $chapter-number$ " variable="chapter-number"/>
+            <text prefix=" $page$ p. " suffix=". $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="paper-conference">
+          <group>
+            <names suffix=". " variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text font-weight="normal" prefix=" $title$ " suffix=".  $title$ " variable="title"/>
+            <text prefix=" $container-title$ In: " suffix=",  $container-title$ " text-case="uppercase" variable="container-title"/>
+            <text prefix=" $collection-number$ " suffix=".,  $collection-number$ " variable="collection-number"/>
+            <date date-parts="year" form="text" suffix=", " variable="issued">
+              <date-part form="short" name="month"/>
+            </date>
+            <text prefix=" $publisher-place$ " suffix=".  $publisher-place$ " variable="publisher-place"/>
+            <text font-weight="bold" prefix=" $genre$ " suffix="... $genre$ " variable="genre"/>
+            <text prefix=" $publisher-place$ " suffix=":  $publisher-place$ " variable="publisher-place"/>
+            <text prefix=" $publisher$ " suffix=",  $publisher$ " variable="publisher"/>
+            <date date-parts="year" form="text" suffix=". " variable="issued"/>
+            <text prefix=" $volume$ v. " suffix=".  $volume$ " variable="volume"/>
+            <text prefix=" $page$ p. " suffix=". $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="report">
+          <group delimiter=" ">
+            <names suffix="." variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text font-weight="bold" prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text prefix=" $publisher-place$ " suffix=": $publisher-place$ " variable="publisher-place"/>
+            <text prefix=" $publisher$ " suffix=", $publisher$ " variable="publisher"/>
+            <date date-parts="year" form="text" suffix="." variable="issued">
+              <date-part form="short" name="month"/>
+            </date>
+            <text prefix=" $number-of-pages$ " suffix="p. $number-of-pages$ " variable="number-of-pages"/>
+            <text prefix=" $volume$ v. " suffix=". $volume$ " variable="volume"/>
+            <text prefix=" $container-title$ (" suffix="). $container-title$ " variable="container-title"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="thesis">
+          <group delimiter=" ">
+            <names suffix="." variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text font-weight="bold" prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <date date-parts="year" form="text" suffix="." variable="issued"/>
+            <text prefix=" $number-of-pages$ " suffix="f. $number-of-pages$ " variable="number-of-pages"/>
+            <text prefix=" $container-title$ " suffix=" - $container-title$ " variable="container-title"/>
+            <text prefix=" $publisher$ " suffix=", $publisher$ " variable="publisher"/>
+            <text prefix=" $publisher-place$ " suffix=", $publisher-place$ " variable="publisher-place"/>
+            <date date-parts="year" form="text" suffix="." variable="issued">
+              <date-part form="short" name="month"/>
+            </date>
+          </group>
+        </else-if>
+        <else-if match="any" type="webpage">
+          <group delimiter=" ">
+            <names suffix="." variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text font-weight="bold" prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text prefix=" $URL$ Disponível em: &lt;" suffix="&gt;. $URL$ " variable="URL"/>
+            <date prefix="Acesso em: " suffix="." variable="accessed">
+              <date-part name="day" suffix=" "/>
+              <date-part form="short" name="month" suffix=" "/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=" ">
+            <names suffix="." variable="author">
+              <name delimiter="; " initialize-with=". " name-as-sort-order="all">
+                <name-part name="family" text-case="uppercase"/>
+              </name>
+            </names>
+            <text font-weight="bold" prefix=" $title$ " suffix=". $title$ " variable="title"/>
+            <text prefix=" $publisher-place$ " suffix=": $publisher-place$ " variable="publisher-place"/>
+            <text prefix=" $publisher$ " suffix=", $publisher$ " variable="publisher"/>
+            <date date-parts="year" form="text" suffix="." variable="issued">
+              <date-part form="short" name="month"/>
+            </date>
+            <text prefix=" $page$ " suffix="p. $page$ " variable="page"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+  <locale>
+    <terms>
+      <term form="short" name="month-01">jan.</term>
+      <term form="short" name="month-02">fev.</term>
+      <term form="short" name="month-03">mar.</term>
+      <term form="short" name="month-04">abr.</term>
+      <term form="short" name="month-05">mai.</term>
+      <term form="short" name="month-06">jun.</term>
+      <term form="short" name="month-07">jul.</term>
+      <term form="short" name="month-08">ago.</term>
+      <term form="short" name="month-09">set.</term>
+      <term form="short" name="month-10">out.</term>
+      <term form="short" name="month-11">nov.</term>
+      <term form="short" name="long-ordinal-01">dez.</term>
+    </terms>
+  </locale>
+</style>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="expanded" version="1.0">
+  <info>
+    <title>Molecular Biology of the Cell</title>
+    <title-short>MBoC</title-short>
+    <id>http://www.zotero.org/styles/molecular-biology-of-the-cell</id>
+    <link href="http://www.zotero.org/styles/molecular-biology-of-the-cell" rel="self"/>
+    <link href="http://www.zotero.org/styles/cell" rel="template"/>
+    <link href="http://www.molbiolcell.org/site/misc/ifora.xhtml#C2" rel="documentation"/>
+    <author>
+      <name>Dani Bodor</name>
+      <email>dbodor@igc.gulbenkian.pt</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>1059-1524</issn>
+    <eissn>1939-4586</eissn>
+    <summary>Molecular Biology of the Cell.</summary>
+    <updated>2013-01-18T23:35:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" form="short"/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="all"/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name and="text" delimiter-precedes-last="always" initialize-with=". " prefix="ed. "/>
+    </names>
+  </macro>
+  <citation collapse="year" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="issued"/>
+      <key macro="author"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="issued" prefix=" $issued$ (" suffix="). $/issued$ "/>
+        <choose>
+          <if match="any" type="article article-magazine article-newspaper article-journal review">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <group delimiter=", ">
+              <group delimiter=" ">
+                <text form="short" prefix=" $$ " suffix=" $/$ " text-case="title" variable="container-title"/>
+                <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+              </group>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </if>
+          <else-if match="any" type="chapter paper-conference">
+            <text prefix=" $$ " suffix=". $/$ " variable="title"/>
+            <group delimiter=", ">
+              <text prefix=" $$ In: " suffix=" $/$ " text-case="title" variable="container-title"/>
+              <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </else-if>
+          <else-if type="thesis">
+            <group delimiter=". ">
+              <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+            </group>
+          </else-if>
+          <else>
+            <group delimiter=", ">
+              <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            </group>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

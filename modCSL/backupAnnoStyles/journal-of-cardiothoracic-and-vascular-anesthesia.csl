@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="minimal" version="1.0">
+  <info>
+    <title>Journal of Cardiothoracic and Vascular Anesthesia</title>
+    <id>http://www.zotero.org/styles/journal-of-cardiothoracic-and-vascular-anesthesia</id>
+    <link href="http://www.zotero.org/styles/journal-of-cardiothoracic-and-vascular-anesthesia" rel="self"/>
+    <link href="http://www.zotero.org/styles/vancouver" rel="template"/>
+    <link href="http://www.jcardioanesthesia.com/authorinfo" rel="documentation"/>
+    <author>
+      <name>Matt Levin</name>
+      <email>mlevin@mlevin.net</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>1053-0770</issn>
+    <eissn>1532-8422</eissn>
+    <summary>Style for the Journal for Cardiothoracic and Vascular Anesthesia, published by Elsevier. Based on Vancouver.</summary>
+    <updated>2013-09-05T20:11:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <date delimiter=" " form="text">
+      <date-part name="year"/>
+    </date>
+    <terms>
+      <term name="et-al">et al</term>
+      <term form="short" name="page">
+        <single>p</single>
+        <multiple>pp</multiple>
+      </term>
+      <term form="short" name="edition">ed</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-et-al="always" delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <et-al term="et-al"/>
+      <label form="long" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <group delimiter=": ">
+      <choose>
+        <if match="any" type="chapter paper-conference">
+          <text term="in"/>
+        </if>
+      </choose>
+      <names suffix=" (ed):" variable="editor">
+        <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+        <label form="short" prefix=", "/>
+      </names>
+    </group>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", " suffix=",">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <group delimiter=": ">
+          <group delimiter=" ">
+            <text term="retrieved" text-case="capitalize-first"/>
+            <text term="from"/>
+          </group>
+          <text variable="URL"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="accessed-date">
+    <choose>
+      <if variable="URL">
+        <group delimiter=" " prefix="[" suffix="]">
+          <text term="cited" text-case="lowercase"/>
+          <date form="text" variable="accessed"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if match="any" type="article-journal article-magazine chapter paper-conference article-newspaper">
+        <group delimiter=" ">
+          <text form="short" variable="container-title"/>
+          <choose>
+            <if variable="URL">
+              <text prefix="[" suffix="]" term="internet" text-case="capitalize-first"/>
+            </if>
+          </choose>
+        </group>
+        <text macro="edition" prefix=" "/>
+      </if>
+      <else>
+        <text form="short" variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="article-journal article-magazine article-newspaper book">
+        <text suffix=". " variable="title"/>
+        <choose>
+          <if variable="URL">
+            <text prefix=" [" suffix="]" term="internet" text-case="capitalize-first"/>
+          </if>
+        </choose>
+        <text macro="edition" prefix=". "/>
+      </if>
+      <else-if type="chapter">
+        <text suffix=", " variable="title"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix="(" suffix=").">
+          <text form="short" term="edition"/>
+          <number variable="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="date">
+    <choose>
+      <if match="any" type="article-journal article-magazine article-newspaper book chapter">
+        <group delimiter=" ">
+          <date form="text" variable="issued"/>
+          <text macro="accessed-date"/>
+        </group>
+      </if>
+      <else-if type="report">
+        <date delimiter=" " variable="issued">
+          <date-part name="year"/>
+        </date>
+      </else-if>
+      <else>
+        <group suffix=".">
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+          <text macro="accessed-date" prefix=" "/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <choose>
+      <if match="any" type="article-journal article-magazine article-newspaper">
+        <text prefix=":" suffix=", " variable="page"/>
+      </if>
+      <else-if match="any" type="book chapter">
+        <group delimiter=" ">
+          <label form="short" variable="page"/>
+          <text variable="page"/>
+        </group>
+      </else-if>
+      <else>
+        <group delimiter=" " prefix=" ">
+          <label plural="never" variable="page"/>
+          <text variable="page"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="journal-location">
+    <choose>
+      <if match="any" type="article-journal article-magazine">
+        <text variable="volume"/>
+        <!--<text variable="issue" prefix="(" suffix=")"/>-->
+      </if>
+    </choose>
+  </macro>
+  <macro name="date-pages">
+    <choose>
+      <if match="any" type="article-journal article-magazine article-newspaper">
+        <text macro="pages"/>
+        <text macro="date"/>
+      </if>
+      <else-if match="any" type="book chapter">
+        <group prefix=" " suffix=" ">
+          <text macro="date" suffix=", "/>
+          <text macro="pages"/>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="3" second-field-align="flush">
+    <layout>
+      <text prefix=" $$ " suffix=".  $/$ " variable="citation-number"/>
+      <group delimiter=": ">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+      </group>
+      <group delimiter=" ">
+        <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+        <text macro="container-title" prefix=" $container-title$ " suffix=" $/container-title$ "/>
+        <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+        <text macro="journal-location" prefix=" $journal-location$ " suffix=" $/journal-location$ "/>
+      </group>
+      <text macro="date-pages" prefix=" $date-pages$ " suffix=" $/date-pages$ "/>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

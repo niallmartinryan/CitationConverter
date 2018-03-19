@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" and="symbol" class="note" default-locale="en-GB" demote-non-dropping-particle="never" initialize-with="." initialize-with-hyphen="false" sort-separator=" " version="1.0">
+  <info>
+    <title>Leiden Journal of International Law</title>
+    <title-short>LJIL</title-short>
+    <id>http://www.zotero.org/styles/leiden-journal-of-international-law</id>
+    <link href="http://www.zotero.org/styles/leiden-journal-of-international-law" rel="self"/>
+    <link href="https://www.cambridge.org/core/services/aop-file-manager/file/575adb7dfcaa6b122ec738b3" rel="documentation"/>
+    <author>
+      <name>Øyvind Ege</name>
+      <email>oyvind.ege@gmail.com</email>
+    </author>
+    <category citation-format="note"/>
+    <category field="law"/>
+    <issn>0922-1565</issn>
+    <eissn>1478-9698</eissn>
+    <summary>Citation as per LJIL standards</summary>
+    <updated>2017-06-21T14:00:32+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term form="short" name="chapter">
+        <single>ch.</single>
+        <multiple>chs.</multiple>
+      </term>
+      <term form="short" name="section">
+        <single>s</single>
+        <multiple>ss</multiple>
+      </term>
+      <term form="short" name="paragraph">
+        <single>para.</single>
+        <multiple>paras.</multiple>
+      </term>
+      <term form="short" name="translator">
+        <single>tr.</single>
+        <multiple>trs.</multiple>
+      </term>
+      <term form="short" name="edition">edn.</term>
+      <term name="et-al">et al</term>
+    </terms>
+  </locale>
+  <citation and="symbol" et-al-min="3" et-al-use-first="1" initialize-with=".">
+    <layout delimiter="; ">
+      <choose>
+        <if position="ibid-with-locator">
+          <choose>
+            <if match="any" type="legal_case">
+              <group delimiter=" ">
+                <text suffix="," term="ibid" text-case="capitalize-first"/>
+                <choose>
+                  <if locator="paragraph" match="any">
+                    <text prefix=" para " variable="locator"/>
+                  </if>
+                  <else>
+                    <text prefix=" at " suffix="." variable="locator"/>
+                  </else>
+                </choose>
+              </group>
+            </if>
+            <else-if match="any" type="legislation">
+              <group>
+                <text suffix="," term="ibid" text-case="capitalize-first"/>
+                <choose>
+                  <if locator="paragraph" match="any">
+                    <text prefix=" article " variable="locator"/>
+                  </if>
+                  <else>
+                    <text prefix=" page " variable="locator"/>
+                  </else>
+                </choose>
+              </group>
+            </else-if>
+            <else>
+              <group>
+                <text suffix="," term="ibid" text-case="capitalize-first"/>
+                <text prefix=" at " variable="locator"/>
+              </group>
+            </else>
+          </choose>
+        </if>
+        <else-if position="ibid">
+          <text strip-periods="true" term="ibid" text-case="capitalize-first"/>
+        </else-if>
+        <else-if position="subsequent">
+          <choose>
+            <if match="any" type="article-journal book">
+              <group delimiter=" ">
+                <group>
+                  <names variable="author">
+                    <name form="short"/>
+                  </names>
+                  <text prefix=", " text-case="title" variable="title-short"/>
+                  <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                </group>
+                <text prefix=", page  " variable="locator"/>
+              </group>
+            </if>
+            <else-if match="any" type="legislation">
+              <group>
+                <text font-style="italic" variable="title-short"/>
+                <text prefix=", article " suffix="." variable="locator"/>
+              </group>
+            </else-if>
+            <else-if match="any" type="bill">
+              <choose>
+                <if match="any" variable="publisher">
+                  <group delimiter=" ">
+                    <text variable="publisher"/>
+                    <text variable="title"/>
+                    <date date-parts="year" form="text" prefix="(" suffix=")" variable="issued"/>
+                  </group>
+                </if>
+                <else>
+                  <group>
+                    <names variable="author">
+                      <name form="short"/>
+                    </names>
+                    <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                  </group>
+                </else>
+              </choose>
+            </else-if>
+            <else-if match="any" type="article-newspaper">
+              <choose>
+                <if match="any" variable="container-title">
+                  <group>
+                    <text suffix="," variable="container-title"/>
+                    <text prefix=" '" suffix="'" text-case="title" variable="title"/>
+                  </group>
+                </if>
+                <else>
+                  <group>
+                    <names suffix=", " variable="author"/>
+                    <text prefix="'" suffix="'" text-case="title" variable="title"/>
+                  </group>
+                </else>
+              </choose>
+            </else-if>
+            <else-if match="any" type="chapter">
+              <group>
+                <names variable="author">
+                  <name form="short"/>
+                </names>
+                <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+              </group>
+            </else-if>
+            <else-if match="any" type="paper-conference">
+              <group>
+                <text font-style="italic" variable="title"/>
+              </group>
+            </else-if>
+            <else-if match="any" type="report">
+              <choose>
+                <if match="any" variable="publisher">
+                  <text variable="publisher"/>
+                </if>
+                <else>
+                  <names variable="author">
+                    <name form="short"/>
+                  </names>
+                </else>
+              </choose>
+              <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+            </else-if>
+            <else>
+              <group>
+                <text font-style="italic" text-case="title" variable="title"/>
+                <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                <choose>
+                  <if locator="paragraph" match="any">
+                    <text prefix=", para " variable="locator"/>
+                  </if>
+                  <else-if locator="page" match="any">
+                    <text prefix=", at" variable="locator"/>
+                  </else-if>
+                </choose>
+              </group>
+            </else>
+          </choose>
+        </else-if>
+        <else>
+          <choose>
+            <if match="all" type="article-journal">
+              <group>
+                <names variable="author"/>
+                <text font-style="normal" prefix=", '" suffix="'," text-case="title" variable="title"/>
+                <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                <text prefix=" " variable="volume"/>
+                <text prefix=" " suffix=" " variable="container-title"/>
+                <text variable="page"/>
+                <text prefix=", at " variable="locator"/>
+                <text prefix=" available at: &lt;" suffix="&gt;" variable="abstract"/>
+              </group>
+            </if>
+            <else-if match="any" type="book">
+              <choose>
+                <if match="any" variable="editor">
+                  <group>
+                    <names suffix=" (ed.)" variable="editor"/>
+                    <text font-style="italic" prefix=", " text-case="title" variable="title"/>
+                    <choose>
+                      <if match="any" variable="volume">
+                        <text prefix=", vol. " variable="volume"/>
+                      </if>
+                    </choose>
+                    <text prefix=", " variable="abstract"/>
+                    <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                    <choose>
+                      <if match="any" variable="locator">
+                        <choose>
+                          <if locator="page" match="any">
+                            <text prefix=", at " suffix="." variable="locator"/>
+                          </if>
+                          <else>
+                            <text prefix=", paragraph " suffix="." variable="locator"/>
+                          </else>
+                        </choose>
+                      </if>
+                    </choose>
+                  </group>
+                </if>
+                <else>
+                  <group>
+                    <names suffix=", " variable="author"/>
+                    <text font-style="italic" text-case="title" variable="title"/>
+                    <choose>
+                      <if match="any" variable="volume">
+                        <text prefix=", vol. " variable="volume"/>
+                      </if>
+                    </choose>
+                    <text prefix="," variable="abstract"/>
+                    <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                    <choose>
+                      <if match="any" variable="locator">
+                        <choose>
+                          <if locator="page" match="any">
+                            <text prefix=", at  " variable="locator"/>
+                          </if>
+                          <else>
+                            <text prefix=", paragraph " variable="locator"/>
+                          </else>
+                        </choose>
+                      </if>
+                    </choose>
+                  </group>
+                </else>
+              </choose>
+            </else-if>
+            <else-if match="any" type="chapter">
+              <group>
+                <names variable="author"/>
+                <text font-style="normal" prefix=", '" suffix="', " variable="title"/>
+                <text font-style="normal" suffix=" " term="in"/>
+                <names suffix=" (ed.)," variable="editor"/>
+                <text font-style="italic" prefix=" " suffix=" " variable="container-title"/>
+                <date date-parts="year" form="text" prefix="(" suffix=")," variable="issued"/>
+                <text prefix=" " variable="page-first"/>
+                <text prefix=" at " variable="locator"/>
+              </group>
+            </else-if>
+            <else-if match="any" type="legal_case">
+              <choose>
+                <if match="any" variable="issue">
+                  <group>
+                    <text font-style="normal" suffix=", " variable="title"/>
+                    <text suffix=", " variable="abstract"/>
+                    <text suffix=", " variable="collection-title"/>
+                    <text variable="container-title"/>
+                    <text prefix=" " variable="page"/>
+                    <choose>
+                      <if match="any" variable="locator">
+                        <choose>
+                          <if locator="paragraph" match="any">
+                            <text prefix=", para. " variable="locator"/>
+                          </if>
+                          <else-if locator="page" match="any">
+                            <text prefix=", page " variable="locator"/>
+                          </else-if>
+                          <else>
+                            <text prefix=", " variable="locator"/>
+                          </else>
+                        </choose>
+                      </if>
+                    </choose>
+                  </group>
+                </if>
+                <else-if match="any" variable="volume">
+                  <group>
+                    <text prefix="CJEU " suffix="," variable="container-title"/>
+                    <text prefix=" " variable="title"/>
+                    <date date-parts="year" form="text" prefix=", " variable="issued"/>
+                    <choose>
+                      <if match="any" variable="locator">
+                        <choose>
+                          <if locator="paragraph" match="any">
+                            <text prefix=", para. " variable="locator"/>
+                          </if>
+                          <else>
+                            <text prefix=", at" suffix="." variable="locator"/>
+                          </else>
+                        </choose>
+                      </if>
+                    </choose>
+                  </group>
+                </else-if>
+                <else>
+                  <group>
+                    <text font-style="italic" variable="title"/>
+                    <text prefix=", " suffix=", " variable="abstract"/>
+                    <text suffix=", " variable="container-title"/>
+                    <text suffix=", " variable="publisher"/>
+                    <text prefix=" " variable="collection-title"/>
+                    <choose>
+                      <if match="any" variable="locator">
+                        <choose>
+                          <if locator="paragraph" match="any">
+                            <text prefix=", para. " variable="locator"/>
+                          </if>
+                          <else>
+                            <text prefix=", page " variable="locator"/>
+                          </else>
+                        </choose>
+                      </if>
+                    </choose>
+                  </group>
+                </else>
+              </choose>
+            </else-if>
+            <else-if match="any" type="legislation">
+              <group>
+                <date date-parts="year" form="text" suffix=" " variable="issued"/>
+                <text suffix=", " variable="title"/>
+                <group>
+                  <text suffix=" " variable="volume"/>
+                  <text suffix=" " variable="collection-title"/>
+                  <text variable="page"/>
+                </group>
+                <choose>
+                  <if match="any" variable="title-short">
+                    <text prefix=" [" suffix="]" variable="title-short"/>
+                  </if>
+                </choose>
+                <choose>
+                  <if match="any" variable="locator">
+                    <text prefix=", article " variable="locator"/>
+                  </if>
+                </choose>
+              </group>
+            </else-if>
+            <else-if match="any" type="bill">
+              <choose>
+                <if match="any" variable="publisher">
+                  <group>
+                    <text suffix=" " variable="publisher"/>
+                    <text suffix=", " text-case="title" variable="title"/>
+                    <text variable="genre"/>
+                    <choose>
+                      <if locator="page paragraph" match="any">
+                        <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                        <text prefix=", at " suffix="." variable="locator"/>
+                      </if>
+                      <else>
+                        <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                      </else>
+                    </choose>
+                  </group>
+                </if>
+                <else-if match="none" variable="publisher container-title">
+                  <group>
+                    <names suffix=", " variable="author"/>
+                    <text suffix=", " text-case="title" variable="title"/>
+                    <text suffix=" " variable="genre"/>
+                    <date date-parts="year" form="text" prefix="(" suffix=")" variable="issued"/>
+                  </group>
+                </else-if>
+                <else-if match="any" variable="container-title">
+                  <choose>
+                    <if match="any" variable="volume">
+                      <group>
+                        <names suffix=", " variable="author"/>
+                        <text suffix=", " text-case="title" variable="title"/>
+                        <date date-parts="year" form="text" suffix=" YILC, " variable="issued"/>
+                        <choose>
+                          <if match="any" variable="edition">
+                            <text suffix="" variable="container-title"/>
+                            <text prefix=" (" suffix=")" variable="edition"/>
+                          </if>
+                          <else>
+                            <text variable="container-title"/>
+                          </else>
+                        </choose>
+                        <choose>
+                          <if match="any" variable="page">
+                            <text prefix=", " variable="page"/>
+                          </if>
+                        </choose>
+                      </group>
+                    </if>
+                    <else>
+                      <group>
+                        <text suffix=", " text-case="title" variable="title"/>
+                        <date date-parts="year" form="text" suffix=" YILC, " variable="issued"/>
+                        <text suffix=" " variable="container-title"/>
+                        <text prefix="(" suffix=")" text-case="title" variable="edition"/>
+                      </group>
+                    </else>
+                  </choose>
+                </else-if>
+                <else>
+                  <group>
+                    <text suffix=", " variable="publisher"/>
+                    <text font-style="italic" text-case="title" variable="title"/>
+                    <choose>
+                      <if match="any" variable="container-title">
+                        <text prefix=", " variable="container-title"/>
+                      </if>
+                    </choose>
+                    <choose>
+                      <if match="any" variable="genre">
+                        <text prefix=", " variable="genre"/>
+                      </if>
+                    </choose>
+                    <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                    <choose>
+                      <if match="any" variable="locator">
+                        <choose>
+                          <if locator="paragraph" match="any">
+                            <text prefix=", article " variable="locator"/>
+                          </if>
+                          <else-if locator="volume" match="any">
+                            <text prefix=" volume " variable="locator"/>
+                          </else-if>
+                          <else>
+                            <text prefix=", at " variable="locator"/>
+                          </else>
+                        </choose>
+                      </if>
+                    </choose>
+                  </group>
+                </else>
+              </choose>
+            </else-if>
+            <else-if match="any" type="report">
+              <group>
+                <choose>
+                  <if match="any" variable="publisher">
+                    <group>
+                      <text suffix=", " variable="publisher"/>
+                      <text font-style="normal" prefix="'" suffix="'" variable="title"/>
+                      <choose>
+                        <if match="any" variable="container-title">
+                          <text font-style="italic" prefix=", in: " variable="container-title"/>
+                          <choose>
+                            <if match="any" variable="editor">
+                              <text prefix=" " term="editor"/>
+                            </if>
+                          </choose>
+                        </if>
+                      </choose>
+                      <choose>
+                        <if match="any" variable="collection-title">
+                          <text prefix=", " variable="collection-title"/>
+                        </if>
+                      </choose>
+                      <choose>
+                        <if match="any" variable="genre">
+                          <text prefix=", " variable="genre"/>
+                        </if>
+                      </choose>
+                      <date date-parts="year-month" form="text" prefix=", " variable="issued"/>
+                      <number prefix=", " variable="number-of-pages"/>
+                    </group>
+                  </if>
+                  <else-if match="any" variable="container-title">
+                    <group>
+                      <names variable="author"/>
+                      <text font-style="normal" prefix=", '" suffix="'" variable="title"/>
+                      <text font-style="italic" prefix=", in: " variable="container-title"/>
+                      <choose>
+                        <if match="any" variable="editor">
+                          <text prefix=" " term="editor"/>
+                        </if>
+                      </choose>
+                      <choose>
+                        <if match="any" variable="collection-title">
+                          <text prefix=", " variable="collection-title"/>
+                        </if>
+                      </choose>
+                      <choose>
+                        <if match="any" variable="genre">
+                          <text prefix=", " variable="genre"/>
+                        </if>
+                      </choose>
+                      <date date-parts="year-month" form="text" prefix=", " variable="issued"/>
+                      <number prefix=", " variable="number-of-pages"/>
+                    </group>
+                  </else-if>
+                  <else>
+                    <text font-weight="bold" value="REPORT WITHOUT PUBLISHER OR AUTHOR"/>
+                  </else>
+                </choose>
+              </group>
+            </else-if>
+            <else-if match="any" type="paper-conference">
+              <group>
+                <text suffix=", " variable="publisher"/>
+                <text font-style="normal" suffix=", " variable="container-title"/>
+                <text prefix="vol. " suffix=", " variable="volume"/>
+                <text font-style="italic" suffix=", " variable="title"/>
+                <text suffix=", " variable="genre"/>
+                <text variable="page"/>
+              </group>
+            </else-if>
+            <else-if match="any" type="article-newspaper">
+              <group>
+                <names suffix=", " variable="author"/>
+                <text font-style="normal" prefix="'" suffix="'" text-case="title" variable="title"/>
+                <text font-style="italic" prefix=", " variable="container-title"/>
+                <date form="text" prefix=", " variable="issued"/>
+                <text prefix=", available at &lt;" suffix="&gt;" variable="abstract"/>
+                <date form="text" prefix=" (last accessed " suffix=")" variable="accessed"/>
+              </group>
+            </else-if>
+            <else>
+              <text value="Not supported"/>
+            </else>
+          </choose>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography et-al-min="3" et-al-use-first="1" subsequent-author-substitute="——">
+    <layout>
+      <choose>
+        <if match="all" type="article-journal">
+          <group>
+            <names variable="author"/>
+            <text font-style="normal" prefix=" $title$ , '" suffix="', $title$ " text-case="title" variable="title"/>
+            <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+            <text prefix=" $volume$  " suffix=" $volume$ " variable="volume"/>
+            <text prefix=" $container-title$  " suffix=",  $container-title$ " variable="container-title"/>
+            <choose>
+              <if match="any" variable="abstract">
+                <text prefix=" $page$ " suffix=",  $page$ " variable="page"/>
+                <text prefix=" $abstract$  available at &lt;" suffix="&gt;. $abstract$ " variable="abstract"/>
+              </if>
+              <else>
+                <text prefix=" $page$ " suffix=". $page$ " variable="page"/>
+              </else>
+            </choose>
+          </group>
+        </if>
+        <else-if match="any" type="book">
+          <choose>
+            <if match="any" variable="editor">
+              <group>
+                <names suffix=" (ed.)" variable="editor"/>
+                <text font-style="italic" prefix=" $title$ , " suffix=" $title$ " text-case="title" variable="title"/>
+                <text prefix=" $abstract$ , " suffix=" $abstract$ " variable="abstract"/>
+                <date date-parts="year" form="text" prefix=" (" suffix=")." variable="issued"/>
+              </group>
+            </if>
+            <else>
+              <group>
+                <names suffix=", " variable="author"/>
+                <text font-style="italic" prefix=" $title$ " suffix=" $title$ " text-case="title" variable="title"/>
+                <text prefix=" $abstract$ ," suffix=" $abstract$ " variable="abstract"/>
+                <date date-parts="year" form="text" prefix=" (" suffix=")." variable="issued"/>
+              </group>
+            </else>
+          </choose>
+        </else-if>
+        <else-if match="any" type="legal_case">
+          <choose>
+            <if match="any" variable="issue">
+              <group>
+                <text font-style="normal" prefix=" $title$ " suffix=",  $title$ " variable="title"/>
+                <text prefix=" $abstract$ " suffix=",  $abstract$ " variable="abstract"/>
+                <text prefix=" $collection-title$ " suffix=",  $collection-title$ " variable="collection-title"/>
+                <text prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+                <text prefix=" $page$  " suffix=". $page$ " variable="page"/>
+              </group>
+            </if>
+            <else-if match="any" variable="volume">
+              <group>
+                <text prefix=" $container-title$ CJEU " suffix=", $container-title$ " variable="container-title"/>
+                <text prefix=" $title$  " suffix=" $title$ " variable="title"/>
+                <date date-parts="year" form="text" prefix=", " suffix="." variable="issued"/>
+              </group>
+            </else-if>
+            <else>
+              <group>
+                <text font-style="italic" prefix=" $title$ " suffix=" $title$ " variable="title"/>
+                <text prefix=" $abstract$ , " suffix=",  $abstract$ " variable="abstract"/>
+                <text prefix=" $container-title$ " suffix=",  $container-title$ " variable="container-title"/>
+                <text prefix=" $publisher$ " suffix=",  $publisher$ " variable="publisher"/>
+                <text prefix=" $collection-title$  " suffix=". $collection-title$ " variable="collection-title"/>
+              </group>
+            </else>
+          </choose>
+        </else-if>
+        <else-if match="any" type="legislation">
+          <group>
+            <date date-parts="year" form="text" suffix=" " variable="issued"/>
+            <text prefix=" $title$ " suffix=",  $title$ " variable="title"/>
+            <group>
+              <text prefix=" $volume$ " suffix="  $volume$ " variable="volume"/>
+              <text prefix=" $collection-title$ " suffix="  $collection-title$ " variable="collection-title"/>
+              <text prefix=" $page$ " suffix=". $page$ " variable="page"/>
+            </group>
+          </group>
+        </else-if>
+        <else-if match="any" type="bill">
+          <choose>
+            <if match="any" variable="publisher">
+              <group>
+                <text prefix=" $publisher$ " suffix="  $publisher$ " variable="publisher"/>
+                <text prefix=" $title$ " suffix=",  $title$ " variable="title"/>
+                <text prefix=" $genre$ " suffix=" $genre$ " variable="genre"/>
+                <choose>
+                  <if locator="page paragraph" match="any">
+                    <date date-parts="year" form="text" prefix=" (" suffix=")" variable="issued"/>
+                    <text prefix=" $locator$ , at " suffix=". $locator$ " variable="locator"/>
+                  </if>
+                  <else>
+                    <date date-parts="year" form="text" prefix=" (" suffix=")." variable="issued"/>
+                  </else>
+                </choose>
+              </group>
+            </if>
+            <else-if match="none" variable="publisher container-title">
+              <group>
+                <names suffix=", " variable="author"/>
+                <text prefix=" $title$ " suffix=",  $title$ " text-case="title" variable="title"/>
+                <text prefix=" $genre$ " suffix="  $genre$ " variable="genre"/>
+                <date date-parts="year" form="text" prefix="(" suffix=")." variable="issued"/>
+              </group>
+            </else-if>
+            <else-if match="any" variable="container-title">
+              <choose>
+                <if match="any" variable="volume">
+                  <group suffix=".">
+                    <names suffix=", " variable="author"/>
+                    <text prefix=" $title$ " suffix=",  $title$ " text-case="title" variable="title"/>
+                    <date date-parts="year" form="text" suffix=" YILC, " variable="issued"/>
+                    <choose>
+                      <if match="any" variable="edition">
+                        <text prefix=" $container-title$ " suffix="  $container-title$ " variable="container-title"/>
+                        <text prefix=" $edition$ (" suffix=") $edition$ " variable="edition"/>
+                        <choose>
+                          <if match="any" variable="page">
+                            <text prefix=" $page$ , " suffix=" $page$ " variable="page"/>
+                          </if>
+                        </choose>
+                      </if>
+                      <else>
+                        <text prefix=" $container-title$ " suffix=". $container-title$ " variable="container-title"/>
+                      </else>
+                    </choose>
+                  </group>
+                </if>
+                <else>
+                  <group>
+                    <text prefix=" $title$ " suffix=",  $title$ " text-case="title" variable="title"/>
+                    <date date-parts="year" form="text" suffix=" YILC, " variable="issued"/>
+                    <choose>
+                      <if match="any" variable="edition">
+                        <text prefix=" $container-title$ " suffix="  $container-title$ " variable="container-title"/>
+                        <text prefix=" $edition$ (" suffix="). $edition$ " text-case="title" variable="edition"/>
+                      </if>
+                      <else>
+                        <text prefix=" $container-title$ " suffix=". $container-title$ " variable="container-title"/>
+                      </else>
+                    </choose>
+                  </group>
+                </else>
+              </choose>
+            </else-if>
+            <else>
+              <group>
+                <text prefix=" $publisher$ " suffix=",  $publisher$ " variable="publisher"/>
+                <text font-style="italic" prefix=" $title$ " suffix=" $title$ " text-case="title" variable="title"/>
+                <choose>
+                  <if match="any" variable="container-title">
+                    <text prefix=" $container-title$ , " suffix=" $container-title$ " variable="container-title"/>
+                  </if>
+                </choose>
+                <choose>
+                  <if match="any" variable="genre">
+                    <text prefix=" $genre$ , " suffix=" $genre$ " variable="genre"/>
+                  </if>
+                </choose>
+                <date date-parts="year" form="text" prefix=" (" suffix=")." variable="issued"/>
+              </group>
+            </else>
+          </choose>
+        </else-if>
+        <else-if match="any" type="article-newspaper">
+          <group>
+            <names suffix=", " variable="author"/>
+            <text font-style="normal" prefix=" $title$ '" suffix="' $title$ " text-case="title" variable="title"/>
+            <text font-style="italic" prefix=" $container-title$ , " suffix=" $container-title$ " variable="container-title"/>
+            <date form="text" prefix=", " variable="issued"/>
+            <text prefix=" $abstract$ , available at &lt;" suffix="&gt;. $abstract$ " variable="abstract"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="chapter">
+          <group>
+            <names variable="author"/>
+            <text font-style="normal" prefix=" $title$ , '" suffix="',  $title$ " variable="title"/>
+            <text font-style="normal" prefix=" $$ " suffix="  $/$ " term="in"/>
+            <names suffix=" (ed.)," variable="editor"/>
+            <text font-style="italic" prefix=" $container-title$  " suffix="  $container-title$ " variable="container-title"/>
+            <date date-parts="year" form="text" prefix="(" suffix=")," variable="issued"/>
+            <text prefix=" $page-first$  " suffix=". $page-first$ " variable="page-first"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="report">
+          <group>
+            <choose>
+              <if match="any" variable="publisher">
+                <group>
+                  <text prefix=" $publisher$ " suffix=",  $publisher$ " variable="publisher"/>
+                  <text font-style="italic" prefix=" $title$ " suffix=" $title$ " variable="title"/>
+                  <choose>
+                    <if match="any" variable="collection-title">
+                      <text prefix=" $collection-title$ , " suffix=" $collection-title$ " variable="collection-title"/>
+                    </if>
+                  </choose>
+                  <date date-parts="year-month" form="text" prefix=", " suffix="." variable="issued"/>
+                </group>
+              </if>
+              <else-if match="any" variable="container-title">
+                <group>
+                  <names suffix=", " variable="author"/>
+                  <text font-style="italic" prefix=" $title$ " suffix=",  $title$ " variable="title"/>
+                  <text prefix=" $container-title$ published in: " suffix=",  $container-title$ " variable="container-title"/>
+                  <date date-parts="year-month" form="text" suffix="." variable="issued"/>
+                </group>
+              </else-if>
+              <else>
+                <text font-weight="bold" prefix=" $$ " suffix=" $/$ " value="REPORT WITHOUT PUBLISHER OR AUTHOR"/>
+              </else>
+            </choose>
+          </group>
+        </else-if>
+        <else-if match="any" type="paper-conference">
+          <group>
+            <text font-style="normal" prefix=" $container-title$ " suffix=",  $container-title$ " variable="container-title"/>
+            <text prefix=" $volume$ vol. " suffix=",  $volume$ " variable="volume"/>
+            <text font-style="italic" prefix=" $title$ " suffix=",  $title$ " variable="title"/>
+            <text prefix=" $genre$ " suffix=",  $genre$ " variable="genre"/>
+            <text prefix=" $page$ " suffix=". $page$ " variable="page"/>
+          </group>
+        </else-if>
+        <else-if match="any" type="report">
+          <group>
+            <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+          </group>
+        </else-if>
+        <else>
+          <text prefix=" $$ " suffix=" $/$ " value="Else"/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

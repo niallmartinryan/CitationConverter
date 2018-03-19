@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" and="text" class="in-text" default-locale="fa-IR" delimiter-precedes-et-al="never" delimiter-precedes-last="never" demote-non-dropping-particle="sort-only" page-range-format="expanded" sort-separator="، " version="1.0">
+  <info>
+    <title>University of Zabol (Persian)</title>
+    <title-short>UOZ (Fa)</title-short>
+    <id>http://www.zotero.org/styles/university-of-zabol-fa</id>
+    <link href="http://www.zotero.org/styles/university-of-zabol-fa" rel="self"/>
+    <link href="http://www.zotero.org/styles/university-of-zabol" rel="template"/>
+    <link href="http://uoz.ac.ir/_DouranPortal/Documents/%D8%AA%D9%86%D8%B8%DB%8C%D9%85%20%D9%85%D8%B7%D8%A7%D9%84%D8%A8%20%D9%BE%D8%A7%DB%8C%D8%A7%D9%86%20%D9%86%D8%A7%D9%85%D9%87_20101003_204948.doc" rel="documentation"/>
+    <author>
+      <name>Hamed Heydari</name>
+      <email>hamedheydari@live.com</email>
+      <uri>http://www.mendeley.com/profiles/hamed-heydari5/</uri>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="medicine"/>
+    <category field="biology"/>
+    <summary>University of Zabol</summary>
+    <updated>2017-06-21T17:26:39+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <style-options punctuation-in-quote="true"/>
+    <date form="text">
+      <date-part name="day" suffix=" "/>
+      <date-part name="month" suffix=" "/>
+      <date-part name="year"/>
+    </date>
+    <date form="numeric">
+      <date-part form="numeric-leading-zeros" name="day" suffix="/"/>
+      <date-part form="numeric-leading-zeros" name="month" suffix="/"/>
+      <date-part name="year"/>
+    </date>
+    <terms>
+      <term name="accessed">دسترسی</term>
+      <term name="and">و</term>
+      <term name="and others">و دیگران</term>
+      <term name="anonymous">ناشناس</term>
+      <term form="short" name="anonymous">ناشناس</term>
+      <term name="at">در</term>
+      <term name="available at">قابل دسترس در</term>
+      <term name="by">توسط</term>
+      <term name="circa">تقریباً</term>
+      <term form="short" name="circa">c.</term>
+      <term name="cited">ارجاع شده</term>
+      <term name="edition">
+        <single>ویرایش</single>
+        <multiple>ویرایش‌های</multiple>
+      </term>
+      <term form="short" name="edition">ویرایش</term>
+      <term name="et-al">و همکاران</term>
+      <term name="forthcoming">در دست انتشار</term>
+      <term name="from">از</term>
+      <term name="ibid">همان</term>
+      <term name="in">در</term>
+      <term name="in press">زیر چاپ</term>
+      <term name="internet">اینترنت</term>
+      <term name="interview">مصاحبه</term>
+      <term name="letter">نامه</term>
+      <term name="no date">بدون تاریخ</term>
+      <term form="short" name="no date">بدون تاریخ</term>
+      <term name="online">آنلاین</term>
+      <term name="presented at">ارائه شده در</term>
+      <term name="reference">
+        <single>مرجع</single>
+        <multiple>مراجع</multiple>
+      </term>
+      <term form="short" name="reference">
+        <single>مرجع</single>
+        <multiple>مراجع</multiple>
+      </term>
+      <term name="retrieved">retrieved</term>
+      <term name="scale">scale</term>
+      <term name="version">نسخه</term>
+      <term name="ad">بعد از میلاد</term>
+      <term name="bc">قبل از میلاد</term>
+      <term name="open-quote">“</term>
+      <term name="close-quote">”</term>
+      <term name="open-inner-quote">‘</term>
+      <term name="close-inner-quote">’</term>
+      <term name="page-range-delimiter">–</term>
+      <term name="ordinal"/>
+      <term name="long-ordinal-01">اول</term>
+      <term name="long-ordinal-02">دوم</term>
+      <term name="long-ordinal-03">سوم</term>
+      <term name="long-ordinal-04">چهارم</term>
+      <term name="long-ordinal-05">پنجم</term>
+      <term name="long-ordinal-06">ششم</term>
+      <term name="long-ordinal-07">هفتم</term>
+      <term name="long-ordinal-08">هشتم</term>
+      <term name="long-ordinal-09">نهم</term>
+      <term name="long-ordinal-10">دهم</term>
+      <term name="book">
+        <single>کتاب</single>
+        <multiple>کتاب‌های</multiple>
+      </term>
+      <term name="chapter">
+        <single>فصل</single>
+        <multiple>فصل‌های</multiple>
+      </term>
+      <term name="column">
+        <single>ستون</single>
+        <multiple>ستون‌های</multiple>
+      </term>
+      <term name="figure">
+        <single>تصویر</single>
+        <multiple>تصاویر</multiple>
+      </term>
+      <term name="folio">
+        <single>برگ</single>
+        <multiple>برگ‌های</multiple>
+      </term>
+      <term name="issue">
+        <single>شماره</single>
+        <multiple>شماره‌های</multiple>
+      </term>
+      <term name="line">
+        <single>خط</single>
+        <multiple>خطوط</multiple>
+      </term>
+      <term name="note">
+        <single>یادداشت</single>
+        <multiple>یادداشت‌های</multiple>
+      </term>
+      <term name="opus">
+        <single>قطعه</single>
+        <multiple>قطعات</multiple>
+      </term>
+      <term name="page">
+        <single>صفحه</single>
+        <multiple>صفحات</multiple>
+      </term>
+      <term name="number-of-pages">
+        <single>صفحه</single>
+        <multiple>صفحات</multiple>
+      </term>
+      <term name="paragraph">
+        <single>پاراگراف</single>
+        <multiple>پاراگراف‌های</multiple>
+      </term>
+      <term name="part">
+        <single>بخش</single>
+        <multiple>بخش‌های</multiple>
+      </term>
+      <term name="section">
+        <single>قسمت</single>
+        <multiple>قسمت‌های</multiple>
+      </term>
+      <term name="sub verbo">
+        <single>در ذیلِ واژه</single>
+        <multiple>در ذیلِ واژه‌های</multiple>
+      </term>
+      <term name="verse">
+        <single>بیت</single>
+        <multiple>بیت‌های</multiple>
+      </term>
+      <term name="volume">
+        <single>جلد</single>
+        <multiple>جلدهای</multiple>
+      </term>
+      <term form="short" name="book">کتاب</term>
+      <term form="short" name="chapter">فصل</term>
+      <term form="short" name="column">ستون</term>
+      <term form="short" name="figure">تصویر</term>
+      <term form="short" name="folio">برگ</term>
+      <term form="short" name="issue">ش</term>
+      <term form="short" name="line">خط</term>
+      <term form="short" name="note">یادداشت</term>
+      <term form="short" name="opus">قطعه</term>
+      <term form="short" name="page">
+        <single>ص</single>
+        <multiple>صص</multiple>
+      </term>
+      <term form="short" name="number-of-pages">
+        <single>ص</single>
+        <multiple>صص</multiple>
+      </term>
+      <term form="short" name="paragraph">پاراگراف</term>
+      <term form="short" name="part">بخش</term>
+      <term form="short" name="section">قسمت</term>
+      <term form="short" name="sub verbo">
+        <single>در ذیلِ واژه</single>
+        <multiple>در ذیلِ واژه‌های</multiple>
+      </term>
+      <term form="short" name="verse">
+        <single>بیت</single>
+        <multiple>ابیات</multiple>
+      </term>
+      <term form="short" name="volume">
+        <single>ج</single>
+        <multiple>جج</multiple>
+      </term>
+      <term form="symbol" name="paragraph">
+        <single>¶</single>
+        <multiple>¶¶</multiple>
+      </term>
+      <term form="symbol" name="section">
+        <single>§</single>
+        <multiple>§§</multiple>
+      </term>
+      <term name="director">
+        <single>director</single>
+        <multiple>directors</multiple>
+      </term>
+      <term name="editor">
+        <single>گردآورنده</single>
+        <multiple>گردآورندگان</multiple>
+      </term>
+      <term name="editorial-director">
+        <single>ویراستار</single>
+        <multiple>ویراستاران</multiple>
+      </term>
+      <term name="illustrator">
+        <single>طراح گرافیک</single>
+        <multiple>طراحان گرافیک</multiple>
+      </term>
+      <term name="translator">
+        <single>مترجم</single>
+        <multiple>مترجمین</multiple>
+      </term>
+      <term name="editortranslator">
+        <single>ویراستار و مترجم</single>
+        <multiple>ویراستاران و مترجمین</multiple>
+      </term>
+      <term form="short" name="director">
+        <single>dir.</single>
+        <multiple>dirs.</multiple>
+      </term>
+      <term form="short" name="editor">
+        <single>ویراستار</single>
+        <multiple>ویراستاران</multiple>
+      </term>
+      <term form="short" name="editorial-director">
+        <single>ویراستار</single>
+        <multiple>ویراستاران</multiple>
+      </term>
+      <term form="short" name="illustrator">
+        <single>تصویرگر</single>
+        <multiple>تصویرگران</multiple>
+      </term>
+      <term form="short" name="translator">
+        <single>مترجم</single>
+        <multiple>مترجمین</multiple>
+      </term>
+      <term form="short" name="editortranslator">
+        <single>ویراستار و مترجم</single>
+        <multiple>ویراستاران و مترجمین</multiple>
+      </term>
+      <term form="verb" name="container-author">توسط</term>
+      <term form="verb" name="director">زیر نظر</term>
+      <term form="verb" name="editor">ویراسته‌ی</term>
+      <term form="verb" name="editorial-director">ویراسته‌ی</term>
+      <term form="verb" name="illustrator">طراحی گرافیکی از</term>
+      <term form="verb" name="interviewer">مصاحبه توسط</term>
+      <term form="verb" name="recipient">به</term>
+      <term form="verb" name="reviewed-author">بازبینی توسط</term>
+      <term form="verb" name="translator">ترجمه‌ی</term>
+      <term form="verb" name="editortranslator">ترجمه و ویراسته‌ی</term>
+      <term form="verb-short" name="director">dir.</term>
+      <term form="verb-short" name="editor">ویراسته‌ی</term>
+      <term form="verb-short" name="editorial-director">ویراسته‌ی</term>
+      <term form="verb-short" name="illustrator">طراحی از</term>
+      <term form="verb-short" name="translator">ترجمه‌ی</term>
+      <term form="verb-short" name="editortranslator">ترجمه و ویراسته‌ی</term>
+      <term name="month-01">ژانویه</term>
+      <term name="month-02">فوریه</term>
+      <term name="month-03">مارس</term>
+      <term name="month-04">آوریل</term>
+      <term name="month-05">می</term>
+      <term name="month-06">ژوئن</term>
+      <term name="month-07">جولای</term>
+      <term name="month-08">آگوست</term>
+      <term name="month-09">سپتامبر</term>
+      <term name="month-10">اکتبر</term>
+      <term name="month-11">نوامبر</term>
+      <term name="month-12">دسامبر</term>
+      <term form="short" name="month-01">ژانویه</term>
+      <term form="short" name="month-02">فوریه</term>
+      <term form="short" name="month-03">مارس</term>
+      <term form="short" name="month-04">آوریل</term>
+      <term form="short" name="month-05">می</term>
+      <term form="short" name="month-06">ژوئن</term>
+      <term form="short" name="month-07">جولای</term>
+      <term form="short" name="month-08">آگوست</term>
+      <term form="short" name="month-09">سپتامبر</term>
+      <term form="short" name="month-10">اکتبر</term>
+      <term form="short" name="month-11">نوامبر</term>
+      <term form="short" name="month-12">دسامبر</term>
+      <term name="season-01">بهار</term>
+      <term name="season-02">تابستان</term>
+      <term name="season-03">پاییز</term>
+      <term name="season-04">زمستان</term>
+    </terms>
+  </locale>
+  <macro name="translator-author-editor">
+    <names font-weight="bold" variable="translator">
+      <name and="text" delimiter="، " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="6" et-al-subsequent-min="3" et-al-subsequent-use-first="1" et-al-use-first="1" initialize-with="." name-as-sort-order="all" sort-separator="، "/>
+      <substitute>
+        <names font-weight="bold" variable="author">
+          <name and="text" delimiter="، " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="6" et-al-subsequent-min="3" et-al-subsequent-use-first="1" et-al-use-first="1" initialize-with="." name-as-sort-order="all" sort-separator="، "/>
+          <substitute>
+            <names font-weight="bold" variable="editor">
+              <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="6" et-al-subsequent-min="3" et-al-subsequent-use-first="1" et-al-use-first="1" initialize-with="." name-as-sort-order="all"/>
+              <label prefix=" (" suffix=")"/>
+            </names>
+          </substitute>
+        </names>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="translator-author-editor-short">
+    <names font-weight="normal" variable="translator">
+      <name and="text" delimiter="، " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" form="short" sort-separator="، "/>
+      <substitute>
+        <names variable="author">
+          <name and="text" delimiter="، " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" form="short" sort-separator="، "/>
+          <substitute>
+            <names variable="editor">
+              <name and="text" delimiter="، " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" form="short" sort-separator="، "/>
+            </names>
+          </substitute>
+        </names>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="translator-short">
+    <names variable="translator">
+      <name and="text" delimiter="، " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" form="short" sort-separator="، "/>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter="، " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" form="short" sort-separator="، "/>
+    </names>
+  </macro>
+  <macro name="editor-short">
+    <names variable="editor">
+      <name and="text" delimiter="، " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" form="short" sort-separator="، "/>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names font-weight="bold" variable="editor">
+      <name and="text" delimiter="، " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="6" et-al-subsequent-min="3" et-al-subsequent-use-first="1" et-al-use-first="1" initialize-with="." name-as-sort-order="all" sort-separator="، "/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <group delimiter="–">
+      <text form="short" variable="year-suffix"/>
+      <date variable="issued">
+        <date-part name="year"/>
+      </date>
+    </group>
+    <choose>
+      <if match="none" variable="issued">
+        <text term="no date" text-case="capitalize-all"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <group delimiter=" ">
+      <text font-style="normal" font-variant="normal" text-case="capitalize-first" variable="title"/>
+      <choose>
+        <if match="all" variable="translator">
+          <text prefix="(" suffix=")" value="ترجمه"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="title-book">
+    <group delimiter=" ">
+      <text font-style="italic" font-variant="normal" font-weight="normal" text-case="title" text-decoration="none" variable="title"/>
+      <choose>
+        <if match="all" variable="translator">
+          <text prefix="(" suffix=")" value="ترجمه"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="volume">
+    <label suffix=" " variable="volume"/>
+    <number form="long-ordinal" variable="volume"/>
+  </macro>
+  <macro name="edition">
+    <label suffix=" " variable="edition"/>
+    <number form="long-ordinal" variable="edition"/>
+  </macro>
+  <macro name="publication">
+    <group delimiter=" ">
+      <text font-style="italic" text-case="title" variable="container-title"/>
+      <choose>
+        <if match="none" variable="volume issue page">
+          <text prefix="(" suffix=")" term="in press"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="volume-issue-page">
+    <group>
+      <text font-style="normal" variable="volume"/>
+      <number prefix="(" suffix=")" variable="issue"/>
+      <text prefix=": " variable="page"/>
+    </group>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text font-style="normal" variable="publisher"/>
+    </group>
+  </macro>
+  <macro name="pages">
+    <choose>
+      <if is-numeric="number-of-pages" match="all">
+        <group>
+          <text variable="number-of-pages"/>
+          <label form="short" plural="never" variable="number-of-pages"/>
+        </group>
+      </if>
+      <else>
+        <group delimiter=" ">
+          <label variable="page"/>
+          <text variable="page"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <citation and="text" cite-group-delimiter="، " collapse="year" delimiter-precedes-et-al="never" delimiter-precedes-last="never" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1" name-as-sort-order="all" name-form="short" sort-separator="، ">
+    <sort>
+      <key macro="translator-author-editor-short"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout delimiter="؛ " prefix=")" suffix="(">
+      <group delimiter="، ">
+        <choose>
+          <if match="all" variable="translator">
+            <text macro="translator-short"/>
+          </if>
+          <else-if match="none" variable="author translator">
+            <text macro="editor-short"/>
+          </else-if>
+          <else>
+            <text macro="author-short"/>
+          </else>
+        </choose>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="6" et-al-subsequent-min="3" et-al-subsequent-use-first="1" et-al-use-first="1" hanging-indent="true" initialize-with="." name-as-sort-order="all" sort-separator="، ">
+    <sort>
+      <key macro="translator-author-editor-short"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=". ">
+        <choose>
+          <if match="none" variable="author editor translator">
+            <text prefix=" $$ " suffix=" $/$ " value="بدون مؤلف"/>
+          </if>
+        </choose>
+        <text font-weight="bold" macro="translator-author-editor" prefix=" $translator-author-editor$ " suffix=" $/translator-author-editor$ "/>
+        <choose>
+          <if match="any" type="article-journal article-magazine review">
+            <group delimiter=". ">
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <text font-style="normal" font-weight="normal" macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+              <group delimiter="، ">
+                <text font-style="normal" macro="publication" prefix=" $publication$ " suffix=" $/publication$ " text-case="title"/>
+                <text macro="volume-issue-page" prefix=" $volume-issue-page$ " suffix=" $/volume-issue-page$ "/>
+              </group>
+            </group>
+          </if>
+          <else-if match="any" type="book entry-encyclopedia entry-dictionary map graphic manuscript legislation interview review-book">
+            <group delimiter=". ">
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <text font-style="normal" font-weight="normal" macro="title-book" prefix=" $title-book$ " suffix=" $/title-book$ " text-decoration="none"/>
+              <group delimiter="، ">
+                <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+                <number form="long-ordinal" prefix="چاپ " variable="edition"/>
+                <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+                <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+              </group>
+            </group>
+          </else-if>
+          <else-if match="all" type="chapter">
+            <group delimiter=". ">
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+              <group delimiter=": ">
+                <text prefix=" $$ " suffix=" $/$ " term="in" text-case="capitalize-first"/>
+                <text font-weight="normal" macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+              </group>
+              <text font-style="italic" prefix=" $$ " suffix=" $/$ " text-case="title" variable="container-title"/>
+              <group delimiter="، ">
+                <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+                <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+                <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+                <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+              </group>
+            </group>
+          </else-if>
+          <else-if type="thesis">
+            <group delimiter=". ">
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+              <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+              <group delimiter="، ">
+                <text prefix=" $$ " suffix=" $/$ " variable="publisher-place"/>
+                <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+              </group>
+            </group>
+          </else-if>
+          <else-if match="all" type="paper-conference">
+            <group delimiter=". ">
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+              <group delimiter=" ">
+                <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+                <text font-style="italic" prefix=" $$ &quot;" suffix="&quot; $/$ " variable="container-title"/>
+              </group>
+              <group delimiter="، ">
+                <text prefix=" $$ " suffix=" $/$ " variable="issue"/>
+                <text prefix=" $$ " suffix=" $/$ " variable="publisher-place"/>
+              </group>
+              <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+            </group>
+          </else-if>
+          <else-if match="all" type="webpage">
+            <group delimiter=". ">
+              <text macro="title" prefix=" $title$ &quot;" suffix="&quot; $/title$ "/>
+              <group delimiter="، ">
+                <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+                <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+                <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+                <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+              </group>
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <text prefix=" $$ " suffix=" $/$ " variable="number"/>
+              <group delimiter=" ">
+                <text prefix=" $$ [" suffix="] $/$ " value="آنلاین"/>
+                <text prefix=" $$ &lt;" suffix="&gt; $/$ " variable="URL"/>
+                <date form="text" prefix="[" suffix="]" variable="accessed">
+                  <date-part form="short" name="month"/>
+                </date>
+              </group>
+            </group>
+          </else-if>
+          <else-if match="all" type="article-newspaper">
+            <group delimiter=". ">
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+              <group delimiter="، ">
+                <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                <group delimiter=" ">
+                  <text prefix=" $$ " suffix=" $/$ " value="شماره"/>
+                  <number variable="issue"/>
+                </group>
+                <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+              </group>
+            </group>
+          </else-if>
+          <else>
+            <group delimiter=". ">
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <choose>
+                <if match="any" variable="edition publisher-place">
+                  <text font-style="normal" macro="title-book" prefix=" $title-book$ " suffix=" $/title-book$ " text-case="title"/>
+                  <group delimiter="، ">
+                    <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+                    <number form="long-ordinal" prefix="چاپ " variable="edition"/>
+                    <group delimiter=": ">
+                      <text prefix=" $$ " suffix=" $/$ " variable="publisher-place"/>
+                      <group delimiter=" / ">
+                        <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+                        <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                      </group>
+                    </group>
+                    <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+                  </group>
+                </if>
+                <else-if match="none" variable="DOI issue">
+                  <text macro="title-book" prefix=" $title-book$ " suffix=" $/title-book$ "/>
+                  <group delimiter="، ">
+                    <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+                    <number form="long-ordinal" prefix="چاپ " variable="edition"/>
+                    <group delimiter=": ">
+                      <text prefix=" $$ " suffix=" $/$ " variable="publisher-place"/>
+                      <group delimiter=" / ">
+                        <text prefix=" $$ " suffix=" $/$ " variable="publisher"/>
+                        <text prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+                      </group>
+                    </group>
+                    <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+                  </group>
+                </else-if>
+                <else>
+                  <text macro="title" prefix=" $title$ " suffix=" $/title$ "/>
+                  <group delimiter="، ">
+                    <group delimiter=" / ">
+                      <text font-style="italic" prefix=" $$ " suffix=" $/$ " text-case="title" variable="publisher"/>
+                      <text font-style="italic" macro="publication" prefix=" $publication$ " suffix=" $/publication$ " text-case="title"/>
+                    </group>
+                    <text macro="volume-issue-page" prefix=" $volume-issue-page$ " suffix=" $/volume-issue-page$ "/>
+                  </group>
+                </else>
+              </choose>
+            </group>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

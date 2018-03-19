@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="minimal" version="1.0">
+  <info>
+    <title>DNA Research</title>
+    <id>http://www.zotero.org/styles/dna-research</id>
+    <link href="http://www.zotero.org/styles/dna-research" rel="self"/>
+    <link href="http://www.zotero.org/styles/biochemistry" rel="template"/>
+    <link href="http://www.oxfordjournals.org/our_journals/dnares/for_authors/general.html" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>1340-2838</issn>
+    <eissn>1756-1663</eissn>
+    <summary>A style for the ACS publication "Biochemistry"</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="issued">
+    <group prefix=" " suffix=",">
+      <date variable="issued">
+        <date-part name="year"/>
+      </date>
+      <choose>
+        <if match="none" type="article-journal bill book chapter graphic legal_case legislation motion_picture paper-conference report song">
+          <date variable="issued">
+            <date-part name="month" prefix=", "/>
+            <date-part name="day" prefix=" "/>
+          </date>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="book report">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text font-style="italic" variable="container-title"/>
+      </if>
+      <else>
+        <text font-style="italic" form="short" prefix=". " variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-contributors">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text prefix=" " suffix=": " term="in" text-case="capitalize-first"/>
+      </if>
+    </choose>
+    <names delimiter=", " prefix=" " suffix=", " variable="editor">
+      <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=", (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if match="any" type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song">
+        <choose>
+          <if is-numeric="edition">
+            <group delimiter=" ">
+              <number form="ordinal" variable="edition"/>
+              <text form="short" term="edition"/>
+            </group>
+          </if>
+          <else>
+            <text suffix="." variable="edition"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", " prefix=". ">
+      <choose>
+        <if match="none" type="article-journal article-magazine">
+          <text variable="genre"/>
+          <text variable="publisher"/>
+          <text variable="publisher-place"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if type="article-journal">
+        <group delimiter=", " prefix=", ">
+          <text font-weight="bold" variable="volume"/>
+          <text variable="page"/>
+        </group>
+      </if>
+      <else>
+        <group delimiter=" " prefix=", ">
+          <label form="short" variable="page"/>
+          <text variable="page"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," vertical-align="sup">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="7" et-al-use-first="3" second-field-align="flush">
+    <layout suffix=".">
+      <text prefix=" $$ " suffix=".  $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=". $/author$ "/>
+      <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+      <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+      <text macro="container-contributors" prefix=" $container-contributors$ " suffix=" $/container-contributors$ "/>
+      <text macro="container-title" prefix=" $container-title$ " suffix=" $/container-title$ "/>
+      <text macro="edition" prefix=" $edition$  " suffix=" $/edition$ "/>
+      <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+      <text macro="locators" prefix=" $locators$ " suffix=" $/locators$ "/>
+    </layout>
+  </bibliography>
+</style>

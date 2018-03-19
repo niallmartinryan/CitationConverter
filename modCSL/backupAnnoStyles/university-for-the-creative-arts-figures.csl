@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" and="text" class="in-text" default-locale="en-GB" demote-non-dropping-particle="sort-only" et-al-min="3" et-al-use-first="1" version="1.0">
+  <info>
+    <title>University for the Creative Arts (figures and illustrations)</title>
+    <title-short>uca-illustrations</title-short>
+    <id>http://www.zotero.org/styles/university-for-the-creative-arts-figures</id>
+    <link href="http://www.zotero.org/styles/university-for-the-creative-arts-figures" rel="self"/>
+    <link href="http://www.zotero.org/styles/chicago-figures" rel="template"/>
+    <link href="http://www.uca.ac.uk/library/academic-support/harvard-referencing/" rel="documentation"/>
+    <author>
+      <name>Ian Badger</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="humanities"/>
+    <updated>2017-03-23T09:17:30+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="accessed">accessed on</term>
+      <term form="short" name="no date">s.d.</term>
+    </terms>
+  </locale>
+  <macro name="accessed">
+    <choose>
+      <if match="all" variable="URL">
+        <group delimiter=" ">
+          <group delimiter=": ">
+            <text term="at" text-case="capitalize-first"/>
+            <text variable="URL"/>
+          </group>
+          <group delimiter=" " prefix="(" suffix=")">
+            <text term="accessed" text-case="capitalize-first"/>
+            <date delimiter=" " variable="accessed">
+              <date-part name="day"/>
+              <date-part name="month"/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <citation>
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text form="symbol" term="figure" text-case="capitalize-first"/>
+        <text suffix="." variable="citation-number"/>
+        <text font-style="italic" variable="title"/>
+        <group>
+          <choose>
+            <if match="all" variable="issued">
+              <date date-parts="year" form="text" variable="issued"/>
+            </if>
+            <else>
+              <text form="short" term="no date"/>
+            </else>
+          </choose>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout>
+      <group delimiter=" ">
+        <text prefix=" $$ " suffix=" $/$ " term="figure"/>
+        <text prefix=" $$ " suffix=". $/$ " variable="citation-number"/>
+        <group delimiter=" ">
+          <names suffix="." variable="author">
+            <name and="text" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" initialize-with="." name-as-sort-order="all"/>
+            <label form="short"/>
+            <et-al font-style="italic"/>
+            <substitute>
+              <text font-style="italic" prefix=" $$ " suffix=". $/$ " variable="title"/>
+            </substitute>
+          </names>
+          <choose>
+            <if match="any" variable="issued">
+              <date prefix="(" suffix=")" variable="issued">
+                <date-part name="year"/>
+              </date>
+            </if>
+            <else>
+              <text form="short" prefix=" $$ (" suffix=") $/$ " term="no date"/>
+            </else>
+          </choose>
+          <text font-style="italic" prefix=" $$ " suffix=". $/$ " variable="title"/>
+          <choose>
+            <if match="any" variable="title-short">
+              <text font-style="italic" prefix=" $$ " suffix=". $/$ " variable="title-short"/>
+            </if>
+          </choose>
+          <choose>
+            <if match="any" type="graphic">
+              <text prefix=" $$ [" suffix="] $/$ " variable="medium"/>
+              <text prefix=" $$ In: " suffix=" $/$ " variable="note"/>
+              <text macro="accessed" prefix=" $accessed$ " suffix=" $/accessed$ "/>
+            </if>
+            <else-if match="any" type="map">
+              <text prefix=" $$ [" suffix="] $/$ " variable="genre"/>
+              <text prefix=" $$ " suffix=". $/$ " variable="scale"/>
+              <text prefix=" $$ " suffix=":  $/$ " variable="publisher-place"/>
+              <text prefix=" $$ " suffix=". $/$ " variable="publisher"/>
+              <text prefix=" $$ (" suffix="). $/$ " variable="collection-title"/>
+              <text macro="accessed" prefix=" $accessed$ " suffix=" $/accessed$ "/>
+            </else-if>
+          </choose>
+        </group>
+      </group>
+    </layout>
+  </bibliography>
+</style>

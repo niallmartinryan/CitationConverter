@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="note" default-locale="de-DE" demote-non-dropping-particle="never" version="1.0">
+  <info>
+    <title>Archiv für die civilistische Praxis (German)</title>
+    <title-short>AcP</title-short>
+    <id>http://www.zotero.org/styles/archiv-fur-die-civilistische-praxis</id>
+    <link href="http://www.zotero.org/styles/archiv-fur-die-civilistische-praxis" rel="self"/>
+    <link href="http://www.zotero.org/styles/zeitschrift-fur-theologie-und-kirche" rel="template"/>
+    <link href="http://www.mohr.de/fileadmin/user_upload/Hinweise_Autoren_PDF/AcP/Richtlinien_AcP.pdf" rel="documentation"/>
+    <link href="http://www.mohr.de/en/nc/journals/law/archiv-fuer-die-civilstische-praxis-acp/journal.html" rel="documentation"/>
+    <author>
+      <name>Philipp Zumstein</name>
+      <uri>https://github.com/zuphilip</uri>
+    </author>
+    <category citation-format="note"/>
+    <category field="law"/>
+    <issn>0003-8997</issn>
+    <eissn>1868-7113</eissn>
+    <summary>Use type entry-encopledia for part of "Gesetzeskommentar". The style does not need any bibliography, but for completeness (preview) it shows here the appearance of the footnotes.</summary>
+    <updated>2014-11-15T20:40:58+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="de">
+    <terms>
+      <term form="short" name="editor">Hg.</term>
+    </terms>
+  </locale>
+  <macro name="author-short">
+    <names variable="author">
+      <name delimiter="/" font-style="italic" font-variant="normal" form="short" initialize-with=". "/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition" match="any">
+        <number form="ordinal" suffix=" " variable="edition" vertical-align="baseline"/>
+        <text form="short" term="edition"/>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="page">
+    <text suffix=" ff" variable="page-first"/>
+  </macro>
+  <citation collapse="year" disambiguate-add-givenname="true" et-al-min="4" et-al-use-first="1">
+    <layout delimiter="; ">
+      <choose>
+        <if match="any" position="first">
+          <group delimiter=", ">
+            <text macro="author-short"/>
+            <choose>
+              <if match="any" type="article-journal article-magazine article-newspaper">
+                <text form="short" variable="container-title"/>
+                <choose>
+                  <if match="any" variable="volume">
+                    <group delimiter=" ">
+                      <text variable="volume"/>
+                      <text macro="issued" prefix="(" suffix=")"/>
+                    </group>
+                  </if>
+                  <else>
+                    <text macro="issued"/>
+                  </else>
+                </choose>
+                <text macro="page"/>
+              </if>
+              <else-if match="any" type="chapter paper-conference entry-encyclopedia">
+                <group delimiter=" ">
+                  <text suffix=": " term="in"/>
+                  <group delimiter=", ">
+                    <names delimiter=", " font-variant="normal" variable="container-author editor">
+                      <name delimiter="/" delimiter-precedes-last="always" font-style="normal" font-variant="normal" form="short" initialize-with="."/>
+                      <label form="short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+                    </names>
+                    <text text-case="title" variable="container-title"/>
+                    <text macro="issued"/>
+                    <text macro="page"/>
+                  </group>
+                </group>
+              </else-if>
+              <else-if match="any" type="legal_case">
+                <text variable="authority"/>
+                <text variable="number"/>
+                <group delimiter=" ">
+                  <text variable="container-title"/>
+                  <text macro="issued"/>
+                </group>
+                <text variable="page"/>
+              </else-if>
+              <else>
+                <text variable="title"/>
+                <group delimiter=" ">
+                  <text macro="edition"/>
+                  <text macro="issued"/>
+                </group>
+              </else>
+            </choose>
+            <text variable="locator"/>
+          </group>
+        </if>
+        <else>
+          <group delimiter=", ">
+            <group delimiter=" ">
+              <choose>
+                <if match="any" type="entry-encyclopedia">
+                  <text suffix="/" variable="collection-title"/>
+                </if>
+              </choose>
+              <text macro="author-short"/>
+              <group delimiter=" " prefix="(" suffix=")">
+                <text value="Fn."/>
+                <text variable="first-reference-note-number"/>
+              </group>
+            </group>
+            <text variable="locator"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="1">
+    <sort>
+      <key macro="author-short"/>
+      <key macro="issued" sort="ascending"/>
+    </sort>
+    <layout>
+      <group delimiter=", ">
+        <text macro="author-short" prefix=" $author-short$ " suffix=" $/author-short$ "/>
+        <choose>
+          <if match="any" type="article-journal article-magazine article-newspaper">
+            <text form="short" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <choose>
+              <if match="any" variable="volume">
+                <group delimiter=" ">
+                  <text prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+                  <text macro="issued" prefix=" $issued$ (" suffix=") $/issued$ "/>
+                </group>
+              </if>
+              <else>
+                <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              </else>
+            </choose>
+            <text macro="page" prefix=" $page$ " suffix=" $/page$ "/>
+          </if>
+          <else-if match="any" type="chapter paper-conference entry-encyclopedia">
+            <group delimiter=" ">
+              <text prefix=" $$ " suffix=":  $/$ " term="in"/>
+              <group delimiter=", ">
+                <names delimiter=", " font-variant="normal" variable="container-author editor">
+                  <name delimiter="/" delimiter-precedes-last="always" font-style="normal" font-variant="normal" form="short" initialize-with="."/>
+                  <label form="short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+                </names>
+                <text prefix=" $container-title$ " suffix=" $container-title$ " text-case="title" variable="container-title"/>
+                <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+                <text macro="page" prefix=" $page$ " suffix=" $/page$ "/>
+              </group>
+            </group>
+          </else-if>
+          <else-if match="any" type="legal_case">
+            <text prefix=" $authority$ " suffix=" $authority$ " variable="authority"/>
+            <text prefix=" $number$ " suffix=" $number$ " variable="number"/>
+            <group delimiter=" ">
+              <text prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+            </group>
+            <text prefix=" $page$ " suffix=" $page$ " variable="page"/>
+          </else-if>
+          <else>
+            <text prefix=" $title$ " suffix=" $title$ " variable="title"/>
+            <group delimiter=" ">
+              <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+            </group>
+          </else>
+        </choose>
+        <text prefix=" $locator$ " suffix=" $locator$ " variable="locator"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

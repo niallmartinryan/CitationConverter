@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="de-DE" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>DIN 1505-2 (numeric, German)</title>
+    <id>http://www.zotero.org/styles/din-1505-2-numeric</id>
+    <link href="http://www.zotero.org/styles/din-1505-2-numeric" rel="self"/>
+    <link href="http://www.bui.haw-hamburg.de/fileadmin/redaktion/diplom/Lorenzen__litverz.pdf" rel="documentation"/>
+    <link href="http://bibliothek.fh-potsdam.de/fileadmin/fhp_bib/dokumente/Schulungen/wissenschaftliches_Arbeiten/Zitieren_Lorenzen.pdf" rel="documentation"/>
+    <link href="http://www.uni-muenster.de/imperia/md/content/fachbereich_physik/didaktik_physik/materialien/materialschlichting/zitierregeln.pdf" rel="documentation"/>
+    <link href="http://forums.zotero.org/discussion/1857" rel="documentation"/>
+    <author>
+      <name>Sven Rothe</name>
+      <email>mmoole@googlemail.com</email>
+    </author>
+    <contributor>
+      <name>Julian Onions</name>
+      <email>julian.onions@gmail.com</email>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="generic-base"/>
+    <summary>Style following DIN 1505-2, for other media types on additional standards 
+      Hinweise zur Benutzung: 
+      * Zitieren von Gesetzen: 
+        - hier müssen manuell §, Abs und S. zur Seitenangabe beim Zitieren eingetragen werden 
+        - im Kurzbeleg wird der Kurztitel verwendet, dafür keine Autoren eintragen! 
+        - als Jahresangabe wird 'Datum des Inkrafttretens' herangezogen, Verwenden nur bei Verweis auf nicht z.Z. gültige Gesetze, z.B. (idF. v. 12.12.1972) 
+       * Zitieren von Normen und Standards - nicht vollständig nach DIN 1505
+        - Nutzen Sie den Typ 'Bericht' - als Abhilfe, da es keinen Typ 'Standard' gibt.
+        - als Autor die Kurzbezeichnung inkl. Nummer und Jahr eingeben (z.B. VDI 2222-1997), Vorname leer, Jahr leer
+        - als Titel den ausführlichen Titel bei Bedarf (z.B. VDI Richtlinie 2222 Blatt 1 - Konstruktionsmethodik - Methodisches Entwickeln von Lösungsprinzipien)</summary>
+    <!--    This is the same as the original DIN 1505 citation style as far as concerning the bibliography, 
+            but in numeric style for citation,
+            Feel free to send me any comments, suggestions etc...
+    -->
+    <!-- useful things:
+      non breaking space: &#160;
+      narrow no break space: uni202F / &#8239; - but this is not supported widely!
+      em dash: &#8212;
+      space:  &#032;
+      tab: &#009;
+      
+    -->
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="de">
+    <terms>
+      <term form="short" name="anonymous">o. A.</term>
+      <term form="short" name="no date">o. J.</term>
+      <term form="short" name="collection-editor">Hrsg.</term>
+      <term name="retrieved">abgerufen am</term>
+      <term form="short" name="composer">Komp.</term>
+      <term form="long" name="composer">Komponist</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names delimiter=" ; " variable="author">
+      <name delimiter=" ; " delimiter-precedes-last="always" font-variant="small-caps" name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="author-container">
+    <names delimiter=" ; " variable="container-author">
+      <name delimiter=" ; " delimiter-precedes-last="always" font-variant="small-caps" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names delimiter=" ; " variable="editor">
+      <name delimiter=" ; " delimiter-precedes-last="always" font-variant="small-caps" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <!-- needed: Label should appear as suffix to EVERY name...!-->
+    </names>
+  </macro>
+  <macro name="editor-collection">
+    <names delimiter=" ; " variable="collection-editor">
+      <name delimiter=" ; " delimiter-precedes-last="always" font-variant="small-caps" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <!-- needed: Label should appear as suffix to EVERY name...!-->
+    </names>
+  </macro>
+  <macro name="composer">
+    <names delimiter=" ; " variable="composer">
+      <name delimiter=" ; " delimiter-precedes-last="always" font-variant="small-caps" name-as-sort-order="all" sort-separator=", "/>
+      <label form="long" prefix=" (" suffix=")"/>
+      <!-- needed: Label should appear as suffix to EVERY name...!-->
+    </names>
+  </macro>
+  <!--  <macro name="contributor">
+    <names variable=" " delimiter=" ; ">
+    <name name-as-sort-order="all" sort-separator=", " initialize-with=". " delimiter=" ; "
+    delimiter-precedes-last="always" font-variant="small-caps"/>
+    <label form="short" prefix=" (" suffix=")"/>
+    </names>
+    </macro>-->
+  <macro name="translator">
+    <names delimiter=" ; " variable="translator">
+      <name delimiter=" ; " delimiter-precedes-last="always" font-variant="small-caps" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <!-- needed: Label should appear as suffix to EVERY name...!-->
+    </names>
+  </macro>
+  <macro name="recipient">
+    <names delimiter=" ; " variable="recipient">
+      <name delimiter=" ; " delimiter-precedes-last="always" font-variant="small-caps" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <!--<label form="long" prefix=" (" suffix=")"/>-->
+      <!-- needed: Label should appear as suffix to EVERY name...!-->
+    </names>
+  </macro>
+  <macro name="access">
+    <group>
+      <text suffix=" " term="retrieved"/>
+      <date variable="accessed">
+        <date-part form="long" name="year" suffix="-"/>
+        <date-part form="numeric-leading-zeros" name="month" suffix="-"/>
+        <date-part form="numeric-leading-zeros" name="day"/>
+      </date>
+      <!--<date variable="accessed" form="numeric" date-parts="year-month-day"/> // dd.mm.yyy -->
+    </group>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill legislation">
+        <group delimiter=" — ">
+          <text font-style="normal" variable="title-short"/>
+          <text variable="title"/>
+        </group>
+      </if>
+      <else-if match="any" type="book graphic legal_case motion_picture report song">
+        <text font-style="italic" variable="title"/>
+      </else-if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="genre">
+    <choose>
+      <if match="any" type="report thesis manuscript map">
+        <group>
+          <text variable="genre"/>
+          <!--<text term="number" form="short" suffix=" "/>-->
+          <text prefix=" Nr. " variable="number"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="volumes">
+    <group delimiter=" ">
+      <text form="short" plural="false" term="volume"/>
+      <number form="numeric" variable="volume"/>
+      <number form="numeric" prefix="v. " variable="number-of-volumes"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <group>
+      <number form="numeric" suffix=". " variable="edition"/>
+      <text form="short" plural="false" term="edition"/>
+    </group>
+  </macro>
+  <macro name="pages">
+    <choose>
+      <if match="any" type="chapter paper-conference article-journal">
+        <label form="short" suffix=" " variable="page"/>
+        <text variable="page"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="dimensions">
+    <group>
+      <text variable="dimensions"/>
+    </group>
+  </macro>
+  <macro name="medium">
+    <group>
+      <text variable="medium"/>
+    </group>
+  </macro>
+  <macro name="scale">
+    <group>
+      <text term="scale"/>
+      <text prefix=" " variable="scale"/>
+    </group>
+  </macro>
+  <macro name="recipient-show">
+    <choose>
+      <if type="personal_communication">
+        <choose>
+          <if variable="genre">
+            <text text-case="capitalize-first" variable="genre"/>
+          </if>
+          <else>
+            <text term="letter" text-case="capitalize-first"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+    <text macro="recipient" prefix=", "/>
+  </macro>
+  <!-- This citytion style only differs from its original DIN 1505 style in the in-text citation which begins here -->
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="], [" prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <!-- End of in-text citation -->
+  <bibliography entry-spacing="0" et-al-min="9" et-al-use-first="8" hanging-indent="true" second-field-align="flush">
+    <layout>
+      <!-- Citation Number -->
+      <text prefix=" $citation-number$ [" suffix="] $citation-number$ " variable="citation-number"/>
+      <!-- continuing with original bibliography -->
+      <group delimiter=" ; " suffix=":">
+        <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+        <choose>
+          <if match="any" type="bill book graphic legal_case legislation manuscript map motion_picture report song thesis webpage">
+            <!-- except type="chapter article " etc.... -->
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="editor-collection" prefix=" $editor-collection$ " suffix=" $/editor-collection$ "/>
+            <text macro="composer" prefix=" $composer$ " suffix=" $/composer$ "/>
+          </if>
+        </choose>
+        <!-- <text macro="contributor"/> -->
+        <text macro="translator" prefix=" $translator$ " suffix=" $/translator$ "/>
+      </group>
+      <choose>
+        <!-- Tabelle 1 aus litverz.ps -->
+        <if match="any" type="bill book broadcast graphic legal_case legislation manuscript map motion_picture report song">
+          <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+          <text font-style="italic" prefix=" $collection-title$ , " suffix=" $collection-title$ " variable="collection-title"/>
+          <!--Reihe-->
+          <text macro="genre" prefix=" $genre$  (" suffix=") $/genre$ "/>
+          <text macro="volumes" prefix=" $volumes$ . " suffix=" $/volumes$ "/>
+          <text macro="edition" prefix=" $edition$ . " suffix=" $/edition$ "/>
+          <text macro="medium" prefix=" $medium$ . " suffix=" $/medium$ "/>
+          <text macro="dimensions" prefix=" $dimensions$ . " suffix=" $/dimensions$ "/>
+          <text prefix=" $publisher-place$ . " suffix=" $publisher-place$ " variable="publisher-place"/>
+          <text prefix=" $publisher$  : " suffix=" $publisher$ " variable="publisher"/>
+          <date date-parts="year" form="numeric" prefix=", " variable="issued"/>
+          <!-- " (1. Gesamttitel mit Zählung)"
+            " (2. Gesamttitel mit Zählung)" -->
+          <text macro="scale" prefix=" $scale$  – " suffix=" $/scale$ "/>
+          <text prefix=" $note$ . — " suffix=" $note$ " variable="note"/>
+          <text prefix=" $ISBN$  — ISBN " suffix=" $ISBN$ " variable="ISBN"/>
+        </if>
+        <!-- Tabelle 3 aus litverz.ps -->
+        <else-if match="any" type="chapter paper-conference">
+          <text macro="title" prefix=" $title$  " suffix=". $/title$ "/>
+          <text prefix=" $$ . " suffix=":  $/$ " term="in" text-case="capitalize-all"/>
+          <!-- verfahre nach Tabelle 1... -->
+          <group delimiter=" ; " suffix=": ">
+            <text macro="author-container" prefix=" $author-container$ " suffix=" $/author-container$ "/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="editor-collection" prefix=" $editor-collection$ " suffix=" $/editor-collection$ "/>
+          </group>
+          <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+          <text font-style="italic" prefix=" $collection-title$ , " suffix=" $collection-title$ " variable="collection-title"/>
+          <!-- Reihe -->
+          <text macro="volumes" prefix=" $volumes$ . " suffix=" $/volumes$ "/>
+          <!-- <text prefix=" : " variable="title of volumes"/> what is this? -->
+          <text macro="edition" prefix=" $edition$ . " suffix=" $/edition$ "/>
+          <text prefix=" $publisher-place$ . " suffix=" $publisher-place$ " variable="publisher-place"/>
+          <text prefix=" $publisher$  : " suffix=" $publisher$ " variable="publisher"/>
+          <date date-parts="year" form="numeric" prefix=", " variable="issued"/>
+          <!-- " (1. Gesamttitel mit Zählung)"
+            " (2. Gesamttitel mit Zählung)" -->
+          <text prefix=" $note$ . — " suffix=" $note$ " variable="note"/>
+          <text prefix=" $ISBN$  — ISBN " suffix=" $ISBN$ " variable="ISBN"/>
+          <text macro="pages" prefix=" $pages$ , " suffix=" $/pages$ "/>
+        </else-if>
+        <!-- Tabelle 5 aus litverz.ps - Hochschulschriften
+          (Diplomarbeiten, Dissertationen, Master-A., unverö. Studienarbeiten -->
+        <else-if match="any" type="thesis">
+          <text font-style="italic" macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+          <text macro="edition" prefix=" $edition$ . " suffix=" $/edition$ "/>
+          <text prefix=" $publisher-place$ . " suffix=" $publisher-place$ " variable="publisher-place"/>
+          <text form="long" prefix=" $publisher$ , " suffix=" $publisher$ " variable="publisher"/>
+          <!-- <text prefix=", " variable="faculty"/> -->
+          <text macro="genre" prefix=" $genre$ , " suffix=" $/genre$ "/>
+          <date date-parts="year" form="numeric" prefix=", " variable="issued"/>
+          <text prefix=" $note$ . — " suffix=" $note$ " variable="note"/>
+        </else-if>
+        <else-if match="any" type="webpage post post-weblog ">
+          <text font-style="italic" macro="title" prefix=" $title$  " suffix=".  $/title$ "/>
+          <text prefix=" $URL$ URL " suffix=" $URL$ " variable="URL"/>
+          <text macro="access" prefix=" $access$ . - " suffix=" $/access$ "/>
+          <text prefix=" $container-title$ . — " suffix=" $container-title$ " variable="container-title"/>
+          <text prefix=" $note$ . — " suffix=" $note$ " variable="note"/>
+        </else-if>
+        <!-- Tabelle 2 aus litverz.ps UND -->
+        <!-- Tabelle 4 aus litverz.ps - Schriften von Tagungen, Konferenzen, Symposien, ...-->
+        <else-if match="any" type="article article-journal article-magazine article-newspaper">
+          <text prefix=" $title$  " suffix=" $title$ " variable="title"/>
+          <!-- " : Zusatz zum Sachtitel"
+            ". Angabe des Teils"
+            " (Gesamttitelangabe)" -->
+          <group>
+            <text prefix=" $$ . " suffix=":  $/$ " term="in" text-case="capitalize-first"/>
+            <text macro="editor" prefix=" $editor$ " suffix="  $/editor$ "/>
+            <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <text font-style="italic" prefix=" $collection-title$ , " suffix=". $collection-title$ " variable="collection-title"/>
+            <!--", unterreihe der zeitschrift/zeitung" -->
+          </group>
+          <text macro="volumes" prefix=" $volumes$  " suffix=" $/volumes$ "/>
+          <text prefix=" $publisher-place$ . " suffix=" $publisher-place$ " variable="publisher-place"/>
+          <text form="long" prefix=" $publisher$ , " suffix=" $publisher$ " variable="publisher"/>
+          <date date-parts="year" form="numeric" prefix=" (" suffix=")" variable="issued"/>
+          <text prefix=" $issue$ , Nr. " suffix=" $issue$ " variable="issue"/>
+          <text macro="pages" prefix=" $pages$ , " suffix=" $/pages$ "/>
+          <text prefix=" $note$ . — " suffix=" $note$ " variable="note"/>
+          <text prefix=" $ISBN$  — ISBN " suffix=" $ISBN$ " variable="ISBN"/>
+        </else-if>
+        <!-- keiner der oben genannten fälle -->
+        <else>
+          <group suffix=".">
+            <text macro="title" prefix=" $title$  " suffix=" $/title$ "/>
+            <text macro="editor" prefix=" $editor$ , " suffix=" $/editor$ "/>
+            <text macro="recipient-show" prefix=" $recipient-show$ . " suffix=" $/recipient-show$ "/>
+          </group>
+          <group prefix=" " suffix=".">
+            <text font-style="italic" prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+            <group prefix=", ">
+              <text font-style="italic" prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+              <text prefix=" $issue$ (" suffix=") $issue$ " variable="issue"/>
+            </group>
+            <text macro="pages" prefix=" $pages$ , " suffix=" $/pages$ "/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

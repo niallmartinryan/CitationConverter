@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" and="symbol" class="in-text" default-locale="en-US" initialize-with="" initialize-with-hyphen="false" sort-separator=".  " version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>World Organisation for Animal Health - Scientific and Technical Review</title>
+    <title-short>OIE - Sci. Tech. Rev.</title-short>
+    <id>http://www.zotero.org/styles/world-organisation-for-animal-health-scientific-and-technical-review</id>
+    <link href="http://www.zotero.org/styles/world-organisation-for-animal-health-scientific-and-technical-review" rel="self"/>
+    <link href="http://www.zotero.org/styles/equine-veterinary-education" rel="template"/>
+    <link href="http://www.oie.int/en/publications-and-documentation/scientific-and-technical-review-free-access/instructions-to-authors/" rel="documentation"/>
+    <author>
+      <name>OIE</name>
+      <email>documentation@oie.int</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>0253-1933</issn>
+    <eissn>1608-0637</eissn>
+    <updated>2016-02-16T15:01:06+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names font-style="normal" prefix="(" suffix=")" variable="editor">
+      <name and="symbol" delimiter-precedes-last="never" font-style="normal" initialize-with="."/>
+      <label form="short" prefix=", " strip-periods="true" text-case="lowercase"/>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <choose>
+        <if match="any" type="report thesis">
+          <text variable="genre"/>
+        </if>
+      </choose>
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if match="none" variable="DOI">
+        <choose>
+          <if variable="URL">
+            <group delimiter=" " suffix=".">
+              <text prefix="Available at: " variable="URL"/>
+              <group prefix="(" suffix=")">
+                <text suffix=" on " term="accessed" text-case="lowercase"/>
+                <date variable="accessed">
+                  <date-part name="day" suffix=" "/>
+                  <date-part name="month" suffix=" "/>
+                  <date-part name="year"/>
+                </date>
+              </group>
+            </group>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="book thesis report">
+        <text font-style="italic" variable="title"/>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," prefix="[" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="99" et-al-use-first="98" second-field-align="flush">
+    <layout>
+      <text prefix=" $$ " suffix=". $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix="  $/author$ "/>
+      <date prefix="(" suffix="). " variable="issued">
+        <date-part name="year"/>
+      </date>
+      <text macro="title" prefix=" $title$ – " suffix=".  $/title$ "/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case motion_picture report song">
+          <group delimiter=", ">
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=".  $/publisher$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group font-style="italic" prefix=". In ">
+            <group>
+              <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+              <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+              <text font-style="normal" macro="editor" prefix=" $editor$  " suffix=" $/editor$ "/>
+            </group>
+          </group>
+          <text macro="publisher" prefix=" $publisher$ , " suffix=" $/publisher$ "/>
+          <group delimiter=" " prefix=". ">
+            <label form="short" strip-periods="true" variable="page"/>
+            <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=", " suffix=". ">
+            <text font-style="italic" form="short" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <group>
+              <text font-weight="bold" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+              <text prefix=" $$  (" suffix=") $/$ " variable="issue"/>
+              <choose>
+                <if match="any" variable="page">
+                  <text prefix=" $$ , " suffix=" $/$ " variable="page"/>
+                </if>
+              </choose>
+            </group>
+          </group>
+        </else>
+      </choose>
+      <text prefix=" $$ doi:" suffix=".  $/$ " variable="DOI"/>
+      <text macro="access" prefix=" $access$ " suffix=" $/access$ "/>
+    </layout>
+  </bibliography>
+</style>

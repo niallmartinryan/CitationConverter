@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="never" version="1.0">
+  <info>
+    <title>American Society for Microbiology</title>
+    <title-short>ASM</title-short>
+    <id>http://www.zotero.org/styles/american-society-for-microbiology</id>
+    <link href="http://www.zotero.org/styles/american-society-for-microbiology" rel="self"/>
+    <link href="http://aem.asm.org/misc/journal-ita_org.dtl#03" rel="documentation"/>
+    <author>
+      <name>Julian Onions</name>
+      <email>julian.onions@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Rintze Zelle</name>
+      <uri>http://twitter.com/rintzezelle</uri>
+    </contributor>
+    <contributor>
+      <name>Richard Karnesky</name>
+      <email>karnesky+zotero@gmail.com</email>
+      <uri>http://arc.nucapt.northwestern.edu/Richard_Karnesky</uri>
+    </contributor>
+    <contributor>
+      <name>Charles Parnot</name>
+      <uri>http://twitter.com/cparnot</uri>
+      <email>charles.parnot@gmail.com</email>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <summary>Style for all American Society for Microbiology journals.</summary>
+    <updated>2015-03-13T23:14:05+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names suffix="." variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <group prefix=" " suffix=".">
+      <choose>
+        <if type="patent">
+          <date variable="issued">
+            <date-part name="month" suffix=" "/>
+            <date-part name="year"/>
+          </date>
+        </if>
+        <else>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </else>
+      </choose>
+    </group>
+  </macro>
+  <macro name="chapter-specifics">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <label form="short" plural="never" prefix=", " suffix=" " variable="page"/>
+        <text variable="page"/>
+        <text font-style="italic" prefix=". " suffix=" " term="in" text-case="capitalize-first"/>
+        <names delimiter=", " suffix=", " variable="editor">
+          <name delimiter=", " delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all"/>
+          <label form="short" prefix=" (" suffix=")"/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <macro name="patent-specifics">
+    <text prefix=". " variable="number"/>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if match="any" type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song">
+        <text variable="container-title"/>
+      </if>
+      <else>
+        <text form="short" prefix=". " strip-periods="true" variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix=", ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", " prefix=". ">
+      <choose>
+        <if match="none" type="article-journal article-magazine">
+          <text variable="genre"/>
+          <text variable="publisher"/>
+          <text variable="publisher-place"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if type="article-journal">
+        <group delimiter=":" prefix=" ">
+          <text variable="volume"/>
+          <text variable="page"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter=", " prefix="(" suffix=")">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="1" line-spacing="2" second-field-align="flush">
+    <layout suffix=".">
+      <text prefix=" $$ " suffix=".  $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+      <text prefix=" $$  " suffix=" $/$ " variable="title"/>
+      <text macro="chapter-specifics" prefix=" $chapter-specifics$ " suffix=" $/chapter-specifics$ "/>
+      <text macro="patent-specifics" prefix=" $patent-specifics$ " suffix=" $/patent-specifics$ "/>
+      <text macro="container-title" prefix=" $container-title$ " suffix=" $/container-title$ "/>
+      <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+      <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+      <text macro="locators" prefix=" $locators$ " suffix=" $/locators$ "/>
+    </layout>
+  </bibliography>
+</style>

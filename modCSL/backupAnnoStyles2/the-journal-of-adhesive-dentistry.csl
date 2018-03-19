@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="expanded" version="1.0">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>The Journal of Adhesive Dentistry</title>
+    <title-short>J Adhes Dent</title-short>
+    <id>http://www.zotero.org/styles/the-journal-of-adhesive-dentistry</id>
+    <link href="http://www.zotero.org/styles/the-journal-of-adhesive-dentistry" rel="self"/>
+    <link href="http://www.zotero.org/styles/fertility-and-sterility" rel="template"/>
+    <link href="http://jad.quintessenz.de/index.php?doc=guidelines" rel="documentation"/>
+    <author>
+      <name>Marco Ottobelli</name>
+      <email>ottomco@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <issn>1461-5185</issn>
+    <eissn>1757-9988</eissn>
+    <summary>Quintessence - Journal of Adhesive Dentistry</summary>
+    <updated>2013-05-14T18:48:29+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names suffix=". " variable="author">
+      <name et-al-min="99" et-al-use-first="98" initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", "/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names suffix=". " variable="editor">
+      <name initialize-with="" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <text suffix=": " variable="publisher-place"/>
+    <text suffix=", " variable="publisher"/>
+    <group>
+      <date form="numeric" variable="issued">
+        <date-part name="year"/>
+      </date>
+    </group>
+  </macro>
+  <macro name="journal-title">
+    <choose>
+      <if match="any" type="article-journal article-magazine">
+        <group suffix=" ">
+          <text form="short" strip-periods="true" variable="container-title"/>
+        </group>
+      </if>
+      <else>
+        <text form="short" suffix=". " variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title">
+    <group delimiter=" ">
+      <text variable="title"/>
+      <choose>
+        <if match="none" type="article-journal article-magazine">
+          <choose>
+            <if variable="URL">
+              <text prefix="[" suffix="]" term="internet" text-case="capitalize-first"/>
+            </if>
+          </choose>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter="," font-variant="normal" prefix="(" suffix=")" vertical-align="baseline">
+      <text font-variant="normal" quotes="false" variable="citation-number" vertical-align="baseline"/>
+    </layout>
+  </citation>
+  <bibliography second-field-align="flush">
+    <sort>
+      <key macro="author"/>
+    </sort>
+    <layout>
+      <text prefix=" $citation-number$ " suffix=".  $citation-number$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix=" $/author$ "/>
+      <text macro="title" prefix=" $title$ " suffix=".  $/title$ "/>
+      <choose>
+        <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group delimiter=" " prefix=" ">
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+          </group>
+        </if>
+        <else-if match="any" type="chapter paper-conference">
+          <group prefix=" " suffix=". ">
+            <text prefix=" $$ " suffix=":  $/$ " term="in" text-case="capitalize-first"/>
+            <text macro="editor" prefix=" $editor$ " strip-periods="false" suffix=" $/editor$ "/>
+            <text prefix=" $container-title$ " suffix=" $container-title$ " variable="container-title"/>
+          </group>
+          <text macro="publisher" prefix=" $publisher$  " suffix=" $/publisher$ "/>
+          <text prefix=" $page$ :" suffix=". $page$ " variable="page"/>
+        </else-if>
+        <else>
+          <text macro="journal-title" prefix=" $journal-title$ " suffix=" $/journal-title$ "/>
+          <group suffix=";">
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </group>
+          <group suffix=". ">
+            <text prefix=" $volume$ " suffix=" $volume$ " variable="volume"/>
+            <text font-style="normal" font-variant="normal" font-weight="normal" prefix=" $page$ :" quotes="false" strip-periods="false" suffix=" $page$ " text-decoration="none" variable="page" vertical-align="baseline"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

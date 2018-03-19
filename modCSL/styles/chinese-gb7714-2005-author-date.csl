@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="zh-CN" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>Chinese Std GB/T 7714-2005 (author-date, Chinese)</title>
+    <id>http://www.zotero.org/styles/chinese-gb7714-2005-author-date</id>
+    <link href="http://www.zotero.org/styles/chinese-gb7714-2005-author-date" rel="self"/>
+    <link href="http://www.zotero.org/styles/chinese-gb7714-2005-numeric" rel="template"/>
+    <link href="http://gradschool.ustc.edu.cn/ylb/material/xw/wdxz/19.pdf" rel="documentation"/>
+    <author>
+      <name>heromyth</name>
+      <email>zxpmyth@yahoo.com.cn</email>
+    </author>
+    <contributor>
+      <name>Kristene Collins</name>
+      <uri>http://www.mendeley.com/profiles/kristene-collins1/</uri>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="generic-base"/>
+    <summary>This style just partly implemented what the Chinese GB/T 7714-2005 requires.</summary>
+    <updated>2014-02-27T02:27:29+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names suffix="，" variable="author">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with=" " name-as-sort-order="all" sort-separator=" ">
+        <name-part name="family" text-case="uppercase"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="recipient">
+    <names variable="recipient">
+      <name delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", " text-case="lowercase"/>
+    </names>
+  </macro>
+  <macro name="interviewer">
+    <names variable="interviewer">
+      <name delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", " text-case="lowercase"/>
+    </names>
+  </macro>
+  <macro name="composer">
+    <names variable="composer">
+      <name delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", " text-case="lowercase"/>
+    </names>
+  </macro>
+  <macro name="original-author">
+    <names variable="original-author">
+      <name delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=", " text-case="lowercase"/>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+  <macro name="titleField">
+    <choose>
+      <if type="report">
+        <text macro="title" suffix="[R]. "/>
+      </if>
+      <else-if type="thesis">
+        <text macro="title" suffix="[D]. "/>
+      </else-if>
+      <else-if match="any" type="bill legislation">
+        <text suffix=", " variable="number"/>
+        <text macro="title" suffix="[S]"/>
+      </else-if>
+      <else-if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <text macro="title" suffix="[M]. "/>
+      </else-if>
+      <else-if type="paper-conference">
+        <text macro="title" suffix="[C]//"/>
+      </else-if>
+      <else-if match="any" type="chapter paper-conference">
+        <text macro="title" suffix="[G]//"/>
+      </else-if>
+      <else-if type="webpage">
+        <text macro="title" suffix="[EB/OL]. "/>
+      </else-if>
+      <else-if type="patent">
+        <text macro="title"/>
+        <text prefix=": 中国, " suffix="[P].  " variable="number"/>
+      </else-if>
+      <else>
+        <text macro="title" suffix="[J]. "/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="secondaryAuthor">
+    <names variable="editor">
+      <name delimiter=", " delimiter-precedes-last="always" initialize-with=" " name-as-sort-order="all" sort-separator=" ">
+        <name-part name="family" text-case="uppercase"/>
+      </name>
+    </names>
+    <names variable="translator">
+      <name delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" " suffix=", 译"/>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <text suffix=". " variable="container-title"/>
+      </if>
+      <else-if type="report">
+        <text suffix=", " variable="collection-title"/>
+        <text suffix=", " variable="number"/>
+      </else-if>
+      <else-if match="any" type="bill legislation">
+        <text prefix=". " variable="container-title"/>
+      </else-if>
+      <else>
+        <text suffix=", " variable="container-title"/>
+      </else>
+    </choose>
+    <text suffix=": " variable="publisher-place"/>
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <choose>
+        <if match="all" type="webpage" variable="container-title">
+          <date suffix=". " variable="issued">
+            <date-part name="year"/>
+            <date-part form="numeric-leading-zeros" name="month" prefix="-"/>
+            <date-part form="numeric-leading-zeros" name="day" prefix="-"/>
+          </date>
+        </if>
+        <else-if type="webpage"/>
+        <else-if type="patent">
+          <date variable="issued">
+            <date-part name="year"/>
+            <date-part form="numeric-leading-zeros" name="month" prefix="-"/>
+            <date-part form="numeric-leading-zeros" name="day" prefix="-"/>
+          </date>
+        </else-if>
+        <else-if variable="publisher">
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </else-if>
+        <else-if match="any" type="bill legislation"/>
+        <else>
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+        </else>
+      </choose>
+    </group>
+    <text prefix=", " variable="volume"/>
+    <text prefix="(" suffix=")" variable="issue"/>
+  </macro>
+  <macro name="pageField">
+    <text variable="page"/>
+  </macro>
+  <macro name="referenceDate">
+    <choose>
+      <if type="webpage">
+        <date prefix="(" suffix=")" variable="issued">
+          <date-part name="year"/>
+          <date-part form="numeric-leading-zeros" name="month" prefix="-"/>
+          <date-part form="numeric-leading-zeros" name="day" prefix="-"/>
+        </date>
+        <date prefix="[" suffix="]" variable="accessed">
+          <date-part name="year"/>
+          <date-part form="numeric-leading-zeros" name="month" prefix="-"/>
+          <date-part form="numeric-leading-zeros" name="day" prefix="-"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="DOI">
+        <text prefix="doi:" variable="DOI"/>
+      </if>
+      <else-if variable="URL">
+        <text variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-label"/>
+    </sort>
+    <layout delimiter="；" prefix="（" suffix="）" vertical-align="baseline">
+      <choose>
+        <if match="all" variable="author">
+          <text macro="author"/>
+        </if>
+        <else-if match="all" variable="title">
+          <text macro="title" suffix="，"/>
+        </else-if>
+      </choose>
+      <date date-parts="year" form="numeric" variable="issued"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" et-al-min="4" et-al-use-first="3" second-field-align="flush">
+    <layout suffix=".">
+      <text macro="author" prefix=" $author$ " suffix=".  $/author$ "/>
+      <text macro="titleField" prefix=" $titleField$ " suffix=" $/titleField$ "/>
+      <text macro="secondaryAuthor" prefix=" $secondaryAuthor$ " suffix=".  $/secondaryAuthor$ "/>
+      <text prefix=" $edition$ 第" suffix="版.  $edition$ " variable="edition"/>
+      <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+      <text macro="pageField" prefix=" $pageField$ : " suffix=" $/pageField$ "/>
+      <text macro="referenceDate" prefix=" $referenceDate$ " suffix=" $/referenceDate$ "/>
+      <choose>
+        <if match="any" type="webpage">
+          <text macro="access" prefix=" $access$ . " suffix=" $/access$ "/>
+        </if>
+      </choose>
+      <text macro="recipient" prefix=" $recipient$ " suffix=" $/recipient$ "/>
+      <text macro="interviewer" prefix=" $interviewer$ " suffix=" $/interviewer$ "/>
+      <text macro="composer" prefix=" $composer$ " suffix=" $/composer$ "/>
+      <text macro="original-author" prefix=" $original-author$ " suffix=" $/original-author$ "/>
+    </layout>
+  </bibliography>
+</style>

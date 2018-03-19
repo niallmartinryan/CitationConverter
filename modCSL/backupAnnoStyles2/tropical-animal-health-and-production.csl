@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="never" version="1.0">
+  <info>
+    <title>Tropical Animal Health and Production</title>
+    <id>http://www.zotero.org/styles/tropical-animal-health-and-production</id>
+    <link href="http://www.zotero.org/styles/tropical-animal-health-and-production" rel="self"/>
+    <link href="http://www.zotero.org/styles/journal-of-evolutionary-biology" rel="template"/>
+    <link href="http://www.springer.com/life+sciences/animal+sciences/journal/11250" rel="documentation"/>
+    <author>
+      <name>Alex Chubaty</name>
+      <email>achubaty@sfu.ca</email>
+    </author>
+    <contributor>
+      <name>Patrick O'Brien, PhD</name>
+      <email>obrienpat86@gmail.com</email>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>0049-4747</issn>
+    <eissn>1573-7438</eissn>
+    <updated>2017-01-05T21:42:09+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor-translator">
+    <names delimiter=", " suffix="," variable="editor translator">
+      <name and="text" initialize-with=". " suffix=" "/>
+      <label form="short" prefix="(" strip-periods="true" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names suffix="," variable="author">
+      <name and="text" delimiter=", " delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+      <et-al font-style="italic"/>
+      <label form="short" prefix=" (" strip-periods="true" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name and="text" delimiter=", " form="short" initialize-with=". "/>
+      <et-al/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+        <group delimiter=" ">
+          <group delimiter=", ">
+            <text font-style="normal" suffix="," variable="title"/>
+            <text macro="edition"/>
+          </group>
+          <text macro="editor-translator"/>
+        </group>
+      </if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+        <text variable="year-suffix"/>
+      </if>
+      <else>
+        <text form="short" term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="journal-location">
+    <choose>
+      <if match="any" type="article-journal article-magazine">
+        <group delimiter=", ">
+          <text variable="container-title"/>
+          <group delimiter=", ">
+            <text variable="volume"/>
+            <text variable="page"/>
+          </group>
+        </group>
+        <choose>
+          <if match="none" variable="page volume">
+            <text prefix=", doi: " variable="DOI"/>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="chapter-info">
+    <choose>
+      <if match="any" type="chapter paper-conference">
+        <group delimiter=", ">
+          <text suffix=":" term="in" text-case="capitalize-first"/>
+          <text macro="editor-translator"/>
+          <text font-style="normal" suffix="," variable="container-title"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": " prefix="(" suffix=")">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+    <choose>
+      <if type="chapter">
+        <text prefix=", " variable="page"/>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="year-suffix" disambiguate-add-givenname="true" disambiguate-add-names="true" disambiguate-add-year-suffix="true" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year-date"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="year-date"/>
+        <group>
+          <label form="short" variable="locator"/>
+          <text prefix=" " variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key macro="title"/>
+    </sort>
+    <layout>
+      <group>
+        <text macro="author" prefix=" $author$ " suffix="  $/author$ "/>
+        <text macro="year-date" prefix=" $year-date$ " suffix=".  $/year-date$ "/>
+        <text macro="title" prefix=" $title$ " suffix="  $/title$ "/>
+        <text macro="journal-location" prefix=" $journal-location$ " suffix="  $/journal-location$ "/>
+        <text macro="chapter-info" prefix=" $chapter-info$ " suffix="  $/chapter-info$ "/>
+        <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

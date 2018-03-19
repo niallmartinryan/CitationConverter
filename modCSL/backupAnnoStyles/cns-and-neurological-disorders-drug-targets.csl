@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" version="1.0">
+  <info>
+    <title>CNS &amp; Neurological Disorders - Drug Targets</title>
+    <id>http://www.zotero.org/styles/cns-and-neurological-disorders-drug-targets</id>
+    <link href="http://www.zotero.org/styles/cns-and-neurological-disorders-drug-targets" rel="self"/>
+    <link href="http://www.zotero.org/styles/american-chemical-society" rel="template"/>
+    <link href="http://www.benthamscience.com/cdtcnsnd/MSandI.htm" rel="documentation"/>
+    <author>
+      <name>Charles Parnot</name>
+      <email>charles.parnot@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <category field="chemistry"/>
+    <issn>1871-5273</issn>
+    <eissn>1996-3181</eissn>
+    <summary>CNS &amp; Neurological Disorders - Drug Targets</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter="; " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=", " text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter="; " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=", " text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="volume">
+    <group delimiter=" ">
+      <text form="short" term="volume" text-case="capitalize-first"/>
+      <text variable="volume"/>
+    </group>
+  </macro>
+  <macro name="series">
+    <text variable="collection-title"/>
+  </macro>
+  <macro name="pages">
+    <label form="short" suffix=" " variable="page"/>
+    <text variable="page"/>
+  </macro>
+  <macro name="book-container">
+    <group delimiter=" ">
+      <text term="in" text-case="capitalize-first"/>
+      <text font-style="italic" variable="container-title"/>
+    </group>
+  </macro>
+  <macro name="issued">
+    <date delimiter=" " variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="full-issued">
+    <date delimiter=" " variable="issued">
+      <date-part form="long" name="month" suffix=" "/>
+      <date-part name="day" suffix=", "/>
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number form="ordinal" variable="edition"/>
+          <text form="short" term="edition"/>
+        </group>
+      </if>
+      <else>
+        <text suffix="." variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout delimiter=", " prefix="[]" suffix="]">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" second-field-align="margin">
+    <layout suffix=".">
+      <text prefix=" $$ (" suffix=")  $/$ " variable="citation-number"/>
+      <text macro="author" prefix=" $author$ " suffix="  $/author$ "/>
+      <choose>
+        <if type="article-magazine">
+          <group delimiter=" ">
+            <text font-style="italic" prefix=" $$ " suffix=". $/$ " variable="container-title"/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text macro="full-issued" prefix=" $full-issued$ " suffix=", $/full-issued$ "/>
+            <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+          </group>
+        </if>
+        <else-if type="thesis">
+          <group delimiter=", ">
+            <group delimiter=". ">
+              <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="genre"/>
+            </group>
+            <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+            <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+            <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+            <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+          </group>
+        </else-if>
+        <else-if match="any" type="bill book graphic legal_case legislation motion_picture report song">
+          <group delimiter="; ">
+            <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="title"/>
+            <text macro="editor" prefix=" $editor$  " suffix=" $/editor$ "/>
+            <text macro="series" prefix=" $series$ " suffix=" $/series$ "/>
+            <text macro="edition" prefix=" $edition$ " suffix=" $/edition$ "/>
+            <group delimiter=", ">
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+            </group>
+            <group delimiter=", ">
+              <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+              <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+            </group>
+          </group>
+        </else-if>
+        <else-if match="any" type="chapter paper-conference">
+          <group delimiter="; ">
+            <text macro="book-container" prefix=" $book-container$ " suffix=" $/book-container$ "/>
+            <text macro="editor" prefix=" $editor$ " suffix=" $/editor$ "/>
+            <text macro="series" prefix=" $series$ " suffix=" $/series$ "/>
+            <group delimiter=", ">
+              <text macro="publisher" prefix=" $publisher$ " suffix=" $/publisher$ "/>
+              <text macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+            </group>
+            <group delimiter=", ">
+              <text macro="volume" prefix=" $volume$ " suffix=" $/volume$ "/>
+              <text macro="pages" prefix=" $pages$ " suffix=" $/pages$ "/>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="article-journal">
+          <group delimiter=" ">
+            <text font-style="italic" form="short" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            <group delimiter=", ">
+              <text font-weight="bold" macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=" ">
+            <group delimiter=". ">
+              <text prefix=" $$ " suffix=" $/$ " variable="title"/>
+              <text font-style="italic" form="short" prefix=" $$ " suffix=" $/$ " variable="container-title"/>
+            </group>
+            <group delimiter=", ">
+              <text font-weight="bold" macro="issued" prefix=" $issued$ " suffix=" $/issued$ "/>
+              <text font-style="italic" prefix=" $$ " suffix=" $/$ " variable="volume"/>
+              <text prefix=" $$ " suffix=" $/$ " variable="page"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
